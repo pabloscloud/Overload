@@ -15,6 +15,8 @@
     <string name="tab_calendar">Calendar</string>
     <string name="tab_configurations">Configurations</string>
 
+
+    <!-- HomeTab -->
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
 
@@ -25,6 +27,10 @@
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
+
+    <string name="no_items_title">No items yet</string>
+    <string name="no_items_subtitle">There are no saved items yet. Create one!</string>
+
 
 
     <string name="edit">Edit</string>

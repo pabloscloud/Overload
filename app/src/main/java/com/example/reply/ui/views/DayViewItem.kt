@@ -22,22 +22,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
-import androidx.compose.material.icons.filled.Bed
-import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.filled.ModeNight
-import androidx.compose.material.icons.filled.NightShelter
-import androidx.compose.material.icons.filled.Nightlife
-import androidx.compose.material.icons.filled.NightsStay
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -66,18 +58,28 @@ fun DayViewItem(item: Item){
         if (item.pause) MaterialTheme.colorScheme.secondaryContainer
         else MaterialTheme.colorScheme.onSecondaryContainer
 
+    val parsedStartTime = parseDateTime(item.startTime)
+    val startTimeString = parsedStartTime.format(DateTimeFormatter.ofPattern("HH:mm"))
+    var endTimeString = ""
+    var durationString = ""
+    var duration = Duration.ZERO
 
-    val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
-    val startTimeString = item.startTime.format(timeFormatter)
-    val endTimeString = item.endTime.format(timeFormatter)
+    val isOngoing = !item.ongoing && item.endTime.isNotBlank()
+    if(isOngoing){
+        val parsedEndTime = parseDateTime(item.endTime)
+        endTimeString = parsedEndTime.format(DateTimeFormatter.ofPattern("HH:mm"))
 
-    val duration = Duration.between(item.startTime, item.endTime)
-    val hours = duration.toHours()
-    val minutes = duration.minusHours(hours).toMinutes()
-    val durationString = when {
-        hours > 0 -> "${hours}h ${minutes}min"
-        else -> "${minutes}min"
+        duration = Duration.between(parsedStartTime, parsedEndTime)
+        val hours = duration.toHours()
+        val minutes = duration.minusHours(hours).toMinutes()
+        val seconds = duration.minusHours(hours).minusMinutes(minutes).toMillis() / 1000
+        durationString = when {
+            hours > 0 -> "$hours h $minutes min"
+            minutes > 0 -> "$minutes min $seconds sec"
+            else -> "$seconds sec"
+        }
     }
+
 
     Box(
         modifier = Modifier
@@ -124,31 +126,36 @@ fun DayViewItem(item: Item){
                         Icons.Default.ArrowForward,
                         contentDescription = null,
                         tint = foregroundColor,
-                        modifier = Modifier.offset(x = (-5).dp).size(25.dp)
+                        modifier = Modifier
+                            .offset(x = (-5).dp)
+                            .size(25.dp)
                     )
                 }
             }
 
-            Text(
-                text = endTimeString,
-                maxLines = 1,
-                color = foregroundColor,
-                fontWeight = FontWeight.Medium,
-                modifier = Modifier.padding(12.5.dp)
-            )
+            if(isOngoing)
+                Text(
+                    text = endTimeString,
+                    maxLines = 1,
+                    color = foregroundColor,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(12.5.dp)
+                )
+            else
+                BlinkingClock(foregroundColor)
         }
 
-        // Text to be added on top of the item "2h 7min"
-        Text(
-            text = durationString,
-            color = foregroundColor, // Customize the color as needed
-            fontWeight = FontWeight.Medium,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .align(Alignment.Center)
-                .background(backgroundColor)
-                .padding(8.dp)
-        )
+        if (isOngoing && !duration.isZero)
+            Text(
+                text = durationString,
+                color = foregroundColor,
+                fontWeight = FontWeight.Medium,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .background(backgroundColor)
+                    .padding(8.dp)
+            )
     }
 
 
@@ -157,13 +164,20 @@ fun DayViewItem(item: Item){
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
+fun parseDateTime(dateTimeString: String): LocalDateTime {
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS")
+    return LocalDateTime.parse(dateTimeString, formatter)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
 fun DayViewItemPreview(){
     val exampleItem = Item(
-        startTime = LocalDateTime.of(2023, 7, 29, 11, 57),
-        endTime = LocalDateTime.of(2023, 7, 29, 12, 31),
-        pause = true
+        startTime = LocalDateTime.of(2023, 7, 29, 11, 57).toString(),
+        endTime = LocalDateTime.of(2023, 7, 29, 12, 31).toString(),
+        pause = true,
+        ongoing = false
     )
 
     DayViewItem(exampleItem)

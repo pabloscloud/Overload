@@ -17,6 +17,8 @@
 package com.example.reply.ui
 
 import HomeTab
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -48,6 +50,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
+import com.example.reply.data.ItemEvent
+import com.example.reply.data.ItemState
 import com.example.reply.ui.navigation.ModalNavigationDrawerContent
 import com.example.reply.ui.navigation.PermanentNavigationDrawerContent
 import com.example.reply.ui.navigation.ReplyBottomNavigationBar
@@ -62,11 +66,14 @@ import com.example.reply.ui.utils.isBookPosture
 import com.example.reply.ui.utils.isSeparating
 import kotlinx.coroutines.launch
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplyApp(
     windowSize: WindowSizeClass,
     displayFeatures: List<DisplayFeature>,
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit
 ) {
     /**
      * This will help us select type of navigation and content type depending on window size and
@@ -130,14 +137,19 @@ fun ReplyApp(
     ReplyNavigationWrapper(
         navigationType = navigationType,
         navigationContentPosition = navigationContentPosition,
+        state = state,
+        onEvent = onEvent
     )
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ReplyNavigationWrapper(
     navigationType: ReplyNavigationType,
     navigationContentPosition: ReplyNavigationContentPosition,
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit
 ) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -165,6 +177,8 @@ private fun ReplyNavigationWrapper(
                 navController = navController,
                 selectedDestination = selectedDestination,
                 navigateToTopLevelDestination = navigationActions::navigateTo,
+                state = state,
+                onEvent = onEvent
             )
         }
     } else {
@@ -178,7 +192,9 @@ private fun ReplyNavigationWrapper(
                         scope.launch {
                             drawerState.close()
                         }
-                    }
+                    },
+                    state = state,
+                    onEvent = onEvent
                 )
             },
             drawerState = drawerState
@@ -189,15 +205,19 @@ private fun ReplyNavigationWrapper(
                 navController = navController,
                 selectedDestination = selectedDestination,
                 navigateToTopLevelDestination = navigationActions::navigateTo,
-            ) {
-                scope.launch {
-                    drawerState.open()
-                }
-            }
+                onDrawerClicked = {
+                    scope.launch {
+                        drawerState.open()
+                    }
+                },
+                state = state,
+                onEvent = onEvent
+            )
         }
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ReplyAppContent(
     modifier: Modifier = Modifier,
@@ -206,7 +226,9 @@ fun ReplyAppContent(
     navController: NavHostController,
     selectedDestination: String,
     navigateToTopLevelDestination: (ReplyTopLevelDestination) -> Unit,
-    onDrawerClicked: () -> Unit = {}
+    onDrawerClicked: () -> Unit = {},
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit
 ) {
     Row(modifier = modifier.fillMaxSize()) {
         AnimatedVisibility(visible = navigationType == ReplyNavigationType.NAVIGATION_RAIL) {
@@ -215,6 +237,8 @@ fun ReplyAppContent(
                 navigationContentPosition = navigationContentPosition,
                 navigateToTopLevelDestination = navigateToTopLevelDestination,
                 onDrawerClicked = onDrawerClicked,
+                state = state,
+                onEvent = onEvent
             )
         }
         Column(
@@ -223,7 +247,10 @@ fun ReplyAppContent(
                 .background(MaterialTheme.colorScheme.inverseOnSurface)
         ) {
             ReplyNavHost(
+                navigationType = navigationType,
                 navController = navController,
+                state = state,
+                onEvent = onEvent,
                 modifier = Modifier
                     .weight(1f)
                     .then(
@@ -233,7 +260,7 @@ fun ReplyAppContent(
                         } else {
                             Modifier
                         }
-                    ),
+                    )
             )
             AnimatedVisibility(visible = navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
                 ReplyBottomNavigationBar(
@@ -245,18 +272,22 @@ fun ReplyAppContent(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 private fun ReplyNavHost(
+    navigationType: ReplyNavigationType,
     navController: NavHostController,
     modifier: Modifier = Modifier,
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit
 ) {
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = ReplyRoute.HOME,
+        startDestination = ReplyRoute.HOME
     ) {
         composable(ReplyRoute.HOME) {
-            HomeTab()
+            HomeTab(navigationType = navigationType, state = state, onEvent = onEvent)
         }
         composable(ReplyRoute.CALENDAR) {
             CalendarTab()

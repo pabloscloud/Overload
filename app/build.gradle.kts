@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 /*
  * Copyright 2022 Google LLC
  *
@@ -17,6 +19,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    kotlin("kapt") version "1.7.21"
 }
 
 android {
@@ -90,6 +93,12 @@ android {
 }
 
 dependencies {
+    val room_version = "2.5.2"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.compose.material3:material3-android:+")
     val composeBom = platform(libs.androidx.compose.bom)

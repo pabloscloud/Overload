@@ -16,13 +16,14 @@
 
 package com.example.reply.data
 
-import java.time.LocalDateTime
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-/**
- * A simple data class to represent an Email.
- */
+@Entity(tableName = "items")
 data class Item(
-    val startTime: LocalDateTime,
-    val endTime: LocalDateTime,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val startTime: String,
+    val endTime: String,
+    val ongoing: Boolean,
     val pause: Boolean
 )
