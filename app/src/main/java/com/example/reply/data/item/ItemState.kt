@@ -1,4 +1,4 @@
-package com.example.reply.data
+package com.example.reply.data.item
 
 import android.os.Build
 import androidx.annotation.RequiresApi

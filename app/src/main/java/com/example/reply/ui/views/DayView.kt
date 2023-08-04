@@ -33,8 +33,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.reply.R
-import com.example.reply.data.ItemEvent
-import com.example.reply.data.ItemState
+import com.example.reply.data.item.ItemEvent
+import com.example.reply.data.item.ItemState
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable

@@ -32,8 +32,8 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
-import com.example.reply.data.ItemDatabase
-import com.example.reply.data.ItemViewModel
+import com.example.reply.data.item.ItemDatabase
+import com.example.reply.data.item.ItemViewModel
 import com.example.reply.ui.theme.ReplyTheme
 import com.google.accompanist.adaptive.calculateDisplayFeatures
 
@@ -61,7 +61,6 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
 

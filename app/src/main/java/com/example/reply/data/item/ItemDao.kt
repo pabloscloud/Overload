@@ -1,4 +1,4 @@
-package com.example.reply.data
+package com.example.reply.data.item
 
 import androidx.room.Dao
 import androidx.room.Delete

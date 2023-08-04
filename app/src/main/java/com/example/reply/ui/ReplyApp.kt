@@ -50,8 +50,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
-import com.example.reply.data.ItemEvent
-import com.example.reply.data.ItemState
+import com.example.reply.data.item.ItemEvent
+import com.example.reply.data.item.ItemState
 import com.example.reply.ui.navigation.ModalNavigationDrawerContent
 import com.example.reply.ui.navigation.PermanentNavigationDrawerContent
 import com.example.reply.ui.navigation.ReplyBottomNavigationBar
@@ -244,7 +244,7 @@ fun ReplyAppContent(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.inverseOnSurface)
+                .background(MaterialTheme.colorScheme.surface)
         ) {
             ReplyNavHost(
                 navigationType = navigationType,

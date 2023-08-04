@@ -15,11 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.reply.R
-import com.example.reply.data.ItemEvent
-import com.example.reply.data.ItemState
+import com.example.reply.data.item.ItemEvent
+import com.example.reply.data.item.ItemState
 import java.time.LocalDateTime
 
 @RequiresApi(Build.VERSION_CODES.O)

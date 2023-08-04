@@ -42,7 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.reply.data.Item
+import com.example.reply.data.item.Item
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

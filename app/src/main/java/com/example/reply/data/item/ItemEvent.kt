@@ -1,4 +1,4 @@
-package com.example.reply.data
+package com.example.reply.data.item
 
 sealed interface ItemEvent {
     object SaveItem: ItemEvent

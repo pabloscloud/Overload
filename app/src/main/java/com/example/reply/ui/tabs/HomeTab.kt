@@ -3,18 +3,12 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Pause
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
@@ -31,13 +25,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.reply.R
-import com.example.reply.data.ItemEvent
-import com.example.reply.data.ItemState
+import com.example.reply.data.item.ItemEvent
+import com.example.reply.data.item.ItemState
 import com.example.reply.ui.tabs.homeTabItems
 import com.example.reply.ui.utils.ReplyNavigationType
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -48,7 +40,7 @@ fun HomeTab(
     onEvent: (ItemEvent) -> Unit
 ) {
     val pagerState = rememberPagerState(
-        initialPage = 0,
+        initialPage = 2,
         initialPageOffsetFraction = 0f
     ) {
         homeTabItems.size
@@ -91,7 +83,7 @@ fun HomeTab(
                             onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index) } },
                             text = {
                                 Text(
-                                    text = item.title,
+                                    text = stringResource(id = item.titleResId),
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis,
                                     color = MaterialTheme.colorScheme.onSurface,
