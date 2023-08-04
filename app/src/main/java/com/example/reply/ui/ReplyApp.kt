@@ -1,22 +1,5 @@
-/*
- * Copyright 2022 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.reply.ui
 
-import HomeTab
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
@@ -30,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.PermanentNavigationDrawer
@@ -59,6 +41,7 @@ import com.example.reply.ui.navigation.ReplyNavigationActions
 import com.example.reply.ui.navigation.ReplyNavigationRail
 import com.example.reply.ui.navigation.ReplyRoute
 import com.example.reply.ui.navigation.ReplyTopLevelDestination
+import com.example.reply.ui.tabs.HomeTab
 import com.example.reply.ui.utils.DevicePosture
 import com.example.reply.ui.utils.ReplyNavigationContentPosition
 import com.example.reply.ui.utils.ReplyNavigationType
@@ -67,13 +50,12 @@ import com.example.reply.ui.utils.isSeparating
 import kotlinx.coroutines.launch
 
 @RequiresApi(Build.VERSION_CODES.O)
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplyApp(
     windowSize: WindowSizeClass,
     displayFeatures: List<DisplayFeature>,
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit
+    onEvent: (ItemEvent) -> Unit,
 ) {
     /**
      * This will help us select type of navigation and content type depending on window size and
@@ -126,7 +108,8 @@ fun ReplyApp(
             ReplyNavigationContentPosition.TOP
         }
         WindowHeightSizeClass.Medium,
-        WindowHeightSizeClass.Expanded -> {
+        WindowHeightSizeClass.Expanded,
+        -> {
             ReplyNavigationContentPosition.TOP
         }
         else -> {
@@ -138,18 +121,17 @@ fun ReplyApp(
         navigationType = navigationType,
         navigationContentPosition = navigationContentPosition,
         state = state,
-        onEvent = onEvent
+        onEvent = onEvent,
     )
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ReplyNavigationWrapper(
     navigationType: ReplyNavigationType,
     navigationContentPosition: ReplyNavigationContentPosition,
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit
+    onEvent: (ItemEvent) -> Unit,
 ) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -178,7 +160,7 @@ private fun ReplyNavigationWrapper(
                 selectedDestination = selectedDestination,
                 navigateToTopLevelDestination = navigationActions::navigateTo,
                 state = state,
-                onEvent = onEvent
+                onEvent = onEvent,
             )
         }
     } else {
@@ -194,10 +176,10 @@ private fun ReplyNavigationWrapper(
                         }
                     },
                     state = state,
-                    onEvent = onEvent
+                    onEvent = onEvent,
                 )
             },
-            drawerState = drawerState
+            drawerState = drawerState,
         ) {
             ReplyAppContent(
                 navigationType = navigationType,
@@ -211,7 +193,7 @@ private fun ReplyNavigationWrapper(
                     }
                 },
                 state = state,
-                onEvent = onEvent
+                onEvent = onEvent,
             )
         }
     }
@@ -228,7 +210,7 @@ fun ReplyAppContent(
     navigateToTopLevelDestination: (ReplyTopLevelDestination) -> Unit,
     onDrawerClicked: () -> Unit = {},
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit
+    onEvent: (ItemEvent) -> Unit,
 ) {
     Row(modifier = modifier.fillMaxSize()) {
         AnimatedVisibility(visible = navigationType == ReplyNavigationType.NAVIGATION_RAIL) {
@@ -238,13 +220,13 @@ fun ReplyAppContent(
                 navigateToTopLevelDestination = navigateToTopLevelDestination,
                 onDrawerClicked = onDrawerClicked,
                 state = state,
-                onEvent = onEvent
+                onEvent = onEvent,
             )
         }
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.surface)
+                .background(MaterialTheme.colorScheme.surface),
         ) {
             ReplyNavHost(
                 navigationType = navigationType,
@@ -254,18 +236,21 @@ fun ReplyAppContent(
                 modifier = Modifier
                     .weight(1f)
                     .then(
-                        if(navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
-                            Modifier.consumeWindowInsets(WindowInsets.systemBars.only(
-                                WindowInsetsSides.Bottom))
+                        if (navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
+                            Modifier.consumeWindowInsets(
+                                WindowInsets.systemBars.only(
+                                    WindowInsetsSides.Bottom,
+                                ),
+                            )
                         } else {
                             Modifier
-                        }
-                    )
+                        },
+                    ),
             )
             AnimatedVisibility(visible = navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
                 ReplyBottomNavigationBar(
                     selectedDestination = selectedDestination,
-                    navigateToTopLevelDestination = navigateToTopLevelDestination
+                    navigateToTopLevelDestination = navigateToTopLevelDestination,
                 )
             }
         }
@@ -279,12 +264,12 @@ private fun ReplyNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit
+    onEvent: (ItemEvent) -> Unit,
 ) {
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = ReplyRoute.HOME
+        startDestination = ReplyRoute.HOME,
     ) {
         composable(ReplyRoute.HOME) {
             HomeTab(navigationType = navigationType, state = state, onEvent = onEvent)

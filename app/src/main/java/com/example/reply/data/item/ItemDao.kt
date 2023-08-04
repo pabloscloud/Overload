@@ -16,7 +16,4 @@ interface ItemDao {
 
     @Query("SELECT * FROM items")
     fun getAllItems(): Flow<List<Item>>
-
-    @Query("Select * FROM items ORDER BY startTime DESC")
-    fun getItemsOfDay(): Flow<List<Item>>
 }

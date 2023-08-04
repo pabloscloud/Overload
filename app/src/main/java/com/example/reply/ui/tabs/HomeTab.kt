@@ -1,3 +1,5 @@
+package com.example.reply.ui.tabs
+
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -28,7 +30,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.reply.data.item.ItemEvent
 import com.example.reply.data.item.ItemState
-import com.example.reply.ui.tabs.homeTabItems
 import com.example.reply.ui.utils.ReplyNavigationType
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -40,18 +41,18 @@ import java.time.format.DateTimeFormatter
 fun HomeTab(
     navigationType: ReplyNavigationType,
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit
+    onEvent: (ItemEvent) -> Unit,
 ) {
     val pagerState = rememberPagerState(
         initialPage = 2,
-        initialPageOffsetFraction = 0f
+        initialPageOffsetFraction = 0f,
     ) {
         homeTabItems.size
     }
     val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(pagerState.currentPage) {
-        val selectedDayString = when(pagerState.currentPage) {
+        val selectedDayString = when (pagerState.currentPage) {
             0 -> getFormattedDate(daysBefore = 2)
             1 -> getFormattedDate(daysBefore = 1)
             2 -> getFormattedDate()
@@ -63,13 +64,13 @@ fun HomeTab(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Overload")},
-                colors = TopAppBarDefaults.topAppBarColors (
+                title = { Text(text = "Overload") },
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primaryContainer
-                )
+                    titleContentColor = MaterialTheme.colorScheme.primaryContainer,
+                ),
             )
-        }
+        },
     ) { paddingValues ->
         Box(modifier = Modifier.fillMaxSize()) {
             Column(modifier = Modifier.padding(paddingValues)) {
@@ -94,7 +95,8 @@ fun HomeTab(
                         Tab(
                             selected = pagerState.currentPage == index,
                             onClick = {
-                                coroutineScope.launch { pagerState.animateScrollToPage(index) } },
+                                coroutineScope.launch { pagerState.animateScrollToPage(index) }
+                            },
                             text = {
                                 Text(
                                     text = stringResource(id = item.titleResId),
@@ -102,18 +104,18 @@ fun HomeTab(
                                     overflow = TextOverflow.Ellipsis,
                                     color = MaterialTheme.colorScheme.onSurface,
                                 )
-                            }
+                            },
                         )
                     }
                 }
                 HorizontalPager(
                     state = pagerState,
-                ){
+                ) {
                     homeTabItems[pagerState.currentPage].screen(state = state, onEvent = onEvent)
                 }
             }
-            Box(modifier = Modifier.align(Alignment.BottomEnd)){
-                if(navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
+            Box(modifier = Modifier.align(Alignment.BottomEnd)) {
+                if (navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
                     HomeTabFab(state = state, onEvent = onEvent)
                 }
             }
@@ -140,6 +142,6 @@ fun getFormattedDate(): String {
 @Preview
 @Composable
 fun HomeTabPreview() {
-    HomeTab()
+    com.example.reply.ui.tabs.HomeTab()
 }
 */

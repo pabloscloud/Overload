@@ -16,7 +16,7 @@
     <string name="tab_configurations">Configurations</string>
 
 
-    <!-- HomeTab -->
+    <!-- com.example.reply.ui.tabs.HomeTab -->
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
 

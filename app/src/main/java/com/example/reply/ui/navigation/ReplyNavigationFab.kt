@@ -1,11 +1,11 @@
+package com.example.reply.ui.navigation
+
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationDrawerItem
@@ -19,44 +19,46 @@ import com.example.reply.data.item.ItemState
 import java.time.LocalDateTime
 
 @RequiresApi(Build.VERSION_CODES.O)
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun ReplyNavigationFab(
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit
+    onEvent: (ItemEvent) -> Unit,
 ) {
-    var isOngoing = state.items.isNotEmpty() && state.items.last().ongoing
+    val isOngoing = state.items.isNotEmpty() && state.items.last().ongoing
 
     NavigationDrawerItem(
         selected = false,
         label = {
             Text(
-                if (isOngoing)
+                if (isOngoing) {
                     "Pause"
-                else
+                } else {
                     "Start"
+                },
             )
         },
         icon = {
             Icon(
                 imageVector =
-                if (isOngoing)
+                if (isOngoing) {
                     Icons.Default.Pause
-                else
-                    Icons.Default.PlayArrow,
+                } else {
+                    Icons.Default.PlayArrow
+                },
                 contentDescription =
-                if (isOngoing)
+                if (isOngoing) {
                     "Pause"
-                else
+                } else {
                     "Start"
+                },
             )
         },
         colors = NavigationDrawerItemDefaults.colors(
             unselectedContainerColor = MaterialTheme.colorScheme.tertiaryContainer,
         ),
         onClick = {
-            var isFirst = state.items.isEmpty()
-            var isNotOngoing = state.items.isEmpty() || !state.items.last().ongoing
+            val isFirst = state.items.isEmpty()
+            val isNotOngoing = state.items.isEmpty() || !state.items.last().ongoing
 
             if (isFirst) {
                 onEvent(ItemEvent.SetStart(start = LocalDateTime.now().toString()))
@@ -65,8 +67,7 @@ fun ReplyNavigationFab(
                 onEvent(ItemEvent.SaveItem)
 
                 onEvent(ItemEvent.SetIsOngoing(isOngoing = true))
-            }
-            else if (isNotOngoing) {
+            } else if (isNotOngoing) {
                 onEvent(ItemEvent.SetStart(start = state.items.last().endTime))
                 onEvent(ItemEvent.SetEnd(end = LocalDateTime.now().toString()))
                 onEvent(ItemEvent.SetOngoing(ongoing = false))
@@ -98,6 +99,6 @@ fun ReplyNavigationFab(
 @Preview
 @Composable
 fun HomeTabPreview() {
-    HomeTab()
+    com.example.reply.ui.tabs.HomeTab()
 }
 */

@@ -13,5 +13,5 @@ data class ItemState(
     val ongoing: Boolean = false,
     val pause: Boolean = false,
     val isOngoing: Boolean = false,
-    val selectedDay: String = ""
+    val selectedDay: String = "",
 )

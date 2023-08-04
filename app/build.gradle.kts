@@ -1,21 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
-/*
- * Copyright 2022 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -54,8 +36,10 @@ android {
         getByName("release") {
             isMinifyEnabled = true
             signingConfig = signingConfigs.getByName("debug")
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
         }
     }
 
@@ -89,18 +73,15 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
-
 }
 
 dependencies {
-    val room_version = "2.5.2"
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
 
-    implementation("androidx.room:room-runtime:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
-
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.compose.material3:material3-android:+")
+    implementation(libs.google.android.material)
+    implementation("androidx.compose.material3:material3-android:1.2.0-alpha04")
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
@@ -112,8 +93,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
-    implementation("androidx.compose.material3:material3:1.2.0-alpha03")
-    implementation("com.google.accompanist:accompanist-adaptive:0.26.2-beta")
+    implementation("androidx.compose.material3:material3:1.2.0-alpha04")
+    implementation(libs.accompanist.adaptive)
 
     implementation(libs.androidx.compose.materialWindow)
     implementation(libs.androidx.compose.material.iconsExtended)
@@ -135,6 +116,6 @@ dependencies {
     androidTestImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.compose.ui.test)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    
+
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

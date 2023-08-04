@@ -14,21 +14,21 @@ import java.time.LocalDateTime
 
 @RequiresApi(Build.VERSION_CODES.O)
 class ItemViewModel(
-    private val dao: ItemDao
-): ViewModel() {
+    private val dao: ItemDao,
+) : ViewModel() {
 
     private val _items = dao.getAllItems().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
     private val _state = MutableStateFlow(ItemState())
     val state = combine(_state, _items) { state, items ->
         state.copy(
-            items = items
+            items = items,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), ItemState())
 
-    fun onEvent(event: ItemEvent){
-        when(event){
+    fun onEvent(event: ItemEvent) {
+        when (event) {
             is ItemEvent.DeleteItem -> {
-                viewModelScope.launch{
+                viewModelScope.launch {
                     dao.deleteItem(event.item)
                 }
             }
@@ -44,50 +44,64 @@ class ItemViewModel(
                     startTime = start,
                     endTime = end,
                     ongoing = ongoing,
-                    pause = pause
+                    pause = pause,
                 )
 
                 viewModelScope.launch {
                     dao.upsertItem(item)
                 }
 
-                _state.update { it.copy(
-                    id = 0,
-                    start = LocalDateTime.now().toString(),
-                    end = "",
-                    ongoing = false,
-                    pause = false,
-                ) }
+                _state.update {
+                    it.copy(
+                        id = 0,
+                        start = LocalDateTime.now().toString(),
+                        end = "",
+                        ongoing = false,
+                        pause = false,
+                    )
+                }
             }
             is ItemEvent.SetStart -> {
-                _state.update { it.copy(
-                    start = event.start
-                ) }
+                _state.update {
+                    it.copy(
+                        start = event.start,
+                    )
+                }
             }
             is ItemEvent.SetEnd -> {
-                _state.update { it.copy(
-                    end = event.end
-                ) }
+                _state.update {
+                    it.copy(
+                        end = event.end,
+                    )
+                }
             }
             is ItemEvent.SetOngoing -> {
-                _state.update { it.copy(
-                    ongoing = event.ongoing
-                ) }
+                _state.update {
+                    it.copy(
+                        ongoing = event.ongoing,
+                    )
+                }
             }
             is ItemEvent.SetPause -> {
-                _state.update { it.copy(
-                    pause = event.pause
-                ) }
+                _state.update {
+                    it.copy(
+                        pause = event.pause,
+                    )
+                }
             }
             is ItemEvent.SetIsOngoing -> {
-                _state.update { it.copy(
-                    isOngoing = event.isOngoing
-                ) }
+                _state.update {
+                    it.copy(
+                        isOngoing = event.isOngoing,
+                    )
+                }
             }
             is ItemEvent.SetId -> {
-                _state.update { it.copy(
-                    id = event.id
-                ) }
+                _state.update {
+                    it.copy(
+                        id = event.id,
+                    )
+                }
             }
 
             is ItemEvent.SetSelectedDay -> {

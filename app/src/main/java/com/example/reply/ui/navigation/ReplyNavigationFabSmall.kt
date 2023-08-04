@@ -1,11 +1,11 @@
+package com.example.reply.ui.navigation
+
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -19,16 +19,15 @@ import com.example.reply.data.item.ItemState
 import java.time.LocalDateTime
 
 @RequiresApi(Build.VERSION_CODES.O)
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun ReplyNavigationFabSmall(
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit
+    onEvent: (ItemEvent) -> Unit,
 ) {
     FloatingActionButton(
         onClick = {
-            var isFirst = state.items.isEmpty()
-            var isNotOngoing = state.items.isEmpty() || !state.items.last().ongoing
+            val isFirst = state.items.isEmpty()
+            val isNotOngoing = state.items.isEmpty() || !state.items.last().ongoing
 
             if (isFirst) {
                 onEvent(ItemEvent.SetStart(start = LocalDateTime.now().toString()))
@@ -63,16 +62,17 @@ fun ReplyNavigationFabSmall(
         modifier = Modifier
             .padding(10.dp),
         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
+        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
     ) {
-        var isOngoing = state.items.isNotEmpty() && state.items.last().ongoing
+        val isOngoing = state.items.isNotEmpty() && state.items.last().ongoing
         Icon(
             imageVector =
-            if (isOngoing)
+            if (isOngoing) {
                 Icons.Default.Pause
-            else
-                Icons.Default.PlayArrow,
-            contentDescription = stringResource(id = R.string.edit)
+            } else {
+                Icons.Default.PlayArrow
+            },
+            contentDescription = stringResource(id = R.string.edit),
 
         )
     }
@@ -82,6 +82,6 @@ fun ReplyNavigationFabSmall(
 @Preview
 @Composable
 fun HomeTabPreview() {
-    HomeTab()
+    com.example.reply.ui.tabs.HomeTab()
 }
 */
