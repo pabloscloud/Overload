@@ -38,6 +38,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,19 +48,24 @@ import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-@RequiresApi(Build.VERSION_CODES.O)
+@RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun DayViewItem(item: Item){
-    val backgroundColor =
-        if (item.pause) MaterialTheme.colorScheme.onSecondaryContainer
-        else MaterialTheme.colorScheme.secondaryContainer
+    var backgroundColor = MaterialTheme.colorScheme.secondaryContainer
+    var foregroundColor = MaterialTheme.colorScheme.onSecondaryContainer
+    val parsedStartTime: LocalDateTime
+    val startTimeString: String
 
-    val foregroundColor =
-        if (item.pause) MaterialTheme.colorScheme.secondaryContainer
-        else MaterialTheme.colorScheme.onSecondaryContainer
+    item.let {
+        parsedStartTime = parseDateTime(it.startTime)
 
-    val parsedStartTime = parseDateTime(item.startTime)
-    val startTimeString = parsedStartTime.format(DateTimeFormatter.ofPattern("HH:mm"))
+         if (it.pause){
+             backgroundColor = MaterialTheme.colorScheme.onSecondaryContainer
+             foregroundColor = MaterialTheme.colorScheme.secondaryContainer
+         }
+    }
+
+    startTimeString = parsedStartTime.format(DateTimeFormatter.ofPattern("HH:mm"))
     var endTimeString = ""
     var durationString = ""
     var duration = Duration.ZERO
@@ -71,8 +77,8 @@ fun DayViewItem(item: Item){
 
         duration = Duration.between(parsedStartTime, parsedEndTime)
         val hours = duration.toHours()
-        val minutes = duration.minusHours(hours).toMinutes()
-        val seconds = duration.minusHours(hours).minusMinutes(minutes).toMillis() / 1000
+        val minutes = duration.toMinutesPart()
+        val seconds = duration.toSecondsPart()
         durationString = when {
             hours > 0 -> "$hours h $minutes min"
             minutes > 0 -> "$minutes min $seconds sec"

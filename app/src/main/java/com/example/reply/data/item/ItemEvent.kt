@@ -9,4 +9,5 @@ sealed interface ItemEvent {
     data class SetPause(val pause: Boolean): ItemEvent
     data class SetIsOngoing(val isOngoing: Boolean): ItemEvent
     data class DeleteItem(val item: Item): ItemEvent
+    data class SetSelectedDay(val day: String): ItemEvent
 }

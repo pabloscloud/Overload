@@ -36,11 +36,11 @@ val dayBeforeYesterdayResId = when (dayBeforeYesterday) {
 val homeTabItems = listOf(
     TabItem(
         titleResId = dayBeforeYesterdayResId,
-        screen = { _, _ -> EmptyComingSoon() }
+        screen = { state, onEvent -> DayView(state, onEvent) }
     ),
     TabItem(
         titleResId = R.string.yesterday,
-        screen = { _, _ -> EmptyComingSoon() }
+        screen = { state, onEvent -> DayView(state, onEvent) }
     ),
     TabItem(
         titleResId = R.string.today,

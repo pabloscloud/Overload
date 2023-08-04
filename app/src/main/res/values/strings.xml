@@ -29,8 +29,8 @@
     <string name="sunday">Sunday</string>
     <string name="unknown_day">Unknown day</string>
 
-    <string name="no_items_title">No items yet</string>
-    <string name="no_items_subtitle">There are no saved items yet. Create one!</string>
+    <string name="no_items_title">No items recorded</string>
+    <string name="no_items_subtitle">There are no saved items for that day.</string>
 
 
 

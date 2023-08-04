@@ -89,6 +89,10 @@ class ItemViewModel(
                     id = event.id
                 ) }
             }
+
+            is ItemEvent.SetSelectedDay -> {
+                _state.update { it.copy(selectedDay = event.day) }
+            }
         }
     }
 }

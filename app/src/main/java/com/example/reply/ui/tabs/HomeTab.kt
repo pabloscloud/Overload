@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,6 +31,8 @@ import com.example.reply.data.item.ItemState
 import com.example.reply.ui.tabs.homeTabItems
 import com.example.reply.ui.utils.ReplyNavigationType
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -46,6 +49,16 @@ fun HomeTab(
         homeTabItems.size
     }
     val coroutineScope = rememberCoroutineScope()
+
+    LaunchedEffect(pagerState.currentPage) {
+        val selectedDayString = when(pagerState.currentPage) {
+            0 -> getFormattedDate(daysBefore = 2)
+            1 -> getFormattedDate(daysBefore = 1)
+            2 -> getFormattedDate()
+            else -> getFormattedDate()
+        }
+        onEvent(ItemEvent.SetSelectedDay(selectedDayString))
+    }
 
     Scaffold(
         topBar = {
@@ -80,7 +93,8 @@ fun HomeTab(
                     homeTabItems.forEachIndexed { index, item ->
                         Tab(
                             selected = pagerState.currentPage == index,
-                            onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index) } },
+                            onClick = {
+                                coroutineScope.launch { pagerState.animateScrollToPage(index) } },
                             text = {
                                 Text(
                                     text = stringResource(id = item.titleResId),
@@ -105,6 +119,20 @@ fun HomeTab(
             }
         }
     }
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun getFormattedDate(daysBefore: Long): String {
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    val date = LocalDate.now().minusDays(daysBefore)
+    return date.format(formatter)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun getFormattedDate(): String {
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    val date = LocalDate.now()
+    return date.format(formatter)
 }
 
 /*

@@ -35,6 +35,9 @@ import androidx.compose.ui.unit.dp
 import com.example.reply.R
 import com.example.reply.data.item.ItemEvent
 import com.example.reply.data.item.ItemState
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -42,22 +45,32 @@ fun DayView(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit
 ){
-    if(state.items.isNotEmpty()){
+    val date = when (state.selectedDay){
+        "" -> LocalDate.now()
+        else -> getLocalDate(state.selectedDay)
+    }
+
+    val itemsForToday = state.items.filter { item ->
+        val startTime = parseToLocalDateTime(item.startTime)
+        extractDate(startTime) == date
+    }
+
+    val itemsForTodayAsc = itemsForToday.sortedByDescending { it.startTime }
+
+    if (itemsForTodayAsc.isNotEmpty()) {
         LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {
-            if(state.items.isNotEmpty()){
-                val itemSize = state.items.size
-                items(itemSize) { index ->
-                    val isFirstItem = index == 0
-                    val isLastItem = index == itemSize -1
+            val itemSize = itemsForTodayAsc.size
+            items(itemSize) { index ->
+                val isFirstItem = index == 0
+                val isLastItem = index == itemSize - 1
 
-                    Box(
-                        modifier = Modifier
-                            .padding(10.dp, if (isFirstItem) 10.dp else 0.dp, 10.dp, if (isLastItem) 80.dp else 10.dp)
-                    ) {
-                        DayViewItem(state.items[index])
-                    }
+                Box(
+                    modifier = Modifier
+                        .padding(10.dp, if (isFirstItem) 10.dp else 0.dp, 10.dp, if (isLastItem) 80.dp else 10.dp)
+                ) {
+                    DayViewItem(itemsForTodayAsc[index])
                 }
             }
         }
@@ -84,6 +97,24 @@ fun DayView(
         }
     }
 }
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun parseToLocalDateTime(dateTimeString: String): LocalDateTime {
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS")
+    return LocalDateTime.parse(dateTimeString, formatter)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun getLocalDate(selectedDay: String): LocalDate {
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    return LocalDate.parse(selectedDay, formatter)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun extractDate(localDateTime: LocalDateTime): LocalDate {
+    return localDateTime.toLocalDate()
+}
+
 /*
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview
