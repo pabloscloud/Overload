@@ -49,7 +49,7 @@ import com.example.reply.ui.utils.isBookPosture
 import com.example.reply.ui.utils.isSeparating
 import kotlinx.coroutines.launch
 
-@RequiresApi(Build.VERSION_CODES.O)
+@RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun ReplyApp(
     windowSize: WindowSizeClass,
@@ -125,7 +125,7 @@ fun ReplyApp(
     )
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
+@RequiresApi(Build.VERSION_CODES.S)
 @Composable
 private fun ReplyNavigationWrapper(
     navigationType: ReplyNavigationType,
@@ -151,6 +151,8 @@ private fun ReplyNavigationWrapper(
                 selectedDestination = selectedDestination,
                 navigationContentPosition = navigationContentPosition,
                 navigateToTopLevelDestination = navigationActions::navigateTo,
+                state = state,
+                onEvent = onEvent,
             )
         }) {
             ReplyAppContent(
@@ -199,7 +201,7 @@ private fun ReplyNavigationWrapper(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
+@RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun ReplyAppContent(
     modifier: Modifier = Modifier,
@@ -236,7 +238,7 @@ fun ReplyAppContent(
                 modifier = Modifier
                     .weight(1f)
                     .then(
-                        if (navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
+                        if (navigationType == ReplyNavigationType.BOTTOM_NAVIGATION && !state.isDeleting ) {
                             Modifier.consumeWindowInsets(
                                 WindowInsets.systemBars.only(
                                     WindowInsetsSides.Bottom,
@@ -251,13 +253,15 @@ fun ReplyAppContent(
                 ReplyBottomNavigationBar(
                     selectedDestination = selectedDestination,
                     navigateToTopLevelDestination = navigateToTopLevelDestination,
+                    state = state,
+                    onEvent = onEvent,
                 )
             }
         }
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
+@RequiresApi(Build.VERSION_CODES.S)
 @Composable
 private fun ReplyNavHost(
     navigationType: ReplyNavigationType,

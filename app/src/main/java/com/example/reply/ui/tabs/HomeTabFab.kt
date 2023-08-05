@@ -19,6 +19,10 @@ import androidx.compose.ui.unit.dp
 import com.example.reply.R
 import com.example.reply.data.item.ItemEvent
 import com.example.reply.data.item.ItemState
+import com.example.reply.ui.views.extractDate
+import com.example.reply.ui.views.getLocalDate
+import com.example.reply.ui.views.parseToLocalDateTime
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -27,10 +31,17 @@ fun HomeTabFab(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
+    val date = LocalDate.now()
+
+    val itemsForToday = state.items.filter { item ->
+        val startTime = parseToLocalDateTime(item.startTime)
+        extractDate(startTime) == date
+    }
+
     FloatingActionButton(
         onClick = {
-            val isFirst = state.items.isEmpty()
-            val isNotOngoing = state.items.isEmpty() || !state.items.last().ongoing
+            val isFirst = itemsForToday.isEmpty()
+            val isNotOngoing = itemsForToday.isEmpty() || !state.items.last().ongoing
 
             if (isFirst) {
                 onEvent(ItemEvent.SetStart(start = LocalDateTime.now().toString()))
@@ -40,7 +51,7 @@ fun HomeTabFab(
 
                 onEvent(ItemEvent.SetIsOngoing(isOngoing = true))
             } else if (isNotOngoing) {
-                onEvent(ItemEvent.SetStart(start = state.items.last().endTime))
+                onEvent(ItemEvent.SetStart(start = itemsForToday.last().endTime))
                 onEvent(ItemEvent.SetEnd(end = LocalDateTime.now().toString()))
                 onEvent(ItemEvent.SetOngoing(ongoing = false))
                 onEvent(ItemEvent.SetPause(pause = true))
@@ -53,8 +64,8 @@ fun HomeTabFab(
 
                 onEvent(ItemEvent.SetIsOngoing(isOngoing = true))
             } else {
-                onEvent(ItemEvent.SetId(id = state.items.last().id))
-                onEvent(ItemEvent.SetStart(start = state.items.last().startTime))
+                onEvent(ItemEvent.SetId(id = itemsForToday.last().id))
+                onEvent(ItemEvent.SetStart(start = itemsForToday.last().startTime))
                 onEvent(ItemEvent.SetEnd(end = LocalDateTime.now().toString()))
                 onEvent(ItemEvent.SetOngoing(ongoing = false))
                 onEvent(ItemEvent.SaveItem)
@@ -67,7 +78,7 @@ fun HomeTabFab(
         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
         contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
     ) {
-        val isOngoing = state.items.isNotEmpty() && state.items.last().ongoing
+        val isOngoing = itemsForToday.isNotEmpty() && itemsForToday.last().ongoing
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(8.dp),

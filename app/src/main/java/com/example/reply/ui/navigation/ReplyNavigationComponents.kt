@@ -59,57 +59,59 @@ fun ReplyNavigationRail(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    NavigationRail(
-        modifier = Modifier.fillMaxHeight(),
-        containerColor = MaterialTheme.colorScheme.inverseOnSurface,
-    ) {
-        Layout(
-            modifier = Modifier.widthIn(max = 80.dp),
-            content = {
-                Column(
-                    modifier = Modifier.layoutId(LayoutType.HEADER),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                ) {
-                    NavigationRailItem(
-                        selected = false,
-                        onClick = onDrawerClicked,
-                        icon = {
-                            Icon(
-                                imageVector = Icons.Default.Menu,
-                                contentDescription = stringResource(id = R.string.navigation_drawer),
-                            )
-                        },
-                    )
-                    ReplyNavigationFabSmall(state = state, onEvent = onEvent)
-                }
-
-                Column(
-                    modifier = Modifier.layoutId(LayoutType.CONTENT),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                ) {
-                    TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
+    if (!state.isDeleting) {
+        NavigationRail(
+            modifier = Modifier.fillMaxHeight(),
+            containerColor = MaterialTheme.colorScheme.inverseOnSurface,
+        ) {
+            Layout(
+                modifier = Modifier.widthIn(max = 80.dp),
+                content = {
+                    Column(
+                        modifier = Modifier.layoutId(LayoutType.HEADER),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
                         NavigationRailItem(
-                            selected = selectedDestination == replyDestination.route,
-                            onClick = { navigateToTopLevelDestination(replyDestination) },
+                            selected = false,
+                            onClick = onDrawerClicked,
                             icon = {
                                 Icon(
-                                    imageVector =
-                                    if (selectedDestination == replyDestination.route) {
-                                        replyDestination.selectedIcon
-                                    } else {
-                                        replyDestination.unselectedIcon
-                                    },
-                                    contentDescription = stringResource(id = replyDestination.iconTextId),
+                                    imageVector = Icons.Default.Menu,
+                                    contentDescription = stringResource(id = R.string.navigation_drawer),
                                 )
                             },
                         )
+                        ReplyNavigationFabSmall(state = state, onEvent = onEvent)
                     }
-                }
-            },
-            measurePolicy = navigationMeasurePolicy(navigationContentPosition),
-        )
+
+                    Column(
+                        modifier = Modifier.layoutId(LayoutType.CONTENT),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
+                        TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
+                            NavigationRailItem(
+                                selected = selectedDestination == replyDestination.route,
+                                onClick = { navigateToTopLevelDestination(replyDestination) },
+                                icon = {
+                                    Icon(
+                                        imageVector =
+                                        if (selectedDestination == replyDestination.route) {
+                                            replyDestination.selectedIcon
+                                        } else {
+                                            replyDestination.unselectedIcon
+                                        },
+                                        contentDescription = stringResource(id = replyDestination.iconTextId),
+                                    )
+                                },
+                            )
+                        }
+                    }
+                },
+                measurePolicy = navigationMeasurePolicy(navigationContentPosition),
+            )
+        }
     }
 }
 
@@ -117,30 +119,34 @@ fun ReplyNavigationRail(
 fun ReplyBottomNavigationBar(
     selectedDestination: String,
     navigateToTopLevelDestination: (ReplyTopLevelDestination) -> Unit,
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit,
 ) {
-    NavigationBar(modifier = Modifier.fillMaxWidth()) {
-        TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
-            NavigationBarItem(
-                selected = selectedDestination == replyDestination.route,
-                onClick = { navigateToTopLevelDestination(replyDestination) },
-                icon = {
-                    Icon(
-                        imageVector =
-                        if (selectedDestination == replyDestination.route) {
-                            replyDestination.selectedIcon
-                        } else {
-                            replyDestination.unselectedIcon
-                        },
-                        contentDescription = stringResource(id = replyDestination.iconTextId),
-                    )
-                },
-                label = {
-                    Text(
-                        text = replyDestination.label,
-                        fontWeight = if (selectedDestination == replyDestination.route) FontWeight.Bold else FontWeight.Normal,
-                    )
-                },
-            )
+    if (!state.isDeleting) {
+        NavigationBar(modifier = Modifier.fillMaxWidth()) {
+            TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
+                NavigationBarItem(
+                    selected = selectedDestination == replyDestination.route,
+                    onClick = { navigateToTopLevelDestination(replyDestination) },
+                    icon = {
+                        Icon(
+                            imageVector =
+                            if (selectedDestination == replyDestination.route) {
+                                replyDestination.selectedIcon
+                            } else {
+                                replyDestination.unselectedIcon
+                            },
+                            contentDescription = stringResource(id = replyDestination.iconTextId),
+                        )
+                    },
+                    label = {
+                        Text(
+                            text = replyDestination.label,
+                            fontWeight = if (selectedDestination == replyDestination.route) FontWeight.Bold else FontWeight.Normal,
+                        )
+                    },
+                )
+            }
         }
     }
 }
@@ -150,84 +156,88 @@ fun PermanentNavigationDrawerContent(
     selectedDestination: String,
     navigationContentPosition: ReplyNavigationContentPosition,
     navigateToTopLevelDestination: (ReplyTopLevelDestination) -> Unit,
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit,
 ) {
-    PermanentDrawerSheet(modifier = Modifier.sizeIn(minWidth = 200.dp, maxWidth = 300.dp)) {
-        Layout(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.inverseOnSurface)
-                .padding(16.dp),
-            content = {
-                Column(
-                    modifier = Modifier.layoutId(LayoutType.HEADER),
-                    horizontalAlignment = Alignment.Start,
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                ) {
-                    Text(
-                        modifier = Modifier
-                            .padding(16.dp),
-                        text = stringResource(id = R.string.app_name).uppercase(),
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.primary,
-                    )
-                    ExtendedFloatingActionButton(
-                        onClick = { /*TODO*/ },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 8.dp, bottom = 40.dp),
-                        containerColor = Color.Green,
-                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+    if (!state.isDeleting) {
+        PermanentDrawerSheet(modifier = Modifier.sizeIn(minWidth = 200.dp, maxWidth = 300.dp)) {
+            Layout(
+                modifier = Modifier
+                    .background(MaterialTheme.colorScheme.inverseOnSurface)
+                    .padding(16.dp),
+                content = {
+                    Column(
+                        modifier = Modifier.layoutId(LayoutType.HEADER),
+                        horizontalAlignment = Alignment.Start,
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.Edit,
-                            contentDescription = stringResource(id = R.string.edit),
-                            modifier = Modifier.size(18.dp),
-                        )
                         Text(
-                            text = stringResource(id = R.string.compose),
-                            modifier = Modifier.weight(1f),
-                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .padding(16.dp),
+                            text = stringResource(id = R.string.app_name).uppercase(),
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.primary,
                         )
+                        ExtendedFloatingActionButton(
+                            onClick = { /*TODO*/ },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 8.dp, bottom = 40.dp),
+                            containerColor = Color.Green,
+                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Edit,
+                                contentDescription = stringResource(id = R.string.edit),
+                                modifier = Modifier.size(18.dp),
+                            )
+                            Text(
+                                text = stringResource(id = R.string.compose),
+                                modifier = Modifier.weight(1f),
+                                textAlign = TextAlign.Center,
+                            )
+                        }
                     }
-                }
 
-                Column(
-                    modifier = Modifier
-                        .layoutId(LayoutType.CONTENT)
-                        .verticalScroll(rememberScrollState()),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
-                        NavigationDrawerItem(
-                            selected = selectedDestination == replyDestination.route,
-                            label = {
-                                Text(
-                                    text = stringResource(id = replyDestination.iconTextId),
-                                    modifier = Modifier.padding(horizontal = 16.dp),
-                                )
-                            },
-                            icon = {
-                                Icon(
-                                    imageVector =
-                                    if (selectedDestination == replyDestination.route) {
-                                        replyDestination.selectedIcon
-                                    } else {
-                                        replyDestination.unselectedIcon
-                                    },
-                                    contentDescription = stringResource(
-                                        id = replyDestination.iconTextId,
-                                    ),
-                                )
-                            },
-                            colors = NavigationDrawerItemDefaults.colors(
-                                unselectedContainerColor = Color.Transparent,
-                            ),
-                            onClick = { navigateToTopLevelDestination(replyDestination) },
-                        )
+                    Column(
+                        modifier = Modifier
+                            .layoutId(LayoutType.CONTENT)
+                            .verticalScroll(rememberScrollState()),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
+                            NavigationDrawerItem(
+                                selected = selectedDestination == replyDestination.route,
+                                label = {
+                                    Text(
+                                        text = stringResource(id = replyDestination.iconTextId),
+                                        modifier = Modifier.padding(horizontal = 16.dp),
+                                    )
+                                },
+                                icon = {
+                                    Icon(
+                                        imageVector =
+                                        if (selectedDestination == replyDestination.route) {
+                                            replyDestination.selectedIcon
+                                        } else {
+                                            replyDestination.unselectedIcon
+                                        },
+                                        contentDescription = stringResource(
+                                            id = replyDestination.iconTextId,
+                                        ),
+                                    )
+                                },
+                                colors = NavigationDrawerItemDefaults.colors(
+                                    unselectedContainerColor = Color.Transparent,
+                                ),
+                                onClick = { navigateToTopLevelDestination(replyDestination) },
+                            )
+                        }
                     }
-                }
-            },
-            measurePolicy = navigationMeasurePolicy(navigationContentPosition),
-        )
+                },
+                measurePolicy = navigationMeasurePolicy(navigationContentPosition),
+            )
+        }
     }
 }
 
@@ -241,78 +251,79 @@ fun ModalNavigationDrawerContent(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    ModalDrawerSheet {
-        // TODO remove custom nav drawer content positioning when NavDrawer component supports it. ticket : b/232495216
-        Layout(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.inverseOnSurface)
-                .padding(16.dp),
-            content = {
-                Column(
-                    modifier = Modifier.layoutId(LayoutType.HEADER),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically,
+    if (!state.isDeleting) {
+        ModalDrawerSheet {
+            Layout(
+                modifier = Modifier
+                    .background(MaterialTheme.colorScheme.inverseOnSurface)
+                    .padding(16.dp),
+                content = {
+                    Column(
+                        modifier = Modifier.layoutId(LayoutType.HEADER),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
                     ) {
-                        Text(
-                            text = stringResource(id = R.string.app_name).uppercase(),
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.primary,
-                        )
-                        IconButton(onClick = onDrawerClicked) {
-                            Icon(
-                                imageVector = Icons.Default.MenuOpen,
-                                contentDescription = stringResource(id = R.string.navigation_drawer),
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.app_name).uppercase(),
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.primary,
+                            )
+                            IconButton(onClick = onDrawerClicked) {
+                                Icon(
+                                    imageVector = Icons.Default.MenuOpen,
+                                    contentDescription = stringResource(id = R.string.navigation_drawer),
+                                )
+                            }
+                        }
+
+                        ReplyNavigationFab(state = state, onEvent = onEvent)
+                    }
+
+                    Column(
+                        modifier = Modifier
+                            .layoutId(LayoutType.CONTENT)
+                            .verticalScroll(rememberScrollState()),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
+                            NavigationDrawerItem(
+                                selected = selectedDestination == replyDestination.route,
+                                label = {
+                                    Text(
+                                        text = stringResource(id = replyDestination.iconTextId),
+                                    )
+                                },
+                                icon = {
+                                    Icon(
+                                        imageVector =
+                                        if (selectedDestination == replyDestination.route) {
+                                            replyDestination.selectedIcon
+                                        } else {
+                                            replyDestination.unselectedIcon
+                                        },
+                                        contentDescription = stringResource(
+                                            id = replyDestination.iconTextId,
+                                        ),
+                                    )
+                                },
+                                colors = NavigationDrawerItemDefaults.colors(
+                                    unselectedContainerColor = Color.Transparent,
+                                ),
+                                onClick = { navigateToTopLevelDestination(replyDestination) },
                             )
                         }
                     }
-
-                    ReplyNavigationFab(state = state, onEvent = onEvent)
-                }
-
-                Column(
-                    modifier = Modifier
-                        .layoutId(LayoutType.CONTENT)
-                        .verticalScroll(rememberScrollState()),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
-                        NavigationDrawerItem(
-                            selected = selectedDestination == replyDestination.route,
-                            label = {
-                                Text(
-                                    text = stringResource(id = replyDestination.iconTextId),
-                                )
-                            },
-                            icon = {
-                                Icon(
-                                    imageVector =
-                                    if (selectedDestination == replyDestination.route) {
-                                        replyDestination.selectedIcon
-                                    } else {
-                                        replyDestination.unselectedIcon
-                                    },
-                                    contentDescription = stringResource(
-                                        id = replyDestination.iconTextId,
-                                    ),
-                                )
-                            },
-                            colors = NavigationDrawerItemDefaults.colors(
-                                unselectedContainerColor = Color.Transparent,
-                            ),
-                            onClick = { navigateToTopLevelDestination(replyDestination) },
-                        )
-                    }
-                }
-            },
-            measurePolicy = navigationMeasurePolicy(navigationContentPosition),
-        )
+                },
+                measurePolicy = navigationMeasurePolicy(navigationContentPosition),
+            )
+        }
     }
 }
 

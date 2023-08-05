@@ -32,18 +32,33 @@ val dayBeforeYesterdayResId = when (dayBeforeYesterday) {
     else -> R.string.unknown_day // Add a default string resource in case the day is not matched
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
+@RequiresApi(Build.VERSION_CODES.S)
 val homeTabItems = listOf(
     TabItem(
         titleResId = dayBeforeYesterdayResId,
-        screen = { state, onEvent -> DayView(state) },
+        screen = { state, onEvent ->
+            DayView(
+                state = state,
+                onEvent = onEvent,
+            )
+        },
     ),
     TabItem(
         titleResId = R.string.yesterday,
-        screen = { state, onEvent -> DayView(state) },
+        screen = { state, onEvent ->
+            DayView(
+                state = state,
+                onEvent = onEvent,
+            )
+        },
     ),
     TabItem(
         titleResId = R.string.today,
-        screen = { state, onEvent -> DayView(state) },
+        screen = { state, onEvent ->
+            DayView(
+                state = state,
+                onEvent = onEvent,
+            )
+        },
     ),
 )

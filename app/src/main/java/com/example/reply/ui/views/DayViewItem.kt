@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,17 +34,34 @@ import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
-fun DayViewItem(item: Item) {
-    var backgroundColor = MaterialTheme.colorScheme.secondaryContainer
-    var foregroundColor = MaterialTheme.colorScheme.onSecondaryContainer
+fun DayViewItem(item: Item, isSelected: Boolean) {
+    var backgroundColor: Color
+    var foregroundColor: Color
+
     val parsedStartTime: LocalDateTime
 
     item.let {
         parsedStartTime = parseDateTime(it.startTime)
 
-        if (it.pause) {
-            backgroundColor = MaterialTheme.colorScheme.onSecondaryContainer
-            foregroundColor = MaterialTheme.colorScheme.secondaryContainer
+        when (isSelected) {
+            true -> {
+                backgroundColor = MaterialTheme.colorScheme.errorContainer
+                foregroundColor = MaterialTheme.colorScheme.onErrorContainer
+            }
+
+            false -> {
+                when (it.pause) {
+                    true -> {
+                        backgroundColor = MaterialTheme.colorScheme.onSecondaryContainer
+                        foregroundColor = MaterialTheme.colorScheme.secondaryContainer
+                    }
+
+                    false -> {
+                        backgroundColor = MaterialTheme.colorScheme.secondaryContainer
+                        foregroundColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    }
+                }
+            }
         }
     }
 
@@ -166,5 +184,5 @@ fun DayViewItemPreview() {
         ongoing = false,
     )
 
-    DayViewItem(exampleItem)
+    DayViewItem(exampleItem, isSelected = false)
 }

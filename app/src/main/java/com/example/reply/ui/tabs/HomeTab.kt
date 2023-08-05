@@ -18,8 +18,6 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
@@ -35,7 +33,7 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-@RequiresApi(Build.VERSION_CODES.O)
+@RequiresApi(Build.VERSION_CODES.S)
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun HomeTab(
@@ -63,13 +61,13 @@ fun HomeTab(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(text = "Overload") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primaryContainer,
-                ),
-            )
+            when (state.isDeleting) {
+                true -> HomeTabDeleteTopAppBar(state = state, onEvent = onEvent)
+                else -> HomeTabTopAppBar()
+            }
+        },
+        bottomBar = {
+            HomeTabBottomAppBar(state = state, onEvent = onEvent)
         },
     ) { paddingValues ->
         Box(modifier = Modifier.fillMaxSize()) {
