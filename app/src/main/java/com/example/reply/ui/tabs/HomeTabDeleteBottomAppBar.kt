@@ -31,7 +31,7 @@ fun HomeTabBottomAppBar(
         else -> getLocalDate(state.selectedDay)
     }
 
-    val itemsForToday = state.items.filter { item ->
+    val itemsForSelectedDay = state.items.filter { item ->
         val startTime = parseToLocalDateTime(item.startTime)
         extractDate(startTime) == date
     }
@@ -40,7 +40,7 @@ fun HomeTabBottomAppBar(
         BottomAppBar(
             actions = {
                 IconButton(onClick = {
-                    onEvent(ItemEvent.SetSelectedItems(itemsForToday))
+                    onEvent(ItemEvent.SetSelectedItems(state.selectedItems + itemsForSelectedDay))
                 }) {
                     Icon(
                         Icons.Filled.SelectAll,
@@ -48,7 +48,7 @@ fun HomeTabBottomAppBar(
                     )
                 }
                 IconButton(onClick = {
-                    onEvent(ItemEvent.SetSelectedItems(emptyList()))
+                    onEvent(ItemEvent.SetSelectedItems(state.selectedItems - itemsForSelectedDay))
                 }) {
                     Icon(
                         Icons.Filled.Deselect,

@@ -64,9 +64,12 @@ fun DayView(
                                 onEvent(ItemEvent.SetSelectedItems(listOf(item)))
                             },
                             onClick = {
-                                when (isSelected) {
-                                    true -> onEvent(ItemEvent.SetSelectedItems(state.selectedItems.filterNot { it == item }))
-                                    else -> onEvent(ItemEvent.SetSelectedItems(state.selectedItems + listOf(item)))
+                                when (state.isDeleting) {
+                                    true -> when (isSelected) {
+                                        true -> onEvent(ItemEvent.SetSelectedItems(state.selectedItems.filterNot { it == item }))
+                                        else -> onEvent(ItemEvent.SetSelectedItems(state.selectedItems + listOf(item)))
+                                    }
+                                    else -> {}
                                 }
                             },
                         ),
