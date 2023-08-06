@@ -13,6 +13,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.example.reply.R
 import com.example.reply.data.item.ItemEvent
 import com.example.reply.data.item.ItemState
 import com.example.reply.ui.views.extractDate
@@ -44,7 +46,7 @@ fun HomeTabBottomAppBar(
                 }) {
                     Icon(
                         Icons.Filled.SelectAll,
-                        contentDescription = null,
+                        contentDescription = stringResource(id = R.string.select_all_items_of_selected_day),
                     )
                 }
                 IconButton(onClick = {
@@ -52,7 +54,7 @@ fun HomeTabBottomAppBar(
                 }) {
                     Icon(
                         Icons.Filled.Deselect,
-                        contentDescription = null,
+                        contentDescription = stringResource(id = R.string.deselect_all_items_of_selected_day),
                     )
                 }
             },
@@ -65,7 +67,10 @@ fun HomeTabBottomAppBar(
                     contentColor = MaterialTheme.colorScheme.onErrorContainer,
                     elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation(),
                 ) {
-                    Icon(Icons.Filled.DeleteForever, "Localized description")
+                    Icon(
+                        Icons.Filled.DeleteForever,
+                        contentDescription = stringResource(id = R.string.delete_items_forever),
+                    )
                 }
             },
         )

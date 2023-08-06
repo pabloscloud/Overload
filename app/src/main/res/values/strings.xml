@@ -32,7 +32,17 @@
     <string name="no_items_title">No items recorded</string>
     <string name="no_items_subtitle">There are no saved items for that day.</string>
 
+    <!-- com.example.reply.ui.tabs.HomeTabDeleteBottomAppBar -->
+    <string name="select_all_items_of_selected_day">select all items of selected day</string>
+    <string name="deselect_all_items_of_selected_day">deselect all items of selected day</string>
+    <string name="delete_items_forever">delete items forever</string>
 
+    <!-- com.example.reply.ui.tabs.HomeTabDeleteTopAppBar -->
+    <string name="get_out_of_isDeleting">gets you out of deletion mode</string>
+
+    <!-- com.example.reply.ui.views.DayViewItem -->
+    <string name="pause">pause</string>
+    <string name="arrow_forward">arrow forward describing the direction of both times from start to end</string>
 
     <string name="edit">Edit</string>
     <string name="compose">Compose</string>

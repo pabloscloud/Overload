@@ -12,8 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import com.example.reply.R
 import com.example.reply.data.item.ItemEvent
 import com.example.reply.data.item.ItemState
 
@@ -44,7 +46,7 @@ fun HomeTabDeleteTopAppBar(
             }) {
                 Icon(
                     imageVector = Icons.Filled.Close,
-                    contentDescription = "Localized description",
+                    contentDescription = stringResource(id = R.string.get_out_of_isDeleting),
                     tint = MaterialTheme.colorScheme.primaryContainer,
                 )
             }
