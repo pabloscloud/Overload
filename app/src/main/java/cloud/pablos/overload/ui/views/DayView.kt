@@ -74,7 +74,10 @@ fun DayView(
                             },
                         ),
                 ) {
-                    DayViewItem(item, isSelected = isSelected)
+                    when (!item.ongoing && item.endTime.isNotBlank()) {
+                        true -> DayViewItemNotOngoing(item, isSelected = isSelected)
+                        else -> DayViewItemOngoing(item, isSelected = isSelected)
+                    }
                 }
             }
         }

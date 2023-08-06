@@ -36,15 +36,16 @@ import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
-fun DayViewItem(item: Item, isSelected: Boolean) {
+fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
     var backgroundColor: Color
     var foregroundColor: Color
 
     val parsedStartTime: LocalDateTime
+    val parsedEndTime: LocalDateTime
 
     item.let {
         parsedStartTime = parseDateTime(it.startTime)
-
+        parsedEndTime = parseDateTime(it.endTime)
         when (isSelected) {
             true -> {
                 backgroundColor = MaterialTheme.colorScheme.errorContainer
@@ -67,25 +68,17 @@ fun DayViewItem(item: Item, isSelected: Boolean) {
         }
     }
 
-    val startTimeString: String = parsedStartTime.format(DateTimeFormatter.ofPattern("HH:mm"))
-    var endTimeString = ""
-    var durationString = ""
-    var duration = Duration.ZERO
+    val startTimeString = parsedStartTime.format(DateTimeFormatter.ofPattern("HH:mm"))
+    var endTimeString = parsedEndTime.format(DateTimeFormatter.ofPattern("HH:mm"))
 
-    val isOngoing = !item.ongoing && item.endTime.isNotBlank()
-    if (isOngoing) {
-        val parsedEndTime = parseDateTime(item.endTime)
-        endTimeString = parsedEndTime.format(DateTimeFormatter.ofPattern("HH:mm"))
-
-        duration = Duration.between(parsedStartTime, parsedEndTime)
-        val hours = duration.toHours()
-        val minutes = duration.toMinutesPart()
-        val seconds = duration.toSecondsPart()
-        durationString = when {
-            hours > 0 -> "$hours h $minutes min"
-            minutes > 0 -> "$minutes min $seconds sec"
-            else -> "$seconds sec"
-        }
+    var duration = Duration.between(parsedStartTime, parsedEndTime)
+    val hours = duration.toHours()
+    val minutes = duration.toMinutesPart()
+    val seconds = duration.toSecondsPart()
+    val durationString = when {
+        hours > 0 -> "$hours h $minutes min"
+        minutes > 0 -> "$minutes min $seconds sec"
+        else -> "$seconds sec"
     }
 
     Box(
@@ -109,7 +102,7 @@ fun DayViewItem(item: Item, isSelected: Boolean) {
             if (item.pause) {
                 Icon(
                     Icons.Outlined.DarkMode,
-                    contentDescription = stringResource(id = R.string.pause).replaceFirstChar { it.uppercase() },
+                    contentDescription = stringResource(id = R.string.pause),
                     tint = foregroundColor,
                 )
             }
@@ -141,31 +134,25 @@ fun DayViewItem(item: Item, isSelected: Boolean) {
                 }
             }
 
-            if (isOngoing) {
-                Text(
-                    text = endTimeString,
-                    maxLines = 1,
-                    color = foregroundColor,
-                    fontWeight = FontWeight.Medium,
-                    modifier = Modifier.padding(12.5.dp),
-                )
-            } else {
-                BlinkingClock(foregroundColor)
-            }
-        }
-
-        if (isOngoing && !duration.isZero) {
             Text(
-                text = durationString,
+                text = endTimeString,
+                maxLines = 1,
                 color = foregroundColor,
                 fontWeight = FontWeight.Medium,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .background(backgroundColor)
-                    .padding(8.dp),
+                modifier = Modifier.padding(12.5.dp),
             )
         }
+
+        Text(
+            text = durationString,
+            color = foregroundColor,
+            fontWeight = FontWeight.Medium,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .align(Alignment.Center)
+                .background(backgroundColor)
+                .padding(8.dp),
+        )
     }
 }
 
@@ -186,5 +173,5 @@ fun DayViewItemPreview() {
         ongoing = false,
     )
 
-    DayViewItem(exampleItem, isSelected = false)
+    DayViewItemNotOngoing(exampleItem, isSelected = false)
 }

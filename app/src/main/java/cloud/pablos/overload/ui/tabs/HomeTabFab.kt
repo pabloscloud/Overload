@@ -96,9 +96,9 @@ fun HomeTabFab(
             Text(
                 text =
                 if (isOngoing) {
-                    "Pause"
+                    stringResource(id = R.string.pause).replaceFirstChar { it.uppercase() }
                 } else {
-                    "Start"
+                    stringResource(id = R.string.start).replaceFirstChar { it.uppercase() }
                 },
                 modifier = Modifier.padding(8.dp, 0.dp, 8.dp, 0.dp),
             )

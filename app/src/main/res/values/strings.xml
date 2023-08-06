@@ -40,8 +40,11 @@
     <!-- cloud.pablos.overload.ui.tabs.HomeTabDeleteTopAppBar -->
     <string name="get_out_of_isDeleting">gets you out of deletion mode</string>
 
-    <!-- cloud.pablos.overload.ui.views.DayViewItem -->
+    <!--  cloud.pablos.overload.ui.tabs.HomeTabFab -->
+    <string name="start">start</string>
     <string name="pause">pause</string>
+
+    <!-- cloud.pablos.overload.ui.views.DayViewItem -->
     <string name="arrow_forward">arrow forward describing the direction of both times from start to end</string>
 
     <string name="edit">Edit</string>
