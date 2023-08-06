@@ -42,7 +42,7 @@ fun HomeTabBottomAppBar(
         BottomAppBar(
             actions = {
                 IconButton(onClick = {
-                    onEvent(ItemEvent.SetSelectedItems(state.selectedItems + itemsForSelectedDay))
+                    onEvent(ItemEvent.SetSelectedItems(state.selectedItems + itemsForSelectedDay.filterNot { state.selectedItems.contains(it) }))
                 }) {
                     Icon(
                         Icons.Filled.SelectAll,
