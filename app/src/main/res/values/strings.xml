@@ -9,14 +9,14 @@
   the License.
   -->
 <resources>
-    <string name="app_name">Reply</string>
+    <string name="app_name">Overload</string>
     <string name="navigation_drawer">Navigation Drawer</string>
     <string name="tab_home">Home</string>
     <string name="tab_calendar">Calendar</string>
     <string name="tab_configurations">Configurations</string>
 
 
-    <!-- com.example.reply.ui.tabs.HomeTab -->
+    <!-- cloud.pablos.overload.ui.tabs.HomeTab -->
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
 
@@ -32,15 +32,15 @@
     <string name="no_items_title">No items recorded</string>
     <string name="no_items_subtitle">There are no saved items for that day.</string>
 
-    <!-- com.example.reply.ui.tabs.HomeTabDeleteBottomAppBar -->
+    <!-- cloud.pablos.overload.ui.tabs.HomeTabDeleteBottomAppBar -->
     <string name="select_all_items_of_selected_day">select all items of selected day</string>
     <string name="deselect_all_items_of_selected_day">deselect all items of selected day</string>
     <string name="delete_items_forever">delete items forever</string>
 
-    <!-- com.example.reply.ui.tabs.HomeTabDeleteTopAppBar -->
+    <!-- cloud.pablos.overload.ui.tabs.HomeTabDeleteTopAppBar -->
     <string name="get_out_of_isDeleting">gets you out of deletion mode</string>
 
-    <!-- com.example.reply.ui.views.DayViewItem -->
+    <!-- cloud.pablos.overload.ui.views.DayViewItem -->
     <string name="pause">pause</string>
     <string name="arrow_forward">arrow forward describing the direction of both times from start to end</string>
 

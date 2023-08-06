@@ -6,10 +6,10 @@ plugins {
 
 android {
     compileSdk = 34
-    namespace = "com.example.reply"
+    namespace = "cloud.pablos.overload"
 
     defaultConfig {
-        applicationId = "com.example.reply"
+        applicationId = "cloud.pablos.overload"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = 34
         versionCode = 1
