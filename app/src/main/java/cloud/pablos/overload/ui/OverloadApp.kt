@@ -35,13 +35,13 @@ import androidx.window.layout.FoldingFeature
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.ui.navigation.ModalNavigationDrawerContent
-import cloud.pablos.overload.ui.navigation.PermanentNavigationDrawerContent
 import cloud.pablos.overload.ui.navigation.OverloadBottomNavigationBar
 import cloud.pablos.overload.ui.navigation.OverloadNavigationActions
 import cloud.pablos.overload.ui.navigation.OverloadNavigationRail
 import cloud.pablos.overload.ui.navigation.OverloadRoute
 import cloud.pablos.overload.ui.navigation.OverloadTopLevelDestination
-import cloud.pablos.overload.ui.tabs.HomeTab
+import cloud.pablos.overload.ui.navigation.PermanentNavigationDrawerContent
+import cloud.pablos.overload.ui.tabs.home.HomeTab
 import cloud.pablos.overload.ui.utils.DevicePosture
 import cloud.pablos.overload.ui.utils.OverloadNavigationContentPosition
 import cloud.pablos.overload.ui.utils.OverloadNavigationType
@@ -238,7 +238,7 @@ fun OverloadAppContent(
                 modifier = Modifier
                     .weight(1f)
                     .then(
-                        if (navigationType == OverloadNavigationType.BOTTOM_NAVIGATION && !state.isDeleting ) {
+                        if (navigationType == OverloadNavigationType.BOTTOM_NAVIGATION && !state.isDeleting) {
                             Modifier.consumeWindowInsets(
                                 WindowInsets.systemBars.only(
                                     WindowInsetsSides.Bottom,
@@ -279,7 +279,7 @@ private fun OverloadNavHost(
             HomeTab(navigationType = navigationType, state = state, onEvent = onEvent)
         }
         composable(OverloadRoute.CALENDAR) {
-            CalendarTab()
+            CalendarTab(state = state, onEvent = onEvent)
         }
         composable(OverloadRoute.CONFIGURATIONS) {
             ConfigurationsTab()

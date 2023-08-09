@@ -1,4 +1,4 @@
-package cloud.pablos.overload.ui.tabs
+package cloud.pablos.overload.ui.tabs.home
 
 import android.os.Build
 import androidx.annotation.RequiresApi

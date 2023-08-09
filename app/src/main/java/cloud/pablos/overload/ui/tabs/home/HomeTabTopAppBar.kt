@@ -1,4 +1,4 @@
-package cloud.pablos.overload.ui.tabs
+package cloud.pablos.overload.ui.tabs.home
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -8,6 +8,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import cloud.pablos.overload.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
@@ -16,7 +18,7 @@ fun HomeTabTopAppBar() {
     TopAppBar(
         title = {
             Text(
-                text = "Overload",
+                text = stringResource(id = R.string.app_name),
                 style = MaterialTheme.typography.titleLarge,
             )
         },
