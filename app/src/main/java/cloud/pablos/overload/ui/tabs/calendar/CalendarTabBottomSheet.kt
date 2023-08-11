@@ -17,7 +17,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import cloud.pablos.overload.R
-import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.ui.views.DayViewItemNotOngoing
 import cloud.pablos.overload.ui.views.DayViewItemOngoing
@@ -30,7 +29,6 @@ import java.time.LocalDate
 @Composable
 fun CalendarTabBottomSheet(
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit,
     date: LocalDate,
 ) {
     val itemsForSelectedDay = state.items.filter { item ->

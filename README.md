@@ -13,9 +13,9 @@ Just create issues and pull requests ;)
 
 ## Features
 
-- adapts colors from your background
+- create time spans
 - automagically creates pauses in between
-- delete items - on-by-one or all-togther
+- delete time spans - on-by-one or all-together
 - scroll through days with ease
 
 
@@ -26,7 +26,7 @@ If you have any feedback, please reach out by creating an issue or by [contactin
 
 Project is still in development! Therefore you'll need to build the app.
 
-Apk's will be available as soon as I think the app is ready for that
+
 ## Authors
 
 - [@pabloscloud](https://pablos.cloud)

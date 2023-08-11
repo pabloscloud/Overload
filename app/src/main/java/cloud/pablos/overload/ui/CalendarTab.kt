@@ -63,7 +63,7 @@ fun CalendarTab(
         BottomSheetScaffold(
             scaffoldState = scaffoldState,
             sheetContent = {
-                CalendarTabBottomSheet(state = state, onEvent = onEvent, date = selectedDay)
+                CalendarTabBottomSheet(state = state, date = selectedDay)
             },
         ) { innerPadding ->
             Box(modifier = Modifier.padding(innerPadding)) {

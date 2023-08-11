@@ -1,0 +1,15 @@
+name: Fastlane
+run-name: triggered by ${{ github.event_name }} from user ${{ github.actor }}
+on: [push]
+jobs:
+  Fastlane:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set Fastlane Metadata Directory
+        run: echo "INPUT_FASTLANEDIR=./fastlane/metadata" >> $GITHUB_ENV
+
+      - name: Validate Fastlane Supply Metadata
+        uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2

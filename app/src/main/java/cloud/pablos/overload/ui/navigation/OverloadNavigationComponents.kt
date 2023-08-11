@@ -23,7 +23,6 @@ import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -32,13 +31,9 @@ import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.PermanentDrawerSheet
-import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -55,9 +50,7 @@ import androidx.compose.ui.unit.offset
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
-import cloud.pablos.overload.ui.tabs.calendar.CalendarTabBottomSheet
 import cloud.pablos.overload.ui.utils.OverloadNavigationContentPosition
-import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.S)
@@ -131,7 +124,6 @@ fun OverloadBottomNavigationBar(
     selectedDestination: String,
     navigateToTopLevelDestination: (OverloadTopLevelDestination) -> Unit,
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit,
 ) {
     if (!state.isDeleting) {
         NavigationBar(modifier = Modifier.fillMaxWidth()) {
@@ -168,7 +160,6 @@ fun PermanentNavigationDrawerContent(
     navigationContentPosition: OverloadNavigationContentPosition,
     navigateToTopLevelDestination: (OverloadTopLevelDestination) -> Unit,
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit,
 ) {
     if (!state.isDeleting) {
         PermanentDrawerSheet(modifier = Modifier.sizeIn(minWidth = 200.dp, maxWidth = 300.dp)) {

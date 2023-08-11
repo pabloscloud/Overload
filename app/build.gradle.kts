@@ -12,10 +12,17 @@ android {
         applicationId = "cloud.pablos.overload"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 92
+        versionName = "0.9.2"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "")
+                arg("room.exportSchema", "false")
+            }
+        }
     }
 
     signingConfigs {

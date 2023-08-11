@@ -152,7 +152,6 @@ private fun OverloadNavigationWrapper(
                 navigationContentPosition = navigationContentPosition,
                 navigateToTopLevelDestination = navigationActions::navigateTo,
                 state = state,
-                onEvent = onEvent,
             )
         }) {
             OverloadAppContent(
@@ -254,7 +253,6 @@ fun OverloadAppContent(
                     selectedDestination = selectedDestination,
                     navigateToTopLevelDestination = navigateToTopLevelDestination,
                     state = state,
-                    onEvent = onEvent,
                 )
             }
         }
