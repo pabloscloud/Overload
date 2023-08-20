@@ -64,7 +64,7 @@ fun OverloadNavigationFab(
             )
         },
         colors = NavigationDrawerItemDefaults.colors(
-            unselectedContainerColor = MaterialTheme.colorScheme.tertiaryContainer,
+            unselectedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         onClick = {
             val isFirst = itemsForToday.isEmpty()

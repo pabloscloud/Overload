@@ -10,6 +10,7 @@ sealed interface ItemEvent {
     data class SetIsOngoing(val isOngoing: Boolean) : ItemEvent
     data class DeleteItems(val items: List<Item>) : ItemEvent
     data class SetSelectedDay(val day: String) : ItemEvent
+    data class SetSelectedYear(val year: Int) : ItemEvent
     data class SetIsDeleting(val isDeleting: Boolean) : ItemEvent
     data class SetSelectedItems(val selectedItems: List<Item>) : ItemEvent
 }

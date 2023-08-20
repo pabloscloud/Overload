@@ -41,6 +41,8 @@ import cloud.pablos.overload.ui.navigation.OverloadNavigationRail
 import cloud.pablos.overload.ui.navigation.OverloadRoute
 import cloud.pablos.overload.ui.navigation.OverloadTopLevelDestination
 import cloud.pablos.overload.ui.navigation.PermanentNavigationDrawerContent
+import cloud.pablos.overload.ui.tabs.calendar.CalendarTab
+import cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab
 import cloud.pablos.overload.ui.tabs.home.HomeTab
 import cloud.pablos.overload.ui.utils.DevicePosture
 import cloud.pablos.overload.ui.utils.OverloadNavigationContentPosition
@@ -152,6 +154,7 @@ private fun OverloadNavigationWrapper(
                 navigationContentPosition = navigationContentPosition,
                 navigateToTopLevelDestination = navigationActions::navigateTo,
                 state = state,
+                onEvent = onEvent,
             )
         }) {
             OverloadAppContent(
@@ -280,7 +283,7 @@ private fun OverloadNavHost(
             CalendarTab(state = state, onEvent = onEvent)
         }
         composable(OverloadRoute.CONFIGURATIONS) {
-            ConfigurationsTab()
+            ConfigurationsTab(state = state)
         }
     }
 }

@@ -22,11 +22,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
-import cloud.pablos.overload.ui.WeekDaysHeader
+import cloud.pablos.overload.ui.tabs.calendar.WeekDaysHeader
 import java.time.LocalDate
 import java.time.Month
 import java.time.format.DateTimeFormatter
@@ -35,8 +36,13 @@ import java.util.Locale
 @OptIn(ExperimentalFoundationApi::class)
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
-fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit) {
-    val months = Month.values().takeWhile { it <= LocalDate.now().month }.reversed()
+fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit, bottomPadding: Dp) {
+    val currentYear = LocalDate.now().year
+    val months = if (year == currentYear) {
+        Month.values().takeWhile { it <= LocalDate.now().month }.reversed()
+    } else {
+        Month.values().reversed()
+    }
 
     LazyColumn(
         modifier = Modifier
@@ -46,7 +52,7 @@ fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit) {
         item {
             WeekDaysHeader()
         }
-        months.forEach { month ->
+        months.forEachIndexed { monthIndex, month ->
             item {
                 MonthNameHeader(month)
             }
@@ -54,10 +60,15 @@ fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit) {
             val emptyCells = (firstDayOfMonth.dayOfWeek.value + 6) % 7
             val daysInMonth = firstDayOfMonth.month.length(firstDayOfMonth.isLeapYear) + emptyCells
             val weeksInMonth = daysInMonth / 7 + if (daysInMonth % 7 > 0) 1 else 0
+            val isLastMonth = monthIndex == months.lastIndex
 
-            (0 until weeksInMonth).reversed().forEach { weekOfMonth ->
+            (0 until weeksInMonth).reversed().forEachIndexed { weekIndex, weekOfMonth ->
+                val isLastWeekInLastMonth = isLastMonth && weeksInMonth - weekIndex == 1
+
                 item {
-                    WeekRow(firstDayOfMonth, weekOfMonth, state, onEvent)
+                    Box(Modifier.padding(0.dp, 0.dp, 0.dp, if (isLastWeekInLastMonth) bottomPadding else 0.dp)) {
+                        WeekRow(firstDayOfMonth, weekOfMonth, state, onEvent)
+                    }
                 }
             }
         }

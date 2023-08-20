@@ -113,6 +113,10 @@ class ItemViewModel(
                 _state.update { it.copy(selectedDay = event.day) }
             }
 
+            is ItemEvent.SetSelectedYear -> {
+                _state.update { it.copy(selectedYear = event.year) }
+            }
+
             is ItemEvent.SetIsDeleting -> {
                 _state.update { it.copy(isDeleting = event.isDeleting) }
 

@@ -13,11 +13,14 @@ import androidx.compose.runtime.getValue
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import cloud.pablos.overload.data.item.ItemDatabase
 import cloud.pablos.overload.data.item.ItemViewModel
+import cloud.pablos.overload.ui.tabs.configurations.handleIntent
 import cloud.pablos.overload.ui.theme.OverloadTheme
 import com.google.accompanist.adaptive.calculateDisplayFeatures
+
 class MainActivity : ComponentActivity() {
     private val db by lazy {
         Room.databaseBuilder(
@@ -61,5 +64,12 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        handleIntent(intent, lifecycleScope, db, this, contentResolver)
+        intent = null
     }
 }

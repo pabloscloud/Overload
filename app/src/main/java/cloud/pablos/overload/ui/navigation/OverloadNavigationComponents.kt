@@ -154,12 +154,14 @@ fun OverloadBottomNavigationBar(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun PermanentNavigationDrawerContent(
     selectedDestination: String,
     navigationContentPosition: OverloadNavigationContentPosition,
     navigateToTopLevelDestination: (OverloadTopLevelDestination) -> Unit,
     state: ItemState,
+    onEvent: (ItemEvent) -> Unit
 ) {
     if (!state.isDeleting) {
         PermanentDrawerSheet(modifier = Modifier.sizeIn(minWidth = 200.dp, maxWidth = 300.dp)) {
@@ -180,25 +182,7 @@ fun PermanentNavigationDrawerContent(
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.primary,
                         )
-                        ExtendedFloatingActionButton(
-                            onClick = { /*TODO*/ },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 8.dp, bottom = 40.dp),
-                            containerColor = Color.Green,
-                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Edit,
-                                contentDescription = stringResource(id = R.string.edit),
-                                modifier = Modifier.size(18.dp),
-                            )
-                            Text(
-                                text = stringResource(id = R.string.compose),
-                                modifier = Modifier.weight(1f),
-                                textAlign = TextAlign.Center,
-                            )
-                        }
+                        OverloadNavigationFab(state = state, onEvent = onEvent)
                     }
 
                     Column(

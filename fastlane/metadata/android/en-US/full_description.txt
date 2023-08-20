@@ -1,11 +1,11 @@
-Overload is a native app with material you design to keep a record of times. Go to work? Track your time! Go to school? Track your time! Do sports? Track your time! All without using the internet or other permissions
+Overload is a user-friendly native app designed to facilitate time tracking for everyone.
 
 Features
 - create time spans
 - automagically creates pauses in between
 - delete time spans - on-by-one or all-together
 - scroll through days with ease
+- backup your data as .csv
+- import backups
 
-Related
-This project is originally based on the jetpack compose sample 'Reply', which
-was published under the Apache License, Version 2.0.
+For more informations or support create issues!

@@ -1,4 +1,4 @@
-package cloud.pablos.overload.ui
+package cloud.pablos.overload.ui.tabs.calendar
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -6,18 +6,20 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -28,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
-import cloud.pablos.overload.ui.tabs.calendar.CalendarTabBottomSheet
 import cloud.pablos.overload.ui.views.YearView
 import cloud.pablos.overload.ui.views.getLocalDate
 import kotlinx.coroutines.launch
@@ -42,13 +43,12 @@ fun CalendarTab(
     onEvent: (ItemEvent) -> Unit,
 ) {
     var selectedDay = getLocalDate(state.selectedDay)
+    var selectedYear by remember { mutableIntStateOf(state.selectedYear) }
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberBottomSheetScaffoldState()
 
-    // Define a flag to track whether the bottom sheet should be expanded
     var shouldExpandSheet by remember { mutableStateOf(false) }
 
-    // Use a LaunchedEffect to expand the sheet when the selected day changes
     LaunchedEffect(selectedDay) {
         if (shouldExpandSheet) {
             scope.launch { scaffoldState.bottomSheetState.expand() }
@@ -57,20 +57,36 @@ fun CalendarTab(
         }
     }
 
-    Box(
-        modifier = Modifier.statusBarsPadding(),
-    ) {
-        BottomSheetScaffold(
-            scaffoldState = scaffoldState,
-            sheetContent = {
-                CalendarTabBottomSheet(state = state, date = selectedDay)
-            },
-        ) { innerPadding ->
-            Box(modifier = Modifier.padding(innerPadding)) {
+    LaunchedEffect(selectedYear) {
+        if (state.selectedYear != LocalDate.now().year) {
+            onEvent(ItemEvent.SetSelectedYear(LocalDate.now().year))
+        }
+    }
+
+    Scaffold(
+        topBar = {
+            CalendarTabTopAppBar(
+                state = state,
+                onEvent = onEvent,
+            )
+        },
+    ) { paddingValues ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues),
+        ) {
+            BottomSheetScaffold(
+                scaffoldState = scaffoldState,
+                sheetContent = {
+                    CalendarTabBottomSheet(state = state, date = selectedDay)
+                },
+            ) { innerPadding ->
                 YearView(
                     state = state,
                     onEvent = onEvent,
-                    year = LocalDate.now().year,
+                    year = state.selectedYear,
+                    bottomPadding = innerPadding.calculateBottomPadding(),
                 )
             }
         }

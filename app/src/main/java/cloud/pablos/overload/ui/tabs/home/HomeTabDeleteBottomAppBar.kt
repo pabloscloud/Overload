@@ -24,7 +24,7 @@ import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun HomeTabBottomAppBar(
+fun HomeTabDeleteBottomAppBar(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
@@ -80,7 +80,7 @@ fun HomeTabBottomAppBar(
 /*@RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
-fun HomeTabPreview() {
-    com.pablos.overload.ui.tabs.HomeTab()
+fun HomeTabDeleteBottomAppBarPreview() {
+    HomeTabDeleteBottomAppBar()
 }
 */

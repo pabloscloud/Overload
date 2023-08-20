@@ -63,7 +63,7 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
     val parsedEndTime: LocalDateTime
 
     item.let {
-        parsedStartTime = parseDateTime(it.startTime)
+        parsedStartTime = parseToLocalDateTime(it.startTime)
         parsedEndTime = LocalDateTime.now()
 
         when (isSelected) {
@@ -75,13 +75,13 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
             false -> {
                 when (it.pause) {
                     true -> {
-                        backgroundColor = MaterialTheme.colorScheme.onSecondaryContainer
-                        foregroundColor = MaterialTheme.colorScheme.secondaryContainer
+                        backgroundColor = MaterialTheme.colorScheme.surfaceVariant
+                        foregroundColor = MaterialTheme.colorScheme.onSurfaceVariant
                     }
 
                     false -> {
-                        backgroundColor = MaterialTheme.colorScheme.secondaryContainer
-                        foregroundColor = MaterialTheme.colorScheme.onSecondaryContainer
+                        backgroundColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        foregroundColor = MaterialTheme.colorScheme.surfaceVariant
                     }
                 }
             }
@@ -94,14 +94,7 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
 
     val startTimeString: String = parsedStartTime.format(DateTimeFormatter.ofPattern("HH:mm"))
 
-    var duration: Duration = Duration.between(parsedStartTime, parsedEndTime)
-    val hours = duration.toHours()
-    val minutes = duration.toMinutesPart()
-    val durationString = when {
-        hours > 0 -> "$hours h $minutes min"
-        minutes > 0 -> "$minutes min"
-        else -> "< 1 min"
-    }
+    val durationString = getDurationString(parsedStartTime, parsedEndTime)
 
     Box(
         modifier = Modifier
@@ -201,6 +194,32 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
                     .padding(8.dp),
             )
         }
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.S)
+fun getDurationString(parsedStartTime: LocalDateTime, parsedEndTime: LocalDateTime): String {
+    val duration: Duration = Duration.between(parsedStartTime, parsedEndTime)
+    val hours = duration.toHours()
+    val minutes: Long = if (isToMinutesPartAvailable()) {
+        duration.toMinutesPart().toLong()
+    } else {
+        duration.toMinutes() % 60
+    }
+    return when {
+        hours > 0 -> "$hours h $minutes min"
+        minutes > 0 -> "$minutes min"
+        else -> "< 1 min"
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun isToMinutesPartAvailable(): Boolean {
+    return try {
+        Duration::class.java.getMethod("toMinutesPart")
+        true
+    } catch (e: NoSuchMethodException) {
+        false
     }
 }
 

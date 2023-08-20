@@ -24,6 +24,9 @@ import cloud.pablos.overload.data.item.ItemState
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatterBuilder
+import java.time.format.DateTimeParseException
+import java.time.temporal.ChronoField
 
 @OptIn(ExperimentalFoundationApi::class)
 @RequiresApi(Build.VERSION_CODES.S)
@@ -107,8 +110,18 @@ fun DayView(
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun parseToLocalDateTime(dateTimeString: String): LocalDateTime {
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS")
-    return LocalDateTime.parse(dateTimeString, formatter)
+    val formatter = DateTimeFormatterBuilder()
+        .appendPattern("yyyy-MM-dd'T'HH:mm:ss")
+        .optionalStart()
+        .appendFraction(ChronoField.MICRO_OF_SECOND, 0, 6, true)
+        .optionalEnd()
+        .toFormatter()
+
+    return try {
+        LocalDateTime.parse(dateTimeString, formatter)
+    } catch (e: DateTimeParseException) {
+        return LocalDateTime.now()
+    }
 }
 
 @RequiresApi(Build.VERSION_CODES.O)

@@ -30,9 +30,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.Item
-import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
@@ -44,8 +44,8 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
     val parsedEndTime: LocalDateTime
 
     item.let {
-        parsedStartTime = parseDateTime(it.startTime)
-        parsedEndTime = parseDateTime(it.endTime)
+        parsedStartTime = parseToLocalDateTime(it.startTime)
+        parsedEndTime = parseToLocalDateTime(it.endTime)
         when (isSelected) {
             true -> {
                 backgroundColor = MaterialTheme.colorScheme.errorContainer
@@ -55,13 +55,13 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
             false -> {
                 when (it.pause) {
                     true -> {
-                        backgroundColor = MaterialTheme.colorScheme.onSecondaryContainer
-                        foregroundColor = MaterialTheme.colorScheme.secondaryContainer
+                        backgroundColor = MaterialTheme.colorScheme.surfaceVariant
+                        foregroundColor = MaterialTheme.colorScheme.onSurfaceVariant
                     }
 
                     false -> {
-                        backgroundColor = MaterialTheme.colorScheme.secondaryContainer
-                        foregroundColor = MaterialTheme.colorScheme.onSecondaryContainer
+                        backgroundColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        foregroundColor = MaterialTheme.colorScheme.surfaceVariant
                     }
                 }
             }
@@ -69,17 +69,9 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
     }
 
     val startTimeString = parsedStartTime.format(DateTimeFormatter.ofPattern("HH:mm"))
-    var endTimeString = parsedEndTime.format(DateTimeFormatter.ofPattern("HH:mm"))
+    val endTimeString = parsedEndTime.format(DateTimeFormatter.ofPattern("HH:mm"))
 
-    var duration = Duration.between(parsedStartTime, parsedEndTime)
-    val hours = duration.toHours()
-    val minutes = duration.toMinutesPart()
-    val seconds = duration.toSecondsPart()
-    val durationString = when {
-        hours > 0 -> "$hours h $minutes min"
-        minutes > 0 -> "$minutes min $seconds sec"
-        else -> "$seconds sec"
-    }
+    val durationString = getDurationString(parsedStartTime, parsedEndTime)
 
     Box(
         modifier = Modifier
@@ -157,9 +149,13 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun parseDateTime(dateTimeString: String): LocalDateTime {
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS")
-    return LocalDateTime.parse(dateTimeString, formatter)
+fun parseDateTime1(dateTimeString: String): LocalDateTime {
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS")
+    return try {
+        LocalDateTime.parse(dateTimeString, formatter)
+    } catch (e: DateTimeParseException) {
+        return LocalDateTime.now()
+    }
 }
 
 @RequiresApi(Build.VERSION_CODES.S)

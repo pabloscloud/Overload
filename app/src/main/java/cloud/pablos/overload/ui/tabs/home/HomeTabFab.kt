@@ -74,8 +74,8 @@ fun HomeTabFab(
         },
         modifier = Modifier
             .padding(10.dp),
-        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
     ) {
         val isOngoing = itemsForToday.isNotEmpty() && itemsForToday.last().ongoing
         Row(
