@@ -11,6 +11,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import cloud.pablos.overload.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -24,8 +26,11 @@ fun HomeTabTopAppBar() {
         TopAppBar(
             title = {
                 Text(
-                    text = stringResource(id = R.string.tab_home),
-                    style = MaterialTheme.typography.titleLarge,
+                    text = stringResource(id = R.string.home).replaceFirstChar { it.uppercase() },
+                    style = TextStyle(
+                        fontSize = MaterialTheme.typography.titleLarge.fontSize,
+                        fontWeight = FontWeight.Normal,
+                    ),
                 )
             },
             colors = TopAppBarDefaults.topAppBarColors(

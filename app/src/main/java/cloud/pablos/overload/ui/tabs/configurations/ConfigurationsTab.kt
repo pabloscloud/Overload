@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.room.withTransaction
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.Item
 import cloud.pablos.overload.data.item.ItemDatabase
@@ -52,6 +53,7 @@ import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.data.item.backupItemsToCsv
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -356,37 +358,42 @@ fun handleIntent(intent: Intent?, lifecycleScope: LifecycleCoroutineScope, db: I
 
 private fun importCsvData(csvData: String, lifecycleScope: LifecycleCoroutineScope, db: ItemDatabase, context: Context) {
     val parsedData = parseCsvData(csvData)
-    var allImportsSucceeded = true
 
     lifecycleScope.launch(Dispatchers.IO) {
         val itemDao = db.itemDao()
 
-        parsedData.drop(1).forEach { row ->
-            if (row.size >= 4) {
-                val startTime = row[1]
-                val endTime = row[2]
-                val ongoing = row[3]
-                val pause = row[4]
+        var allImportsSucceeded = true
 
-                val item = Item(
-                    startTime = startTime,
-                    endTime = endTime,
-                    ongoing = ongoing.toBoolean(),
-                    pause = pause.toBoolean(),
-                )
+        db.withTransaction {
+            parsedData.drop(1).forEach { row ->
+                if (row.size >= 4) {
+                    val startTime = row[1]
+                    val endTime = row[2]
+                    val ongoing = row[3]
+                    val pause = row[4]
 
-                val importResult = itemDao.upsertItem(item)
-                if (importResult == Unit) {
-                    allImportsSucceeded = false
+                    val item = Item(
+                        startTime = startTime,
+                        endTime = endTime,
+                        ongoing = ongoing.toBoolean(),
+                        pause = pause.toBoolean(),
+                    )
+
+                    val importResult = itemDao.upsertItem(item)
+                    if (importResult != Unit) {
+                        allImportsSucceeded = false
+                    }
                 }
             }
         }
-    }
 
-    if (allImportsSucceeded) {
-        showImportSuccessToast(context)
-    } else {
-        showImportFailedToast(context)
+        withContext(Dispatchers.Main) {
+            if (allImportsSucceeded) {
+                showImportSuccessToast(context)
+            } else {
+                showImportFailedToast(context)
+            }
+        }
     }
 }
 

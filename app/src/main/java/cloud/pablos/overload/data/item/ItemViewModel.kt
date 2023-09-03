@@ -29,13 +29,15 @@ class ItemViewModel(
         when (event) {
             is ItemEvent.DeleteItems -> {
                 viewModelScope.launch {
-                    for (item in event.items) {
-                        dao.deleteItem(item)
+                    dao.deleteItems(event.items)
+
+                    _state.update {
+                        it.copy(
+                            isDeleting = false,
+                            selectedItems = emptyList(),
+                        )
                     }
                 }
-
-                _state.update { it.copy(selectedItems = emptyList()) }
-                _state.update { it.copy(isDeleting = false) }
             }
             ItemEvent.SaveItem -> {
                 val id = _state.value.id
@@ -123,6 +125,14 @@ class ItemViewModel(
                 when (event.isDeleting) {
                     false -> _state.update { it.copy(selectedItems = emptyList()) }
                     else -> {}
+                }
+            }
+
+            is ItemEvent.SetIsSelected -> {
+                _state.update {
+                    it.copy(
+                        isSelected = event.isSelected,
+                    )
                 }
             }
 

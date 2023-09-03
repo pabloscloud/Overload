@@ -2,7 +2,6 @@ package cloud.pablos.overload.ui.tabs.calendar
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,7 +23,6 @@ import cloud.pablos.overload.ui.views.extractDate
 import cloud.pablos.overload.ui.views.parseToLocalDateTime
 import java.time.LocalDate
 
-@OptIn(ExperimentalFoundationApi::class)
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun CalendarTabBottomSheet(

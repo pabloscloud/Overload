@@ -2,7 +2,7 @@ package cloud.pablos.overload.ui.tabs.calendar
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -19,6 +19,7 @@ import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,6 +27,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cloud.pablos.overload.data.item.ItemEvent
@@ -36,7 +38,7 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.S)
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CalendarTab(
     state: ItemState,
@@ -45,15 +47,16 @@ fun CalendarTab(
     var selectedDay = getLocalDate(state.selectedDay)
     var selectedYear by remember { mutableIntStateOf(state.selectedYear) }
     val scope = rememberCoroutineScope()
-    val scaffoldState = rememberBottomSheetScaffoldState()
+    val sheetState = rememberBottomSheetScaffoldState()
+    var sheetOffset by remember { mutableFloatStateOf(0f) }
+    var expandSheet by remember { mutableStateOf(false) }
 
-    var shouldExpandSheet by remember { mutableStateOf(false) }
-
-    LaunchedEffect(selectedDay) {
-        if (shouldExpandSheet) {
-            scope.launch { scaffoldState.bottomSheetState.expand() }
+    LaunchedEffect(state.isSelected) {
+        if (expandSheet) {
+            scope.launch { sheetState.bottomSheetState.expand() }
+            onEvent(ItemEvent.SetIsSelected(isSelected = false))
         } else {
-            shouldExpandSheet = true
+            expandSheet = true
         }
     }
 
@@ -77,7 +80,7 @@ fun CalendarTab(
                 .padding(paddingValues),
         ) {
             BottomSheetScaffold(
-                scaffoldState = scaffoldState,
+                scaffoldState = sheetState,
                 sheetContent = {
                     CalendarTabBottomSheet(state = state, date = selectedDay)
                 },
@@ -88,6 +91,14 @@ fun CalendarTab(
                     year = state.selectedYear,
                     bottomPadding = innerPadding.calculateBottomPadding(),
                 )
+
+                Modifier.pointerInput(Unit) {
+                    detectVerticalDragGestures { _, dragAmount ->
+                        val maxOffset = 64.dp.toPx()
+
+                        sheetOffset = (sheetOffset + dragAmount).coerceIn(0f, maxOffset)
+                    }
+                }
             }
         }
     }

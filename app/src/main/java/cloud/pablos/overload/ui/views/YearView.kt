@@ -6,6 +6,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -16,11 +17,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -33,7 +37,6 @@ import java.time.Month
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
-@OptIn(ExperimentalFoundationApi::class)
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit, bottomPadding: Dp) {
@@ -143,12 +146,17 @@ fun DayCell(date: LocalDate, empty: Boolean, selected: Boolean, onEvent: (ItemEv
             .height(36.dp)
             .background(backgroundColor, shape = CircleShape)
             .combinedClickable(
+                enabled = date <= LocalDate.now() && !empty,
                 onClick = {
-                    if (date <= LocalDate.now() && !empty) {
-                        onEvent(ItemEvent.SetSelectedDay(getFormattedDate(date)))
-                    }
+                    onEvent(ItemEvent.SetSelectedDay(getFormattedDate(date)))
+                    onEvent(ItemEvent.SetIsSelected(isSelected = true))
                 },
+                indication = rememberRipple(
+                    radius = 18.dp,
+                ),
+                interactionSource = remember { MutableInteractionSource() },
             )
+            .clip(CircleShape)
             .border(2.dp, borderColor, CircleShape),
         contentAlignment = Alignment.Center,
     ) {

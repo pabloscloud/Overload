@@ -12,5 +12,6 @@ sealed interface ItemEvent {
     data class SetSelectedDay(val day: String) : ItemEvent
     data class SetSelectedYear(val year: Int) : ItemEvent
     data class SetIsDeleting(val isDeleting: Boolean) : ItemEvent
+    data class SetIsSelected(val isSelected: Boolean) : ItemEvent
     data class SetSelectedItems(val selectedItems: List<Item>) : ItemEvent
 }

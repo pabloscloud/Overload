@@ -59,17 +59,8 @@ fun OverloadApp(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    /**
-     * This will help us select type of navigation and content type depending on window size and
-     * fold state of the device.
-     */
     val navigationType: OverloadNavigationType
 
-    /**
-     * We are using display's folding features to map the device postures a fold is in.
-     * In the state of folding device If it's half fold in BookPosture we want to avoid content
-     * at the crease/hinge
-     */
     val foldingFeature = displayFeatures.filterIsInstance<FoldingFeature>().firstOrNull()
 
     val foldingDevicePosture = when {
@@ -101,10 +92,6 @@ fun OverloadApp(
         }
     }
 
-    /**
-     * Content inside Navigation Rail/Drawer can also be positioned at top, bottom or center for
-     * ergonomics and reachability depending upon the height of the device.
-     */
     val navigationContentPosition = when (windowSize.heightSizeClass) {
         WindowHeightSizeClass.Compact -> {
             OverloadNavigationContentPosition.TOP
@@ -146,45 +133,30 @@ private fun OverloadNavigationWrapper(
     val selectedDestination =
         navBackStackEntry?.destination?.route ?: OverloadRoute.HOME
 
-    if (navigationType == OverloadNavigationType.PERMANENT_NAVIGATION_DRAWER) {
-        // TODO check on custom width of PermanentNavigationDrawer: b/232495216
-        PermanentNavigationDrawer(drawerContent = {
-            PermanentNavigationDrawerContent(
-                selectedDestination = selectedDestination,
-                navigationContentPosition = navigationContentPosition,
-                navigateToTopLevelDestination = navigationActions::navigateTo,
-                state = state,
-                onEvent = onEvent,
-            )
-        }) {
-            OverloadAppContent(
-                navigationType = navigationType,
-                navigationContentPosition = navigationContentPosition,
-                navController = navController,
-                selectedDestination = selectedDestination,
-                navigateToTopLevelDestination = navigationActions::navigateTo,
-                state = state,
-                onEvent = onEvent,
-            )
-        }
-    } else {
-        ModalNavigationDrawer(
-            drawerContent = {
-                ModalNavigationDrawerContent(
+    when (navigationType) {
+        OverloadNavigationType.PERMANENT_NAVIGATION_DRAWER -> {
+            PermanentNavigationDrawer(drawerContent = {
+                PermanentNavigationDrawerContent(
                     selectedDestination = selectedDestination,
                     navigationContentPosition = navigationContentPosition,
                     navigateToTopLevelDestination = navigationActions::navigateTo,
-                    onDrawerClicked = {
-                        scope.launch {
-                            drawerState.close()
-                        }
-                    },
                     state = state,
                     onEvent = onEvent,
                 )
-            },
-            drawerState = drawerState,
-        ) {
+            }) {
+                OverloadAppContent(
+                    navigationType = navigationType,
+                    navigationContentPosition = navigationContentPosition,
+                    navController = navController,
+                    selectedDestination = selectedDestination,
+                    navigateToTopLevelDestination = navigationActions::navigateTo,
+                    state = state,
+                    onEvent = onEvent,
+                )
+            }
+        }
+
+        OverloadNavigationType.BOTTOM_NAVIGATION -> {
             OverloadAppContent(
                 navigationType = navigationType,
                 navigationContentPosition = navigationContentPosition,
@@ -199,6 +171,40 @@ private fun OverloadNavigationWrapper(
                 state = state,
                 onEvent = onEvent,
             )
+        }
+        OverloadNavigationType.NAVIGATION_RAIL -> {
+            ModalNavigationDrawer(
+                drawerContent = {
+                    ModalNavigationDrawerContent(
+                        selectedDestination = selectedDestination,
+                        navigationContentPosition = navigationContentPosition,
+                        navigateToTopLevelDestination = navigationActions::navigateTo,
+                        onDrawerClicked = {
+                            scope.launch {
+                                drawerState.close()
+                            }
+                        },
+                        state = state,
+                        onEvent = onEvent,
+                    )
+                },
+                drawerState = drawerState,
+            ) {
+                OverloadAppContent(
+                    navigationType = navigationType,
+                    navigationContentPosition = navigationContentPosition,
+                    navController = navController,
+                    selectedDestination = selectedDestination,
+                    navigateToTopLevelDestination = navigationActions::navigateTo,
+                    onDrawerClicked = {
+                        scope.launch {
+                            drawerState.open()
+                        }
+                    },
+                    state = state,
+                    onEvent = onEvent,
+                )
+            }
         }
     }
 }
