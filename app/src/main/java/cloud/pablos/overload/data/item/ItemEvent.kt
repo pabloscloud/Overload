@@ -9,9 +9,9 @@ sealed interface ItemEvent {
     data class SetPause(val pause: Boolean) : ItemEvent
     data class SetIsOngoing(val isOngoing: Boolean) : ItemEvent
     data class DeleteItems(val items: List<Item>) : ItemEvent
-    data class SetSelectedDay(val day: String) : ItemEvent
-    data class SetSelectedYear(val year: Int) : ItemEvent
-    data class SetIsDeleting(val isDeleting: Boolean) : ItemEvent
-    data class SetIsSelected(val isSelected: Boolean) : ItemEvent
-    data class SetSelectedItems(val selectedItems: List<Item>) : ItemEvent
+    data class SetSelectedDayCalendar(val day: String) : ItemEvent
+    data class SetSelectedYearCalendar(val year: Int) : ItemEvent
+    data class SetIsDeletingHome(val isDeleting: Boolean) : ItemEvent
+    data class SetIsSelectedHome(val isSelected: Boolean) : ItemEvent
+    data class SetSelectedItemsHome(val selectedItems: List<Item>) : ItemEvent
 }

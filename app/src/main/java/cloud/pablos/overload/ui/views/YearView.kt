@@ -19,7 +19,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -31,12 +30,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
-import cloud.pablos.overload.ui.tabs.calendar.WeekDaysHeader
 import java.time.LocalDate
 import java.time.Month
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
+
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit, bottomPadding: Dp) {
@@ -52,9 +51,6 @@ fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit, bottomPa
             .fillMaxSize()
             .padding(horizontal = 16.dp),
     ) {
-        item {
-            WeekDaysHeader()
-        }
         months.forEachIndexed { monthIndex, month ->
             item {
                 MonthNameHeader(month)
@@ -81,7 +77,7 @@ fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit, bottomPa
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MonthNameHeader(month: Month) {
-    Text(
+    TextView(
         text = month.getDisplayName(TextStyle.FULL_STANDALONE, Locale.getDefault()),
         fontSize = 24.sp,
         modifier = Modifier
@@ -90,10 +86,10 @@ fun MonthNameHeader(month: Month) {
     )
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
+@RequiresApi(Build.VERSION_CODES.S)
 @Composable
-fun WeekRow(startDayOfMonth: LocalDate, weekOfMonth: Int, state: ItemState, onEvent: (ItemEvent) -> Unit) {
-    var startOfWeek = startDayOfMonth.plusWeeks(weekOfMonth.toLong())
+fun WeekRow(firstDayOfMonth: LocalDate, weekOfMonth: Int, state: ItemState, onEvent: (ItemEvent) -> Unit) {
+    var startOfWeek = firstDayOfMonth.plusWeeks(weekOfMonth.toLong())
     val emptyCells = (startOfWeek.dayOfWeek.value + 6) % 7
 
     startOfWeek = if (weekOfMonth == 0) startOfWeek else startOfWeek.minusDays((emptyCells).toLong())
@@ -102,43 +98,59 @@ fun WeekRow(startDayOfMonth: LocalDate, weekOfMonth: Int, state: ItemState, onEv
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
         if (weekOfMonth == 0) {
             repeat(emptyCells) {
-                DayCell(date = startOfWeek, empty = true, selected = false, onEvent = onEvent)
+                EmptyDayCell()
             }
         }
 
         var currentDate = startOfWeek
+        val month = firstDayOfMonth.month
+        val today = LocalDate.now()
+
         while (currentDate < endDayOfWeek) {
-            if (currentDate.month == startDayOfMonth.month) {
-                DayCell(date = currentDate, empty = false, selected = currentDate == getLocalDate(state.selectedDay), onEvent = onEvent)
+            val backgroundColor = if (currentDate <= today && currentDate.month == month) {
+                MaterialTheme.colorScheme.surfaceVariant
             } else {
-                DayCell(date = currentDate, empty = true, selected = currentDate == getLocalDate(state.selectedDay), onEvent = onEvent)
+                Color.Transparent
             }
+
+            val borderColor = if (
+                currentDate == getLocalDate(state.selectedDayCalendar) &&
+                currentDate.month == month
+            ) {
+                MaterialTheme.colorScheme.primary
+            } else {
+                Color.Transparent
+            }
+
+            val number = currentDate.dayOfMonth.toString()
+
+            val clickable = currentDate <= today
+
+            DayCell(
+                date = currentDate,
+                onEvent = onEvent,
+                backgroundColor = backgroundColor,
+                borderColor = borderColor,
+                number = number,
+                clickable = clickable,
+            )
+
             currentDate = currentDate.plusDays(1)
         }
     }
 }
 
 @OptIn(ExperimentalFoundationApi::class)
-@RequiresApi(Build.VERSION_CODES.O)
+@RequiresApi(Build.VERSION_CODES.S)
 @Composable
-fun DayCell(date: LocalDate, empty: Boolean, selected: Boolean, onEvent: (ItemEvent) -> Unit) {
-    val backgroundColor = if (empty || date > LocalDate.now()) {
-        Color.Transparent
-    } else {
-        MaterialTheme.colorScheme.surfaceVariant
-    }
-
-    val borderColor = if (!empty && selected) {
-        MaterialTheme.colorScheme.primary
-    } else {
-        Color.Transparent
-    }
-
-    val string = when (empty) {
-        true -> ""
-        else -> date.dayOfMonth.toString()
-    }
-
+fun DayCell(
+    date: LocalDate,
+    onEvent: (ItemEvent) -> Unit,
+    backgroundColor: Color,
+    borderColor: Color,
+    number: String,
+    clickable: Boolean,
+) {
     Box(
         modifier = Modifier
             .padding(4.dp)
@@ -146,10 +158,10 @@ fun DayCell(date: LocalDate, empty: Boolean, selected: Boolean, onEvent: (ItemEv
             .height(36.dp)
             .background(backgroundColor, shape = CircleShape)
             .combinedClickable(
-                enabled = date <= LocalDate.now() && !empty,
+                enabled = clickable,
                 onClick = {
-                    onEvent(ItemEvent.SetSelectedDay(getFormattedDate(date)))
-                    onEvent(ItemEvent.SetIsSelected(isSelected = true))
+                    onEvent(ItemEvent.SetSelectedDayCalendar(getFormattedDate(date)))
+                    onEvent(ItemEvent.SetIsSelectedHome(isSelected = true))
                 },
                 indication = rememberRipple(
                     radius = 18.dp,
@@ -160,8 +172,24 @@ fun DayCell(date: LocalDate, empty: Boolean, selected: Boolean, onEvent: (ItemEv
             .border(2.dp, borderColor, CircleShape),
         contentAlignment = Alignment.Center,
     ) {
-        Text(text = string, fontSize = 14.sp)
+        TextView(
+            text = number,
+            fontSize = 14.sp,
+        )
     }
+}
+
+@Composable
+fun EmptyDayCell() {
+    Box(
+        modifier = Modifier
+            .padding(4.dp)
+            .width(36.dp)
+            .height(36.dp)
+            .background(Color.Transparent, shape = CircleShape)
+            .clip(CircleShape)
+            .border(2.dp, Color.Transparent, CircleShape),
+    )
 }
 
 @RequiresApi(Build.VERSION_CODES.O)

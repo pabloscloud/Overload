@@ -28,9 +28,9 @@ fun HomeTabDeleteBottomAppBar(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    val date = when (state.selectedDay) {
+    val date = when (state.selectedDayCalendar) {
         "" -> LocalDate.now()
-        else -> getLocalDate(state.selectedDay)
+        else -> getLocalDate(state.selectedDayCalendar)
     }
 
     val itemsForSelectedDay = state.items.filter { item ->
@@ -38,11 +38,11 @@ fun HomeTabDeleteBottomAppBar(
         extractDate(startTime) == date
     }
 
-    if (state.isDeleting) {
+    if (state.isDeletingHome) {
         BottomAppBar(
             actions = {
                 IconButton(onClick = {
-                    onEvent(ItemEvent.SetSelectedItems(state.selectedItems + itemsForSelectedDay.filterNot { state.selectedItems.contains(it) }))
+                    onEvent(ItemEvent.SetSelectedItemsHome(state.selectedItemsHome + itemsForSelectedDay.filterNot { state.selectedItemsHome.contains(it) }))
                 }) {
                     Icon(
                         Icons.Filled.SelectAll,
@@ -50,7 +50,7 @@ fun HomeTabDeleteBottomAppBar(
                     )
                 }
                 IconButton(onClick = {
-                    onEvent(ItemEvent.SetSelectedItems(state.selectedItems - itemsForSelectedDay))
+                    onEvent(ItemEvent.SetSelectedItemsHome(state.selectedItemsHome - itemsForSelectedDay.toSet()))
                 }) {
                     Icon(
                         Icons.Filled.Deselect,
@@ -61,7 +61,7 @@ fun HomeTabDeleteBottomAppBar(
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = {
-                        onEvent(ItemEvent.DeleteItems(state.selectedItems))
+                        onEvent(ItemEvent.DeleteItems(state.selectedItemsHome))
                     },
                     containerColor = MaterialTheme.colorScheme.errorContainer,
                     contentColor = MaterialTheme.colorScheme.onErrorContainer,

@@ -25,7 +25,7 @@ fun ConfigurationsTabTopAppBar() {
         TopAppBar(
             title = {
                 Text(
-                    text = stringResource(id = R.string.configurations).replaceFirstChar { it.uppercase() },
+                    text = stringResource(id = R.string.configurations),
                     style = TextStyle(
                         fontSize = MaterialTheme.typography.titleLarge.fontSize,
                         fontWeight = FontWeight.Normal,

@@ -13,11 +13,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,7 +31,6 @@ import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.Item
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeParseException
 
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
@@ -83,9 +81,8 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text(
+            TextView(
                 text = startTimeString,
-                maxLines = 1,
                 color = foregroundColor,
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier.padding(12.5.dp),
@@ -116,7 +113,7 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
                             .background(foregroundColor),
                     )
                     Icon(
-                        Icons.Default.ArrowForward,
+                        Icons.AutoMirrored.Filled.ArrowForward,
                         contentDescription = stringResource(id = R.string.arrow_forward),
                         tint = foregroundColor,
                         modifier = Modifier
@@ -126,35 +123,24 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
                 }
             }
 
-            Text(
+            TextView(
                 text = endTimeString,
-                maxLines = 1,
                 color = foregroundColor,
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier.padding(12.5.dp),
             )
         }
 
-        Text(
+        TextView(
             text = durationString,
             color = foregroundColor,
             fontWeight = FontWeight.Medium,
-            textAlign = TextAlign.Center,
+            align = TextAlign.Center,
             modifier = Modifier
                 .align(Alignment.Center)
                 .background(backgroundColor)
                 .padding(8.dp),
         )
-    }
-}
-
-@RequiresApi(Build.VERSION_CODES.O)
-fun parseDateTime1(dateTimeString: String): LocalDateTime {
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS")
-    return try {
-        LocalDateTime.parse(dateTimeString, formatter)
-    } catch (e: DateTimeParseException) {
-        return LocalDateTime.now()
     }
 }
 

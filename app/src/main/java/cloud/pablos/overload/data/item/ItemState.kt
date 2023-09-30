@@ -13,9 +13,9 @@ data class ItemState(
     val ongoing: Boolean = false,
     val pause: Boolean = false,
     val isOngoing: Boolean = false,
-    val selectedDay: String = "",
-    val selectedYear: Int = 0,
-    val isDeleting: Boolean = false,
-    val isSelected: Boolean = false,
-    val selectedItems: List<Item> = emptyList()
+    val selectedDayCalendar: String = "",
+    val selectedYearCalendar: Int = 0,
+    val isDeletingHome: Boolean = false,
+    val isSelectedHome: Boolean = false,
+    val selectedItemsHome: List<Item> = emptyList(),
 )

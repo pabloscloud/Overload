@@ -5,12 +5,11 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.views.TextView
 import cloud.pablos.overload.ui.views.extractDate
 import cloud.pablos.overload.ui.views.parseToLocalDateTime
 import java.time.LocalDate
@@ -85,7 +85,7 @@ fun HomeTabFab(
             Icon(
                 imageVector =
                 if (isOngoing) {
-                    Icons.Default.Pause
+                    Icons.Default.Stop
                 } else {
                     Icons.Default.PlayArrow
                 },
@@ -93,12 +93,12 @@ fun HomeTabFab(
                 modifier = Modifier.padding(8.dp, 0.dp, 0.dp, 0.dp),
 
             )
-            Text(
+            TextView(
                 text =
                 if (isOngoing) {
-                    stringResource(id = R.string.pause).replaceFirstChar { it.uppercase() }
+                    stringResource(id = R.string.stop)
                 } else {
-                    stringResource(id = R.string.start).replaceFirstChar { it.uppercase() }
+                    stringResource(id = R.string.start)
                 },
                 modifier = Modifier.padding(8.dp, 0.dp, 8.dp, 0.dp),
             )

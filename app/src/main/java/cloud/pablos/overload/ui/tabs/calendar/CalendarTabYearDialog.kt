@@ -18,7 +18,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.ItemEvent
+import cloud.pablos.overload.ui.views.TextView
 import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -66,9 +66,9 @@ fun CalendarTabYearDialog(
                             .padding(16.dp)
                             .align(Alignment.CenterHorizontally),
                     ) {
-                        Text(
+                        TextView(
                             text = stringResource(id = R.string.select_year),
-                            style = MaterialTheme.typography.titleLarge,
+                            fontSize = MaterialTheme.typography.titleLarge.fontSize,
                             modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
                         )
                     }
@@ -101,12 +101,12 @@ fun YearRow(year: Int, onEvent: (ItemEvent) -> Unit, onClose: () -> Unit) {
             .fillMaxWidth()
             .padding(16.dp)
             .clickable {
-                onEvent(ItemEvent.SetSelectedYear(year))
+                onEvent(ItemEvent.SetSelectedYearCalendar(year))
                 onClose()
             },
         horizontalArrangement = Arrangement.Center,
     ) {
-        Text(year.toString())
+        TextView(year.toString())
     }
 }
 

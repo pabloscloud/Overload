@@ -1,4 +1,4 @@
-package cloud.pablos.overload.ui.tabs.configurations
+package cloud.pablos.overload.ui.tabs.home
 
 import android.content.Intent
 import androidx.compose.foundation.clickable
@@ -29,31 +29,31 @@ import cloud.pablos.overload.R
 import cloud.pablos.overload.ui.views.TextView
 
 @Composable
-fun ConfigurationsTabImportDialog(onClose: () -> Unit) {
+fun HomeTabDeletePauseDialog(onClose: () -> Unit) {
     val context = LocalContext.current
-    val learnMoreLink = "https://codeberg.org/pabloscloud/Overload#import-backup".toUri()
+    val learnMoreLink = "https://codeberg.org/pabloscloud/Overload#delete-pause".toUri()
 
     AlertDialog(
         onDismissRequest = { onClose() },
         icon = {
             Icon(
                 imageVector = Icons.Rounded.Info,
-                contentDescription = stringResource(id = R.string.import_backup),
+                contentDescription = stringResource(id = R.string.delete_pause),
                 tint = MaterialTheme.colorScheme.primary,
             )
         },
         title = {
             TextView(
-                text = stringResource(id = R.string.import_backup),
+                text = stringResource(id = R.string.delete_pause),
                 fontWeight = FontWeight.Bold,
                 align = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             )
         },
         text = {
             Column {
                 Text(
-                    text = stringResource(id = R.string.import_backup_descr),
+                    text = stringResource(id = R.string.delete_pause_descr),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth(),
                     overflow = TextOverflow.Ellipsis,
@@ -89,6 +89,6 @@ fun ConfigurationsTabImportDialog(onClose: () -> Unit) {
 
 @Preview
 @Composable
-fun ConfigurationsTabImportDialogPreview() {
-    ConfigurationsTabImportDialog {}
+fun HomeTabDeletePauseDialogPreview() {
+    HomeTabDeletePauseDialog {}
 }

@@ -21,7 +21,6 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -106,9 +105,8 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text(
+            TextView(
                 text = startTimeString,
-                maxLines = 1,
                 color = foregroundColor,
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier.padding(12.5.dp),
@@ -150,9 +148,8 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
             }
 
             Row(modifier = Modifier.padding(12.5.dp)) {
-                Text(
+                TextView(
                     text = currentHour,
-                    maxLines = 1,
                     color = foregroundColor,
                     fontWeight = FontWeight.Medium,
                 )
@@ -161,16 +158,14 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
                     enter = fadeIn(),
                     exit = fadeOut(animationSpec = tween(1000)),
                 ) {
-                    Text(
+                    TextView(
                         text = ":",
-                        maxLines = 1,
                         color = foregroundColor,
                         fontWeight = FontWeight.Medium,
                     )
                 }
-                Text(
+                TextView(
                     text = currentMinute,
-                    maxLines = 1,
                     color = foregroundColor,
                     fontWeight = FontWeight.Medium,
                 )
@@ -185,11 +180,11 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
                 .align(Alignment.Center)
                 .background(backgroundColor),
         ) {
-            Text(
+            TextView(
                 text = durationString,
                 color = foregroundColor,
                 fontWeight = FontWeight.Medium,
-                textAlign = TextAlign.Center,
+                align = TextAlign.Center,
                 modifier = Modifier
                     .padding(8.dp),
             )
@@ -209,7 +204,22 @@ fun getDurationString(parsedStartTime: LocalDateTime, parsedEndTime: LocalDateTi
     return when {
         hours > 0 -> "$hours h $minutes min"
         minutes > 0 -> "$minutes min"
-        else -> "< 1 min"
+        else -> "0 min"
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.S)
+fun getDurationString(duration: Duration): String {
+    val hours = duration.toHours()
+    val minutes: Long = if (isToMinutesPartAvailable()) {
+        duration.toMinutesPart().toLong()
+    } else {
+        duration.toMinutes() % 60
+    }
+    return when {
+        hours > 0 -> "$hours h $minutes min"
+        minutes > 0 -> "$minutes min"
+        else -> "0 min"
     }
 }
 
