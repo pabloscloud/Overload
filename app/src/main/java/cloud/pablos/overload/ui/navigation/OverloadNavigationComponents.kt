@@ -86,7 +86,10 @@ fun OverloadNavigationRail(
                                 )
                             },
                         )
-                        OverloadNavigationFabSmall(state = state, onEvent = onEvent)
+
+                        if (state.selectedDayCalendar == LocalDate.now().toString()) {
+                            OverloadNavigationFabSmall(state = state, onEvent = onEvent)
+                        }
                     }
 
                     Column(
@@ -182,7 +185,10 @@ fun PermanentNavigationDrawerContent(
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.primary,
                         )
-                        OverloadNavigationFab(state = state, onEvent = onEvent)
+
+                        if (state.selectedDayCalendar == LocalDate.now().toString()) {
+                            OverloadNavigationFab(state = state, onEvent = onEvent)
+                        }
                     }
 
                     Column(
@@ -269,7 +275,9 @@ fun ModalNavigationDrawerContent(
                             }
                         }
 
-                        OverloadNavigationFab(state = state, onEvent = onEvent)
+                        if (state.selectedDayCalendar == LocalDate.now().toString()) {
+                            OverloadNavigationFab(state = state, onEvent = onEvent)
+                        }
                     }
 
                     Column(
