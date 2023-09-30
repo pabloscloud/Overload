@@ -121,7 +121,10 @@ fun HomeTab(
                     item.screen(state, onEvent)
                 }
             }
-            if (navigationType == OverloadNavigationType.BOTTOM_NAVIGATION) {
+            if (
+                navigationType == OverloadNavigationType.BOTTOM_NAVIGATION &&
+                state.selectedDayCalendar == LocalDate.now().toString()
+            ) {
                 Box(
                     modifier = Modifier.align(Alignment.BottomEnd)
                         .animateContentSize(),
