@@ -80,6 +80,9 @@ fun ConfigurationsTab(state: ItemState) {
 
     val importDialogState = remember { mutableStateOf(false) }
 
+    val workGoalDialogState = remember { mutableStateOf(false) }
+    val pauseGoalDialogState = remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             ConfigurationsTabTopAppBar()
@@ -92,6 +95,76 @@ fun ConfigurationsTab(state: ItemState) {
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
+            // Goals Title
+            item {
+                ConfigurationsTabItem(title = stringResource(id = R.string.goals))
+            }
+
+            // Work Goal
+            item {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable {
+                        workGoalDialogState.value = true
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.Work,
+                        contentDescription = stringResource(id = R.string.work),
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(horizontal = 8.dp),
+                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(4.dp),
+                        ) {
+                            ConfigurationTitle(stringResource(id = R.string.work))
+                            ConfigurationDescription(stringResource(id = R.string.work_goal_descr))
+                        }
+                    }
+                }
+            }
+
+            // Pause Goal
+            item {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable {
+                        pauseGoalDialogState.value = true
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.DarkMode,
+                        contentDescription = stringResource(id = R.string.pause),
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(horizontal = 8.dp),
+                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(4.dp),
+                        ) {
+                            ConfigurationTitle(stringResource(id = R.string.pause))
+                            ConfigurationDescription(stringResource(id = R.string.pause_goal_descr))
+                        }
+                    }
+                }
+            }
+
+            // Goals Divider
+            item {
+                Row {
+                    HorizontalDivider()
+                }
+            }
+
             // Analytics Title
             item {
                 ConfigurationsTabItem(title = stringResource(id = R.string.analytics))
@@ -296,10 +369,18 @@ fun ConfigurationsTab(state: ItemState) {
         if (importDialogState.value) {
             ConfigurationsTabImportDialog(onClose = { importDialogState.value = false })
         }
+
+        if (workGoalDialogState.value) {
+            ConfigurationsTabWorkGoalDialog(onClose = { workGoalDialogState.value = false })
+        }
+
+        if (pauseGoalDialogState.value) {
+            ConfigurationsTabPauseGoalDialog(onClose = { pauseGoalDialogState.value = false })
+        }
     }
 }
 
-fun exportAndShare(state: ItemState, context: Context) {
+fun backup(state: ItemState, context: Context) {
     try {
         val exportedData = backupItemsToCsv(state)
         val cachePath = File(context.cacheDir, "backup.csv")
@@ -426,6 +507,32 @@ private fun importFile(uri: Uri, contentResolver: ContentResolver, context: Cont
 
             importCsvData(sharedData, lifecycleScope, db, context)
         }
+    }
+}
+
+class OlSharedPreferences(context: Context) {
+    private val sharedPreferences = context.getSharedPreferences("ol_prefs", Context.MODE_PRIVATE)
+
+    fun saveWorkGoal(goal: Int) {
+        sharedPreferences.edit().apply {
+            putInt("workGoal", goal)
+            apply()
+        }
+    }
+
+    fun savePauseGoal(goal: Int) {
+        sharedPreferences.edit().apply {
+            putInt("pauseGoal", goal)
+            apply()
+        }
+    }
+
+    fun getWorkGoal(): Int {
+        return sharedPreferences.getInt("workGoal", 0)
+    }
+
+    fun getPauseGoal(): Int {
+        return sharedPreferences.getInt("pauseGoal", 0)
     }
 }
 

@@ -209,7 +209,22 @@ fun getDurationString(parsedStartTime: LocalDateTime, parsedEndTime: LocalDateTi
     return when {
         hours > 0 -> "$hours h $minutes min"
         minutes > 0 -> "$minutes min"
-        else -> "< 1 min"
+        else -> "0 min"
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.S)
+fun getDurationString(duration: Duration): String {
+    val hours = duration.toHours()
+    val minutes: Long = if (isToMinutesPartAvailable()) {
+        duration.toMinutesPart().toLong()
+    } else {
+        duration.toMinutes() % 60
+    }
+    return when {
+        hours > 0 -> "$hours h $minutes min"
+        minutes > 0 -> "$minutes min"
+        else -> "0 min"
     }
 }
 

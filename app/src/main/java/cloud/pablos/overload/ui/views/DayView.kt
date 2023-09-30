@@ -28,6 +28,7 @@ import java.time.format.DateTimeFormatterBuilder
 import java.time.format.DateTimeParseException
 import java.time.temporal.ChronoField
 
+@SuppressLint("UnusedTransitionTargetStateParameter")
 @OptIn(ExperimentalFoundationApi::class)
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
@@ -44,18 +45,86 @@ fun DayView(
 
     val itemsDesc = items.sortedByDescending { it.startTime }
 
-    if (itemsForSelectedDayAsc.isNotEmpty()) {
+    val deletePauseDialogState = remember { mutableStateOf(false) }
+
+    val context = LocalContext.current
+    val sharedPreferences = remember { OlSharedPreferences(context) }
+
+    val goalWork by remember { mutableIntStateOf(sharedPreferences.getWorkGoal()) }
+    val goalPause by remember { mutableIntStateOf(sharedPreferences.getPauseGoal()) }
+
+    if (itemsDesc.isNotEmpty()) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
         ) {
-            val itemSize = itemsForSelectedDayAsc.size
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 10.dp, start = 10.dp, end = 10.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    if (goalWork > 0) {
+                        Box(
+                            modifier = Modifier.weight(1f),
+                        ) {
+                            DayViewProgress(goal = goalWork, items = items, isPause = false)
+                        }
+                    }
+
+                    if (goalPause > 0) {
+                        Box(
+                            modifier = Modifier.weight(1f),
+                        ) {
+                            DayViewProgress(goal = goalPause, items = items, date = date, isPause = true)
+                        }
+                    }
+                }
+            }
+            val itemSize = itemsDesc.size
+            if (
+                items.isNotEmpty() &&
+                !items.last().ongoing &&
+                !items.last().pause &&
+                date == LocalDate.now()
+            ) {
+                item {
+                    Box(
+                        modifier = Modifier
+                            .padding(10.dp, 10.dp, 10.dp)
+                            .combinedClickable(
                                 enabled = isEditable,
+                                onLongClick = {
+                                    deletePauseDialogState.value = true
+                                },
+                                onClick = {
+                                    when (state.isDeletingHome) {
+                                        true -> deletePauseDialogState.value = true
+                                        else -> {}
+                                    }
+                                },
+                            ),
+                    ) {
+                        DayViewItemOngoing(
+                            item = Item(
+                                id = -1,
+                                startTime = items.last().endTime,
+                                endTime = LocalDate.now().toString(),
+                                ongoing = true,
+                                pause = true,
+                            ),
+                            isSelected = false,
+                        )
+                    }
+                }
+            }
+
             items(itemSize) { index ->
                 val isFirstItem = index == 0
                 val isLastItem = index == itemSize - 1
 
-                val item = itemsForSelectedDayAsc[index]
                 val isSelected = state.selectedItems.contains(item)
+                val item = itemsDesc[index]
                 Box(
                     modifier = Modifier
                         .padding(10.dp, if (isFirstItem) 10.dp else 0.dp, 10.dp, if (isLastItem) 80.dp else 10.dp)
@@ -104,6 +173,10 @@ fun DayView(
                 color = MaterialTheme.colorScheme.outline,
             )
         }
+    }
+
+    if (deletePauseDialogState.value) {
+        HomeTabDeletePauseDialog(onClose = { deletePauseDialogState.value = false })
     }
 }
 
