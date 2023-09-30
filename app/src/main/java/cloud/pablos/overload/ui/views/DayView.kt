@@ -34,24 +34,22 @@ import java.time.temporal.ChronoField
 fun DayView(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
+    date: LocalDate,
+    isEditable: Boolean
 ) {
-    val date = when (state.selectedDay) {
-        "" -> LocalDate.now()
-        else -> getLocalDate(state.selectedDay)
-    }
-
-    val itemsForSelectedDay = state.items.filter { item ->
+    val items = state.items.filter { item ->
         val startTime = parseToLocalDateTime(item.startTime)
         extractDate(startTime) == date
     }
 
-    val itemsForSelectedDayAsc = itemsForSelectedDay.sortedByDescending { it.startTime }
+    val itemsDesc = items.sortedByDescending { it.startTime }
 
     if (itemsForSelectedDayAsc.isNotEmpty()) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
         ) {
             val itemSize = itemsForSelectedDayAsc.size
+                                enabled = isEditable,
             items(itemSize) { index ->
                 val isFirstItem = index == 0
                 val isLastItem = index == itemSize - 1
@@ -62,6 +60,7 @@ fun DayView(
                     modifier = Modifier
                         .padding(10.dp, if (isFirstItem) 10.dp else 0.dp, 10.dp, if (isLastItem) 80.dp else 10.dp)
                         .combinedClickable(
+                            enabled = isEditable,
                             onLongClick = {
                                 onEvent(ItemEvent.SetIsDeleting(true))
                                 onEvent(ItemEvent.SetSelectedItems(listOf(item)))

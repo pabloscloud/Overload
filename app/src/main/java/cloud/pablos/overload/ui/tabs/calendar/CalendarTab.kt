@@ -74,29 +74,38 @@ fun CalendarTab(
             )
         },
     ) { paddingValues ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues),
-        ) {
-            BottomSheetScaffold(
-                scaffoldState = sheetState,
-                sheetContent = {
-                    CalendarTabBottomSheet(state = state, date = selectedDay)
-                },
-            ) { innerPadding ->
-                YearView(
-                    state = state,
-                    onEvent = onEvent,
-                    year = state.selectedYear,
-                    bottomPadding = innerPadding.calculateBottomPadding(),
-                )
+        Box(modifier = Modifier.fillMaxSize()) {
+            Column(modifier = Modifier.padding(paddingValues)) {
+                Surface(
+                    tonalElevation = NavigationBarDefaults.Elevation,
+                    color = MaterialTheme.colorScheme.background,
+                ) {
+                    WeekDaysHeader()
+                }
+                BottomSheetScaffold(
+                    scaffoldState = sheetState,
+                    sheetContent = {
+                        DayView(
+                            state = state,
+                            onEvent = onEvent,
+                            date = selectedDay,
+                            isEditable = false,
+                        )
+                    },
+                ) { innerPadding ->
+                    YearView(
+                        state = state,
+                        onEvent = onEvent,
+                        year = state.selectedYearCalendar,
+                        bottomPadding = innerPadding.calculateBottomPadding(),
+                    )
 
-                Modifier.pointerInput(Unit) {
-                    detectVerticalDragGestures { _, dragAmount ->
-                        val maxOffset = 64.dp.toPx()
+                    Modifier.pointerInput(Unit) {
+                        detectVerticalDragGestures { _, dragAmount ->
+                            val maxOffset = 64.dp.toPx()
 
-                        sheetOffset = (sheetOffset + dragAmount).coerceIn(0f, maxOffset)
+                            sheetOffset = (sheetOffset + dragAmount).coerceIn(0f, maxOffset)
+                        }
                     }
                 }
             }
@@ -109,7 +118,7 @@ fun WeekDaysHeader() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 8.dp),
+            .padding(horizontal = 16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         DayOfWeekHeaderCell("M")
