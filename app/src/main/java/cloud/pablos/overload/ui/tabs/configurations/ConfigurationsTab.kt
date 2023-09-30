@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.rounded.Archive
 import androidx.compose.material.icons.rounded.BugReport
 import androidx.compose.material.icons.rounded.Code
@@ -27,11 +28,11 @@ import androidx.compose.material.icons.rounded.Copyright
 import androidx.compose.material.icons.rounded.EmojiNature
 import androidx.compose.material.icons.rounded.PestControl
 import androidx.compose.material.icons.rounded.Unarchive
+import androidx.compose.material.icons.rounded.Work
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -39,8 +40,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.core.net.toUri
@@ -51,6 +50,7 @@ import cloud.pablos.overload.data.item.Item
 import cloud.pablos.overload.data.item.ItemDatabase
 import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.data.item.backupItemsToCsv
+import cloud.pablos.overload.ui.views.TextView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -59,8 +59,6 @@ import java.io.File
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ConfigurationsTab(state: ItemState) {
-    val foregroundColor = MaterialTheme.colorScheme.onBackground
-
     val context = LocalContext.current
 
     val acraEnabledKey = "acra.enable"
@@ -119,9 +117,7 @@ fun ConfigurationsTab(state: ItemState) {
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth(),
                     ) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(4.dp),
-                        ) {
+                        Column {
                             ConfigurationTitle(stringResource(id = R.string.work))
                             ConfigurationDescription(stringResource(id = R.string.work_goal_descr))
                         }
@@ -148,9 +144,7 @@ fun ConfigurationsTab(state: ItemState) {
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth(),
                     ) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(4.dp),
-                        ) {
+                        Column {
                             ConfigurationTitle(stringResource(id = R.string.pause))
                             ConfigurationDescription(stringResource(id = R.string.pause_goal_descr))
                         }
@@ -217,7 +211,7 @@ fun ConfigurationsTab(state: ItemState) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.clickable {
-                        exportAndShare(state, context)
+                        backup(state, context)
                     },
                 ) {
                     Icon(
@@ -231,25 +225,9 @@ fun ConfigurationsTab(state: ItemState) {
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth(),
                     ) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(4.dp),
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.backup),
-                                style = TextStyle(
-                                    fontSize = MaterialTheme.typography.bodyLarge.fontSize,
-                                    fontWeight = FontWeight.Normal,
-                                ),
-                                color = foregroundColor,
-                            )
-                            Text(
-                                text = stringResource(id = R.string.backup_descr),
-                                style = TextStyle(
-                                    fontSize = MaterialTheme.typography.bodyMedium.fontSize,
-                                    fontWeight = FontWeight.Normal,
-                                ),
-                                color = foregroundColor,
-                            )
+                        Column {
+                            ConfigurationTitle(stringResource(id = R.string.backup))
+                            ConfigurationDescription(stringResource(id = R.string.backup_descr))
                         }
                     }
                 }
@@ -274,25 +252,9 @@ fun ConfigurationsTab(state: ItemState) {
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth(),
                     ) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(4.dp),
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.import_ol),
-                                style = TextStyle(
-                                    fontSize = MaterialTheme.typography.bodyLarge.fontSize,
-                                    fontWeight = FontWeight.Normal,
-                                ),
-                                color = foregroundColor,
-                            )
-                            Text(
-                                text = stringResource(id = R.string.import_descr),
-                                style = TextStyle(
-                                    fontSize = MaterialTheme.typography.bodyMedium.fontSize,
-                                    fontWeight = FontWeight.Normal,
-                                ),
-                                color = foregroundColor,
-                            )
+                        Column {
+                            ConfigurationTitle(stringResource(id = R.string.import_ol))
+                            ConfigurationDescription(stringResource(id = R.string.import_descr))
                         }
                     }
                 }
@@ -355,14 +317,7 @@ fun ConfigurationsTab(state: ItemState) {
                         .fillMaxWidth()
                         .padding(bottom = 16.dp),
                 ) {
-                    Text(
-                        text = stringResource(id = R.string.footer),
-                        style = TextStyle(
-                            fontSize = MaterialTheme.typography.labelLarge.fontSize,
-                            fontWeight = FontWeight.Normal,
-                        ),
-                        color = foregroundColor,
-                    )
+                    ConfigurationDescription(stringResource(id = R.string.footer))
                 }
             }
         }
@@ -508,6 +463,39 @@ private fun importFile(uri: Uri, contentResolver: ContentResolver, context: Cont
             importCsvData(sharedData, lifecycleScope, db, context)
         }
     }
+}
+
+@Composable
+fun ConfigurationLabel(
+    text: String,
+) {
+    TextView(
+        text = text,
+        fontSize = MaterialTheme.typography.titleLarge.fontSize,
+        color = MaterialTheme.colorScheme.onBackground,
+    )
+}
+
+@Composable
+fun ConfigurationTitle(
+    text: String,
+) {
+    TextView(
+        text = text,
+        fontSize = MaterialTheme.typography.titleMedium.fontSize,
+        color = MaterialTheme.colorScheme.onBackground,
+    )
+}
+
+@Composable
+fun ConfigurationDescription(
+    text: String,
+) {
+    TextView(
+        text = text,
+        fontSize = MaterialTheme.typography.bodyMedium.fontSize,
+        color = MaterialTheme.colorScheme.onBackground,
+    )
 }
 
 class OlSharedPreferences(context: Context) {

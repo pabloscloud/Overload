@@ -25,7 +25,6 @@
             android:name=".ui.MainActivity"
             android:launchMode="singleInstance"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.Overload">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

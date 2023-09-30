@@ -33,8 +33,8 @@ class ItemViewModel(
 
                     _state.update {
                         it.copy(
-                            isDeleting = false,
-                            selectedItems = emptyList(),
+                            isDeletingHome = false,
+                            selectedItemsHome = emptyList(),
                         )
                     }
                 }
@@ -111,33 +111,33 @@ class ItemViewModel(
                 }
             }
 
-            is ItemEvent.SetSelectedDay -> {
-                _state.update { it.copy(selectedDay = event.day) }
+            is ItemEvent.SetSelectedDayCalendar -> {
+                _state.update { it.copy(selectedDayCalendar = event.day) }
             }
 
-            is ItemEvent.SetSelectedYear -> {
-                _state.update { it.copy(selectedYear = event.year) }
+            is ItemEvent.SetSelectedYearCalendar -> {
+                _state.update { it.copy(selectedYearCalendar = event.year) }
             }
 
-            is ItemEvent.SetIsDeleting -> {
-                _state.update { it.copy(isDeleting = event.isDeleting) }
+            is ItemEvent.SetIsDeletingHome -> {
+                _state.update { it.copy(isDeletingHome = event.isDeleting) }
 
                 when (event.isDeleting) {
-                    false -> _state.update { it.copy(selectedItems = emptyList()) }
+                    false -> _state.update { it.copy(selectedItemsHome = emptyList()) }
                     else -> {}
                 }
             }
 
-            is ItemEvent.SetIsSelected -> {
+            is ItemEvent.SetIsSelectedHome -> {
                 _state.update {
                     it.copy(
-                        isSelected = event.isSelected,
+                        isSelectedHome = event.isSelected,
                     )
                 }
             }
 
-            is ItemEvent.SetSelectedItems -> {
-                _state.update { it.copy(selectedItems = event.selectedItems) }
+            is ItemEvent.SetSelectedItemsHome -> {
+                _state.update { it.copy(selectedItemsHome = event.selectedItems) }
             }
         }
     }

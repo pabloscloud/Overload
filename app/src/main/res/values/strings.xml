@@ -36,14 +36,22 @@
     <string name="delete_items_forever">delete items forever</string>
 
     <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteTopAppBar -->
+    <string name="itemCount_selected">selected</string>
     <string name="get_out_of_isDeleting">gets you out of deletion mode</string>
 
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabFab -->
-    <string name="start">start</string>
-    <string name="pause">pause</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabDeletePauseDialog -->
+    <string name="close">Close</string>
+    <string name="learn_more">Learn more…</string>
+    <string name="open_link_with">Open link with</string>
+    <string name="delete_pause">Delete Pause</string>
+    <string name="delete_pause_descr">You can not delete this ongoing pause. It is only there to indicate a pause will be created once you hit start. If you will not hit start until tomorrow it will be gone and will not count against your goal.</string>
 
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
-    <string name="calendar">calendar</string>
+    <string name="calendar">Calendar</string>
 
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
     <string name="configurations">Configurations</string>
@@ -63,14 +71,14 @@
     <string name="import_success">Backup successfully imported</string>
     <string name="import_failure">Importing the backup failed</string>
     <string name="analytics">analytics</string>
-    <string name="crash_reports">Crash Reports</string>
+    <string name="crash_reports">Crash reports</string>
     <string name="crash_reports_descr">Ask to send crash reports</string>
-    <string name="system_logs">System Logs</string>
+    <string name="system_logs">System logs</string>
     <string name="system_logs_descr">Include system logs in crash reports</string>
     <string name="about">about</string>
     <string name="sourcecode">Source Code</string>
     <string name="sourcecode_descr">Want to see the inside? Go on!</string>
-    <string name="issue_reports">Report Bugs</string>
+    <string name="issue_reports">Report bugs</string>
     <string name="issue_reports_descr">Notice something strange? Please report it!</string>
     <string name="license">License</string>
     <string name="license_descr">GNU GPL v3</string>
@@ -116,16 +124,5 @@
 
     <string name="edit">Edit</string>
 
-    <string name="empty_screen_title">Screen under construction</string>
-    <string name="empty_screen_subtitle">This screen is still under construction.</string>
-
-    <string name="back_button">Back</string>
-    <string name="more_options_button">More options</string>
-    <string name="messages">Messages</string>
-    <string name="four_hours_ago">4 hrs ago</string>
-
-    <string name="search_emails">Search emails</string>
-    <string name="no_item_found">No item found</string>
-    <string name="no_search_history">No search history</string>
     <string name="select_year">Select Year</string>
 </resources>

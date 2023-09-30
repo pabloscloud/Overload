@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,8 +14,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.Surface
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -32,6 +35,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.views.DayView
+import cloud.pablos.overload.ui.views.TextView
 import cloud.pablos.overload.ui.views.YearView
 import cloud.pablos.overload.ui.views.getLocalDate
 import kotlinx.coroutines.launch
@@ -44,25 +49,25 @@ fun CalendarTab(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    var selectedDay = getLocalDate(state.selectedDay)
-    var selectedYear by remember { mutableIntStateOf(state.selectedYear) }
+    val selectedDay = getLocalDate(state.selectedDayCalendar)
+    val selectedYear by remember { mutableIntStateOf(state.selectedYearCalendar) }
     val scope = rememberCoroutineScope()
     val sheetState = rememberBottomSheetScaffoldState()
     var sheetOffset by remember { mutableFloatStateOf(0f) }
     var expandSheet by remember { mutableStateOf(false) }
 
-    LaunchedEffect(state.isSelected) {
+    LaunchedEffect(state.isSelectedHome) {
         if (expandSheet) {
             scope.launch { sheetState.bottomSheetState.expand() }
-            onEvent(ItemEvent.SetIsSelected(isSelected = false))
+            onEvent(ItemEvent.SetIsSelectedHome(isSelected = false))
         } else {
             expandSheet = true
         }
     }
 
     LaunchedEffect(selectedYear) {
-        if (state.selectedYear != LocalDate.now().year) {
-            onEvent(ItemEvent.SetSelectedYear(LocalDate.now().year))
+        if (state.selectedYearCalendar != LocalDate.now().year) {
+            onEvent(ItemEvent.SetSelectedYearCalendar(LocalDate.now().year))
         }
     }
 
@@ -140,7 +145,10 @@ fun DayOfWeekHeaderCell(text: String) {
             .height(36.dp),
         contentAlignment = Alignment.Center,
     ) {
-        Text(text = text, fontSize = 14.sp)
+        TextView(
+            text = text,
+            fontSize = 14.sp,
+        )
     }
 }
 

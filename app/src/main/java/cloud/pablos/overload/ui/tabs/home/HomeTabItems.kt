@@ -7,6 +7,7 @@ import cloud.pablos.overload.ui.TabItem
 import cloud.pablos.overload.ui.views.DayView
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
@@ -49,6 +50,8 @@ val homeTabItems = listOf(
             DayView(
                 state = state,
                 onEvent = onEvent,
+                date = LocalDate.now().minusDays(2),
+                isEditable = true,
             )
         },
     ),
@@ -58,6 +61,8 @@ val homeTabItems = listOf(
             DayView(
                 state = state,
                 onEvent = onEvent,
+                date = LocalDate.now().minusDays(1),
+                isEditable = true,
             )
         },
     ),
@@ -67,6 +72,8 @@ val homeTabItems = listOf(
             DayView(
                 state = state,
                 onEvent = onEvent,
+                date = LocalDate.now(),
+                isEditable = true,
             )
         },
     ),

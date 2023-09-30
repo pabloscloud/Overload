@@ -94,7 +94,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
     implementation(libs.google.android.material)
-    implementation("androidx.compose.material3:material3-android:1.2.0-alpha04")
+    implementation("androidx.compose.material3:material3-android:1.2.0-alpha08")
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
@@ -106,7 +106,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
-    implementation("androidx.compose.material3:material3:1.2.0-alpha04")
+    implementation("androidx.compose.material3:material3:1.2.0-alpha08")
     implementation(libs.accompanist.adaptive)
 
     implementation(libs.androidx.compose.materialWindow)

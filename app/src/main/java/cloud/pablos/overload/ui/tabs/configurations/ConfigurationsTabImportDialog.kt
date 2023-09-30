@@ -20,11 +20,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import cloud.pablos.overload.R
+import cloud.pablos.overload.ui.views.TextView
 
 @Composable
 fun ConfigurationsTabImportDialog(onClose: () -> Unit) {
@@ -41,11 +43,11 @@ fun ConfigurationsTabImportDialog(onClose: () -> Unit) {
             )
         },
         title = {
-            Text(
+            TextView(
                 text = stringResource(id = R.string.import_backup),
                 fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth(),
+                align = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
             )
         },
         text = {
@@ -54,17 +56,20 @@ fun ConfigurationsTabImportDialog(onClose: () -> Unit) {
                     text = stringResource(id = R.string.import_backup_descr),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth(),
+                    overflow = TextOverflow.Ellipsis,
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    text = "Learn more...",
+
+                val openLinkStr = stringResource(id = R.string.open_link_with)
+                TextView(
+                    text = stringResource(id = R.string.learn_more),
                     color = MaterialTheme.colorScheme.primary,
-                    textAlign = TextAlign.Center,
+                    align = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
                             val intent = Intent(Intent.ACTION_VIEW, learnMoreLink)
-                            val chooserIntent = Intent.createChooser(intent, "Open link with")
+                            val chooserIntent = Intent.createChooser(intent, openLinkStr)
                             ContextCompat.startActivity(context, chooserIntent, null)
                         },
                 )
@@ -75,7 +80,7 @@ fun ConfigurationsTabImportDialog(onClose: () -> Unit) {
                 onClick = { onClose() },
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                Text(text = "Close")
+                TextView(stringResource(id = R.string.close))
             }
         },
         modifier = Modifier.padding(16.dp),

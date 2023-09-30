@@ -16,36 +16,26 @@ import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.net.toUri
+import cloud.pablos.overload.R
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ConfigurationsTabItem(
     title: String,
 ) {
-    var foregroundColor = MaterialTheme.colorScheme.onBackground
-
     Row(Modifier.padding(top = 16.dp)) {
-        Text(
-            text = title.replaceFirstChar { it.uppercase() },
-            style = TextStyle(
-                fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                fontWeight = FontWeight.Normal,
-            ),
-            color = foregroundColor,
-        )
+        ConfigurationLabel(title.replaceFirstChar { it.uppercase() })
     }
 }
 
@@ -57,15 +47,14 @@ fun ConfigurationsTabItem(
     link: Uri,
     icon: ImageVector,
 ) {
-    var foregroundColor = MaterialTheme.colorScheme.onBackground
-
     val context = LocalContext.current
 
+    val openLinkStr = stringResource(id = R.string.open_link_with)
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.clickable {
             val intent = Intent(Intent.ACTION_VIEW, link)
-            val chooserIntent = Intent.createChooser(intent, "Open link with")
+            val chooserIntent = Intent.createChooser(intent, openLinkStr)
             startActivity(context, chooserIntent, null)
         },
     ) {
@@ -78,25 +67,9 @@ fun ConfigurationsTabItem(
         Row(
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                Text(
-                    text = title,
-                    style = TextStyle(
-                        fontSize = MaterialTheme.typography.bodyLarge.fontSize,
-                        fontWeight = FontWeight.Normal,
-                    ),
-                    color = foregroundColor,
-                )
-                Text(
-                    text = description,
-                    style = TextStyle(
-                        fontSize = MaterialTheme.typography.bodyMedium.fontSize,
-                        fontWeight = FontWeight.Normal,
-                    ),
-                    color = foregroundColor,
-                )
+            Column {
+                ConfigurationTitle(title)
+                ConfigurationDescription(description)
             }
         }
     }
@@ -112,9 +85,6 @@ fun ConfigurationsTabItem(
     state: MutableState<Boolean>,
     icon: ImageVector,
 ) {
-    var foregroundColor = MaterialTheme.colorScheme.onBackground
-    val acraSysLogsEnabledKey = "acra.syslog.enable"
-
     Row(
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -129,25 +99,9 @@ fun ConfigurationsTabItem(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                Text(
-                    text = title,
-                    style = TextStyle(
-                        fontSize = MaterialTheme.typography.bodyLarge.fontSize,
-                        fontWeight = FontWeight.Normal,
-                    ),
-                    color = foregroundColor,
-                )
-                Text(
-                    text = description,
-                    style = TextStyle(
-                        fontSize = MaterialTheme.typography.bodyMedium.fontSize,
-                        fontWeight = FontWeight.Normal,
-                    ),
-                    color = foregroundColor,
-                )
+            Column {
+                ConfigurationTitle(title)
+                ConfigurationDescription(description)
             }
             AcraSwitch(
                 sharedPreferences = sharedPreferences,

@@ -8,19 +8,18 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.views.TextView
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
@@ -37,12 +36,10 @@ fun CalendarTabTopAppBar(
     ) {
         TopAppBar(
             title = {
-                Text(
-                    text = stringResource(id = R.string.calendar).replaceFirstChar { it.uppercase() },
-                    style = TextStyle(
-                        fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                        fontWeight = FontWeight.Normal,
-                    ),
+                TextView(
+                    text = stringResource(id = R.string.calendar),
+                    fontSize = MaterialTheme.typography.titleLarge.fontSize,
+                    fontWeight = FontWeight.Normal,
                 )
             },
             actions = {
@@ -50,7 +47,7 @@ fun CalendarTabTopAppBar(
                     onClick = { yearDialogState.value = true },
                     modifier = Modifier.padding(horizontal = 8.dp),
                 ) {
-                    Text(state.selectedYear.toString())
+                    TextView(state.selectedYearCalendar.toString())
                 }
                 if (yearDialogState.value) {
                     CalendarTabYearDialog(onClose = { yearDialogState.value = false }, onEvent = onEvent)

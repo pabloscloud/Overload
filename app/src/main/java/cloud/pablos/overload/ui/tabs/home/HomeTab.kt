@@ -2,6 +2,7 @@ package cloud.pablos.overload.ui.tabs.home
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,20 +19,18 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.ui.utils.OverloadNavigationType
+import cloud.pablos.overload.ui.views.TextView
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -47,9 +46,9 @@ fun HomeTab(
     val pagerState = rememberPagerState(
         initialPage = 2,
         initialPageOffsetFraction = 0f,
-    ) {
-        homeTabItems.size
-    }
+        pageCount = { homeTabItems.size },
+    )
+
     val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(pagerState.currentPage) {
@@ -59,12 +58,12 @@ fun HomeTab(
             2 -> getFormattedDate()
             else -> getFormattedDate()
         }
-        onEvent(ItemEvent.SetSelectedDay(selectedDayString))
+        onEvent(ItemEvent.SetSelectedDayCalendar(selectedDayString))
     }
 
     Scaffold(
         topBar = {
-            when (state.isDeleting) {
+            when (state.isDeletingHome) {
                 true -> HomeTabDeleteTopAppBar(state = state, onEvent = onEvent)
                 else -> HomeTabTopAppBar()
             }
@@ -104,14 +103,10 @@ fun HomeTab(
                                     coroutineScope.launch { pagerState.animateScrollToPage(index) }
                                 },
                                 text = {
-                                    Text(
+                                    TextView(
                                         text = stringResource(id = item.titleResId),
-                                        style = TextStyle(
-                                            fontSize = MaterialTheme.typography.labelLarge.fontSize,
-                                            fontWeight = if (pagerState.currentPage == index) FontWeight.Bold else FontWeight.Normal,
-                                        ),
-                                        maxLines = 1,
-                                        overflow = TextOverflow.Ellipsis,
+                                        fontSize = MaterialTheme.typography.labelLarge.fontSize,
+                                        fontWeight = if (pagerState.currentPage == index) FontWeight.Bold else FontWeight.Normal,
                                         color = MaterialTheme.colorScheme.onBackground,
                                     )
                                 },
@@ -121,12 +116,16 @@ fun HomeTab(
                 }
                 HorizontalPager(
                     state = pagerState,
-                ) {
-                    homeTabItems[pagerState.currentPage].screen(state = state, onEvent = onEvent)
+                ) { page ->
+                    val item = homeTabItems[page]
+                    item.screen(state, onEvent)
                 }
             }
-            Box(modifier = Modifier.align(Alignment.BottomEnd)) {
-                if (navigationType == OverloadNavigationType.BOTTOM_NAVIGATION) {
+            if (navigationType == OverloadNavigationType.BOTTOM_NAVIGATION) {
+                Box(
+                    modifier = Modifier.align(Alignment.BottomEnd)
+                        .animateContentSize(),
+                ) {
                     HomeTabFab(state = state, onEvent = onEvent)
                 }
             }

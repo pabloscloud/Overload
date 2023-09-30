@@ -9,17 +9,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MenuOpen
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -31,10 +27,7 @@ import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.PermanentDrawerSheet
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,15 +37,15 @@ import androidx.compose.ui.layout.MeasurePolicy
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.offset
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.ui.utils.OverloadNavigationContentPosition
+import cloud.pablos.overload.ui.views.TextView
+import java.time.LocalDate
 
-@OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun OverloadNavigationRail(
@@ -63,7 +56,7 @@ fun OverloadNavigationRail(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    if (!state.isDeleting) {
+    if (!state.isDeletingHome) {
         NavigationRail(
             modifier = Modifier.fillMaxHeight(),
             containerColor = MaterialTheme.colorScheme.inverseOnSurface,
@@ -128,7 +121,7 @@ fun OverloadBottomNavigationBar(
     navigateToTopLevelDestination: (OverloadTopLevelDestination) -> Unit,
     state: ItemState,
 ) {
-    if (!state.isDeleting) {
+    if (!state.isDeletingHome) {
         NavigationBar(modifier = Modifier.fillMaxWidth()) {
             TOP_LEVEL_DESTINATIONS.forEach { overloadDestination ->
                 NavigationBarItem(
@@ -146,9 +139,15 @@ fun OverloadBottomNavigationBar(
                         )
                     },
                     label = {
-                        Text(
+                        TextView(
                             text = overloadDestination.label,
-                            fontWeight = if (selectedDestination == overloadDestination.route) FontWeight.Bold else FontWeight.Normal,
+                            fontSize = MaterialTheme.typography.labelLarge.fontSize,
+                            fontWeight =
+                            if (selectedDestination == overloadDestination.route) {
+                                FontWeight.Bold
+                            } else {
+                                FontWeight.Normal
+                            },
                         )
                     },
                 )
@@ -164,9 +163,9 @@ fun PermanentNavigationDrawerContent(
     navigationContentPosition: OverloadNavigationContentPosition,
     navigateToTopLevelDestination: (OverloadTopLevelDestination) -> Unit,
     state: ItemState,
-    onEvent: (ItemEvent) -> Unit
+    onEvent: (ItemEvent) -> Unit,
 ) {
-    if (!state.isDeleting) {
+    if (!state.isDeletingHome) {
         PermanentDrawerSheet(modifier = Modifier.sizeIn(minWidth = 200.dp, maxWidth = 300.dp)) {
             Layout(
                 modifier = Modifier
@@ -178,12 +177,11 @@ fun PermanentNavigationDrawerContent(
                         horizontalAlignment = Alignment.Start,
                         verticalArrangement = Arrangement.spacedBy(4.dp),
                     ) {
-                        Text(
-                            modifier = Modifier
-                                .padding(16.dp),
+                        TextView(
                             text = stringResource(id = R.string.app_name).uppercase(),
-                            style = MaterialTheme.typography.titleMedium,
+                            fontSize = MaterialTheme.typography.titleMedium.fontSize,
                             color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.padding(16.dp),
                         )
 
                         if (state.selectedDayCalendar == LocalDate.now().toString()) {
@@ -201,7 +199,7 @@ fun PermanentNavigationDrawerContent(
                             NavigationDrawerItem(
                                 selected = selectedDestination == overloadDestination.route,
                                 label = {
-                                    Text(
+                                    TextView(
                                         text = stringResource(id = overloadDestination.iconTextId),
                                         modifier = Modifier.padding(horizontal = 16.dp),
                                     )
@@ -243,7 +241,7 @@ fun ModalNavigationDrawerContent(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    if (!state.isDeleting) {
+    if (!state.isDeletingHome) {
         ModalDrawerSheet {
             Layout(
                 modifier = Modifier
@@ -262,10 +260,9 @@ fun ModalNavigationDrawerContent(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
-                            Text(
-                                text = stringResource(id = R.string.app_name).uppercase(),
-                                style = MaterialTheme.typography.titleMedium,
-                                color = MaterialTheme.colorScheme.primary,
+                            TextView(
+                                text = stringResource(id = R.string.app_name),
+                                fontSize = MaterialTheme.typography.titleLarge.fontSize,
                             )
                             IconButton(onClick = onDrawerClicked) {
                                 Icon(
@@ -290,9 +287,7 @@ fun ModalNavigationDrawerContent(
                             NavigationDrawerItem(
                                 selected = selectedDestination == overloadDestination.route,
                                 label = {
-                                    Text(
-                                        text = stringResource(id = overloadDestination.iconTextId),
-                                    )
+                                    TextView(stringResource(id = overloadDestination.iconTextId))
                                 },
                                 icon = {
                                     Icon(

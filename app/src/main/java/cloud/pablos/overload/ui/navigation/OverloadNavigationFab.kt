@@ -4,18 +4,20 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.views.TextView
 import cloud.pablos.overload.ui.views.extractDate
 import cloud.pablos.overload.ui.views.parseToLocalDateTime
 import java.time.LocalDate
@@ -39,11 +41,11 @@ fun OverloadNavigationFab(
     NavigationDrawerItem(
         selected = false,
         label = {
-            Text(
+            TextView(
                 if (isOngoing) {
-                    "Pause"
+                    stringResource(id = R.string.stop)
                 } else {
-                    "Start"
+                    stringResource(id = R.string.start)
                 },
             )
         },
@@ -51,15 +53,15 @@ fun OverloadNavigationFab(
             Icon(
                 imageVector =
                 if (isOngoing) {
-                    Icons.Default.Pause
+                    Icons.Default.Stop
                 } else {
                     Icons.Default.PlayArrow
                 },
                 contentDescription =
                 if (isOngoing) {
-                    "Pause"
+                    stringResource(id = R.string.stop)
                 } else {
-                    "Start"
+                    stringResource(id = R.string.start)
                 },
             )
         },

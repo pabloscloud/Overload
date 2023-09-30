@@ -4,8 +4,8 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -78,12 +78,11 @@ fun OverloadNavigationFabSmall(
         Icon(
             imageVector =
             if (isOngoing) {
-                Icons.Default.Pause
+                Icons.Default.Stop
             } else {
                 Icons.Default.PlayArrow
             },
             contentDescription = stringResource(id = R.string.edit),
-
         )
     }
 }
