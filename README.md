@@ -1,3 +1,4 @@
+[![Translation status](https://hosted.weblate.org/widget/overload/android/svg-badge.svg)](https://hosted.weblate.org/engage/overload/)
 
 # Overload
 
@@ -8,7 +9,7 @@ Overload is a user-friendly native app designed to facilitate time tracking for 
 
 Contributions are always welcome!
 
-Just create issues and pull requests ;)
+Just create issues and pull requests or help [translating](https://hosted.weblate.org/engage/overload/) on Weblate :)
 
 
 ## Features
@@ -19,6 +20,7 @@ Just create issues and pull requests ;)
 - scroll through days with ease
 - backup your data as .csv
 - import backups
+- set goals
 
 
 ## Feedback
@@ -29,6 +31,9 @@ Feedback and suggestions are more than welcome! Please reach out by creating an 
 ## Installation
 
 <a href="https://f-droid.org/app/cloud.pablos.overload"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" width="170"></a>
+
+Alternatively go to the releases tab on Codeberg and download an apk.
+
 
 ## Authors
 
