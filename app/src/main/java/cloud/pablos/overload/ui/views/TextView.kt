@@ -17,13 +17,14 @@ fun TextView(
     fontWeight: FontWeight = FontWeight.Normal,
     color: Color = Color.Unspecified,
     align: TextAlign = TextAlign.Left,
+    maxLines: Int = 1
 ) {
     Text(
         text = text,
         fontSize = fontSize,
         fontWeight = fontWeight,
         color = color,
-        maxLines = 1,
+        maxLines = maxLines,
         overflow = TextOverflow.Ellipsis,
         textAlign = align,
         modifier = modifier,

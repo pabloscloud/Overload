@@ -9,7 +9,7 @@
   the License.
   -->
 <resources>
-    <string name="app_name">Overload</string>
+    <string name="app_name" translatable="false">Overload</string>
     <string name="navigation_drawer">Navigation Drawer</string>
 
     <!-- cloud.pablos.overload.ui.tabs.home.HomeTab -->
@@ -85,7 +85,7 @@
     <string name="footer">created with ❤️ by pabloscloud</string>
     <string name="acra_toastText">Crash detected. Please help by sending a mail!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailSubject">Overload Crash</string>
+    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
     <string name="acra_mailBody">
         Crash detected. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
         Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
@@ -111,6 +111,9 @@
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Save</string>
     <string name="pick_work_goal">Set Work Goal</string>
+    <string name="hours">hours</string>
+    <string name="minutes">minutes</string>
+    <string name="cancel">cancel</string>
 
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabPauseGoalDialog -->
     <string name="pick_pause_goal">Set Pause Goal</string>
@@ -125,4 +128,6 @@
     <string name="edit">Edit</string>
 
     <string name="select_year">Select Year</string>
+
+    <string name="unknown_tab">Unknown tab</string>
 </resources>

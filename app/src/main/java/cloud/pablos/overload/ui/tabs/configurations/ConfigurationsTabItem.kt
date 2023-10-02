@@ -64,13 +64,9 @@ fun ConfigurationsTabItem(
             tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(horizontal = 8.dp),
         )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Column {
-                ConfigurationTitle(title)
-                ConfigurationDescription(description)
-            }
+        Column() {
+            ConfigurationTitle(title)
+            ConfigurationDescription(description)
         }
     }
 }
@@ -99,7 +95,7 @@ fun ConfigurationsTabItem(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Column {
+            Column(modifier = Modifier.weight(1f)) {
                 ConfigurationTitle(title)
                 ConfigurationDescription(description)
             }
