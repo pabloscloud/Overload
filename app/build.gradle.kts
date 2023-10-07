@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "cloud.pablos.overload"
-        minSdk = libs.versions.minSdk.get().toInt()
+        minSdk = 26
         targetSdk = 34
         versionCode = 110
         versionName = "0.11.0"
