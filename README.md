@@ -76,3 +76,11 @@ Open your files app, choose the backup file, and locate the share icon or text. 
 
 ### Why does Overload rely on the Systems Sharesheet to import a backup?
 Overload utilises the Systems Sharesheet for importing backups instead of requesting broad access to all files on your device. This approach avoids the need to seek permissions that could undermine trust in the project. Moreover, Overload's reliance on the Sharesheet ensures that the app only gains access to the specific file it requires, eliminating the necessity for extensive permissions.
+
+
+### What are ongoing pauses?
+By showing the duration between the last item and the current time you can determine how long you stopped or paused working since then. You can plan how much longer your pause is at any given moment as the duration updates in real time.
+
+### Why can't I delete an ongoing pause? {#delete-pause}
+You cannot delete ongoing pauses as they are only there to indicate a pause will be created once you hit start again. If you will not hit start until the next day it will be gone and will not count against your goal. By deleting items that occurred beforehand, you can hide the pause.
+Imagine you're using the app to track your work hours. You take a break, and an ongoing pause is created. If you get ill during the day or decide not to work on the day for any other reason, the ongoing pause will vanish without affecting your work-time goal.

@@ -48,7 +48,7 @@
     <string name="learn_more">Learn more…</string>
     <string name="open_link_with">Open link with</string>
     <string name="delete_pause">Delete Pause</string>
-    <string name="delete_pause_descr">You can not delete this ongoing pause. It is only there to indicate a pause will be created once you hit start. If you will not hit start until tomorrow it will be gone and will not count against your goal.</string>
+    <string name="delete_pause_descr">You cannot delete this ongoing pause. It is only there to indicate a pause will be created once you hit start. If you will not hit start until tomorrow it will be gone and will not count against your goal.</string>
 
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Calendar</string>
