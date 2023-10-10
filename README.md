@@ -1,4 +1,4 @@
-[![Translation status](https://hosted.weblate.org/widget/overload/android/svg-badge.svg)](https://hosted.weblate.org/engage/overload/)
+[![Translation status](https://translate.codeberg.org/widget/overload/android/svg-badge.svg)](https://translate.codeberg.org/engage/overload/)
 
 # Overload
 
@@ -9,7 +9,7 @@ Overload is a user-friendly native app designed to facilitate time tracking for 
 
 Contributions are always welcome!
 
-Just create issues and pull requests or help [translating](https://hosted.weblate.org/engage/overload/) on Weblate :)
+Just create issues and pull requests or help [translating](https://translate.codeberg.org/engage/overload/) on Weblate :)
 
 
 ## Features
