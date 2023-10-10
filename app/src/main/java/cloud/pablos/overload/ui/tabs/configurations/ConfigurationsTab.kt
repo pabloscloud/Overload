@@ -27,12 +27,14 @@ import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Copyright
 import androidx.compose.material.icons.rounded.EmojiNature
 import androidx.compose.material.icons.rounded.PestControl
+import androidx.compose.material.icons.rounded.Translate
 import androidx.compose.material.icons.rounded.Unarchive
 import androidx.compose.material.icons.rounded.Work
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -292,6 +294,16 @@ fun ConfigurationsTab(state: ItemState) {
                 )
             }
 
+            // About Translations
+            item {
+                ConfigurationsTabItem(
+                    title = stringResource(id = R.string.translate),
+                    description = stringResource(id = R.string.translate_descr),
+                    link = "https://codeberg.org/pabloscloud/Overload/raw/branch/main/LICENSE".toUri(),
+                    icon = Icons.Rounded.Translate,
+                )
+            }
+
             // About License
             item {
                 ConfigurationsTabItem(
@@ -491,7 +503,7 @@ fun ConfigurationTitle(
 fun ConfigurationDescription(
     text: String,
 ) {
-    TextView(
+    Text(
         text = text,
         fontSize = MaterialTheme.typography.bodyMedium.fontSize,
         color = MaterialTheme.colorScheme.onBackground,
