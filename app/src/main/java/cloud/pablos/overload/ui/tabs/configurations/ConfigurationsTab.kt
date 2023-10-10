@@ -27,6 +27,7 @@ import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Copyright
 import androidx.compose.material.icons.rounded.EmojiNature
 import androidx.compose.material.icons.rounded.PestControl
+import androidx.compose.material.icons.rounded.Translate
 import androidx.compose.material.icons.rounded.Unarchive
 import androidx.compose.material.icons.rounded.Work
 import androidx.compose.material3.HorizontalDivider
@@ -290,6 +291,16 @@ fun ConfigurationsTab(state: ItemState) {
                     description = stringResource(id = R.string.issue_reports_descr),
                     link = "https://codeberg.org/pabloscloud/Overload/issues".toUri(),
                     icon = Icons.Rounded.EmojiNature,
+                )
+            }
+
+            // About Translations
+            item {
+                ConfigurationsTabItem(
+                    title = stringResource(id = R.string.translate),
+                    description = stringResource(id = R.string.translate_descr),
+                    link = "https://codeberg.org/pabloscloud/Overload/raw/branch/main/LICENSE".toUri(),
+                    icon = Icons.Rounded.Translate,
                 )
             }
 

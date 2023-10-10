@@ -90,4 +90,6 @@
     <string name="footer">створено за допомогою ❤️ pabloscloud</string>
     <string name="import_ol">Імпорт</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
+    <string name="translate">Перекласти</string>
+    <string name="translate_descr">Хочете перекласти додаток\? Дякую!</string>
 </resources>

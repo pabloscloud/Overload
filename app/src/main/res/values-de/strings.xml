@@ -90,4 +90,6 @@
     <string name="cancel">Abbrechen</string>
     <string name="acra_mailSubject" translatable="false">Overload Crash</string>
     <string name="app_name" translatable="false">Overload</string>
+    <string name="translate">Übersetzen</string>
+    <string name="translate_descr">Möchtest du übersetzen helfen\? Danke!</string>
 </resources>
