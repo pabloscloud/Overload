@@ -88,4 +88,6 @@
     <string name="hours">Stunden</string>
     <string name="minutes">Minuten</string>
     <string name="cancel">Abbrechen</string>
+    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
+    <string name="app_name" translatable="false">Overload</string>
 </resources>
