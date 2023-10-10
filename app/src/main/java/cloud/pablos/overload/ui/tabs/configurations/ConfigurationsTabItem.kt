@@ -64,9 +64,15 @@ fun ConfigurationsTabItem(
             tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(horizontal = 8.dp),
         )
-        Column() {
-            ConfigurationTitle(title)
-            ConfigurationDescription(description)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Column {
+                ConfigurationTitle(title)
+                ConfigurationDescription(description)
+            }
         }
     }
 }
