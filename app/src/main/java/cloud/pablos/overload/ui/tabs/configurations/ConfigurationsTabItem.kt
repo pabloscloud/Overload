@@ -65,6 +65,8 @@ fun ConfigurationsTabItem(
             modifier = Modifier.padding(horizontal = 8.dp),
         )
         Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth(),
         ) {
             Column {
@@ -99,7 +101,7 @@ fun ConfigurationsTabItem(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Column {
+            Column(modifier = Modifier.weight(1f)) {
                 ConfigurationTitle(title)
                 ConfigurationDescription(description)
             }

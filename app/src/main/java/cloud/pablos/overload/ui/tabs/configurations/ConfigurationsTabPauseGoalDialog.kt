@@ -80,7 +80,7 @@ fun ConfigurationsTabPauseGoalDialog(onClose: () -> Unit) {
                         hours = it.toIntOrNull()
                     },
                     singleLine = true,
-                    suffix = { Text(text = "hours") },
+                    suffix = { Text(text = stringResource(R.string.hours)) },
                     keyboardOptions = KeyboardOptions.Default.copy(
                         keyboardType = KeyboardType.Number,
                     ),
@@ -100,7 +100,7 @@ fun ConfigurationsTabPauseGoalDialog(onClose: () -> Unit) {
                         minutes = it.toIntOrNull()
                     },
                     singleLine = true,
-                    suffix = { Text(text = "minutes") },
+                    suffix = { Text(text = stringResource(R.string.minutes)) },
                     keyboardOptions = KeyboardOptions.Default.copy(
                         keyboardType = KeyboardType.Number,
                     ),
@@ -144,7 +144,7 @@ fun ConfigurationsTabPauseGoalDialog(onClose: () -> Unit) {
                     disabledContentColor = MaterialTheme.colorScheme.onSurface,
                 ),
             ) {
-                Text(text = "Cancel")
+                Text(text = stringResource(R.string.cancel))
             }
         },
         modifier = Modifier.padding(16.dp),

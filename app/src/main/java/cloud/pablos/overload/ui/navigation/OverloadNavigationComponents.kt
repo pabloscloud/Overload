@@ -139,8 +139,14 @@ fun OverloadBottomNavigationBar(
                         )
                     },
                     label = {
+                        val label = when (overloadDestination.route) {
+                            "Home" -> { stringResource(id = R.string.home) }
+                            "Calendar" -> { stringResource(id = R.string.calendar) }
+                            "Configurations" -> { stringResource(id = R.string.configurations) }
+                            else -> { stringResource(id = R.string.unknown_day) }
+                        }
                         TextView(
-                            text = overloadDestination.label,
+                            text = label,
                             fontSize = MaterialTheme.typography.labelLarge.fontSize,
                             fontWeight =
                             if (selectedDestination == overloadDestination.route) {

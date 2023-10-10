@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2022 The Android Open Source Project
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -7,17 +8,13 @@
   is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
-  -->
-<resources>
-    <string name="app_name">Overload</string>
+  --><resources>
+    <string name="app_name" translatable="false">Overload</string>
     <string name="navigation_drawer">Navigation Drawer</string>
-
     <!-- cloud.pablos.overload.ui.tabs.home.HomeTab -->
     <string name="home">Home</string>
-
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
-
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
@@ -26,36 +23,28 @@
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
     <string name="unknown_day">Unknown day</string>
-
     <string name="no_items_title">No items recorded</string>
     <string name="no_items_subtitle">There are no saved items for that day.</string>
-
     <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteBottomAppBar -->
     <string name="select_all_items_of_selected_day">select all items of selected day</string>
     <string name="deselect_all_items_of_selected_day">deselect all items of selected day</string>
     <string name="delete_items_forever">delete items forever</string>
-
     <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteTopAppBar -->
     <string name="itemCount_selected">selected</string>
     <string name="get_out_of_isDeleting">gets you out of deletion mode</string>
-
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabFab -->
     <string name="start">Start</string>
     <string name="stop">Stop</string>
-
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabDeletePauseDialog -->
     <string name="close">Close</string>
     <string name="learn_more">Learn more…</string>
     <string name="open_link_with">Open link with</string>
     <string name="delete_pause">Delete Pause</string>
-    <string name="delete_pause_descr">You can not delete this ongoing pause. It is only there to indicate a pause will be created once you hit start. If you will not hit start until tomorrow it will be gone and will not count against your goal.</string>
-
+    <string name="delete_pause_descr">You cannot delete this ongoing pause. It is only there to indicate a pause will be created once you hit start. If you will not hit start until tomorrow it will be gone and will not count against your goal.</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Calendar</string>
-
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
     <string name="configurations">Configurations</string>
-
     <string name="goals">Goals</string>
     <string name="work">Work</string>
     <string name="work_goal_descr">Set a goal for work</string>
@@ -85,7 +74,7 @@
     <string name="footer">created with ❤️ by pabloscloud</string>
     <string name="acra_toastText">Crash detected. Please help by sending a mail!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailSubject">Overload Crash</string>
+    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
     <string name="acra_mailBody">
         Crash detected. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
         Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
@@ -107,22 +96,22 @@
         \n
         Thanks for patience!
     </string>
-
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Save</string>
     <string name="pick_work_goal">Set Work Goal</string>
-
+    <string name="hours">hours</string>
+    <string name="minutes">minutes</string>
+    <string name="cancel">cancel</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabPauseGoalDialog -->
     <string name="pick_pause_goal">Set Pause Goal</string>
-
     <!-- cloud.pablos.overload.ui.views.DayView -->
     <string name="work_left">Work left</string>
     <string name="pause_left">Pause left</string>
-
     <!-- cloud.pablos.overload.ui.views.DayViewItem -->
     <string name="arrow_forward">arrow forward describing the direction of both times from start to end</string>
-
     <string name="edit">Edit</string>
-
     <string name="select_year">Select Year</string>
+    <string name="unknown_tab">Unknown tab</string>
+    <string name="translate">Translate</string>
+    <string name="translate_descr">Want to translate the app\? Thanks!</string>
 </resources>

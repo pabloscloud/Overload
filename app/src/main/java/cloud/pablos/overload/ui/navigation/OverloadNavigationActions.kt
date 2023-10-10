@@ -23,7 +23,6 @@ data class OverloadTopLevelDestination(
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
     val iconTextId: Int,
-    val label: String,
 )
 
 class OverloadNavigationActions(private val navController: NavHostController) {
@@ -51,20 +50,17 @@ val TOP_LEVEL_DESTINATIONS = listOf(
         selectedIcon = Icons.Filled.CalendarToday,
         unselectedIcon = Icons.Outlined.CalendarToday,
         iconTextId = R.string.home,
-        label = "Home",
     ),
     OverloadTopLevelDestination(
         route = OverloadRoute.CALENDAR,
         selectedIcon = Icons.Filled.CalendarMonth,
         unselectedIcon = Icons.Outlined.CalendarMonth,
         iconTextId = R.string.calendar,
-        label = "Calendar",
     ),
     OverloadTopLevelDestination(
         route = OverloadRoute.CONFIGURATIONS,
         selectedIcon = Icons.Filled.Settings,
         unselectedIcon = Icons.Outlined.Settings,
         iconTextId = R.string.configurations,
-        label = "Configurations",
     ),
 )

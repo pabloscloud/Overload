@@ -1,0 +1,4 @@
+- adds german translations
+- adds ukrainian translations
+- adds translation link in configurations
+- fixes a crash on startup on older android versions

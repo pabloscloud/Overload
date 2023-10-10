@@ -66,7 +66,7 @@ fun HomeTabProgress(
             Column(
                 modifier = Modifier.padding(horizontal = 10.dp),
             ) {
-                TextView(title)
+                TextView(title, maxLines = 2)
                 TextView(subtitle)
             }
         }
