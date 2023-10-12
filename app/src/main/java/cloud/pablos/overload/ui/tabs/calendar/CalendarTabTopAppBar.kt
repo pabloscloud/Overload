@@ -20,6 +20,8 @@ import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.ui.views.TextView
+import cloud.pablos.overload.ui.views.parseToLocalDateTime
+import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
@@ -29,6 +31,13 @@ fun CalendarTabTopAppBar(
     onEvent: (ItemEvent) -> Unit,
 ) {
     val yearDialogState = remember { mutableStateOf(false) }
+
+    val firstYear = if (state.items.isEmpty()) {
+        LocalDate.now().year
+    } else {
+        parseToLocalDateTime(state.items.first().startTime).year
+    }
+    val yearsCount = firstYear - LocalDate.now().year
 
     Surface(
         tonalElevation = NavigationBarDefaults.Elevation,
@@ -43,14 +52,16 @@ fun CalendarTabTopAppBar(
                 )
             },
             actions = {
-                Button(
-                    onClick = { yearDialogState.value = true },
-                    modifier = Modifier.padding(horizontal = 8.dp),
-                ) {
-                    TextView(state.selectedYearCalendar.toString())
-                }
-                if (yearDialogState.value) {
-                    CalendarTabYearDialog(onClose = { yearDialogState.value = false }, onEvent = onEvent)
+                if (yearsCount > 0) {
+                    Button(
+                        onClick = { yearDialogState.value = true },
+                        modifier = Modifier.padding(horizontal = 8.dp),
+                    ) {
+                        TextView(state.selectedYearCalendar.toString())
+                    }
+                    if (yearDialogState.value) {
+                        CalendarTabYearDialog(firstYear = firstYear, onEvent = onEvent, onClose = { yearDialogState.value = false })
+                    }
                 }
             },
         )
