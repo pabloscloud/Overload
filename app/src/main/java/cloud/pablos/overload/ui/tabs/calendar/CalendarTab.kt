@@ -102,7 +102,6 @@ fun CalendarTab(
                     .toString(),
             ),
         )
-        onEvent(ItemEvent.SaveItem)
 
         if (selectedYear != selectedDay.year) {
             onEvent(ItemEvent.SetSelectedYearCalendar(selectedDay.year))
