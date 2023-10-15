@@ -6,22 +6,18 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
-import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.core.view.WindowCompat
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import cloud.pablos.overload.data.item.ItemDatabase
 import cloud.pablos.overload.data.item.ItemViewModel
-import cloud.pablos.overload.ui.tabs.configurations.handleIntent
+import cloud.pablos.overload.ui.tabs.home.startOrStopPause
 import cloud.pablos.overload.ui.theme.OverloadTheme
-import com.google.accompanist.adaptive.calculateDisplayFeatures
 
-class MainActivity : ComponentActivity() {
+class ShortcutActivity : ComponentActivity() {
     private val db by lazy {
         Room.databaseBuilder(
             applicationContext,
@@ -41,34 +37,19 @@ class MainActivity : ComponentActivity() {
     )
 
     @RequiresApi(Build.VERSION_CODES.S)
-    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
         setContent {
             OverloadTheme {
-                val windowSize = calculateWindowSizeClass(this)
-                val displayFeatures = calculateDisplayFeatures(this)
-
                 val state by viewModel.state.collectAsState()
                 val onEvent = viewModel::onEvent
 
-                OverloadApp(
-                    windowSize = windowSize,
-                    displayFeatures = displayFeatures,
-                    state = state,
-                    onEvent = onEvent,
-                )
+                val context = LocalContext.current
+
+                startOrStopPause(state, onEvent, context)
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        handleIntent(intent, lifecycleScope, db, this, contentResolver)
-        intent = null
+        finish()
     }
 }

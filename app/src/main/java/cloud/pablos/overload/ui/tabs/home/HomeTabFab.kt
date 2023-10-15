@@ -1,5 +1,6 @@
 package cloud.pablos.overload.ui.tabs.home
 
+import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Row
@@ -13,11 +14,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.utils.ShortcutUtil
 import cloud.pablos.overload.ui.views.TextView
 import cloud.pablos.overload.ui.views.extractDate
 import cloud.pablos.overload.ui.views.parseToLocalDateTime
@@ -37,40 +40,11 @@ fun HomeTabFab(
         extractDate(startTime) == date
     }
 
+    val context = LocalContext.current
+
     FloatingActionButton(
         onClick = {
-            val isFirst = itemsForToday.isEmpty()
-            val isNotOngoing = itemsForToday.isEmpty() || !state.items.last().ongoing
-
-            if (isFirst) {
-                onEvent(ItemEvent.SetStart(start = LocalDateTime.now().toString()))
-                onEvent(ItemEvent.SetOngoing(ongoing = true))
-                onEvent(ItemEvent.SetPause(pause = false))
-                onEvent(ItemEvent.SaveItem)
-
-                onEvent(ItemEvent.SetIsOngoing(isOngoing = true))
-            } else if (isNotOngoing) {
-                onEvent(ItemEvent.SetStart(start = itemsForToday.last().endTime))
-                onEvent(ItemEvent.SetEnd(end = LocalDateTime.now().toString()))
-                onEvent(ItemEvent.SetOngoing(ongoing = false))
-                onEvent(ItemEvent.SetPause(pause = true))
-                onEvent(ItemEvent.SaveItem)
-
-                onEvent(ItemEvent.SetStart(start = LocalDateTime.now().toString()))
-                onEvent(ItemEvent.SetOngoing(ongoing = true))
-                onEvent(ItemEvent.SetPause(pause = false))
-                onEvent(ItemEvent.SaveItem)
-
-                onEvent(ItemEvent.SetIsOngoing(isOngoing = true))
-            } else {
-                onEvent(ItemEvent.SetId(id = itemsForToday.last().id))
-                onEvent(ItemEvent.SetStart(start = itemsForToday.last().startTime))
-                onEvent(ItemEvent.SetEnd(end = LocalDateTime.now().toString()))
-                onEvent(ItemEvent.SetOngoing(ongoing = false))
-                onEvent(ItemEvent.SaveItem)
-
-                onEvent(ItemEvent.SetIsOngoing(isOngoing = false))
-            }
+            startOrStopPause(state, onEvent, context)
         },
         modifier = Modifier
             .padding(10.dp),
@@ -103,6 +77,54 @@ fun HomeTabFab(
                 modifier = Modifier.padding(8.dp, 0.dp, 8.dp, 0.dp),
             )
         }
+    }
+}
+
+fun startOrStopPause(state: ItemState, onEvent: (ItemEvent) -> Unit, context: Context) {
+    val date = LocalDate.now()
+
+    val itemsForToday = state.items.filter { item ->
+        val startTime = parseToLocalDateTime(item.startTime)
+        extractDate(startTime) == date
+    }
+
+    val isFirst = itemsForToday.isEmpty()
+    val isNotOngoing = itemsForToday.isEmpty() || !state.items.last().ongoing
+
+    if (isFirst) {
+        onEvent(ItemEvent.SetStart(start = LocalDateTime.now().toString()))
+        onEvent(ItemEvent.SetOngoing(ongoing = true))
+        onEvent(ItemEvent.SetPause(pause = false))
+        onEvent(ItemEvent.SaveItem)
+
+        onEvent(ItemEvent.SetIsOngoing(isOngoing = true))
+    } else if (isNotOngoing) {
+        onEvent(ItemEvent.SetStart(start = itemsForToday.last().endTime))
+        onEvent(ItemEvent.SetEnd(end = LocalDateTime.now().toString()))
+        onEvent(ItemEvent.SetOngoing(ongoing = false))
+        onEvent(ItemEvent.SetPause(pause = true))
+        onEvent(ItemEvent.SaveItem)
+
+        onEvent(ItemEvent.SetStart(start = LocalDateTime.now().toString()))
+        onEvent(ItemEvent.SetOngoing(ongoing = true))
+        onEvent(ItemEvent.SetPause(pause = false))
+        onEvent(ItemEvent.SaveItem)
+
+        onEvent(ItemEvent.SetIsOngoing(isOngoing = true))
+
+        ShortcutUtil.removeShortcutStopPause(context)
+        ShortcutUtil.createShortcutStartPause(context)
+    } else {
+        onEvent(ItemEvent.SetId(id = itemsForToday.last().id))
+        onEvent(ItemEvent.SetStart(start = itemsForToday.last().startTime))
+        onEvent(ItemEvent.SetEnd(end = LocalDateTime.now().toString()))
+        onEvent(ItemEvent.SetOngoing(ongoing = false))
+        onEvent(ItemEvent.SaveItem)
+
+        onEvent(ItemEvent.SetIsOngoing(isOngoing = false))
+
+        ShortcutUtil.removeShortcutStartPause(context)
+        ShortcutUtil.addShortcutStopPause(context)
     }
 }
 

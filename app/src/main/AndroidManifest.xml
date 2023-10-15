@@ -36,11 +36,18 @@
                 <data android:mimeType="text/comma-separated-values" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.ShortcutActivity"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:exported="false"
+            android:excludeFromRecents="true">
+        </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="cloud.pablos.overload.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true"
+            android:excludeFromRecents="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
