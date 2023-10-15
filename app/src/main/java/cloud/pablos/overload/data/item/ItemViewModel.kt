@@ -1,15 +1,22 @@
 package cloud.pablos.overload.data.item
 
+import android.content.Context
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import cloud.pablos.overload.ui.tabs.home.startOrStopPause
+import cloud.pablos.overload.ui.utils.ShortcutUtil
+import cloud.pablos.overload.ui.views.extractDate
+import cloud.pablos.overload.ui.views.parseToLocalDateTime
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -140,5 +147,59 @@ class ItemViewModel(
                 _state.update { it.copy(selectedItemsHome = event.selectedItems) }
             }
         }
+    }
+
+    fun shortcutPressed(context: Context) {
+        val state = state
+
+        Log.d("123123", "items: $state")
+
+        startOrStopPause(state, onEvent, context)
+
+        /* val date = LocalDate.now()
+
+        val itemsForToday = state.items.filter { item ->
+            val startTime = parseToLocalDateTime(item.startTime)
+            extractDate(startTime) == date
+        }
+
+        val isFirst = itemsForToday.isEmpty()
+        val isNotOngoing = itemsForToday.isEmpty() || !state.items.last().ongoing
+
+        if (isFirst) {
+            onEvent(ItemEvent.SetStart(start = LocalDateTime.now().toString()))
+            onEvent(ItemEvent.SetOngoing(ongoing = true))
+            onEvent(ItemEvent.SetPause(pause = false))
+            onEvent(ItemEvent.SaveItem)
+
+            onEvent(ItemEvent.SetIsOngoing(isOngoing = true))
+        } else if (isNotOngoing) {
+            onEvent(ItemEvent.SetStart(start = itemsForToday.last().endTime))
+            onEvent(ItemEvent.SetEnd(end = LocalDateTime.now().toString()))
+            onEvent(ItemEvent.SetOngoing(ongoing = false))
+            onEvent(ItemEvent.SetPause(pause = true))
+            onEvent(ItemEvent.SaveItem)
+
+            onEvent(ItemEvent.SetStart(start = LocalDateTime.now().toString()))
+            onEvent(ItemEvent.SetOngoing(ongoing = true))
+            onEvent(ItemEvent.SetPause(pause = false))
+            onEvent(ItemEvent.SaveItem)
+
+            onEvent(ItemEvent.SetIsOngoing(isOngoing = true))
+
+            ShortcutUtil.removeShortcutStopPause(context)
+            ShortcutUtil.createShortcutStartPause(context)
+        } else {
+            onEvent(ItemEvent.SetId(id = itemsForToday.last().id))
+            onEvent(ItemEvent.SetStart(start = itemsForToday.last().startTime))
+            onEvent(ItemEvent.SetEnd(end = LocalDateTime.now().toString()))
+            onEvent(ItemEvent.SetOngoing(ongoing = false))
+            onEvent(ItemEvent.SaveItem)
+
+            onEvent(ItemEvent.SetIsOngoing(isOngoing = false))
+
+            ShortcutUtil.removeShortcutStartPause(context)
+            ShortcutUtil.addShortcutStopPause(context)
+        }*/
     }
 }
