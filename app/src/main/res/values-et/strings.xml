@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
+    <string name="app_name" translatable="false">Overload</string>
+    <string name="select_all_items_of_selected_day">valige kõik valitud päeva elemendid</string>
+    <string name="storage">ladustamine</string>
+    <string name="delete_pause_descr">Seda käimasolevat pausi ei saa kustutada. See on seal ainult selleks, et näidata, et paus luuakse, kui vajutate nupule start. Kui vajutate start alles homme, on see kadunud ja seda ei arvestata teie eesmärgist maha.</string>
+    <string name="hours">tundi</string>
+    <string name="close">Sulge</string>
+    <string name="save">Säästa</string>
+    <string name="goals">Eesmärgid</string>
+    <string name="system_logs_descr">Süsteemi logide lisamine krahhiaruannetesse</string>
+    <string name="crash_reports_descr">Küsige õnnetusaruannete saatmist</string>
+    <string name="get_out_of_isDeleting">viib teid kustutusrežiimist välja</string>
+    <string name="system_logs">Süsteemi logid</string>
+    <string name="backup_descr">Varundage kõik andmed regulaarselt turvalisse kohta!</string>
+    <string name="friday">Reede</string>
+    <string name="tuesday">Teisipäev</string>
+    <string name="acra_toastText">Kokkupõrge tuvastati. Palun aidake, saates meilile!</string>
+    <string name="import_descr">Importida varukoopiast</string>
+    <string name="spread_across_days">Jaguneb päevade peale</string>
+    <string name="translate">Tõlgi</string>
+    <string name="import_backup">Impordi varukoopia</string>
+    <string name="learn_more">Lisateave…</string>
+    <string name="sourcecode_descr">Tahad näha sisemust\? Mine edasi!</string>
+    <string name="pause">Paus</string>
+    <string name="delete_items_forever">kustutada objekte igaveseks</string>
+    <string name="edit">Muuda</string>
+    <string name="pick_work_goal">Määra töö eesmärk</string>
+    <string name="acra_mailBody">Kokkupõrge tuvastatud. Palun aidake meil parandada, saates selle e-kirja, et saaksime selle võimalikult kiiresti parandada.
+\n Vabandame tekitatud ebamugavuste pärast! Teie panus on selle probleemi lahendamiseks väga oluline.
+\n
+\n Kirjeldus - Mida tegite, kui rakendus kukkus\?
+\n
+\n
+\n Reprodutseerimise sammud - Kas saate esitada samm-sammult juhendi, kuidas krahhi reprodutseerida\?
+\n
+\n
+\n Visuaalsed andmed - palun lisage ekraanipildid või ekraanitõmmised.
+\n
+\n
+\n Hiljutised muudatused - Kas uuendasite hiljuti rakendust või muutsite seadme seadeid\?
+\n
+\n
+\n Sagedus - Kui sageli see krahh esineb\?
+\n
+\n
+\n Täname kannatlikkuse eest!</string>
+    <string name="wednesday">Kolmapäev</string>
+    <string name="monday">Esmaspäev</string>
+    <string name="unknown_day">Tundmatu päev</string>
+    <string name="translate_descr">Soovid rakendust tõlkida\? Aitäh!</string>
+    <string name="start">Start</string>
+    <string name="license_descr">GNU GPL v3</string>
+    <string name="issue_reports">Teatage vigadest</string>
+    <string name="stop">Stop</string>
+    <string name="import_failure">Varukoopia importimine ebaõnnestus</string>
+    <string name="select_year">Valige aasta</string>
+    <string name="pick_pause_goal">Seatud pausi eesmärk</string>
+    <string name="work">Töö</string>
+    <string name="backup">Varukoopia</string>
+    <string name="spans_days">Ajakirje hõlmab mitu päeva</string>
+    <string name="license">Litsents</string>
+    <string name="issue_reports_descr">Märkad midagi kummalist\? Palun teatage sellest!</string>
+    <string name="about">kohta</string>
+    <string name="work_goal_descr">Seadke tööle eesmärk</string>
+    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
+    <string name="open_link_with">Avatud link koos</string>
+    <string name="import_backup_descr">Andmete importimiseks rakendusse kasutage teiste rakenduste aktsiate lehte. See võimaldab rakendusel turvalist juurdepääsu jagatud andmetele ja nende importimist teie andmebaasi.</string>
+    <string name="configurations">Konfiguratsioonid</string>
+    <string name="spans_days_descr">Viimane ajakulu hõlmab mitut päeva. Võib-olla unustasite selle peatada. Kas soovite lõppu reguleerida\?</string>
+    <string name="sunday">Pühapäev</string>
+    <string name="no_items_subtitle">Selleks päevaks ei ole salvestatud objekte.</string>
+    <string name="adjust">Reguleeri</string>
+    <string name="crash_reports">Õnnetusaruanded</string>
+    <string name="home">Kodu</string>
+    <string name="cancel">tühistada</string>
+    <string name="yesterday">Eile</string>
+    <string name="navigation_drawer">Navigatsiooni sahtlisse</string>
+    <string name="minutes">minutit</string>
+    <string name="arrow_forward">nool ettepoole, mis kirjeldab mõlema aja suunda algusest lõpuni</string>
+    <string name="delete_pause">Kustuta paus</string>
+    <string name="deselect_all_items_of_selected_day">tühistab kõigi valitud päeva objektide valiku</string>
+    <string name="analytics">analüütika</string>
+    <string name="no_items_title">Puuduvad kirjed</string>
+    <string name="saturday">Laupäev</string>
+    <string name="work_left">Töö vasakule</string>
+    <string name="sourcecode">Allikakood</string>
+    <string name="itemCount_selected">valitud</string>
+    <string name="import_success">Varukoopia edukalt imporditud</string>
+    <string name="pause_goal_descr">Seadke pausi eesmärk</string>
+    <string name="thursday">Neljapäev</string>
+    <string name="footer">loodud koos ❤️ by pabloscloud</string>
+    <string name="calendar">Kalender</string>
+    <string name="today">Täna</string>
+    <string name="pause_left">Paus vasakule</string>
+    <string name="import_ol">Impordi</string>
+</resources>

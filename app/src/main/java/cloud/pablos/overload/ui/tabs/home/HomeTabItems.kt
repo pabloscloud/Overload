@@ -12,23 +12,18 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-@RequiresApi(Build.VERSION_CODES.O)
 val dateFormat = SimpleDateFormat("EEEE", Locale.getDefault())
 val daysBeforeYesterday: Calendar = Calendar.getInstance().apply {
     time = Date()
     add(Calendar.DATE, -2)
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 val dayBeforeYesterday: String = dateFormat.format(daysBeforeYesterday.time)
 
-@RequiresApi(Build.VERSION_CODES.O)
 val dateFormatSymbols: DateFormatSymbols = DateFormatSymbols.getInstance(Locale.getDefault())
 
-@RequiresApi(Build.VERSION_CODES.O)
 val dayNames: Array<String> = dateFormatSymbols.weekdays
 
-@RequiresApi(Build.VERSION_CODES.O)
 val dayBeforeYesterdayResId = when (dayBeforeYesterday) {
     dayNames[Calendar.MONDAY] -> R.string.monday
     dayNames[Calendar.TUESDAY] -> R.string.tuesday

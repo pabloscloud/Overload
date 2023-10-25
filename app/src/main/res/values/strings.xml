@@ -8,7 +8,7 @@
   is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
-  --><resources>
+  --><resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="app_name" translatable="false">Overload</string>
     <string name="navigation_drawer">Navigation Drawer</string>
     <!-- cloud.pablos.overload.ui.tabs.home.HomeTab -->
@@ -101,7 +101,7 @@
     <string name="pick_work_goal">Set Work Goal</string>
     <string name="hours">hours</string>
     <string name="minutes">minutes</string>
-    <string name="cancel">cancel</string>
+    <string name="cancel">Cancel</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabPauseGoalDialog -->
     <string name="pick_pause_goal">Set Pause Goal</string>
     <!-- cloud.pablos.overload.ui.views.DayView -->
@@ -111,7 +111,15 @@
     <string name="arrow_forward">arrow forward describing the direction of both times from start to end</string>
     <string name="edit">Edit</string>
     <string name="select_year">Select Year</string>
-    <string name="unknown_tab">Unknown tab</string>
     <string name="translate">Translate</string>
     <string name="translate_descr">Want to translate the app\? Thanks!</string>
+    <string name="adjust">Adjust</string>
+    <string name="adjust_end_time">Adjust end time</string>
+    <string name="adjust_descr">Adjust the end time to whenever it actually ended. </string>
+    <string name="spread_across_days">Spread across days</string>
+    <string name="spans_days">Time entry spans multiple days</string>
+    <string name="spans_days_descr">A time entry spans across multiple days. Perhaps you forgot to stop it. Do you want to adjust the end?</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

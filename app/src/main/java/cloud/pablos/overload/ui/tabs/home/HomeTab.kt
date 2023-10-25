@@ -136,14 +136,12 @@ fun HomeTab(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun getFormattedDate(daysBefore: Long): String {
     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
     val date = LocalDate.now().minusDays(daysBefore)
     return date.format(formatter)
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun getFormattedDate(): String {
     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
     val date = LocalDate.now()

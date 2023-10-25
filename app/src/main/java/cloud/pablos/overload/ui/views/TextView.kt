@@ -17,7 +17,7 @@ fun TextView(
     fontWeight: FontWeight = FontWeight.Normal,
     color: Color = Color.Unspecified,
     align: TextAlign = TextAlign.Left,
-    maxLines: Int = 1
+    maxLines: Int = 1,
 ) {
     Text(
         text = text,

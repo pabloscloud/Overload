@@ -74,7 +74,6 @@ fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit, bottomPa
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MonthNameHeader(month: Month) {
     TextView(
@@ -192,7 +191,6 @@ fun EmptyDayCell() {
     )
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun getFormattedDate(date: LocalDate): String {
     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
     return date.format(formatter)

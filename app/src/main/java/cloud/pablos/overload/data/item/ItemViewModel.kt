@@ -1,7 +1,5 @@
 package cloud.pablos.overload.data.item
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +10,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
-@RequiresApi(Build.VERSION_CODES.O)
 class ItemViewModel(
     private val dao: ItemDao,
 ) : ViewModel() {
@@ -138,6 +135,30 @@ class ItemViewModel(
 
             is ItemEvent.SetSelectedItemsHome -> {
                 _state.update { it.copy(selectedItemsHome = event.selectedItems) }
+            }
+
+            is ItemEvent.SetForgotToStopDialogShown -> {
+                _state.update {
+                    it.copy(
+                        isForgotToStopDialogShown = event.isForgotToStopDialogShown,
+                    )
+                }
+            }
+
+            is ItemEvent.SetAdjustEndDialogShown -> {
+                _state.update {
+                    it.copy(
+                        isAdjustEndDialogShown = event.isAdjustEndDialogShown,
+                    )
+                }
+            }
+
+            is ItemEvent.SetSpreadAcrossDaysDialogShown -> {
+                _state.update {
+                    it.copy(
+                        isSpreadAcrossDaysDialogShown = event.isSpreadAcrossDaysDialogShown,
+                    )
+                }
             }
         }
     }

@@ -21,9 +21,12 @@ import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -49,6 +52,9 @@ import cloud.pablos.overload.ui.utils.OverloadNavigationContentPosition
 import cloud.pablos.overload.ui.utils.OverloadNavigationType
 import cloud.pablos.overload.ui.utils.isBookPosture
 import cloud.pablos.overload.ui.utils.isSeparating
+import cloud.pablos.overload.ui.views.AdjustEndDialog
+import cloud.pablos.overload.ui.views.ForgotToStopDialog
+import cloud.pablos.overload.ui.views.SpreadAcrossDaysDialog
 import kotlinx.coroutines.launch
 
 @RequiresApi(Build.VERSION_CODES.S)
@@ -222,6 +228,21 @@ fun OverloadAppContent(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
+    var forgotDialogState by remember { mutableStateOf(false) }
+    LaunchedEffect(state.isForgotToStopDialogShown) {
+        forgotDialogState = state.isForgotToStopDialogShown
+    }
+
+    var adjustEndDialogState by remember { mutableStateOf(false) }
+    LaunchedEffect(state.isAdjustEndDialogShown) {
+        adjustEndDialogState = state.isAdjustEndDialogShown
+    }
+
+    var spreadAcrossDaysDialogState by remember { mutableStateOf(false) }
+    LaunchedEffect(state.isSpreadAcrossDaysDialogShown) {
+        spreadAcrossDaysDialogState = state.isSpreadAcrossDaysDialogShown
+    }
+
     Row(modifier = modifier.fillMaxSize()) {
         AnimatedVisibility(visible = navigationType == OverloadNavigationType.NAVIGATION_RAIL) {
             OverloadNavigationRail(
@@ -265,6 +286,28 @@ fun OverloadAppContent(
                 )
             }
         }
+    }
+    if (forgotDialogState) {
+        ForgotToStopDialog(
+            onClose = { onEvent(ItemEvent.SetForgotToStopDialogShown(false)) },
+            onEvent,
+        )
+    }
+
+    if (adjustEndDialogState) {
+        AdjustEndDialog(
+            onClose = { onEvent(ItemEvent.SetAdjustEndDialogShown(false)) },
+            state,
+            onEvent,
+        )
+    }
+
+    if (spreadAcrossDaysDialogState) {
+        SpreadAcrossDaysDialog(
+            onClose = { onEvent(ItemEvent.SetSpreadAcrossDaysDialogShown(false)) },
+            state,
+            onEvent,
+        )
     }
 }
 

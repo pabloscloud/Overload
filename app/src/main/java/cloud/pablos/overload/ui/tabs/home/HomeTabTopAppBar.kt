@@ -1,7 +1,5 @@
 package cloud.pablos.overload.ui.tabs.home
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarDefaults
@@ -14,7 +12,6 @@ import cloud.pablos.overload.R
 import cloud.pablos.overload.ui.views.TextView
 
 @OptIn(ExperimentalMaterial3Api::class)
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeTabTopAppBar() {
     Surface(

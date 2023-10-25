@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
+    <string name="app_name" translatable="false">Overload</string>
+    <string name="friday">Fredag</string>
+    <string name="tuesday">Tirsdag</string>
+    <string name="wednesday">Onsdag</string>
+    <string name="monday">Mandag</string>
+    <string name="unknown_day">Ukjent dag</string>
+    <string name="sunday">Søndag</string>
+    <string name="home">Hjem</string>
+    <string name="yesterday">I går</string>
+    <string name="navigation_drawer">Navigasjonsskuff</string>
+    <string name="saturday">Lørdag</string>
+    <string name="thursday">Torsdag</string>
+    <string name="today">I dag</string>
+</resources>

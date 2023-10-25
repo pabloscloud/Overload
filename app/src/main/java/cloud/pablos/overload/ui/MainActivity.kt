@@ -33,7 +33,6 @@ class MainActivity : ComponentActivity() {
     private val viewModel by viewModels<ItemViewModel>(
         factoryProducer = {
             object : ViewModelProvider.Factory {
-                @RequiresApi(Build.VERSION_CODES.O)
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
                     return ItemViewModel(db.itemDao()) as T
                 }

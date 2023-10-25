@@ -3,7 +3,7 @@
     <string name="acra_mailSubject" translatable="false">Overload Crash</string>
     <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">вибрати всі елементи обраного дня</string>
-    <string name="delete_pause_descr">Ви не можете видалити цю поточну паузу. Вона лише вказує на те, що пауза буде створена, як тільки ви натиснете старт. Якщо ви не натиснете старт до завтра, вона зникне і не буде зарахована до вашої мети.</string>
+    <string name="delete_pause_descr">Ви не можете видалити цю поточну паузу. Вона лише вказує на те, що пауза буде створена, як тільки Ви натиснете «Старт». Якщо не натиснути «Старт» до завтра, вона зникне і не буде зарахована до Вашої мети.</string>
     <string name="close">Закрити</string>
     <string name="goals">Цілі</string>
     <string name="get_out_of_isDeleting">виводить з режиму видалення</string>
@@ -13,33 +13,32 @@
     <string name="learn_more">Дізнатися більше…</string>
     <string name="delete_items_forever">видалити елементи назавжди</string>
     <string name="edit">Редагувати</string>
-    <string name="acra_mailBody">Виявлено збій. Будь ласка, допоможіть нам покращити роботу сайту, надіславши цей лист, щоб ми могли виправити це якнайшвидше.
+    <string name="acra_mailBody">Виявлено збій. Будь ласка, допоможіть нам покращити програму, надіславши цей лист, щоб ми могли виправити це якнайшвидше.
 \nВибачте за незручності! Ваш внесок дуже важливий для вирішення цієї проблеми.
 \n
-\nОпис - Що ви робили, коли програма завершила роботу\?
+\nОпис – Що Ви робили, коли програма завершила роботу\?
 \n
 \n
-\nКроки для відтворення - Чи можете ви надати покрокову інструкцію, як відтворити збій\?
+\nКроки для відтворення – Чи можете Ви надати покрокову інструкцію, як відтворити збій\?
 \n
 \n
-\nВізуальні матеріали - Додайте будь-які скріншоти або записи з екрану.
+\nВізуальні матеріали – Додайте будь-які скріншоти або записи з екрану.
 \n
 \n
-\nНещодавні зміни - Чи нещодавно ви оновлювали додаток або змінювали налаштування пристрою\?
+\nНещодавні зміни – Чи оновлювали Ви нещодавно додаток, чи змінювали налаштування пристрою\?
 \n
 \n
-\nЧастота - Як часто відбувається цей збій\?
+\nЧастота – Як часто відбувається цей збій\?
 \n
 \n
 \nДякуємо за терпіння!</string>
     <string name="wednesday">Середа</string>
     <string name="monday">Понеділок</string>
     <string name="unknown_day">Невідомий день</string>
-    <string name="unknown_tab">Невідома вкладка</string>
     <string name="start">Старт</string>
     <string name="select_year">Виберіть рік</string>
     <string name="work_goal_descr">Встановіть мету для роботи</string>
-    <string name="open_link_with">Відкрийте посилання на</string>
+    <string name="open_link_with">Відкрийте за допомогою</string>
     <string name="configurations">Конфігурації</string>
     <string name="sunday">Неділя</string>
     <string name="no_items_subtitle">Для цього дня немає збережених позицій.</string>
@@ -56,17 +55,17 @@
     <string name="thursday">Четвер</string>
     <string name="calendar">Календар</string>
     <string name="today">Сьогодні</string>
-    <string name="pause_left">Пауза ліворуч</string>
+    <string name="pause_left">Залишилася пауза</string>
     <string name="storage">сховище</string>
     <string name="hours">годин</string>
     <string name="save">Зберегти</string>
-    <string name="system_logs_descr">Включіть системні журнали до звітів про аварії</string>
-    <string name="crash_reports_descr">Попросіть надсилати звіти про аварії</string>
+    <string name="system_logs_descr">Включати системні журнали до звітів про аварії</string>
+    <string name="crash_reports_descr">Запитувати, чи надсилати звіти про аварії</string>
     <string name="system_logs">Системні журнали</string>
     <string name="acra_toastText">Виявлено збій. Будь ласка, допоможіть, надіславши листа!</string>
     <string name="import_descr">Імпорт з резервної копії</string>
     <string name="import_backup">Імпорт резервної копії</string>
-    <string name="sourcecode_descr">Хочеш зазирнути всередину\? Заходьте!</string>
+    <string name="sourcecode_descr">Хочете зазирнути всередину\? Заходьте!</string>
     <string name="pause">Пауза</string>
     <string name="pick_work_goal">Встановіть робочу мету</string>
     <string name="license_descr">GNU GPL v3</string>
@@ -82,14 +81,18 @@
     <string name="import_backup_descr">Щоб імпортувати дані до програми, скористайтеся таблицею спільного доступу з інших програм. Це дозволить програмі отримати безпечний доступ до спільних даних та імпортувати їх до вашої бази даних.</string>
     <string name="crash_reports">Звіти про аварії</string>
     <string name="cancel">скасувати</string>
-    <string name="minutes">хвилини</string>
+    <string name="minutes">хвилин</string>
     <string name="analytics">аналіз</string>
     <string name="sourcecode">Вихідний код</string>
     <string name="import_success">Резервну копію успішно імпортовано</string>
-    <string name="pause_goal_descr">Поставте мету для паузи</string>
-    <string name="footer">створено за допомогою ❤️ pabloscloud</string>
+    <string name="pause_goal_descr">Встановіть мету для паузи</string>
+    <string name="footer">з ❤️ створив pabloscloud</string>
     <string name="import_ol">Імпорт</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
     <string name="translate">Перекласти</string>
     <string name="translate_descr">Хочете перекласти додаток\? Дякую!</string>
+    <string name="spread_across_days">Поширити на дні</string>
+    <string name="spans_days">Вказаний час охоплює кілька днів</string>
+    <string name="spans_days_descr">Вказаний час охоплює кілька днів. Можливо, Ви забули його зупинити. Бажаєте підлаштувати час закінчення\?</string>
+    <string name="adjust">Hалаштувати</string>
 </resources>

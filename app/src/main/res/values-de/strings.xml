@@ -84,7 +84,6 @@
     <string name="today">Heute</string>
     <string name="pause_left">Übrige Pause</string>
     <string name="import_ol">Wiederherstellen</string>
-    <string name="unknown_tab">Unbekannter Tab</string>
     <string name="hours">Stunden</string>
     <string name="minutes">Minuten</string>
     <string name="cancel">Abbrechen</string>
@@ -92,4 +91,8 @@
     <string name="app_name" translatable="false">Overload</string>
     <string name="translate">Übersetzen</string>
     <string name="translate_descr">Möchtest du übersetzen helfen\? Danke!</string>
+    <string name="spread_across_days">Über Tage verteilen</string>
+    <string name="spans_days">Ein Zeiteintrag erstreckt sich über mehrere Tage</string>
+    <string name="spans_days_descr">Ein Zeiteintrag erstreckt sich über mehrere Tage. Vielleicht hast du vergessen, ihn zu stoppen. Möchtest du das Ende anpassen\?</string>
+    <string name="adjust">Anpassen</string>
 </resources>

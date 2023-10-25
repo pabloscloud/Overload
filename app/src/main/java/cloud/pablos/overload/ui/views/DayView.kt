@@ -191,7 +191,6 @@ fun DayView(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun parseToLocalDateTime(dateTimeString: String): LocalDateTime {
     val formatter = DateTimeFormatterBuilder()
         .appendPattern("yyyy-MM-dd'T'HH:mm:ss")
@@ -207,7 +206,6 @@ fun parseToLocalDateTime(dateTimeString: String): LocalDateTime {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun getLocalDate(selectedDay: String): LocalDate {
     val date: LocalDate = if (selectedDay.isNotBlank()) {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
@@ -219,7 +217,6 @@ fun getLocalDate(selectedDay: String): LocalDate {
     return date
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun extractDate(localDateTime: LocalDateTime): LocalDate {
     return localDateTime.toLocalDate()
 }

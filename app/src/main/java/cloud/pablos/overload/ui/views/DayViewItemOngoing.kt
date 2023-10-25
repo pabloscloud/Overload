@@ -17,7 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -46,7 +46,12 @@ import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
-fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
+fun DayViewItemOngoing(
+    item: Item,
+    isSelected: Boolean = false,
+    showDate: Boolean = false,
+    hideEnd: Boolean = false,
+) {
     var backgroundColor: Color
     var foregroundColor: Color
     var blink by remember { mutableStateOf(true) }
@@ -91,7 +96,7 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
     val currentHour = currentTime.format(DateTimeFormatter.ofPattern("HH"))
     val currentMinute = currentTime.format(DateTimeFormatter.ofPattern("mm"))
 
-    val startTimeString: String = parsedStartTime.format(DateTimeFormatter.ofPattern("HH:mm"))
+    val startTimeString: String = parsedStartTime.format(DateTimeFormatter.ofPattern(if (showDate) "MM/dd/yy HH:mm" else "HH:mm"))
 
     val durationString = getDurationString(parsedStartTime, parsedEndTime)
 
@@ -137,7 +142,7 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
                             .background(foregroundColor),
                     )
                     Icon(
-                        Icons.Default.ArrowForward,
+                        Icons.AutoMirrored.Filled.ArrowForward,
                         contentDescription = stringResource(id = R.string.arrow_forward),
                         tint = foregroundColor,
                         modifier = Modifier
@@ -147,47 +152,51 @@ fun DayViewItemOngoing(item: Item, isSelected: Boolean) {
                 }
             }
 
-            Row(modifier = Modifier.padding(12.5.dp)) {
-                TextView(
-                    text = currentHour,
-                    color = foregroundColor,
-                    fontWeight = FontWeight.Medium,
-                )
-                AnimatedVisibility(
-                    visible = blink,
-                    enter = fadeIn(),
-                    exit = fadeOut(animationSpec = tween(1000)),
-                ) {
+            if (!hideEnd) {
+                Row(modifier = Modifier.padding(12.5.dp)) {
                     TextView(
-                        text = ":",
+                        text = currentHour,
+                        color = foregroundColor,
+                        fontWeight = FontWeight.Medium,
+                    )
+                    AnimatedVisibility(
+                        visible = blink,
+                        enter = fadeIn(),
+                        exit = fadeOut(animationSpec = tween(1000)),
+                    ) {
+                        TextView(
+                            text = ":",
+                            color = foregroundColor,
+                            fontWeight = FontWeight.Medium,
+                        )
+                    }
+                    TextView(
+                        text = currentMinute,
                         color = foregroundColor,
                         fontWeight = FontWeight.Medium,
                     )
                 }
-                TextView(
-                    text = currentMinute,
-                    color = foregroundColor,
-                    fontWeight = FontWeight.Medium,
-                )
             }
         }
 
-        AnimatedVisibility(
-            visible = blink,
-            enter = fadeIn(),
-            exit = fadeOut(animationSpec = tween(1000)),
-            modifier = Modifier
-                .align(Alignment.Center)
-                .background(backgroundColor),
-        ) {
-            TextView(
-                text = durationString,
-                color = foregroundColor,
-                fontWeight = FontWeight.Medium,
-                align = TextAlign.Center,
+        if (!hideEnd) {
+            AnimatedVisibility(
+                visible = blink,
+                enter = fadeIn(),
+                exit = fadeOut(animationSpec = tween(1000)),
                 modifier = Modifier
-                    .padding(8.dp),
-            )
+                    .align(Alignment.Center)
+                    .background(backgroundColor),
+            ) {
+                TextView(
+                    text = durationString,
+                    color = foregroundColor,
+                    fontWeight = FontWeight.Medium,
+                    align = TextAlign.Center,
+                    modifier = Modifier
+                        .padding(8.dp),
+                )
+            }
         }
     }
 }
@@ -223,7 +232,6 @@ fun getDurationString(duration: Duration): String {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun isToMinutesPartAvailable(): Boolean {
     return try {
         Duration::class.java.getMethod("toMinutesPart")
@@ -244,5 +252,5 @@ fun DayViewItemOngoingPreview() {
         ongoing = true,
     )
 
-    DayViewItemNotOngoing(exampleItem, isSelected = false)
+    DayViewItemOngoing(exampleItem)
 }

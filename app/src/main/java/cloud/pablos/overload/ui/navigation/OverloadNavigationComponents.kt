@@ -14,8 +14,8 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.MenuOpen
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.MenuOpen
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -162,7 +162,6 @@ fun OverloadBottomNavigationBar(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun PermanentNavigationDrawerContent(
     selectedDestination: String,
@@ -237,7 +236,6 @@ fun PermanentNavigationDrawerContent(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ModalNavigationDrawerContent(
     selectedDestination: String,
@@ -272,7 +270,7 @@ fun ModalNavigationDrawerContent(
                             )
                             IconButton(onClick = onDrawerClicked) {
                                 Icon(
-                                    imageVector = Icons.Default.MenuOpen,
+                                    imageVector = Icons.AutoMirrored.Filled.MenuOpen,
                                     contentDescription = stringResource(id = R.string.navigation_drawer),
                                 )
                             }

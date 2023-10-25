@@ -14,4 +14,7 @@ sealed interface ItemEvent {
     data class SetIsDeletingHome(val isDeleting: Boolean) : ItemEvent
     data class SetIsSelectedHome(val isSelected: Boolean) : ItemEvent
     data class SetSelectedItemsHome(val selectedItems: List<Item>) : ItemEvent
+    data class SetForgotToStopDialogShown(val isForgotToStopDialogShown: Boolean) : ItemEvent
+    data class SetAdjustEndDialogShown(val isAdjustEndDialogShown: Boolean) : ItemEvent
+    data class SetSpreadAcrossDaysDialogShown(val isSpreadAcrossDaysDialogShown: Boolean) : ItemEvent
 }

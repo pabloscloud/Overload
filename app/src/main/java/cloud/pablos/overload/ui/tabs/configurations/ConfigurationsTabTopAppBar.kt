@@ -1,7 +1,5 @@
 package cloud.pablos.overload.ui.tabs.configurations
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarDefaults
@@ -15,7 +13,6 @@ import androidx.compose.ui.text.font.FontWeight
 import cloud.pablos.overload.R
 
 @OptIn(ExperimentalMaterial3Api::class)
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ConfigurationsTabTopAppBar() {
     Surface(

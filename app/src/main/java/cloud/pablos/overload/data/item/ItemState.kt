@@ -1,10 +1,7 @@
 package cloud.pablos.overload.data.item
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.time.LocalDateTime
 
-@RequiresApi(Build.VERSION_CODES.O)
 data class ItemState(
     val items: List<Item> = emptyList(),
     val id: Int = 0,
@@ -18,4 +15,7 @@ data class ItemState(
     val isDeletingHome: Boolean = false,
     val isSelectedHome: Boolean = false,
     val selectedItemsHome: List<Item> = emptyList(),
+    val isForgotToStopDialogShown: Boolean = false,
+    val isAdjustEndDialogShown: Boolean = false,
+    val isSpreadAcrossDaysDialogShown: Boolean = false,
 )

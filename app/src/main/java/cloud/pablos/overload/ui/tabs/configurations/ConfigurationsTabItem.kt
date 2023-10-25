@@ -3,8 +3,6 @@ package cloud.pablos.overload.ui.tabs.configurations
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,7 +27,6 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.core.net.toUri
 import cloud.pablos.overload.R
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ConfigurationsTabItem(
     title: String,
@@ -39,7 +36,6 @@ fun ConfigurationsTabItem(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ConfigurationsTabItem(
     title: String,
@@ -77,7 +73,6 @@ fun ConfigurationsTabItem(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ConfigurationsTabItem(
     title: String,
@@ -134,7 +129,6 @@ fun AcraSwitch(
     )
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
 fun ConfigurationsTabItemPreview() {

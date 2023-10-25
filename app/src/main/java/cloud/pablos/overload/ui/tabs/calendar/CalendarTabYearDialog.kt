@@ -1,7 +1,5 @@
 package cloud.pablos.overload.ui.tabs.calendar
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,11 +27,11 @@ import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.ui.views.TextView
 import java.time.LocalDate
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun CalendarTabYearDialog(
-    onClose: () -> Unit,
+    firstYear: Int,
     onEvent: (ItemEvent) -> Unit,
+    onClose: () -> Unit,
 ) {
     Dialog(
         onDismissRequest = { onClose() },
@@ -78,7 +76,7 @@ fun CalendarTabYearDialog(
                             modifier = Modifier.fillMaxHeight(),
                         ) {
                             val currentYear = LocalDate.now().year
-                            for (i in currentYear downTo currentYear - 100) {
+                            for (i in currentYear downTo firstYear) {
                                 item {
                                     YearRow(year = i, onEvent = onEvent, onClose = onClose)
                                     if (i != currentYear - 100) {

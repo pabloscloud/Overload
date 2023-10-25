@@ -1,4 +1,4 @@
-package cloud.pablos.overload.ui.tabs.configurations
+package cloud.pablos.overload.ui.views
 
 import android.content.Intent
 import androidx.compose.foundation.clickable
@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,39 +22,42 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import cloud.pablos.overload.R
-import cloud.pablos.overload.ui.views.TextView
+import cloud.pablos.overload.data.item.ItemEvent
 
 @Composable
-fun ConfigurationsTabImportDialog(onClose: () -> Unit) {
+fun ForgotToStopDialog(
+    onClose: () -> Unit,
+    onEvent: (ItemEvent) -> Unit,
+) {
     val context = LocalContext.current
-    val learnMoreLink = "https://codeberg.org/pabloscloud/Overload#import-backup".toUri()
+    val learnMoreLink = "https://codeberg.org/pabloscloud/Overload#spread-acorss-days".toUri()
 
     AlertDialog(
         onDismissRequest = { onClose() },
         icon = {
             Icon(
                 imageVector = Icons.Rounded.Info,
-                contentDescription = stringResource(id = R.string.import_backup),
-                tint = MaterialTheme.colorScheme.primary,
+                contentDescription = stringResource(R.string.spans_days),
+                tint = MaterialTheme.colorScheme.error,
             )
         },
         title = {
             TextView(
-                text = stringResource(id = R.string.import_backup),
+                text = stringResource(R.string.spans_days),
                 fontWeight = FontWeight.Bold,
                 align = TextAlign.Center,
+                maxLines = 2,
                 modifier = Modifier.fillMaxWidth(),
             )
         },
         text = {
             Column {
                 Text(
-                    text = stringResource(id = R.string.import_backup_descr),
+                    text = stringResource(R.string.spans_days_descr),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth(),
                     overflow = TextOverflow.Ellipsis,
@@ -77,18 +81,40 @@ fun ConfigurationsTabImportDialog(onClose: () -> Unit) {
         },
         confirmButton = {
             Button(
-                onClick = { onClose() },
+                onClick = {
+                    onEvent(ItemEvent.SetSpreadAcrossDaysDialogShown(true))
+                    onClose()
+                },
+                colors = ButtonColors(
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                    disabledContainerColor = MaterialTheme.colorScheme.surface,
+                    disabledContentColor = MaterialTheme.colorScheme.onSurface,
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp),
+            ) {
+                TextView(stringResource(R.string.spread_across_days))
+            }
+        },
+        dismissButton = {
+            Button(
+                onClick = {
+                    onEvent(ItemEvent.SetAdjustEndDialogShown(true))
+                    onClose()
+                },
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                TextView(stringResource(id = R.string.close))
+                TextView(stringResource(id = R.string.adjust))
             }
         },
         modifier = Modifier.padding(16.dp),
     )
 }
 
-@Preview
+/*@Preview
 @Composable
-fun ConfigurationsTabImportDialogPreview() {
-    ConfigurationsTabImportDialog {}
-}
+fun ForgotToStopDialogPreview() {
+    ForgotToStopDialog {}
+}*/

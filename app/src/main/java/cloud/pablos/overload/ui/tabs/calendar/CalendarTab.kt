@@ -2,6 +2,7 @@ package cloud.pablos.overload.ui.tabs.calendar
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -39,11 +42,14 @@ import cloud.pablos.overload.ui.views.DayView
 import cloud.pablos.overload.ui.views.TextView
 import cloud.pablos.overload.ui.views.YearView
 import cloud.pablos.overload.ui.views.getLocalDate
+import cloud.pablos.overload.ui.views.parseToLocalDateTime
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.temporal.ChronoUnit
 
 @RequiresApi(Build.VERSION_CODES.S)
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun CalendarTab(
     state: ItemState,
@@ -56,9 +62,26 @@ fun CalendarTab(
     var sheetOffset by remember { mutableFloatStateOf(0f) }
     var expandSheet by remember { mutableStateOf(false) }
 
+    val firstYear = if (state.items.isEmpty()) {
+        LocalDate.now().year
+    } else {
+        parseToLocalDateTime(state.items.first().startTime).year
+    }
+
+    val firstDay = LocalDate.of(firstYear, 1, 1)
+    val lastDay = LocalDateTime.now().toLocalDate()
+    val daysCount = ChronoUnit.DAYS.between(firstDay, lastDay).toInt() + 1
+
+    val pagerState = rememberPagerState(
+        initialPage = daysCount,
+        initialPageOffsetFraction = 0f,
+        pageCount = { daysCount },
+    )
+
     LaunchedEffect(state.isSelectedHome) {
         if (expandSheet) {
             scope.launch { sheetState.bottomSheetState.expand() }
+            pagerState.scrollToPage(ChronoUnit.DAYS.between(firstDay, selectedDay).toInt())
             onEvent(ItemEvent.SetIsSelectedHome(isSelected = false))
         } else {
             expandSheet = true
@@ -68,6 +91,20 @@ fun CalendarTab(
     LaunchedEffect(selectedYear) {
         if (state.selectedYearCalendar != LocalDate.now().year) {
             onEvent(ItemEvent.SetSelectedYearCalendar(LocalDate.now().year))
+        }
+    }
+
+    LaunchedEffect(pagerState.currentPage) {
+        onEvent(
+            ItemEvent.SetSelectedDayCalendar(
+                LocalDate.now()
+                    .minusDays((daysCount - pagerState.currentPage - 1).toLong())
+                    .toString(),
+            ),
+        )
+
+        if (selectedYear != selectedDay.year) {
+            onEvent(ItemEvent.SetSelectedYearCalendar(selectedDay.year))
         }
     }
 
@@ -90,12 +127,16 @@ fun CalendarTab(
                 BottomSheetScaffold(
                     scaffoldState = sheetState,
                     sheetContent = {
-                        DayView(
-                            state = state,
-                            onEvent = onEvent,
-                            date = selectedDay,
-                            isEditable = false,
-                        )
+                        HorizontalPager(
+                            state = pagerState,
+                        ) {
+                            DayView(
+                                state = state,
+                                onEvent = onEvent,
+                                date = selectedDay,
+                                isEditable = false,
+                            )
+                        }
                     },
                 ) { innerPadding ->
                     YearView(

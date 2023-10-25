@@ -1,7 +1,5 @@
 package cloud.pablos.overload.ui.tabs.home
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DeleteForever
 import androidx.compose.material.icons.filled.Deselect
@@ -22,7 +20,6 @@ import cloud.pablos.overload.ui.views.getLocalDate
 import cloud.pablos.overload.ui.views.parseToLocalDateTime
 import java.time.LocalDate
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeTabDeleteBottomAppBar(
     state: ItemState,
