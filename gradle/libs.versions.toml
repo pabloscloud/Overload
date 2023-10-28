@@ -5,30 +5,33 @@
 [versions]
 accompanist = "0.30.1"
 androidGradlePlugin = "8.1.2"
-androidx-activity-compose = "1.7.2"
+androidx-activity-compose = "1.8.0"
 androidx-appcompat = "1.6.1"
-androidx-benchmark = "1.1.1"
-androidx-benchmark-junit4 = "1.1.1"
-androidx-compose-bom = "2023.09.02"
+androidx-benchmark = "1.2.0"
+androidx-benchmark-junit4 = "1.2.0"
+androidx-compose-bom = "2023.10.01"
 androidx-constraintlayout = "1.0.1"
 androidx-corektx = "1.12.0"
 androidx-lifecycle-compose = "2.6.2"
 androidx-lifecycle-runtime-compose = "2.6.2"
-androidx-navigation = "2.7.3"
+androidx-navigation = "2.7.4"
 androidx-palette = "1.0.0"
 androidx-test = "1.5.0"
 androidx-test-espresso = "3.5.1"
 androidx-test-ext-junit = "1.1.5"
 androidx-test-ext-truth = "1.5.0"
-androidx-window = "1.2.0-beta03"
+androidx-window = "1.2.0-beta04"
 androidxHiltNavigationCompose = "1.0.0"
 androix-test-uiautomator = "2.2.0"
 coil = "2.4.0"
+gson = "2.10.1"
+acra = "5.11.1"
+
 # @keep
 compileSdk = "33"
-compose-compiler = "1.4.0"
+compose-compiler = "1.5.3"
 coroutines = "1.7.2"
-google-maps = "18.1.0"
+google-maps = "18.2.0"
 gradle-versions = "0.46.0"
 hilt = "2.43.2"
 hiltExt = "1.0.0"
@@ -36,17 +39,18 @@ hiltExt = "1.0.0"
 jdkDesugar = "2.0.3"
 junit = "4.13.2"
 # @pin Update in conjuction with Compose Compiler
-kotlin = "1.8.0"
+kotlin = "1.9.10"
 kotlinx_immutable = "0.3.5"
 ksp = "1.8.0-1.0.9"
 maps-compose = "2.5.3"
-material = "1.9.0"
+material = "1.10.0"
 # @keep
+material3 = "1.2.0-alpha10"
 minSdk = "21"
 okhttp = "4.11.0"
 robolectric = "4.10.3"
 rome = "1.18.0"
-room = "2.5.2"
+room = "2.6.0"
 secrets = "2.0.1"
 # @keep
 targetSdk = "33"
@@ -59,6 +63,8 @@ accompanist-pager = { module = "com.google.accompanist:accompanist-pager", versi
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanist" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
+acra-mail = { module = "ch.acra:acra-mail", version.ref = "acra"}
+acra-toast = { module = "ch.acra:acra-toast", version.ref = "acra" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity-compose" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
@@ -87,11 +93,12 @@ androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constr
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-corektx" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle-compose" }
-androidx-lifecycle-runtime = "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0-alpha02"
+androidx-lifecycle-runtime = "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0-alpha03"
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle-runtime-compose" }
 androidx-lifecycle-viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle-compose" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle-compose" }
 androidx-lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "androidx-lifecycle-compose" }
+androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
 androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx-navigation" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx-navigation" }
@@ -112,6 +119,7 @@ core-jdk-desugaring = { module = "com.android.tools:desugar_jdk_libs", version.r
 google-android-material = { module = "com.google.android.material:material", version.ref = "material" }
 googlemaps-compose = { module = "com.google.maps.android:maps-compose", version.ref = "maps-compose" }
 googlemaps-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "google-maps" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
