@@ -95,4 +95,9 @@
     <string name="today">Täna</string>
     <string name="pause_left">Paus vasakule</string>
     <string name="import_ol">Impordi</string>
+    <string name="are_you_sure">Oled sa kindel\?</string>
+    <string name="adjust_descr">Kohandage lõpuaeg vastavalt sellele, millal see tegelikult lõppes.</string>
+    <string name="no">Ei</string>
+    <string name="yes">Jah</string>
+    <string name="adjust_end_time">Reguleeri lõpuaeg</string>
 </resources>
