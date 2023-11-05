@@ -33,7 +33,7 @@ fun CalendarTabTopAppBar(
     } else {
         parseToLocalDateTime(state.items.first().startTime).year
     }
-    val yearsCount = firstYear - LocalDate.now().year
+    val yearsCount = LocalDate.now().year - firstYear
 
     Surface(
         tonalElevation = NavigationBarDefaults.Elevation,
