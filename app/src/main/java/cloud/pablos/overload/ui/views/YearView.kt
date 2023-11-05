@@ -195,11 +195,3 @@ fun getFormattedDate(date: LocalDate): String {
     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
     return date.format(formatter)
 }
-
-/*
-@RequiresApi(Build.VERSION_CODES.O)
-@Preview
-@Composable
-fun YearViewPreview(){
-    YearView()
-}*/

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material3.AlertDialog
@@ -21,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -57,7 +59,7 @@ fun SpreadAcrossDaysDialog(
 
     if (isOngoingNotToday && firstOngoingItem != null) {
         AlertDialog(
-            onDismissRequest = { onClose() },
+            onDismissRequest = onClose,
             icon = {
                 Icon(
                     imageVector = Icons.Rounded.Info,
@@ -86,17 +88,15 @@ fun SpreadAcrossDaysDialog(
                     Spacer(modifier = Modifier.height(16.dp))
 
                     val openLinkStr = stringResource(id = R.string.open_link_with)
-                    TextView(
-                        text = stringResource(id = R.string.learn_more),
-                        color = MaterialTheme.colorScheme.primary,
-                        align = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable {
-                                val intent = Intent(Intent.ACTION_VIEW, learnMoreLink)
-                                val chooserIntent = Intent.createChooser(intent, openLinkStr)
-                                ContextCompat.startActivity(context, chooserIntent, null)
-                            },
+                    ClickableText(
+                        text = AnnotatedString(stringResource(id = R.string.learn_more)),
+                        style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primary, textAlign = TextAlign.Center),
+                        onClick = {
+                            val intent = Intent(Intent.ACTION_VIEW, learnMoreLink)
+                            val chooserIntent = Intent.createChooser(intent, openLinkStr)
+                            ContextCompat.startActivity(context, chooserIntent, null)
+                        },
+                        modifier = Modifier.fillMaxWidth(),
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -164,9 +164,3 @@ private fun saveAndClose(
 
     onClose()
 }
-
-/*@Preview
-@Composable
-fun SpreadAcrossDaysDialogPreview() {
-    SpreadAcrossDaysDialog {}
-}*/

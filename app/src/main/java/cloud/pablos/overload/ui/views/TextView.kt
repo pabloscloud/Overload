@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 
 @Composable
@@ -31,10 +32,8 @@ fun TextView(
     )
 }
 
-/*
-@RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
-fun TextViewPreview(){
-    TextView()
-}*/
+fun TextViewPreview() {
+    TextView("text")
+}

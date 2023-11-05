@@ -5,12 +5,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Timer
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.Icon
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -35,12 +32,15 @@ import cloud.pablos.overload.R
 import cloud.pablos.overload.ui.views.TextView
 
 @Composable
-fun ConfigurationsTabPauseGoalDialog(onClose: () -> Unit) {
-    var hours by remember { mutableStateOf<Int?>(null) }
-    var minutes by remember { mutableStateOf<Int?>(null) }
+fun ConfigurationsTabGoalDialog(
+    onClose: () -> Unit,
+    isPause: Boolean,
+) {
+    var hours by remember { mutableStateOf("") }
+    var minutes by remember { mutableStateOf("") }
 
-    val hoursValidator = (hours ?: 0) < 24
-    val minValidator = (minutes ?: 0) < 60
+    val hoursValidator = (hours.toIntOrNull() ?: 0) < 24
+    val minValidator = (minutes.toIntOrNull() ?: 0) < 60
 
     val hoursFocusRequest = remember { FocusRequester() }
     val minFocusRequest = remember { FocusRequester() }
@@ -53,17 +53,10 @@ fun ConfigurationsTabPauseGoalDialog(onClose: () -> Unit) {
     }
 
     AlertDialog(
-        onDismissRequest = { onClose() },
-        icon = {
-            Icon(
-                imageVector = Icons.Rounded.Timer,
-                contentDescription = stringResource(id = R.string.pick_pause_goal),
-                tint = MaterialTheme.colorScheme.primary,
-            )
-        },
+        onDismissRequest = onClose,
         title = {
             TextView(
-                text = stringResource(id = R.string.pick_pause_goal),
+                text = if (isPause) stringResource(id = R.string.pick_pause_goal) else stringResource(id = R.string.pick_work_goal),
                 fontWeight = FontWeight.Bold,
                 align = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
@@ -74,48 +67,20 @@ fun ConfigurationsTabPauseGoalDialog(onClose: () -> Unit) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                TextField(
-                    value = hours?.toString() ?: "",
-                    onValueChange = {
-                        hours = it.toIntOrNull()
-                    },
-                    singleLine = true,
-                    suffix = { Text(text = stringResource(R.string.hours)) },
-                    keyboardOptions = KeyboardOptions.Default.copy(
-                        keyboardType = KeyboardType.Number,
-                    ),
-                    keyboardActions = KeyboardActions(onDone = {
-                        if (hoursValidator) {
-                            minFocusRequest.requestFocus()
-                        }
-                    }),
-                    placeholder = { Text(text = "0") },
+                TimeInput(
+                    label = stringResource(R.string.hours),
+                    value = hours,
+                    onValueChange = { hours = it },
                     isError = !hoursValidator,
-                    modifier = Modifier.focusRequester(hoursFocusRequest),
+                    focusRequester = hoursFocusRequest,
                 )
 
-                TextField(
-                    value = minutes?.toString() ?: "",
-                    onValueChange = {
-                        minutes = it.toIntOrNull()
-                    },
-                    singleLine = true,
-                    suffix = { Text(text = stringResource(R.string.minutes)) },
-                    keyboardOptions = KeyboardOptions.Default.copy(
-                        keyboardType = KeyboardType.Number,
-                    ),
-                    keyboardActions = KeyboardActions(onDone = {
-                        saveAndClose(
-                            onClose = onClose,
-                            sharedPreferences = sharedPreferences,
-                            hours = hours,
-                            minutes = minutes,
-                            valid = hoursValidator && minValidator,
-                        )
-                    }),
-                    placeholder = { Text(text = "0") },
+                TimeInput(
+                    label = stringResource(R.string.minutes),
+                    value = minutes,
+                    onValueChange = { minutes = it },
                     isError = !minValidator,
-                    modifier = Modifier.focusRequester(minFocusRequest),
+                    focusRequester = minFocusRequest,
                 )
             }
         },
@@ -125,9 +90,10 @@ fun ConfigurationsTabPauseGoalDialog(onClose: () -> Unit) {
                     saveAndClose(
                         onClose = onClose,
                         sharedPreferences = sharedPreferences,
-                        hours = hours,
-                        minutes = minutes,
+                        hours = hours.toIntOrNull(),
+                        minutes = minutes.toIntOrNull(),
                         valid = hoursValidator && minValidator,
+                        isPause = isPause,
                     )
                 },
             ) {
@@ -136,12 +102,10 @@ fun ConfigurationsTabPauseGoalDialog(onClose: () -> Unit) {
         },
         dismissButton = {
             Button(
-                onClick = { onClose() },
-                colors = ButtonColors(
+                onClick = onClose,
+                colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.errorContainer,
                     contentColor = MaterialTheme.colorScheme.onErrorContainer,
-                    disabledContainerColor = MaterialTheme.colorScheme.surface,
-                    disabledContentColor = MaterialTheme.colorScheme.onSurface,
                 ),
             ) {
                 Text(text = stringResource(R.string.cancel))
@@ -151,22 +115,45 @@ fun ConfigurationsTabPauseGoalDialog(onClose: () -> Unit) {
     )
 }
 
+@Composable
+fun TimeInput(
+    label: String,
+    value: String,
+    onValueChange: (String) -> Unit,
+    isError: Boolean,
+    focusRequester: FocusRequester,
+) {
+    TextField(
+        value = value,
+        onValueChange = onValueChange,
+        singleLine = true,
+        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+        keyboardActions = KeyboardActions(onDone = { focusRequester.requestFocus() }),
+        placeholder = { Text(text = "0") },
+        isError = isError,
+        modifier = Modifier.focusRequester(focusRequester),
+        trailingIcon = { Text(text = label) },
+    )
+}
+
 private fun saveAndClose(
     onClose: () -> Unit,
     sharedPreferences: OlSharedPreferences,
     hours: Int?,
     minutes: Int?,
     valid: Boolean,
+    isPause: Boolean,
 ) {
     if (valid) {
-        val hoursInMin = (hours?.times(60) ?: 0)
-        val minutesInMin = (minutes ?: 0)
-
+        val hoursInMin = (hours ?: 0) * 60
+        val minutesInMin = minutes ?: 0
         val goal = (hoursInMin + minutesInMin) * 60 * 1000
 
         if (goal > 0) {
-            sharedPreferences.savePauseGoal(goal)
-
+            when (isPause) {
+                true -> sharedPreferences.savePauseGoal(goal)
+                false -> sharedPreferences.saveWorkGoal(goal)
+            }
             onClose()
         }
     }
@@ -175,5 +162,5 @@ private fun saveAndClose(
 @Preview
 @Composable
 fun ConfigurationsTabPauseGoalPreview() {
-    ConfigurationsTabPauseGoalDialog {}
+    ConfigurationsTabGoalDialog(onClose = {}, isPause = true)
 }

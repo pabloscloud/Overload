@@ -12,7 +12,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.ItemEvent
@@ -45,7 +44,6 @@ fun CalendarTabTopAppBar(
                 TextView(
                     text = stringResource(id = R.string.calendar),
                     fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                    fontWeight = FontWeight.Normal,
                 )
             },
             actions = {
@@ -57,18 +55,14 @@ fun CalendarTabTopAppBar(
                         TextView(state.selectedYearCalendar.toString())
                     }
                     if (yearDialogState.value) {
-                        CalendarTabYearDialog(firstYear = firstYear, onEvent = onEvent, onClose = { yearDialogState.value = false })
+                        CalendarTabYearDialog(
+                            firstYear = firstYear,
+                            onEvent = onEvent,
+                            onClose = { yearDialogState.value = false },
+                        )
                     }
                 }
             },
         )
     }
 }
-
-/*@RequiresApi(Build.VERSION_CODES.O)
-@Preview
-@Composable
-fun CalendarTabTopAppBarPreview() {
-    com.pablos.overload.ui.tabs.ConfigurationsTab()
-}
-*/

@@ -220,10 +220,3 @@ fun getLocalDate(selectedDay: String): LocalDate {
 fun extractDate(localDateTime: LocalDateTime): LocalDate {
     return localDateTime.toLocalDate()
 }
-/*
-@RequiresApi(Build.VERSION_CODES.O)
-@Preview
-@Composable
-fun DayViewPreview(){
-    DayView()
-}*/
