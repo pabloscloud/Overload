@@ -175,7 +175,7 @@ fun DayView(
                 fontSize = MaterialTheme.typography.titleLarge.fontSize,
                 fontWeight = FontWeight.Bold,
                 align = TextAlign.Center,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
             )
             TextView(
                 modifier = Modifier.padding(horizontal = 8.dp),
