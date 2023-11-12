@@ -2,23 +2,23 @@
 
 # Overload
 
-Overload is a user-friendly native app designed to facilitate time tracking for everyone.
+Overload is an Android (8.0+) application which allows you to capture timespans by hitting a single button. Pauses are created between the timespans automatically. Set goals to archive better results over time or make sure not to do overtime!
 
 
 ## Contributing
 
 Contributions are always welcome!
 
-Just create issues and pull requests or help [translating](https://translate.codeberg.org/engage/overload/) on Weblate :)
+Just create issues and pull requests in the dev-branch or help [translating](https://translate.codeberg.org/engage/overload/) on Weblate :)
 
 
 ## Features
 
 - create time spans
-- automagically creates pauses in between
+- automatically creates pauses in between
 - delete time spans - on-by-one or all-together
 - scroll through days with ease
-- backup your data as .csv
+- backup your data
 - import backups
 - set goals
 
@@ -30,19 +30,24 @@ Feedback and suggestions are more than welcome! Please reach out by creating an 
 
 ## Installation
 
-<a href="https://f-droid.org/app/cloud.pablos.overload"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" width="170"></a>
-
-Alternatively go to the releases tab on Codeberg and download an apk.
+<a href="https://f-droid.org/app/cloud.pablos.overload">
+  <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="60" />
+</a>
+<a href="https://codeberg.org/pabloscloud/Overload/releases">
+  <img alt="Get it on Codeberg" src="https://i.imgur.com/y2BF7l0.png" height="60" />
+</a>
+<a href="https://play.google.com/store/apps/details?id=cloud.pablos.overload">
+  <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="60" />
+</a>
 
 
 ## Authors
 
-- [@pabloscloud](https://pablos.cloud)
+- [@pabloscloud](https://codeberg.org/pabloscloud)
 
+### Translators
 
-## Related
-
-This project draws inspiration from the jetpack compose sample [Reply](https://github.com/android/compose-samples/tree/main/Reply), which is licensed under the Apache License, Version 2.0.
+- [@mondstern](https://codeberg.org/mondstern)
 
 
 ## Screenshots
@@ -87,3 +92,8 @@ Imagine you're using the app to track your work hours. You take a break, and an 
 
 ### Why does the app annoy me with a popup to adjust the end? {#spread-across-days}
 Sometimes we forget stuff. Sometimes we do stuff across days - like sleeping. Nevertheless when an item is still ongoing from yesterday or days before yesterday, you need to set an end or confirm you want to spread the item across multiple days. The popup will be gone once there are no more ongoing items from the past days ;)
+
+
+## Related
+
+This project draws inspiration from the jetpack compose sample [Reply](https://github.com/android/compose-samples/tree/main/Reply), which is licensed under the Apache License, Version 2.0.
