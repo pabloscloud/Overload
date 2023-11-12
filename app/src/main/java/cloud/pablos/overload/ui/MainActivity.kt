@@ -1,5 +1,8 @@
 package cloud.pablos.overload.ui
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -40,12 +43,19 @@ class MainActivity : ComponentActivity() {
         },
     )
 
+    @SuppressLint("SourceLockedOrientationActivity") // The text of dialogs does not fit the screen when not in portrait
     @RequiresApi(Build.VERSION_CODES.S)
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        val screenLayoutSize =
+            resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK
+        if (screenLayoutSize == Configuration.SCREENLAYOUT_SIZE_SMALL || screenLayoutSize == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
+        }
 
         setContent {
             OverloadTheme {

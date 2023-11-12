@@ -95,4 +95,9 @@
     <string name="spans_days">Vnos časa zajema več dni</string>
     <string name="spans_days_descr">Zadnji časovni vnos zajema več dni. Morda ste ga pozabili ustaviti. Ali želite prilagoditi konec\?</string>
     <string name="adjust">Prilagodite</string>
+    <string name="are_you_sure">Ste prepričani\?</string>
+    <string name="adjust_descr">Čas zaključka prilagodite dejanskemu zaključku.</string>
+    <string name="no">Ne</string>
+    <string name="yes">Da</string>
+    <string name="adjust_end_time">Prilagodite končni čas</string>
 </resources>

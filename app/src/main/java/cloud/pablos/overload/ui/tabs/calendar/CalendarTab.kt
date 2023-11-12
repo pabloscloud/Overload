@@ -192,12 +192,3 @@ fun DayOfWeekHeaderCell(text: String) {
         )
     }
 }
-
-/*
-@RequiresApi(Build.VERSION_CODES.S)
-@Preview
-@Composable
-fun CalendarTabPreview() {
-    CalendarTab()
-}
-*/

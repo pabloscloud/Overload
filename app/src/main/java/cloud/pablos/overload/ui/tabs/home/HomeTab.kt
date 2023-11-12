@@ -10,15 +10,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarDefaults
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
-import androidx.compose.material3.TabRowDefaults
-import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
@@ -26,7 +23,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.ui.utils.OverloadNavigationType
@@ -63,10 +59,7 @@ fun HomeTab(
 
     Scaffold(
         topBar = {
-            when (state.isDeletingHome) {
-                true -> HomeTabDeleteTopAppBar(state = state, onEvent = onEvent)
-                else -> HomeTabTopAppBar()
-            }
+            HomeTabTopAppBar(state = state, onEvent = onEvent)
         },
         bottomBar = {
             HomeTabDeleteBottomAppBar(state = state, onEvent = onEvent)
@@ -78,22 +71,8 @@ fun HomeTab(
                     tonalElevation = NavigationBarDefaults.Elevation,
                     color = MaterialTheme.colorScheme.background,
                 ) {
-                    TabRow(
+                    PrimaryTabRow(
                         selectedTabIndex = pagerState.currentPage,
-                        indicator = { tabPositions ->
-                            if (pagerState.currentPage < tabPositions.size) {
-                                TabRowDefaults.PrimaryIndicator(
-                                    modifier = Modifier
-                                        .tabIndicatorOffset(tabPositions[pagerState.currentPage]),
-                                    shape = RoundedCornerShape(
-                                        topStart = 3.dp,
-                                        topEnd = 3.dp,
-                                        bottomEnd = 0.dp,
-                                        bottomStart = 0.dp,
-                                    ),
-                                )
-                            }
-                        },
                         divider = {},
                     ) {
                         homeTabItems.forEachIndexed { index, item ->
@@ -147,12 +126,3 @@ fun getFormattedDate(): String {
     val date = LocalDate.now()
     return date.format(formatter)
 }
-
-/*
-@RequiresApi(Build.VERSION_CODES.O)
-@Preview
-@Composable
-fun HomeTabPreview() {
-    com.pablos.overload.ui.tabs.HomeTab()
-}
-*/

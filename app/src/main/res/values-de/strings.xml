@@ -95,4 +95,9 @@
     <string name="spans_days">Ein Zeiteintrag erstreckt sich über mehrere Tage</string>
     <string name="spans_days_descr">Ein Zeiteintrag erstreckt sich über mehrere Tage. Vielleicht hast du vergessen, ihn zu stoppen. Möchtest du das Ende anpassen\?</string>
     <string name="adjust">Anpassen</string>
+    <string name="are_you_sure">Bist du sicher\?</string>
+    <string name="adjust_descr">Passe die Endzeit an den tatsächlichen Endzeitpunkt an.</string>
+    <string name="no">Nein</string>
+    <string name="yes">Ja</string>
+    <string name="adjust_end_time">Ende anpassen</string>
 </resources>

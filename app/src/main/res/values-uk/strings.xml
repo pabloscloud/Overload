@@ -80,7 +80,7 @@
     <string name="about">про</string>
     <string name="import_backup_descr">Щоб імпортувати дані до програми, скористайтеся таблицею спільного доступу з інших програм. Це дозволить програмі отримати безпечний доступ до спільних даних та імпортувати їх до вашої бази даних.</string>
     <string name="crash_reports">Звіти про аварії</string>
-    <string name="cancel">скасувати</string>
+    <string name="cancel">Скасувати</string>
     <string name="minutes">хвилин</string>
     <string name="analytics">аналіз</string>
     <string name="sourcecode">Вихідний код</string>
@@ -93,6 +93,11 @@
     <string name="translate_descr">Хочете перекласти додаток\? Дякую!</string>
     <string name="spread_across_days">Поширити на дні</string>
     <string name="spans_days">Вказаний час охоплює кілька днів</string>
-    <string name="spans_days_descr">Вказаний час охоплює кілька днів. Можливо, Ви забули його зупинити. Бажаєте підлаштувати час закінчення\?</string>
+    <string name="spans_days_descr">Вказаний час охоплює кілька днів. Можливо, Ви забули його зупинити. Бажаєте налаштувати час закінчення\?</string>
     <string name="adjust">Hалаштувати</string>
+    <string name="are_you_sure">Ви впевнені\?</string>
+    <string name="adjust_descr">Налаштуйте час завершення відповідно до фактичного часу завершення.</string>
+    <string name="no">Ні</string>
+    <string name="yes">Так</string>
+    <string name="adjust_end_time">Налаштуйте час завершення</string>
 </resources>

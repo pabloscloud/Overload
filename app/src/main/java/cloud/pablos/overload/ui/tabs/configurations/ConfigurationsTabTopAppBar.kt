@@ -4,13 +4,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import cloud.pablos.overload.R
+import cloud.pablos.overload.ui.views.TextView
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -21,22 +20,17 @@ fun ConfigurationsTabTopAppBar() {
     ) {
         TopAppBar(
             title = {
-                Text(
+                TextView(
                     text = stringResource(id = R.string.configurations),
-                    style = TextStyle(
-                        fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                        fontWeight = FontWeight.Normal,
-                    ),
+                    fontSize = MaterialTheme.typography.titleLarge.fontSize,
                 )
             },
         )
     }
 }
 
-/*@RequiresApi(Build.VERSION_CODES.O)
-@Preview
 @Composable
+@Preview
 fun ConfigurationsTabTopAppBarPreview() {
-    com.pablos.overload.ui.tabs.ConfigurationsTab()
+    ConfigurationsTabTopAppBar()
 }
-*/
