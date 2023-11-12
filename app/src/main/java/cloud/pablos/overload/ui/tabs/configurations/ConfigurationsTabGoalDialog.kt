@@ -87,8 +87,7 @@ fun ConfigurationsTabGoalDialog(
         confirmButton = {
             Button(
                 onClick = {
-                    saveAndClose(
-                        onClose = onClose,
+                    onClose.save(
                         sharedPreferences = sharedPreferences,
                         hours = hours.toIntOrNull(),
                         minutes = minutes.toIntOrNull(),
@@ -136,8 +135,7 @@ fun TimeInput(
     )
 }
 
-private fun saveAndClose(
-    onClose: () -> Unit,
+private fun (() -> Unit).save(
     sharedPreferences: OlSharedPreferences,
     hours: Int?,
     minutes: Int?,
@@ -154,7 +152,7 @@ private fun saveAndClose(
                 true -> sharedPreferences.savePauseGoal(goal)
                 false -> sharedPreferences.saveWorkGoal(goal)
             }
-            onClose()
+            this()
         }
     }
 }

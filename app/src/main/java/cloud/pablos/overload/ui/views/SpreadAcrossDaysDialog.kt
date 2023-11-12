@@ -115,7 +115,7 @@ fun SpreadAcrossDaysDialog(
             dismissButton = {
                 Button(
                     onClick = {
-                        saveAndClose(onClose = onClose, onEvent, firstOngoingItem)
+                        onClose.save(onEvent, firstOngoingItem)
                     },
                     colors = ButtonColors(
                         containerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -134,8 +134,7 @@ fun SpreadAcrossDaysDialog(
     }
 }
 
-private fun saveAndClose(
-    onClose: () -> Unit,
+private fun (() -> Unit).save(
     onEvent: (ItemEvent) -> Unit,
     item: Item,
 ) {
@@ -161,5 +160,5 @@ private fun saveAndClose(
         dateIterator = dateIterator.plusDays(1)
     }
 
-    onClose()
+    this()
 }

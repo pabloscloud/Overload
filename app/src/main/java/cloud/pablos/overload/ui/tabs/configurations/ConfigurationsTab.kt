@@ -504,7 +504,7 @@ fun ConfigurationDescription(
     )
 }
 
-class OlSharedPreferences(private val context: Context) {
+class OlSharedPreferences(context: Context) {
     private val sharedPreferences = context.getSharedPreferences("ol_prefs", Context.MODE_PRIVATE)
 
     fun saveWorkGoal(goal: Int) {

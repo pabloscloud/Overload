@@ -154,7 +154,7 @@ fun AdjustEndDialog(
             confirmButton = {
                 Button(
                     onClick = {
-                        saveAndClose(onClose = onClose, onEvent, firstOngoingItem, endTime)
+                        onClose.save(onEvent, firstOngoingItem, endTime)
                     },
                 ) {
                     TextView(stringResource(R.string.save))
@@ -182,8 +182,7 @@ fun AdjustEndDialog(
     }
 }
 
-private fun saveAndClose(
-    onClose: () -> Unit,
+private fun (() -> Unit).save(
     onEvent: (ItemEvent) -> Unit,
     item: Item,
     newEnd: LocalDateTime,
@@ -197,5 +196,5 @@ private fun saveAndClose(
     onEvent(ItemEvent.SetPause(pause = item.pause))
     onEvent(ItemEvent.SaveItem)
 
-    onClose()
+    this()
 }
