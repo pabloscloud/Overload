@@ -410,10 +410,10 @@ private fun importCsvData(csvData: String, lifecycleScope: LifecycleCoroutineSco
         db.withTransaction {
             parsedData.drop(1).forEach { row ->
                 if (row.size >= 4) {
-                    val startTime = row[1]
-                    val endTime = row[2]
-                    val ongoing = row[3]
-                    val pause = row[4]
+                    val startTime = row[1].trim()
+                    val endTime = row[2].trim()
+                    val ongoing = row[3].trim()
+                    val pause = row[4].trim()
 
                     val item = Item(
                         startTime = startTime,
