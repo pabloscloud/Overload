@@ -92,10 +92,18 @@ fun DayViewProgress(
         },
         label = "Color transition",
     ) {
-        if (progress.value < 360f) {
-            MaterialTheme.colorScheme.error
+        if (isPause) {
+            if (progress.value < 360f) {
+                MaterialTheme.colorScheme.error
+            } else {
+                MaterialTheme.colorScheme.primary
+            }
         } else {
-            MaterialTheme.colorScheme.primary
+            if (progress.value >= 360f) {
+                MaterialTheme.colorScheme.error
+            } else {
+                MaterialTheme.colorScheme.primary
+            }
         }
     }
 

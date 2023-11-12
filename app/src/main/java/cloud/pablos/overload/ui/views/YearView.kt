@@ -20,17 +20,25 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cloud.pablos.overload.data.item.Item
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.tabs.configurations.OlSharedPreferences
+import java.time.Duration
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.Month
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
@@ -190,7 +198,25 @@ fun getColorOfDay(date: LocalDate, firstDayOfMonth: LocalDate, state: ItemState)
     val today = LocalDate.now()
 
     val backgroundColor = if (date <= today && date.month == month) {
-        MaterialTheme.colorScheme.surfaceVariant
+        val context = LocalContext.current
+        val sharedPreferences = remember { OlSharedPreferences(context) }
+
+        val goalWork by remember { mutableIntStateOf(sharedPreferences.getWorkGoal()) }
+        val goalPause by remember { mutableIntStateOf(sharedPreferences.getPauseGoal()) }
+
+        if (goalWork > 0 && goalPause > 0) {
+            val goalsReached = getProgressOfDay(date, state, goalWork, goalPause)
+
+            if (goalsReached.goalPauseReached == true && goalsReached.goalWorkReached == true) {
+                MaterialTheme.colorScheme.primaryContainer
+            } else if (goalsReached.goalPauseReached == false && goalsReached.goalWorkReached == false) {
+                MaterialTheme.colorScheme.errorContainer
+            } else {
+                MaterialTheme.colorScheme.surfaceVariant
+            }
+        } else {
+            MaterialTheme.colorScheme.surfaceVariant
+        }
     } else {
         Color.Transparent
     }
@@ -205,4 +231,88 @@ fun getColorOfDay(date: LocalDate, firstDayOfMonth: LocalDate, state: ItemState)
     }
 
     return Pair(backgroundColor, borderColor)
+}
+
+data class GoalsReached(val goalWorkReached: Boolean?, val goalPauseReached: Boolean?)
+
+@Composable
+fun getProgressOfDay(date: LocalDate, state: ItemState, goalWork: Int, goalPause: Int): GoalsReached {
+    val cachedProgress by remember(date, state.items) {
+        mutableStateOf(
+            computeProgressOfDay(date, state.items, goalWork, goalPause),
+        )
+    }
+
+    return cachedProgress
+}
+
+private fun computeProgressOfDay(
+    date: LocalDate,
+    items: List<Item>,
+    goalWork: Int,
+    goalPause: Int,
+): GoalsReached {
+    val goalWorkReached: Boolean
+    val goalPauseReached: Boolean
+
+    val durationWork: Long
+    val durationPause: Long
+    var countWork: Long = 0
+    var countPause: Long = 0
+
+    val itemsForDay = items.filter { item ->
+        val startTime = parseToLocalDateTime(item.startTime)
+        extractDate(startTime) == date
+    }
+
+    // Filter items by type
+    val itemsFilteredWork = itemsForDay.filter { item ->
+        !item.pause
+    }
+    val itemsFilteredPause = itemsForDay.filter { item ->
+        item.pause
+    }
+
+    // Count duration
+    itemsFilteredWork.forEach {
+        val parsedStartTime = parseToLocalDateTime(it.startTime)
+        val parsedEndTime = if (it.ongoing) {
+            LocalDateTime.now()
+        } else {
+            parseToLocalDateTime(it.endTime)
+        }
+
+        countWork += Duration.between(parsedStartTime, parsedEndTime).toMillis()
+    }
+    durationWork = countWork
+
+    itemsFilteredPause.forEach {
+        val parsedStartTime = parseToLocalDateTime(it.startTime)
+        val parsedEndTime = if (it.ongoing) {
+            LocalDateTime.now()
+        } else {
+            parseToLocalDateTime(it.endTime)
+        }
+
+        countPause += Duration.between(parsedStartTime, parsedEndTime).toMillis()
+    }
+
+    // If last item is not a pause, automatically count duration between then and now
+    if (
+        itemsForDay.isNotEmpty() &&
+        !itemsForDay.last().pause &&
+        date == LocalDate.now()
+    ) {
+        val parsedStartTime = parseToLocalDateTime(items.last().endTime)
+        val parsedEndTime = LocalDateTime.now()
+
+        countPause += Duration.between(parsedStartTime, parsedEndTime).toMillis()
+    }
+    durationPause = countPause
+
+    goalPauseReached = durationPause >= goalPause
+
+    goalWorkReached = durationWork <= goalWork
+
+    return GoalsReached(goalWorkReached, goalPauseReached)
 }
