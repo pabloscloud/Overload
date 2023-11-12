@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
+    <string name="app_name" translatable="false">Overload</string>
+    <string name="select_all_items_of_selected_day">vybrat všechny položky vybraného dne</string>
+    <string name="storage">skladování</string>
+    <string name="delete_pause_descr">Tuto probíhající pauzu nelze odstranit. Je zde pouze jako indikace, že se pauza vytvoří, jakmile stisknete tlačítko Start. Pokud stisknete tlačítko start až zítra, bude zrušena a nebude se započítávat do cíle.</string>
+    <string name="hours">hodiny</string>
+    <string name="close">Zavřít</string>
+    <string name="save">Uložit</string>
+    <string name="goals">Cíle</string>
+    <string name="system_logs_descr">Zahrnutí systémových protokolů do hlášení o havárii</string>
+    <string name="crash_reports_descr">Požádejte o zaslání hlášení o nehodě</string>
+    <string name="get_out_of_isDeleting">vás dostane z režimu mazání</string>
+    <string name="are_you_sure">Jste si jistý\?</string>
+    <string name="adjust_descr">Upravte čas ukončení podle toho, kdy skutečně skončil.</string>
+    <string name="system_logs">Systémové logy</string>
+    <string name="backup_descr">Pravidelně zálohujte všechna data na bezpečné místo!</string>
+    <string name="friday">Pátek</string>
+    <string name="tuesday">Úterý</string>
+    <string name="acra_toastText">Zjištěna havárie. Pomozte prosím zasláním e-mailu!</string>
+    <string name="import_descr">Import ze zálohy</string>
+    <string name="spread_across_days">Rozložení na více dní</string>
+    <string name="translate">Přeložit</string>
+    <string name="no">Ne</string>
+    <string name="import_backup">Import zálohy</string>
+    <string name="learn_more">Více informací…</string>
+    <string name="sourcecode_descr">Chcete se podívat dovnitř\? Jděte dál!</string>
+    <string name="pause">Pauza</string>
+    <string name="delete_items_forever">navždy odstranit položky</string>
+    <string name="edit">Upravit</string>
+    <string name="pick_work_goal">Stanovení pracovního cíle</string>
+    <string name="acra_mailBody">Zjištěna havárie. Pomozte nám prosím zlepšit tento e-mail, abychom mohli co nejdříve provést opravu.
+\n Omlouváme se za způsobené potíže! Váš příspěvek je pro opravu tohoto problému zásadní.
+\n
+\n Popis - Co jste udělali, když aplikace spadla\?
+\n
+\n
+\n Kroky k reprodukci - Můžete poskytnout návod krok za krokem, jak pád reprodukovat\?
+\n
+\n
+\n Vizualizace - Přiložte prosím jakékoli snímky obrazovky nebo nahrávky obrazovky.
+\n
+\n
+\n Nedávné změny - Aktualizovali jste nedávno aplikaci nebo změnili nastavení zařízení\?
+\n
+\n
+\n Četnost - Jak často dochází k pádu\?
+\n
+\n
+\n Děkujeme za trpělivost!</string>
+    <string name="wednesday">Středa</string>
+    <string name="yes">Ano</string>
+    <string name="monday">Pondělí</string>
+    <string name="unknown_day">Neznámý den</string>
+    <string name="translate_descr">Chcete aplikaci přeložit\? Díky!</string>
+    <string name="start">Start</string>
+    <string name="license_descr">GNU GPL v3</string>
+    <string name="issue_reports">Nahlášení chyb</string>
+    <string name="stop">Zastavte</string>
+    <string name="import_failure">Import zálohy se nezdařil</string>
+    <string name="select_year">Zvolte rok</string>
+    <string name="pick_pause_goal">Nastavení cíle pauzy</string>
+    <string name="work">Práce</string>
+    <string name="backup">Záloha</string>
+    <string name="spans_days">Časový údaj zahrnuje více dní</string>
+    <string name="license">Licenci</string>
+    <string name="issue_reports_descr">Všimli jste si něčeho zvláštního\? Nahlaste to!</string>
+    <string name="about">o</string>
+    <string name="adjust_end_time">Nastavení času ukončení</string>
+    <string name="work_goal_descr">Stanovte si pracovní cíl</string>
+    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
+    <string name="open_link_with">Otevřít odkaz s</string>
+    <string name="import_backup_descr">Pro import dat do aplikace použijte Sharesheet z jiných aplikací. To aplikaci umožní bezpečný přístup ke sdíleným datům a jejich import do vaší databáze.</string>
+    <string name="configurations">Konfigurace</string>
+    <string name="spans_days_descr">Časový údaj zahrnuje více dní. Možná jste ho zapomněli zastavit. Chcete upravit konec\?</string>
+    <string name="sunday">Neděle</string>
+    <string name="no_items_subtitle">Pro tento den nejsou k dispozici žádné uložené položky.</string>
+    <string name="adjust">Úprava</string>
+    <string name="crash_reports">Hlášení o nehodách</string>
+    <string name="home">Home</string>
+    <string name="cancel">Zrušit</string>
+    <string name="yesterday">Včera</string>
+    <string name="navigation_drawer">Navigační zásuvka</string>
+    <string name="minutes">minuty</string>
+    <string name="arrow_forward">šipka vpřed popisující směr obou časů od začátku do konce</string>
+    <string name="delete_pause">Odstranit pauzu</string>
+    <string name="deselect_all_items_of_selected_day">zruší výběr všech položek vybraného dne</string>
+    <string name="analytics">analytika</string>
+    <string name="no_items_title">Žádné zaznamenané položky</string>
+    <string name="saturday">Sobota</string>
+    <string name="work_left">Práce vlevo</string>
+    <string name="sourcecode">Zdrojové kódy</string>
+    <string name="itemCount_selected">vybrané</string>
+    <string name="import_success">Záloha byla úspěšně importována</string>
+    <string name="pause_goal_descr">Nastavení cíle pro pauzu</string>
+    <string name="thursday">Čtvrtek</string>
+    <string name="footer">vytvořeno pomocí ❤️ od pabloscloud</string>
+    <string name="calendar">Kalendář</string>
+    <string name="today">Dnes</string>
+    <string name="pause_left">Pauza vlevo</string>
+    <string name="import_ol">Import</string>
+</resources>

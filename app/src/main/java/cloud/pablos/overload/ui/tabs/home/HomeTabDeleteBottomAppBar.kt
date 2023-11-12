@@ -6,7 +6,6 @@ import androidx.compose.material.icons.filled.Deselect
 import androidx.compose.material.icons.filled.SelectAll
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -25,10 +24,7 @@ fun HomeTabDeleteBottomAppBar(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    val date = when (state.selectedDayCalendar) {
-        "" -> LocalDate.now()
-        else -> getLocalDate(state.selectedDayCalendar)
-    }
+    val date = state.selectedDayCalendar.takeIf { it.isNotBlank() }?.let { getLocalDate(it) } ?: LocalDate.now()
 
     val itemsForSelectedDay = state.items.filter { item ->
         val startTime = parseToLocalDateTime(item.startTime)
@@ -62,7 +58,6 @@ fun HomeTabDeleteBottomAppBar(
                     },
                     containerColor = MaterialTheme.colorScheme.errorContainer,
                     contentColor = MaterialTheme.colorScheme.onErrorContainer,
-                    elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation(),
                 ) {
                     Icon(
                         Icons.Filled.DeleteForever,
@@ -73,11 +68,3 @@ fun HomeTabDeleteBottomAppBar(
         )
     }
 }
-
-/*@RequiresApi(Build.VERSION_CODES.O)
-@Preview
-@Composable
-fun HomeTabDeleteBottomAppBarPreview() {
-    HomeTabDeleteBottomAppBar()
-}
-*/

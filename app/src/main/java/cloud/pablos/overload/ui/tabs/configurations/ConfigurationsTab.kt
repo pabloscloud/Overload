@@ -42,6 +42,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
+import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.room.withTransaction
@@ -59,11 +60,11 @@ import java.io.File
 @Composable
 fun ConfigurationsTab(state: ItemState) {
     val context = LocalContext.current
+    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
     val acraEnabledKey = "acra.enable"
     val acraSysLogsEnabledKey = "acra.syslog.enable"
 
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
     val acraEnabled = sharedPreferences.getBoolean(acraEnabledKey, true)
     val acraSysLogsEnabled = sharedPreferences.getBoolean(acraSysLogsEnabledKey, true)
 
@@ -76,7 +77,6 @@ fun ConfigurationsTab(state: ItemState) {
     }
 
     val importDialogState = remember { mutableStateOf(false) }
-
     val workGoalDialogState = remember { mutableStateOf(false) }
     val pauseGoalDialogState = remember { mutableStateOf(false) }
 
@@ -168,9 +168,8 @@ fun ConfigurationsTab(state: ItemState) {
                 ConfigurationsTabItem(
                     title = stringResource(id = R.string.crash_reports),
                     description = stringResource(id = R.string.crash_reports_descr),
-                    sharedPreferences = sharedPreferences,
                     preferenceKey = acraEnabledKey,
-                    state = acraEnabledState,
+                    switchState = acraEnabledState,
                     icon = Icons.Rounded.BugReport,
                 )
             }
@@ -185,9 +184,8 @@ fun ConfigurationsTab(state: ItemState) {
                     ConfigurationsTabItem(
                         title = stringResource(id = R.string.system_logs),
                         description = stringResource(id = R.string.system_logs_descr),
-                        sharedPreferences = sharedPreferences,
                         preferenceKey = acraSysLogsEnabledKey,
-                        state = acraSysLogsEnabledState,
+                        switchState = acraSysLogsEnabledState,
                         icon = Icons.Rounded.PestControl,
                     )
                 }
@@ -335,11 +333,11 @@ fun ConfigurationsTab(state: ItemState) {
         }
 
         if (workGoalDialogState.value) {
-            ConfigurationsTabWorkGoalDialog(onClose = { workGoalDialogState.value = false })
+            ConfigurationsTabGoalDialog(onClose = { workGoalDialogState.value = false }, isPause = false)
         }
 
         if (pauseGoalDialogState.value) {
-            ConfigurationsTabPauseGoalDialog(onClose = { pauseGoalDialogState.value = false })
+            ConfigurationsTabGoalDialog(onClose = { pauseGoalDialogState.value = false }, isPause = true)
         }
     }
 }
@@ -412,10 +410,10 @@ private fun importCsvData(csvData: String, lifecycleScope: LifecycleCoroutineSco
         db.withTransaction {
             parsedData.drop(1).forEach { row ->
                 if (row.size >= 4) {
-                    val startTime = row[1]
-                    val endTime = row[2]
-                    val ongoing = row[3]
-                    val pause = row[4]
+                    val startTime = row[1].trim()
+                    val endTime = row[2].trim()
+                    val ongoing = row[3].trim()
+                    val pause = row[4].trim()
 
                     val item = Item(
                         startTime = startTime,
@@ -464,8 +462,7 @@ fun showImportFailedToast(context: Context) {
 }
 
 private fun importFile(uri: Uri, contentResolver: ContentResolver, context: Context, db: ItemDatabase, lifecycleScope: LifecycleCoroutineScope) {
-    uri.let { uri ->
-        val contentResolver = contentResolver
+    uri.let {
         contentResolver.openInputStream(uri)?.use { inputStream ->
             val sharedData = inputStream.bufferedReader().readText()
 
@@ -511,32 +508,14 @@ class OlSharedPreferences(context: Context) {
     private val sharedPreferences = context.getSharedPreferences("ol_prefs", Context.MODE_PRIVATE)
 
     fun saveWorkGoal(goal: Int) {
-        sharedPreferences.edit().apply {
-            putInt("workGoal", goal)
-            apply()
-        }
+        sharedPreferences.edit { putInt("workGoal", goal) }
     }
 
     fun savePauseGoal(goal: Int) {
-        sharedPreferences.edit().apply {
-            putInt("pauseGoal", goal)
-            apply()
-        }
+        sharedPreferences.edit { putInt("pauseGoal", goal) }
     }
 
-    fun getWorkGoal(): Int {
-        return sharedPreferences.getInt("workGoal", 0)
-    }
+    fun getWorkGoal(): Int = sharedPreferences.getInt("workGoal", 0)
 
-    fun getPauseGoal(): Int {
-        return sharedPreferences.getInt("pauseGoal", 0)
-    }
+    fun getPauseGoal(): Int = sharedPreferences.getInt("pauseGoal", 0)
 }
-
-/*
-@RequiresApi(Build.VERSION_CODES.O)
-@Preview
-@Composable
-fun ConfigurationsTabPreview() {
-    ConfigurationsTab()
-}*/

@@ -2,13 +2,13 @@ package cloud.pablos.overload.ui.tabs.calendar
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CalendarViewDay
 import androidx.compose.material3.HorizontalDivider
@@ -34,7 +34,7 @@ fun CalendarTabYearDialog(
     onClose: () -> Unit,
 ) {
     Dialog(
-        onDismissRequest = { onClose() },
+        onDismissRequest = onClose,
         content = {
             Surface(
                 shape = MaterialTheme.shapes.large,
@@ -42,76 +42,70 @@ fun CalendarTabYearDialog(
                 color = MaterialTheme.colorScheme.background,
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.padding(24.dp),
-                ) {
-                    Box(
-                        Modifier
-                            .padding(16.dp)
-                            .align(Alignment.CenterHorizontally),
-                    ) {
-                        Icon(
-                            imageVector = Icons.Rounded.CalendarViewDay,
-                            contentDescription = stringResource(id = R.string.select_year),
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.padding(horizontal = 8.dp),
-                        )
-                    }
-
-                    Box(
-                        modifier = Modifier
-                            .padding(16.dp)
-                            .align(Alignment.CenterHorizontally),
-                    ) {
-                        TextView(
-                            text = stringResource(id = R.string.select_year),
-                            fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                            modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
-                        )
-                    }
-
-                    Box(modifier = Modifier.align(Alignment.End)) {
-                        LazyColumn(
-                            modifier = Modifier.fillMaxHeight(),
-                        ) {
-                            val currentYear = LocalDate.now().year
-                            for (i in currentYear downTo firstYear) {
-                                item {
-                                    YearRow(year = i, onEvent = onEvent, onClose = onClose)
-                                    if (i != currentYear - 100) {
-                                        HorizontalDivider()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                YearDialogContent(firstYear = firstYear, onEvent = onEvent, onClose = onClose)
             }
         },
     )
 }
 
 @Composable
-fun YearRow(year: Int, onEvent: (ItemEvent) -> Unit, onClose: () -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            .clickable {
-                onEvent(ItemEvent.SetSelectedYearCalendar(year))
-                onClose()
-            },
-        horizontalArrangement = Arrangement.Center,
+private fun YearDialogContent(
+    firstYear: Int,
+    onEvent: (ItemEvent) -> Unit,
+    onClose: () -> Unit,
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(24.dp),
     ) {
-        TextView(year.toString())
+        Icon(
+            imageVector = Icons.Rounded.CalendarViewDay,
+            contentDescription = stringResource(id = R.string.select_year),
+            tint = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(16.dp),
+        )
+
+        TextView(
+            text = stringResource(id = R.string.select_year),
+            fontSize = MaterialTheme.typography.titleLarge.fontSize,
+            modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
+        )
+
+        YearListContent(firstYear = firstYear, onEvent = onEvent, onClose = onClose)
     }
 }
 
-/*
-@RequiresApi(Build.VERSION_CODES.O)
-@Preview
 @Composable
-fun CalendarTabYearDialogPreview() {
-    CalendarTabYearDialog {}
-}*/
+private fun YearListContent(
+    firstYear: Int,
+    onEvent: (ItemEvent) -> Unit,
+    onClose: () -> Unit,
+) {
+    LazyColumn(
+        modifier = Modifier.fillMaxHeight(),
+    ) {
+        val currentYear = LocalDate.now().year
+        items((currentYear downTo firstYear).toList()) { year ->
+            YearRow(year = year, onEvent = onEvent, onClose = onClose)
+            if (year != firstYear) {
+                HorizontalDivider()
+            }
+        }
+    }
+}
+
+@Composable
+private fun YearRow(year: Int, onEvent: (ItemEvent) -> Unit, onClose: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                onEvent(ItemEvent.SetSelectedYearCalendar(year))
+                onClose()
+            }
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        TextView(text = year.toString())
+    }
+}

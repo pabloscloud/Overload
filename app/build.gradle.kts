@@ -12,8 +12,8 @@ android {
         applicationId = "cloud.pablos.overload"
         minSdk = 26
         targetSdk = 34
-        versionCode = 120
-        versionName = "0.12.0"
+        versionCode = 121
+        versionName = "0.12.1"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -83,18 +83,16 @@ android {
 }
 
 dependencies {
-    val acraVersion = "5.11.1"
-    implementation("ch.acra:acra-mail:$acraVersion")
-    implementation("ch.acra:acra-toast:$acraVersion")
+    implementation(libs.acra.mail)
+    implementation(libs.acra.toast)
 
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
 
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.gson)
 
     implementation(libs.google.android.material)
-    implementation("androidx.compose.material3:material3-android:1.2.0-alpha08")
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
@@ -106,7 +104,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
-    implementation("androidx.compose.material3:material3:1.2.0-alpha08")
+    implementation(libs.androidx.material3)
     implementation(libs.accompanist.adaptive)
 
     implementation(libs.androidx.compose.materialWindow)

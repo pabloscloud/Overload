@@ -8,4 +8,4 @@ Features
 - backup your data as .csv
 - import backups
 
-For more informations or support create issues!
+For more information or support create issues!

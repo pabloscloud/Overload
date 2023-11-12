@@ -3,6 +3,7 @@ package cloud.pablos.overload.ui.tabs.configurations
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.preference.PreferenceManager
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,91 +24,68 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat.startActivity
 import androidx.core.net.toUri
 import cloud.pablos.overload.R
 
 @Composable
 fun ConfigurationsTabItem(
     title: String,
-) {
-    Row(Modifier.padding(top = 16.dp)) {
-        ConfigurationLabel(title.replaceFirstChar { it.uppercase() })
-    }
-}
-
-@Composable
-fun ConfigurationsTabItem(
-    title: String,
-    description: String,
-    link: Uri,
-    icon: ImageVector,
+    description: String? = null,
+    link: Uri? = null,
+    icon: ImageVector? = null,
+    preferenceKey: String? = null,
+    switchState: MutableState<Boolean>? = null,
 ) {
     val context = LocalContext.current
 
     val openLinkStr = stringResource(id = R.string.open_link_with)
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clickable {
-            val intent = Intent(Intent.ACTION_VIEW, link)
-            val chooserIntent = Intent.createChooser(intent, openLinkStr)
-            startActivity(context, chooserIntent, null)
+        modifier = if (link != null) {
+            Modifier.clickable {
+                val intent = Intent(Intent.ACTION_VIEW, link)
+                val chooserIntent = Intent.createChooser(intent, openLinkStr)
+                context.startActivity(chooserIntent)
+            }
+        } else {
+            Modifier
         },
     ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = title,
-            tint = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.padding(horizontal = 8.dp),
-        )
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Column {
-                ConfigurationTitle(title)
-                ConfigurationDescription(description)
-            }
-        }
-    }
-}
-
-@Composable
-fun ConfigurationsTabItem(
-    title: String,
-    description: String,
-    sharedPreferences: SharedPreferences,
-    preferenceKey: String,
-    state: MutableState<Boolean>,
-    icon: ImageVector,
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = title,
-            tint = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.padding(horizontal = 8.dp),
-        )
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                ConfigurationTitle(title)
-                ConfigurationDescription(description)
-            }
-            AcraSwitch(
-                sharedPreferences = sharedPreferences,
-                preferenceKey = preferenceKey,
-                state = state,
-                onCheckedChange = { newChecked ->
-                    sharedPreferences.edit().putBoolean(preferenceKey, newChecked).apply()
-                },
+        if (icon != null) {
+            Icon(
+                imageVector = icon,
+                contentDescription = title,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.padding(horizontal = 8.dp),
             )
+        }
+        if (description != null) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    ConfigurationTitle(title)
+                    ConfigurationDescription(description)
+                }
+                if (preferenceKey != null && switchState != null) {
+                    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+
+                    AcraSwitch(
+                        sharedPreferences = sharedPreferences,
+                        preferenceKey = preferenceKey,
+                        state = switchState,
+                        onCheckedChange = { newChecked ->
+                            sharedPreferences.edit().putBoolean(preferenceKey, newChecked).apply()
+                        },
+                    )
+                }
+            }
+        } else {
+            Row(Modifier.padding(top = 16.dp)) {
+                ConfigurationLabel(title.replaceFirstChar { it.uppercase() })
+            }
         }
     }
 }

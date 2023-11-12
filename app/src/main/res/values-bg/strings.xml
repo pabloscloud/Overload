@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
+    <string name="app_name" translatable="false">Overload</string>
+    <string name="select_all_items_of_selected_day">изберете всички елементи от избрания ден</string>
+    <string name="storage">съхранение</string>
+    <string name="delete_pause_descr">Не можете да изтриете тази продължаваща пауза. Тя само показва, че ще бъде създадена пауза, след като натиснете старт. Ако не натиснете старт до утре, тя ще изчезне и няма да се брои за вашата цел.</string>
+    <string name="hours">часове</string>
+    <string name="close">Затвори</string>
+    <string name="save">Запазете</string>
+    <string name="goals">Цели</string>
+    <string name="system_logs_descr">Включване на системни дневници в доклади за сривове</string>
+    <string name="crash_reports_descr">Поискайте да изпратите доклади за катастрофи</string>
+    <string name="get_out_of_isDeleting">ви извежда от режим на изтриване</string>
+    <string name="are_you_sure">Сигурни ли сте\?</string>
+    <string name="adjust_descr">Коригирайте времето на приключване до момента, в който то действително е приключило.</string>
+    <string name="system_logs">Системни дневници</string>
+    <string name="backup_descr">Редовно създавайте резервни копия на всички данни на запазено място!</string>
+    <string name="friday">Петък</string>
+    <string name="tuesday">Вторник</string>
+    <string name="acra_toastText">Открит е срив. Моля, помогнете, като изпратите имейл!</string>
+    <string name="import_descr">Импортиране от резервно копие</string>
+    <string name="spread_across_days">Разпределяне по дни</string>
+    <string name="translate">Превод</string>
+    <string name="no">Не</string>
+    <string name="import_backup">Импортиране на резервно копие</string>
+    <string name="learn_more">Научете повече…</string>
+    <string name="sourcecode_descr">Искате ли да видите вътрешността\? Заповядайте!</string>
+    <string name="pause">Пауза</string>
+    <string name="delete_items_forever">изтриване на елементи завинаги</string>
+    <string name="edit">Редактиране</string>
+    <string name="pick_work_goal">Задайте работна цел</string>
+    <string name="acra_mailBody">Открит е срив. Моля, помогнете ни да се подобрим, като изпратите този имейл, за да можем да поправим проблема възможно най-скоро.
+\n Съжаляваме за причинените неудобства! Вашият принос е от съществено значение за отстраняването на този проблем.
+\n
+\n Описание - Какво направихте, когато приложението се срина\?
+\n
+\n
+\n Стъпки за възпроизвеждане - Можете ли да предоставите ръководство стъпка по стъпка как да възпроизведете срива\?
+\n
+\n
+\n Визуализация - Моля, включете снимки на екрана или записи на екрана.
+\n
+\n
+\n Скорошни промени - Наскоро ли сте актуализирали приложението или сте променили настройките на устройството\?
+\n
+\n
+\n Честота - Колко често се случва този срив\?
+\n
+\n
+\n Благодаря за търпението!</string>
+    <string name="wednesday">Сряда</string>
+    <string name="yes">Да</string>
+    <string name="monday">Понеделник</string>
+    <string name="unknown_day">Непознат ден</string>
+    <string name="translate_descr">Искате да преведете приложението\? Благодаря!</string>
+    <string name="start">Старт</string>
+    <string name="license_descr">GNU GPL v3</string>
+    <string name="issue_reports">Докладване на грешки</string>
+    <string name="stop">Спрете</string>
+    <string name="import_failure">Импортирането на резервното копие е неуспешно</string>
+    <string name="select_year">Изберете година</string>
+    <string name="pick_pause_goal">Задайте цел за пауза</string>
+    <string name="work">Работа</string>
+    <string name="backup">Архивиране</string>
+    <string name="spans_days">Въвеждане на време за няколко дни</string>
+    <string name="license">Лиценз</string>
+    <string name="issue_reports_descr">Забелязвате ли нещо странно\? Моля, докладвайте за това!</string>
+    <string name="about">за</string>
+    <string name="adjust_end_time">Настройване на времето за приключване</string>
+    <string name="work_goal_descr">Поставяне на цел за работа</string>
+    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
+    <string name="open_link_with">Отваряне на връзка с</string>
+    <string name="import_backup_descr">За да импортирате данни в приложението, използвайте Sharesheet от други приложения. Това позволява на приложението да получи сигурен достъп до споделените данни и да ги импортира във вашата база данни.</string>
+    <string name="configurations">Конфигурации</string>
+    <string name="spans_days_descr">Един запис на време обхваща няколко дни. Може би сте забравили да го спрете. Искате ли да коригирате края\?</string>
+    <string name="sunday">Неделя</string>
+    <string name="no_items_subtitle">Няма запазени елементи за този ден.</string>
+    <string name="adjust">Настройте</string>
+    <string name="crash_reports">Доклади за катастрофи</string>
+    <string name="home">Начало</string>
+    <string name="cancel">Отмени</string>
+    <string name="yesterday">Вчера</string>
+    <string name="navigation_drawer">Навигационно чекмедже</string>
+    <string name="minutes">минути</string>
+    <string name="arrow_forward">стрелка напред, описваща посоката на двете времена от началото до края</string>
+    <string name="delete_pause">Изтриване на паузата</string>
+    <string name="deselect_all_items_of_selected_day">премахване на избора на всички елементи от избрания ден</string>
+    <string name="analytics">анализ</string>
+    <string name="no_items_title">Няма записани елементи</string>
+    <string name="saturday">Събота</string>
+    <string name="work_left">Работа вляво</string>
+    <string name="sourcecode">Изходен код</string>
+    <string name="itemCount_selected">избран</string>
+    <string name="import_success">Резервното копие е успешно импортирано</string>
+    <string name="pause_goal_descr">Поставяне на цел за пауза</string>
+    <string name="thursday">Четвъртък</string>
+    <string name="footer">създаден с ❤️ от pabloscloud</string>
+    <string name="calendar">Календар</string>
+    <string name="today">Днес</string>
+    <string name="pause_left">Пауза наляво</string>
+    <string name="import_ol">Внос</string>
+</resources>

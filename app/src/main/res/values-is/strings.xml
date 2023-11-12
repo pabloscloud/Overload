@@ -95,4 +95,9 @@
     <string name="today">Í dag</string>
     <string name="pause_left">Hlé til vinstri</string>
     <string name="import_ol">Flytja inn</string>
+    <string name="are_you_sure">Ertu viss\?</string>
+    <string name="adjust_descr">Stilltu lokatímann til hvenær sem það endaði í raun.</string>
+    <string name="no">Nei</string>
+    <string name="yes">Já</string>
+    <string name="adjust_end_time">Stilla lokatíma</string>
 </resources>

@@ -95,4 +95,9 @@
     <string name="spans_days">Entri waktu mencakup beberapa hari</string>
     <string name="spans_days_descr">Waktu terakhir kali masuk mencakup beberapa hari. Mungkin Anda lupa untuk menghentikannya. Apakah Anda ingin menyesuaikan akhirnya\?</string>
     <string name="adjust">Sesuaikan</string>
+    <string name="are_you_sure">Apakah Anda yakin\?</string>
+    <string name="adjust_descr">Sesuaikan waktu akhir dengan kapan pun waktu tersebut berakhir.</string>
+    <string name="no">No</string>
+    <string name="yes">Ya</string>
+    <string name="adjust_end_time">Sesuaikan waktu akhir</string>
 </resources>

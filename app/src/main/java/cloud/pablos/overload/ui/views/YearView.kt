@@ -41,9 +41,9 @@ import java.util.Locale
 fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit, bottomPadding: Dp) {
     val currentYear = LocalDate.now().year
     val months = if (year == currentYear) {
-        Month.values().takeWhile { it <= LocalDate.now().month }.reversed()
+        Month.entries.toTypedArray().takeWhile { it <= LocalDate.now().month }.reversed()
     } else {
-        Month.values().reversed()
+        Month.entries.reversed()
     }
 
     LazyColumn(
@@ -101,32 +101,20 @@ fun WeekRow(firstDayOfMonth: LocalDate, weekOfMonth: Int, state: ItemState, onEv
             }
         }
 
-        var currentDate = startOfWeek
-        val month = firstDayOfMonth.month
+        var iterationDate = startOfWeek
         val today = LocalDate.now()
 
-        while (currentDate < endDayOfWeek) {
-            val backgroundColor = if (currentDate <= today && currentDate.month == month) {
-                MaterialTheme.colorScheme.surfaceVariant
-            } else {
-                Color.Transparent
-            }
-
-            val borderColor = if (
-                currentDate == getLocalDate(state.selectedDayCalendar) &&
-                currentDate.month == month
-            ) {
-                MaterialTheme.colorScheme.primary
-            } else {
-                Color.Transparent
-            }
-
-            val number = currentDate.dayOfMonth.toString()
-
-            val clickable = currentDate <= today
+        while (iterationDate < endDayOfWeek) {
+            val (backgroundColor, borderColor) = getColorOfDay(
+                date = iterationDate,
+                firstDayOfMonth = firstDayOfMonth,
+                state = state,
+            )
+            val number = iterationDate.dayOfMonth.toString()
+            val clickable = iterationDate <= today
 
             DayCell(
-                date = currentDate,
+                date = iterationDate,
                 onEvent = onEvent,
                 backgroundColor = backgroundColor,
                 borderColor = borderColor,
@@ -134,7 +122,7 @@ fun WeekRow(firstDayOfMonth: LocalDate, weekOfMonth: Int, state: ItemState, onEv
                 clickable = clickable,
             )
 
-            currentDate = currentDate.plusDays(1)
+            iterationDate = iterationDate.plusDays(1)
         }
     }
 }
@@ -196,10 +184,25 @@ fun getFormattedDate(date: LocalDate): String {
     return date.format(formatter)
 }
 
-/*
-@RequiresApi(Build.VERSION_CODES.O)
-@Preview
 @Composable
-fun YearViewPreview(){
-    YearView()
-}*/
+fun getColorOfDay(date: LocalDate, firstDayOfMonth: LocalDate, state: ItemState): Pair<Color, Color> {
+    val month = firstDayOfMonth.month
+    val today = LocalDate.now()
+
+    val backgroundColor = if (date <= today && date.month == month) {
+        MaterialTheme.colorScheme.surfaceVariant
+    } else {
+        Color.Transparent
+    }
+
+    val borderColor = if (
+        date == getLocalDate(state.selectedDayCalendar) &&
+        date.month == month
+    ) {
+        MaterialTheme.colorScheme.primary
+    } else {
+        Color.Transparent
+    }
+
+    return Pair(backgroundColor, borderColor)
+}
