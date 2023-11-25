@@ -1,8 +1,11 @@
 package cloud.pablos.overload.ui.tabs.home
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,19 +21,21 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.utils.OverloadContentType
 import cloud.pablos.overload.ui.utils.OverloadNavigationType
 import cloud.pablos.overload.ui.views.TextView
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalFoundationApi::class)
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
@@ -63,6 +68,16 @@ fun HomeTab(
         },
         bottomBar = {
             HomeTabDeleteBottomAppBar(state = state, onEvent = onEvent)
+        },
+        floatingActionButton = {
+            AnimatedVisibility(
+                visible = navigationType == OverloadNavigationType.BOTTOM_NAVIGATION &&
+                    state.selectedDayCalendar == LocalDate.now().toString(),
+                enter = scaleIn(),
+                exit = scaleOut(),
+            ) {
+                HomeTabFab(state = state, onEvent = onEvent)
+            }
         },
     ) { paddingValues ->
         Box(modifier = Modifier.fillMaxSize()) {
@@ -98,17 +113,6 @@ fun HomeTab(
                 ) { page ->
                     val item = homeTabItems[page]
                     item.screen(state, onEvent)
-                }
-            }
-            if (
-                navigationType == OverloadNavigationType.BOTTOM_NAVIGATION &&
-                state.selectedDayCalendar == LocalDate.now().toString()
-            ) {
-                Box(
-                    modifier = Modifier.align(Alignment.BottomEnd)
-                        .animateContentSize(),
-                ) {
-                    HomeTabFab(state = state, onEvent = onEvent)
                 }
             }
         }

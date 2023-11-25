@@ -2,6 +2,7 @@ package cloud.pablos.overload.ui.navigation
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -189,7 +190,7 @@ fun PermanentNavigationDrawerContent(
                             modifier = Modifier.padding(16.dp),
                         )
 
-                        if (state.selectedDayCalendar == LocalDate.now().toString()) {
+                        AnimatedVisibility(visible = state.selectedDayCalendar == LocalDate.now().toString()) {
                             OverloadNavigationFab(state = state, onEvent = onEvent)
                         }
                     }
@@ -276,7 +277,7 @@ fun ModalNavigationDrawerContent(
                             }
                         }
 
-                        if (state.selectedDayCalendar == LocalDate.now().toString()) {
+                        AnimatedVisibility(visible = state.selectedDayCalendar == LocalDate.now().toString()) {
                             OverloadNavigationFab(state = state, onEvent = onEvent)
                         }
                     }
