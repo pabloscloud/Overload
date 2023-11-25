@@ -1,0 +1,2 @@
+- animates start/stop buttons
+- improves calendar for tablets

@@ -2,6 +2,7 @@ package cloud.pablos.overload.ui.tabs.calendar
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -38,9 +39,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.utils.OverloadContentType
 import cloud.pablos.overload.ui.views.DayView
 import cloud.pablos.overload.ui.views.TextView
 import cloud.pablos.overload.ui.views.YearView
+import cloud.pablos.overload.ui.views.getFormattedDate
 import cloud.pablos.overload.ui.views.getLocalDate
 import cloud.pablos.overload.ui.views.parseToLocalDateTime
 import kotlinx.coroutines.launch
@@ -52,6 +55,7 @@ import java.time.temporal.ChronoUnit
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun CalendarTab(
+    contentType: OverloadContentType,
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
@@ -118,39 +122,91 @@ fun CalendarTab(
     ) { paddingValues ->
         Box(modifier = Modifier.fillMaxSize()) {
             Column(modifier = Modifier.padding(paddingValues)) {
-                Surface(
-                    tonalElevation = NavigationBarDefaults.Elevation,
-                    color = MaterialTheme.colorScheme.background,
-                ) {
-                    WeekDaysHeader()
-                }
-                BottomSheetScaffold(
-                    scaffoldState = sheetState,
-                    sheetContent = {
-                        HorizontalPager(
-                            state = pagerState,
+                AnimatedVisibility(visible = contentType == OverloadContentType.DUAL_PANE) {
+                    Row(modifier = Modifier.fillMaxSize()) {
+                        Box(
+                            modifier = Modifier.weight(1f),
                         ) {
-                            DayView(
+                            Column {
+                                Surface(
+                                    tonalElevation = NavigationBarDefaults.Elevation,
+                                    color = MaterialTheme.colorScheme.background,
+                                ) {
+                                    WeekDaysHeader()
+                                }
+
+                                YearView(
+                                    state = state,
+                                    onEvent = onEvent,
+                                    year = state.selectedYearCalendar,
+                                    bottomPadding = 0.dp,
+                                )
+                            }
+                        }
+
+                        Box(
+                            modifier = Modifier.weight(1f),
+                        ) {
+                            HorizontalPager(
+                                state = pagerState,
+                            ) {
+                                Column {
+                                    Surface(
+                                        tonalElevation = NavigationBarDefaults.Elevation,
+                                        color = MaterialTheme.colorScheme.background,
+                                    ) {
+                                        DateHeader(selectedDay)
+                                    }
+
+                                    DayView(
+                                        state = state,
+                                        onEvent = onEvent,
+                                        date = selectedDay,
+                                        isEditable = false,
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+                AnimatedVisibility(visible = contentType == OverloadContentType.SINGLE_PANE) {
+                    Column {
+                        Surface(
+                            tonalElevation = NavigationBarDefaults.Elevation,
+                            color = MaterialTheme.colorScheme.background,
+                        ) {
+                            WeekDaysHeader()
+                        }
+
+                        BottomSheetScaffold(
+                            scaffoldState = sheetState,
+                            sheetContent = {
+                                HorizontalPager(
+                                    state = pagerState,
+                                ) {
+                                    DayView(
+                                        state = state,
+                                        onEvent = onEvent,
+                                        date = selectedDay,
+                                        isEditable = false,
+                                    )
+                                }
+                            },
+                        ) { innerPadding ->
+                            YearView(
                                 state = state,
                                 onEvent = onEvent,
-                                date = selectedDay,
-                                isEditable = false,
+                                year = state.selectedYearCalendar,
+                                bottomPadding = innerPadding.calculateBottomPadding(),
                             )
-                        }
-                    },
-                ) { innerPadding ->
-                    YearView(
-                        state = state,
-                        onEvent = onEvent,
-                        year = state.selectedYearCalendar,
-                        bottomPadding = innerPadding.calculateBottomPadding(),
-                    )
 
-                    Modifier.pointerInput(Unit) {
-                        detectVerticalDragGestures { _, dragAmount ->
-                            val maxOffset = 64.dp.toPx()
+                            Modifier.pointerInput(Unit) {
+                                detectVerticalDragGestures { _, dragAmount ->
+                                    val maxOffset = 64.dp.toPx()
 
-                            sheetOffset = (sheetOffset + dragAmount).coerceIn(0f, maxOffset)
+                                    sheetOffset = (sheetOffset + dragAmount).coerceIn(0f, maxOffset)
+                                }
+                            }
                         }
                     }
                 }
@@ -189,6 +245,23 @@ fun DayOfWeekHeaderCell(text: String) {
         TextView(
             text = text,
             fontSize = 14.sp,
+        )
+    }
+}
+
+@Composable
+fun DateHeader(date: LocalDate) {
+    val text = getFormattedDate(date, true)
+    Box(
+        modifier = Modifier
+            .padding(4.dp)
+            .height(36.dp)
+            .fillMaxWidth(),
+    ) {
+        TextView(
+            text = text,
+            fontSize = 14.sp,
+            modifier = Modifier.padding(6.dp),
         )
     }
 }

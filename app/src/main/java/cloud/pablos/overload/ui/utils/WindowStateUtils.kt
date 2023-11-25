@@ -47,3 +47,10 @@ enum class OverloadNavigationType {
 enum class OverloadNavigationContentPosition {
     TOP, CENTER
 }
+
+/**
+ * App Content shown depending on device size and state.
+ */
+enum class OverloadContentType {
+    SINGLE_PANE, DUAL_PANE
+}
