@@ -1,6 +1,7 @@
 package cloud.pablos.overload.ui
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
@@ -48,6 +49,7 @@ import cloud.pablos.overload.ui.tabs.calendar.CalendarTab
 import cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab
 import cloud.pablos.overload.ui.tabs.home.HomeTab
 import cloud.pablos.overload.ui.utils.DevicePosture
+import cloud.pablos.overload.ui.utils.OverloadContentType
 import cloud.pablos.overload.ui.utils.OverloadNavigationContentPosition
 import cloud.pablos.overload.ui.utils.OverloadNavigationType
 import cloud.pablos.overload.ui.utils.isBookPosture
@@ -66,6 +68,7 @@ fun OverloadApp(
     onEvent: (ItemEvent) -> Unit,
 ) {
     val navigationType: OverloadNavigationType
+    val contentType: OverloadContentType
 
     val foldingFeature = displayFeatures.filterIsInstance<FoldingFeature>().firstOrNull()
 
@@ -82,9 +85,17 @@ fun OverloadApp(
     when (windowSize.widthSizeClass) {
         WindowWidthSizeClass.Compact -> {
             navigationType = OverloadNavigationType.BOTTOM_NAVIGATION
+            contentType = OverloadContentType.SINGLE_PANE
         }
         WindowWidthSizeClass.Medium -> {
             navigationType = OverloadNavigationType.NAVIGATION_RAIL
+            contentType = if (foldingDevicePosture != DevicePosture.NormalPosture) {
+                OverloadContentType.DUAL_PANE
+            } else {
+                OverloadContentType.SINGLE_PANE
+            }
+
+            Log.d("ol_df", displayFeatures.toString())
         }
         WindowWidthSizeClass.Expanded -> {
             navigationType = if (foldingDevicePosture is DevicePosture.BookPosture) {
@@ -92,9 +103,11 @@ fun OverloadApp(
             } else {
                 OverloadNavigationType.PERMANENT_NAVIGATION_DRAWER
             }
+            contentType = OverloadContentType.DUAL_PANE
         }
         else -> {
             navigationType = OverloadNavigationType.BOTTOM_NAVIGATION
+            contentType = OverloadContentType.SINGLE_PANE
         }
     }
 
@@ -114,6 +127,7 @@ fun OverloadApp(
 
     OverloadNavigationWrapper(
         navigationType = navigationType,
+        contentType = contentType,
         navigationContentPosition = navigationContentPosition,
         state = state,
         onEvent = onEvent,
@@ -124,6 +138,7 @@ fun OverloadApp(
 @Composable
 private fun OverloadNavigationWrapper(
     navigationType: OverloadNavigationType,
+    contentType: OverloadContentType,
     navigationContentPosition: OverloadNavigationContentPosition,
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
@@ -152,6 +167,7 @@ private fun OverloadNavigationWrapper(
             }) {
                 OverloadAppContent(
                     navigationType = navigationType,
+                    contentType = contentType,
                     navigationContentPosition = navigationContentPosition,
                     navController = navController,
                     selectedDestination = selectedDestination,
@@ -165,6 +181,7 @@ private fun OverloadNavigationWrapper(
         OverloadNavigationType.BOTTOM_NAVIGATION -> {
             OverloadAppContent(
                 navigationType = navigationType,
+                contentType = contentType,
                 navigationContentPosition = navigationContentPosition,
                 navController = navController,
                 selectedDestination = selectedDestination,
@@ -198,6 +215,7 @@ private fun OverloadNavigationWrapper(
             ) {
                 OverloadAppContent(
                     navigationType = navigationType,
+                    contentType = contentType,
                     navigationContentPosition = navigationContentPosition,
                     navController = navController,
                     selectedDestination = selectedDestination,
@@ -220,6 +238,7 @@ private fun OverloadNavigationWrapper(
 fun OverloadAppContent(
     modifier: Modifier = Modifier,
     navigationType: OverloadNavigationType,
+    contentType: OverloadContentType,
     navigationContentPosition: OverloadNavigationContentPosition,
     navController: NavHostController,
     selectedDestination: String,
@@ -261,6 +280,7 @@ fun OverloadAppContent(
         ) {
             OverloadNavHost(
                 navigationType = navigationType,
+                contentType = contentType,
                 navController = navController,
                 state = state,
                 onEvent = onEvent,
@@ -315,6 +335,7 @@ fun OverloadAppContent(
 @Composable
 private fun OverloadNavHost(
     navigationType: OverloadNavigationType,
+    contentType: OverloadContentType,
     navController: NavHostController,
     modifier: Modifier = Modifier,
     state: ItemState,
@@ -326,10 +347,18 @@ private fun OverloadNavHost(
         startDestination = OverloadRoute.HOME,
     ) {
         composable(OverloadRoute.HOME) {
-            HomeTab(navigationType = navigationType, state = state, onEvent = onEvent)
+            HomeTab(
+                navigationType = navigationType,
+                state = state,
+                onEvent = onEvent,
+            )
         }
         composable(OverloadRoute.CALENDAR) {
-            CalendarTab(state = state, onEvent = onEvent)
+            CalendarTab(
+                contentType = contentType,
+                state = state,
+                onEvent = onEvent,
+            )
         }
         composable(OverloadRoute.CONFIGURATIONS) {
             ConfigurationsTab(state = state)
