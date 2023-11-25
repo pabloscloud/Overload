@@ -44,6 +44,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
 
+@OptIn(ExperimentalStdlibApi::class)
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit, bottomPadding: Dp) {
@@ -187,8 +188,8 @@ fun EmptyDayCell() {
     )
 }
 
-fun getFormattedDate(date: LocalDate): String {
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+fun getFormattedDate(date: LocalDate, human: Boolean = false): String {
+    val formatter = DateTimeFormatter.ofPattern(if (human) "dd.MM.yyyy" else "yyyy-MM-dd")
     return date.format(formatter)
 }
 

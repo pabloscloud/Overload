@@ -48,6 +48,8 @@ Feedback and suggestions are more than welcome! Please reach out by creating an 
 ### Translators
 
 - [@mondstern](https://codeberg.org/mondstern)
+- [@Vistaus](https://codeberg.org/Vistaus)
+- [@0que](https://codeberg.org/0que)
 
 
 ## Screenshots

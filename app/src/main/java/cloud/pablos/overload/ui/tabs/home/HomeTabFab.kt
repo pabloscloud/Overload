@@ -2,6 +2,7 @@ package cloud.pablos.overload.ui.tabs.home
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -45,9 +46,9 @@ fun HomeTabFab(
         onClick = {
             startOrStopPause(state, onEvent)
         },
-        modifier = Modifier.padding(10.dp),
         containerColor = MaterialTheme.colorScheme.secondaryContainer,
         contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+        modifier = Modifier.animateContentSize(),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -55,12 +56,12 @@ fun HomeTabFab(
         ) {
             Icon(
                 imageVector = icon,
-                contentDescription = stringResource(id = R.string.edit),
-                modifier = Modifier.padding(start = 8.dp),
+                contentDescription = buttonText,
+                modifier = Modifier.padding(8.dp),
             )
             TextView(
                 text = buttonText,
-                modifier = Modifier.padding(start = 8.dp),
+                modifier = Modifier.padding(end = 8.dp),
             )
         }
     }
