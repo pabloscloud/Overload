@@ -31,7 +31,7 @@ fun CalendarTabTopAppBar(
     val firstYear = if (state.items.isEmpty()) {
         LocalDate.now().year
     } else {
-        parseToLocalDateTime(state.items.first().startTime).year
+        state.items.minByOrNull { it.startTime }?.let { parseToLocalDateTime(it.startTime).year } ?: LocalDate.now().year
     }
     val yearsCount = LocalDate.now().year - firstYear
 

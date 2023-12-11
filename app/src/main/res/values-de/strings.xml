@@ -17,7 +17,7 @@
     <string name="import_descr">Stelle Daten aus einer Sicherung her</string>
     <string name="import_backup">Sicherung wiederherstellen</string>
     <string name="learn_more">Mehr erfahren…</string>
-    <string name="sourcecode_descr">Möchtest du das Innere sehen\? Nur zu!</string>
+    <string name="sourcecode_descr">Möchtest du das Innere sehen? Nur zu!</string>
     <string name="pause">Pause</string>
     <string name="delete_items_forever">Einträge für immer löschen</string>
     <string name="edit">Bearbeiten</string>
@@ -25,19 +25,19 @@
     <string name="acra_mailBody">Absturz erkannt. Bitte helfe uns, uns zu verbessern, indem du diese E-Mail sendest, damit wir das Problem so schnell wie möglich beheben können.
 \nBitte entschuldige! Das Absenden ist für die Behebung dieses Problems unerlässlich.
 \n
-\nBeschreibung – Was hast du getan, bevor die App abstürzte\?
+\nBeschreibung – Was hast du getan, bevor die App abstürzte?
 \n
 \n
-\nSchritte zur Reproduktion – Kannst du beschreiben, wie wir den Fehler reproduzieren können\?
+\nSchritte zur Reproduktion – Kannst du beschreiben, wie wir den Fehler reproduzieren können?
 \n
 \n
 \nBildmaterial – Bitte füge Screenshots oder Bildschirmaufzeichnungen bei.
 \n
 \n
-\nKürzliche Änderungen – Hast du kürzlich die App aktualisiert oder Geräteeinstellungen geändert\?
+\nKürzliche Änderungen – Hast du kürzlich die App aktualisiert oder Geräteeinstellungen geändert?
 \n
 \n
-\nHäufigkeit – Wie oft kommt dieser Absturz vor\?
+\nHäufigkeit – Wie oft kommt dieser Absturz vor?
 \n
 \n
 \nDanke für deine Geduld!</string>
@@ -54,7 +54,7 @@
     <string name="work">Arbeit</string>
     <string name="backup">Sichern</string>
     <string name="license">Lizenz</string>
-    <string name="issue_reports_descr">Ist etwas komisch\? Melde es!</string>
+    <string name="issue_reports_descr">Ist etwas komisch? Melde es!</string>
     <string name="about">Über</string>
     <string name="work_goal_descr">Setze für die Arbeit ein Ziel</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
@@ -87,17 +87,17 @@
     <string name="hours">Stunden</string>
     <string name="minutes">Minuten</string>
     <string name="cancel">Abbrechen</string>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="translate">Übersetzen</string>
-    <string name="translate_descr">Möchtest du übersetzen helfen\? Danke!</string>
+    <string name="translate_descr">Möchtest du übersetzen helfen? Danke!</string>
     <string name="spread_across_days">Über Tage verteilen</string>
     <string name="spans_days">Ein Zeiteintrag erstreckt sich über mehrere Tage</string>
-    <string name="spans_days_descr">Ein Zeiteintrag erstreckt sich über mehrere Tage. Vielleicht hast du vergessen, ihn zu stoppen. Möchtest du das Ende anpassen\?</string>
+    <string name="spans_days_descr">Ein Zeiteintrag erstreckt sich über mehrere Tage. Vielleicht hast du vergessen, ihn zu stoppen. Möchtest du das Ende anpassen?</string>
     <string name="adjust">Anpassen</string>
-    <string name="are_you_sure">Bist du sicher\?</string>
+    <string name="are_you_sure">Bist du sicher?</string>
     <string name="adjust_descr">Passe die Endzeit an den tatsächlichen Endzeitpunkt an.</string>
     <string name="no">Nein</string>
     <string name="yes">Ja</string>
     <string name="adjust_end_time">Ende anpassen</string>
+    <string name="end">Ende</string>
+    <string name="manual_entry">Manueller Eintrag</string>
 </resources>

@@ -39,16 +39,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.tabs.home.getFormattedDate
 import cloud.pablos.overload.ui.utils.OverloadContentType
 import cloud.pablos.overload.ui.views.DayView
 import cloud.pablos.overload.ui.views.TextView
 import cloud.pablos.overload.ui.views.YearView
-import cloud.pablos.overload.ui.views.getFormattedDate
 import cloud.pablos.overload.ui.views.getLocalDate
 import cloud.pablos.overload.ui.views.parseToLocalDateTime
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 
 @RequiresApi(Build.VERSION_CODES.S)
@@ -69,11 +68,11 @@ fun CalendarTab(
     val firstYear = if (state.items.isEmpty()) {
         LocalDate.now().year
     } else {
-        parseToLocalDateTime(state.items.first().startTime).year
+        state.items.minByOrNull { it.startTime }?.let { parseToLocalDateTime(it.startTime).year } ?: LocalDate.now().year
     }
 
     val firstDay = LocalDate.of(firstYear, 1, 1)
-    val lastDay = LocalDateTime.now().toLocalDate()
+    val lastDay = LocalDate.now()
     val daysCount = ChronoUnit.DAYS.between(firstDay, lastDay).toInt() + 1
 
     val pagerState = rememberPagerState(

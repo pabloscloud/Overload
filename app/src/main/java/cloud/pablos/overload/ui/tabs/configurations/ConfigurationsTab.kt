@@ -294,7 +294,7 @@ fun ConfigurationsTab(state: ItemState) {
                 ConfigurationsTabItem(
                     title = stringResource(id = R.string.translate),
                     description = stringResource(id = R.string.translate_descr),
-                    link = "https://codeberg.org/pabloscloud/Overload/raw/branch/main/LICENSE".toUri(),
+                    link = "https://translate.codeberg.org/engage/overload".toUri(),
                     icon = Icons.Rounded.Translate,
                 )
             }

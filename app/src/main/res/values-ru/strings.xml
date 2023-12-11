@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">выбрать всё в этом дне</string>
     <string name="storage">хранилище</string>
     <string name="delete_pause_descr">Вы не можете удалить происходящий сейчас перерыв. Он здесь только для того, чтобы проинформировать о том, что перерыв будет добавлен как только вы нажмёте Начать. Если вы не нажмёте Начать до завтра, он удалится и не будет засчитан против вашей цели.</string>
@@ -12,7 +10,7 @@
     <string name="system_logs_descr">Прикреплять к отчётам записи из журнала системы</string>
     <string name="crash_reports_descr">Предлагать отправить отчёты о вылетах</string>
     <string name="get_out_of_isDeleting">выйти из режима удаления</string>
-    <string name="are_you_sure">Вы уверены\?</string>
+    <string name="are_you_sure">Вы уверены?</string>
     <string name="adjust_descr">Скорректируйте время окончания до фактического.</string>
     <string name="system_logs">Системный журнал</string>
     <string name="backup_descr">Делайте резервные копии постоянно и храните их в надёжном месте!</string>
@@ -25,7 +23,7 @@
     <string name="no">Нет</string>
     <string name="import_backup">Импорт резервной копии</string>
     <string name="learn_more">Узнать больше…</string>
-    <string name="sourcecode_descr">Хотите заглянуть внутрь\? Пожалуйста!</string>
+    <string name="sourcecode_descr">Хотите заглянуть внутрь? Пожалуйста!</string>
     <string name="pause">Перерывы</string>
     <string name="delete_items_forever">удалить навсегда</string>
     <string name="edit">Изменить</string>
@@ -34,7 +32,7 @@
 \n Извините за доставленные неудобства! Заполнение данных ниже обязательно для того, чтобы мы могли исправить эту ошибку.
 \n Если знаете английский или немецкий, пишите об ошибке на одном из них, чтобы автор приложения мог лучше вас понять. Язык этого шаблона зависит от выбранного языка приложения или системы.
 \n
-\n Описание - Что вы делали, когда приложение вылетело\?
+\n Описание - Что вы делали, когда приложение вылетело?
 \n
 \n
 \n Шаги для воспроизведения - Пожалуйста, опишите действия, приводящие к повторению этого вылета.
@@ -43,10 +41,10 @@
 \n Визуальное представление - Пожалуйста, прикрепите снимки экрана или запись видео, описывающие проблему.
 \n
 \n
-\n Недавние изменения - Появилась ли проблема после обновления приложения или недавнего изменения настроек\?
+\n Недавние изменения - Появилась ли проблема после обновления приложения или недавнего изменения настроек?
 \n
 \n
-\n Частота - Как часто возникает эта проблема\?
+\n Частота - Как часто возникает эта проблема?
 \n
 \n
 \n Спасибо за неравнодушие и терпение!</string>
@@ -54,7 +52,7 @@
     <string name="yes">Да</string>
     <string name="monday">Понедельник</string>
     <string name="unknown_day">Неизвестный день</string>
-    <string name="translate_descr">Хотите помочь с переводом приложения\? Спасибо!</string>
+    <string name="translate_descr">Хотите помочь с переводом приложения? Спасибо!</string>
     <string name="start">Начать</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="issue_reports">Сообщить об ошибке</string>
@@ -66,7 +64,7 @@
     <string name="backup">Создать резервную копию</string>
     <string name="spans_days">Временной промежуток растянулся между днями</string>
     <string name="license">Лицензия</string>
-    <string name="issue_reports_descr">Заметили что-то странное\? Пожалуйста, сообщите об этом!</string>
+    <string name="issue_reports_descr">Заметили что-то странное? Пожалуйста, сообщите об этом!</string>
     <string name="about">О приложении</string>
     <string name="adjust_end_time">Корректировка времени окончания</string>
     <string name="work_goal_descr">Задать цель для работы</string>
@@ -74,7 +72,7 @@
     <string name="open_link_with">Открыть ссылку с помощью</string>
     <string name="import_backup_descr">Чтобы импортировать данные, используйте обмен из других приложений. Это позволит приложению безопасно получить данные и импортировать их.</string>
     <string name="configurations">Параметры</string>
-    <string name="spans_days_descr">Временной промежуток попал в несколько суток. Возможно, вы забыли остановить его. Хотите скорректировать время окончания\?</string>
+    <string name="spans_days_descr">Временной промежуток попал в несколько суток. Возможно, вы забыли остановить его. Хотите скорректировать время окончания?</string>
     <string name="sunday">Воскресенье</string>
     <string name="no_items_subtitle">Для этого дня нет сохранённых данных.</string>
     <string name="adjust">Скорректировать</string>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">вибрати всі елементи обраного дня</string>
     <string name="delete_pause_descr">Ви не можете видалити цю поточну паузу. Вона лише вказує на те, що пауза буде створена, як тільки Ви натиснете «Старт». Якщо не натиснути «Старт» до завтра, вона зникне і не буде зарахована до Вашої мети.</string>
     <string name="close">Закрити</string>
@@ -16,19 +14,19 @@
     <string name="acra_mailBody">Виявлено збій. Будь ласка, допоможіть нам покращити програму, надіславши цей лист, щоб ми могли виправити це якнайшвидше.
 \nВибачте за незручності! Ваш внесок дуже важливий для вирішення цієї проблеми.
 \n
-\nОпис – Що Ви робили, коли програма завершила роботу\?
+\nОпис – Що Ви робили, коли програма завершила роботу?
 \n
 \n
-\nКроки для відтворення – Чи можете Ви надати покрокову інструкцію, як відтворити збій\?
+\nКроки для відтворення – Чи можете Ви надати покрокову інструкцію, як відтворити збій?
 \n
 \n
 \nВізуальні матеріали – Додайте будь-які скріншоти або записи з екрану.
 \n
 \n
-\nНещодавні зміни – Чи оновлювали Ви нещодавно додаток, чи змінювали налаштування пристрою\?
+\nНещодавні зміни – Чи оновлювали Ви нещодавно додаток, чи змінювали налаштування пристрою?
 \n
 \n
-\nЧастота – Як часто відбувається цей збій\?
+\nЧастота – Як часто відбувається цей збій?
 \n
 \n
 \nДякуємо за терпіння!</string>
@@ -65,7 +63,7 @@
     <string name="acra_toastText">Виявлено збій. Будь ласка, допоможіть, надіславши листа!</string>
     <string name="import_descr">Імпорт з резервної копії</string>
     <string name="import_backup">Імпорт резервної копії</string>
-    <string name="sourcecode_descr">Хочете зазирнути всередину\? Заходьте!</string>
+    <string name="sourcecode_descr">Хочете зазирнути всередину? Заходьте!</string>
     <string name="pause">Пауза</string>
     <string name="pick_work_goal">Встановіть робочу мету</string>
     <string name="license_descr">GNU GPL v3</string>
@@ -76,7 +74,7 @@
     <string name="work">Робота</string>
     <string name="backup">Резервна копія</string>
     <string name="license">Ліцензія</string>
-    <string name="issue_reports_descr">Помітили щось дивне\? Будь ласка, повідомте про це!</string>
+    <string name="issue_reports_descr">Помітили щось дивне? Будь ласка, повідомте про це!</string>
     <string name="about">про</string>
     <string name="import_backup_descr">Щоб імпортувати дані до програми, скористайтеся таблицею спільного доступу з інших програм. Це дозволить програмі отримати безпечний доступ до спільних даних та імпортувати їх до вашої бази даних.</string>
     <string name="crash_reports">Звіти про аварії</string>
@@ -90,14 +88,16 @@
     <string name="import_ol">Імпорт</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
     <string name="translate">Перекласти</string>
-    <string name="translate_descr">Хочете перекласти додаток\? Дякую!</string>
+    <string name="translate_descr">Хочете перекласти додаток? Дякую!</string>
     <string name="spread_across_days">Поширити на дні</string>
     <string name="spans_days">Вказаний час охоплює кілька днів</string>
-    <string name="spans_days_descr">Вказаний час охоплює кілька днів. Можливо, Ви забули його зупинити. Бажаєте налаштувати час закінчення\?</string>
+    <string name="spans_days_descr">Вказаний час охоплює кілька днів. Можливо, Ви забули його зупинити. Бажаєте налаштувати час закінчення?</string>
     <string name="adjust">Hалаштувати</string>
-    <string name="are_you_sure">Ви впевнені\?</string>
+    <string name="are_you_sure">Ви впевнені?</string>
     <string name="adjust_descr">Налаштуйте час завершення відповідно до фактичного часу завершення.</string>
     <string name="no">Ні</string>
     <string name="yes">Так</string>
     <string name="adjust_end_time">Налаштуйте час завершення</string>
+    <string name="end">Кінець</string>
+    <string name="manual_entry">Введення вручну</string>
 </resources>

@@ -4,8 +4,8 @@
 #####
 [versions]
 accompanist = "0.32.0"
-androidGradlePlugin = "8.1.4"
-androidx-activity-compose = "1.8.0"
+androidGradlePlugin = "8.2.0"
+androidx-activity-compose = "1.8.1"
 androidx-appcompat = "1.6.1"
 androidx-benchmark = "1.2.0"
 androidx-benchmark-junit4 = "1.2.0"
@@ -20,7 +20,7 @@ androidx-test = "1.5.0"
 androidx-test-espresso = "3.5.1"
 androidx-test-ext-junit = "1.1.5"
 androidx-test-ext-truth = "1.5.0"
-androidx-window = "1.2.0-rc01"
+androidx-window = "1.2.0"
 androidxHiltNavigationCompose = "1.1.0"
 androix-test-uiautomator = "2.2.0"
 coil = "2.4.0"
@@ -32,7 +32,7 @@ compileSdk = "33"
 compose-compiler = "1.5.4"
 coroutines = "1.7.3"
 google-maps = "18.2.0"
-gradle-versions = "0.46.0"
+gradle-versions = "0.50.0"
 hilt = "2.43.2"
 hiltExt = "1.1.0"
 # @pin When updating to AGP 7.4.0-alpha10 and up we can update this https://developer.android.com/studio/write/java8-support#library-desugaring-versions
@@ -45,16 +45,16 @@ ksp = "1.9.10-1.0.13"
 maps-compose = "2.5.3"
 material = "1.10.0"
 # @keep
-material3 = "1.2.0-alpha10"
+material3 = "1.2.0-alpha12"
 minSdk = "21"
 okhttp = "4.11.0"
 robolectric = "4.10.3"
 rome = "1.18.0"
-room = "2.6.0"
+room = "2.6.1"
 secrets = "2.0.1"
 # @keep
 targetSdk = "33"
-version-catalog-update = "0.8.0"
+version-catalog-update = "0.8.1"
 
 [libraries]
 accompanist-adaptive = { module = "com.google.accompanist:accompanist-adaptive", version.ref = "accompanist" }
@@ -70,7 +70,7 @@ androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-mani
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-corektx" }
-androidx-lifecycle-runtime = "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0-beta01"
+androidx-lifecycle-runtime = "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0-rc01"
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle-runtime-compose" }
 androidx-lifecycle-viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle-compose" }
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }

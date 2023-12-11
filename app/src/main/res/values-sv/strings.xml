@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">välj alla artiklar för vald dag</string>
     <string name="storage">förvaring</string>
     <string name="delete_pause_descr">Du kan inte ta bort den pågående pausen. Den finns bara där för att indikera att en paus kommer att skapas när du trycker på start. Om du inte trycker på start förrän i morgon kommer den att vara borta och inte räknas mot ditt mål.</string>
@@ -12,7 +10,7 @@
     <string name="system_logs_descr">Inkludera systemloggar i haverirapporter</string>
     <string name="crash_reports_descr">Be att få skicka kraschrapporter</string>
     <string name="get_out_of_isDeleting">får dig ur raderingsläget</string>
-    <string name="are_you_sure">Är du säker\?</string>
+    <string name="are_you_sure">Är du säker?</string>
     <string name="adjust_descr">Justera sluttiden till när den faktiskt slutade.</string>
     <string name="system_logs">System loggar</string>
     <string name="backup_descr">Säkerhetskopiera regelbundet alla data till en säker plats!</string>
@@ -25,7 +23,7 @@
     <string name="no">Nej</string>
     <string name="import_backup">Import Backup</string>
     <string name="learn_more">Läs mer.…</string>
-    <string name="sourcecode_descr">Vill du se insidan\? Varsågod!</string>
+    <string name="sourcecode_descr">Vill du se insidan? Varsågod!</string>
     <string name="pause">Paus</string>
     <string name="delete_items_forever">radera objekt för alltid</string>
     <string name="edit">Redigera</string>
@@ -33,19 +31,19 @@
     <string name="acra_mailBody">Krasch upptäckt. Hjälp oss att förbättra genom att skicka det här e-postmeddelandet, så att vi kan åtgärda problemet så snart som möjligt.
 \n Vi beklagar de olägenheter som uppstått! Din input är avgörande för att lösa detta problem.
 \n
-\n Beskrivning - Vad gjorde du när appen kraschade\?
+\n Beskrivning - Vad gjorde du när appen kraschade?
 \n
 \n
-\n Steg för att reproducera - Kan du ge en steg-för-steg-guide om hur man reproducerar kraschen\?
+\n Steg för att reproducera - Kan du ge en steg-för-steg-guide om hur man reproducerar kraschen?
 \n
 \n
 \n Visuella bilder - Vänligen inkludera skärmdumpar eller skärminspelningar.
 \n
 \n
-\n Senaste ändringar - Har du nyligen uppdaterat appen eller ändrat enhetens inställningar\?
+\n Senaste ändringar - Har du nyligen uppdaterat appen eller ändrat enhetens inställningar?
 \n
 \n
-\n Frekvens - Hur ofta inträffar denna krasch\?
+\n Frekvens - Hur ofta inträffar denna krasch?
 \n
 \n
 \n Tack för ditt tålamod!</string>
@@ -53,7 +51,7 @@
     <string name="yes">Ja</string>
     <string name="monday">Måndag</string>
     <string name="unknown_day">Okänd dag</string>
-    <string name="translate_descr">Vill du översätta appen\? Tack för hjälpen!</string>
+    <string name="translate_descr">Vill du översätta appen? Tack för hjälpen!</string>
     <string name="start">Start</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="issue_reports">Rapportera buggar</string>
@@ -65,7 +63,7 @@
     <string name="backup">Backup</string>
     <string name="spans_days">Tidsinmatningen sträcker sig över flera dagar</string>
     <string name="license">Licens</string>
-    <string name="issue_reports_descr">Har du märkt något konstigt\? Vänligen rapportera det!</string>
+    <string name="issue_reports_descr">Har du märkt något konstigt? Vänligen rapportera det!</string>
     <string name="about">om</string>
     <string name="adjust_end_time">Justera sluttid</string>
     <string name="work_goal_descr">Sätt upp ett mål för arbetet</string>
@@ -73,7 +71,7 @@
     <string name="open_link_with">Öppna länk med</string>
     <string name="import_backup_descr">För att importera data till appen använder du Sharesheet från andra appar. På så sätt kan appen på ett säkert sätt komma åt de delade uppgifterna och importera dem till din databas.</string>
     <string name="configurations">Konfigurationer</string>
-    <string name="spans_days_descr">En tidspost sträcker sig över flera dagar. Du kanske glömde att stoppa den. Vill du justera slutet\?</string>
+    <string name="spans_days_descr">En tidspost sträcker sig över flera dagar. Du kanske glömde att stoppa den. Vill du justera slutet?</string>
     <string name="sunday">Söndag</string>
     <string name="no_items_subtitle">Det finns inga sparade objekt för den dagen.</string>
     <string name="adjust">Justera</string>

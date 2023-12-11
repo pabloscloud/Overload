@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">alle items van gekozen dag selecteren</string>
     <string name="storage">opslag</string>
     <string name="delete_pause_descr">Je kunt deze pauze niet verwijderen. Deze pauze gaat pas in zodra je op starten drukt. Als je tot aan morgen niet op starten drukt, dan wordt de pauze automatisch verwijderd en telt deze niet mee voor je doel.</string>
@@ -12,7 +10,7 @@
     <string name="system_logs_descr">Voeg het systeemlogboek toe aan clashverslagen</string>
     <string name="crash_reports_descr">Vraag om crashverslagen te versturen</string>
     <string name="get_out_of_isDeleting">verwijdermodus afsluiten</string>
-    <string name="are_you_sure">Weet je het zeker\?</string>
+    <string name="are_you_sure">Weet je het zeker?</string>
     <string name="adjust_descr">Geef aan wanneer het doel precies geëindigd is.</string>
     <string name="system_logs">Systeemlogboek</string>
     <string name="backup_descr">Maak regelmatig een reservekopie!</string>
@@ -25,7 +23,7 @@
     <string name="no">Nee</string>
     <string name="import_backup">Reservekopie importeren</string>
     <string name="learn_more">Meer informatie…</string>
-    <string name="sourcecode_descr">Wil je een kijkje achter de schermen nemen\? Ga je gang!</string>
+    <string name="sourcecode_descr">Wil je een kijkje achter de schermen nemen? Ga je gang!</string>
     <string name="pause">Pauze</string>
     <string name="delete_items_forever">items permanent verwijderen</string>
     <string name="edit">Bewerken</string>
@@ -33,19 +31,19 @@
     <string name="acra_mailBody">Er is een crash geweest. Help ons om de app te verbeteren door deze e-mail te versturen.
 \n Onze excuses voor het ongemak! We waarderen het dat je wilt helpen om dit probleem op te lossen.
 \n
-\n Beschrijving - Wat was je aan het doen toen de app crashte\?
+\n Beschrijving - Wat was je aan het doen toen de app crashte?
 \n
 \n
-\n Navolging - Kun je in stappen uitleggen hoe we de crash kunnen veroorzaken\?
+\n Navolging - Kun je in stappen uitleggen hoe we de crash kunnen veroorzaken?
 \n
 \n
 \n Foto\'s - Voeg desgewenst schermfoto\'s of -opnamen bij.
 \n
 \n
-\n Onlangs gewijzigd - Heb je de app onlangs geüpdatet of de systeeminstellingen aangepast\?
+\n Onlangs gewijzigd - Heb je de app onlangs geüpdatet of de systeeminstellingen aangepast?
 \n
 \n
-\n Frequentie - Hoe vaak komt deze crash voor\?
+\n Frequentie - Hoe vaak komt deze crash voor?
 \n
 \n
 \n Bedankt voor je geduld!</string>
@@ -53,7 +51,7 @@
     <string name="yes">Ja</string>
     <string name="monday">Maandag</string>
     <string name="unknown_day">Onbekende dag</string>
-    <string name="translate_descr">Wil je helpen om de app te vertalen\? Bij voorbaat dank!</string>
+    <string name="translate_descr">Wil je helpen om de app te vertalen? Bij voorbaat dank!</string>
     <string name="start">Starten</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="issue_reports">Bugs melden</string>
@@ -65,7 +63,7 @@
     <string name="backup">Reservekopie maken</string>
     <string name="spans_days">Tijd is verspreid over meerdere dagen</string>
     <string name="license">Licentie</string>
-    <string name="issue_reports_descr">Heb je iets vreemds ontdekt\? Meld dit dan!</string>
+    <string name="issue_reports_descr">Heb je iets vreemds ontdekt? Meld dit dan!</string>
     <string name="about">Over</string>
     <string name="adjust_end_time">Eindtijd aanpassen</string>
     <string name="work_goal_descr">Stel een werkdoel in</string>
@@ -73,7 +71,7 @@
     <string name="open_link_with">Link openen met</string>
     <string name="import_backup_descr">Je kunt gegevens importeren door het deelmenu vanuit een andere app te openen. Zo kunnen de gegevens op een veilige manier worden overgezet naar de databank.</string>
     <string name="configurations">Instellingen</string>
-    <string name="spans_days_descr">Een van de items is verspreid over meerdere dagen. Wellicht ben je vergeten op de stopknop te drukken. Wil je de eindtijd aanpassen\?</string>
+    <string name="spans_days_descr">Een van de items is verspreid over meerdere dagen. Wellicht ben je vergeten op de stopknop te drukken. Wil je de eindtijd aanpassen?</string>
     <string name="sunday">Zondag</string>
     <string name="no_items_subtitle">Er zijn van die dag geen items beschikbaar.</string>
     <string name="adjust">Aanpassen</string>
@@ -100,4 +98,6 @@
     <string name="today">Vandaag</string>
     <string name="pause_left">Resterende pauzetijd</string>
     <string name="import_ol">Importeren</string>
+    <string name="end">Eindigt</string>
+    <string name="manual_entry">Zelf inplannen</string>
 </resources>

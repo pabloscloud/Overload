@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">wybierz wszystkie elementy wybranego dnia</string>
     <string name="storage">przechowywanie</string>
     <string name="delete_pause_descr">Nie można usunąć trwającej pauzy. Służy ona jedynie do wskazania, że pauza zostanie utworzona po naciśnięciu przycisku Start. Jeśli rozpoczniesz grę dopiero jutro, pauza zniknie i nie będzie wliczana do celu.</string>
@@ -12,7 +10,7 @@
     <string name="system_logs_descr">Dołączanie dzienników systemowych do raportów o awariach</string>
     <string name="crash_reports_descr">Prośba o przesyłanie raportów o awariach</string>
     <string name="get_out_of_isDeleting">pozwala wyjść z trybu usuwania</string>
-    <string name="are_you_sure">Czy na pewno\?</string>
+    <string name="are_you_sure">Czy na pewno?</string>
     <string name="adjust_descr">Dostosuj czas zakończenia do rzeczywistego czasu zakończenia.</string>
     <string name="system_logs">Rejestry systemowe</string>
     <string name="backup_descr">Regularnie twórz kopie zapasowe wszystkich danych w bezpiecznym miejscu!</string>
@@ -25,7 +23,7 @@
     <string name="no">Nie</string>
     <string name="import_backup">Importuj kopię zapasową</string>
     <string name="learn_more">Dowiedz się więcej…</string>
-    <string name="sourcecode_descr">Chcesz zobaczyć wnętrze\? Przejdź dalej!</string>
+    <string name="sourcecode_descr">Chcesz zobaczyć wnętrze? Przejdź dalej!</string>
     <string name="pause">Pauza</string>
     <string name="delete_items_forever">usuwanie elementów na zawsze</string>
     <string name="edit">Edytuj</string>
@@ -33,19 +31,19 @@
     <string name="acra_mailBody">Wykryto awarię. Prosimy o pomoc w poprawieniu sytuacji poprzez wysłanie tej wiadomości e-mail, abyśmy mogli jak najszybciej to naprawić.
 \n Przepraszamy za spowodowane niedogodności! Twój wkład jest niezbędny do naprawienia tego problemu.
 \n
-\n Opis - Co zrobiłeś, gdy aplikacja się zawiesiła\?
+\n Opis - Co zrobiłeś, gdy aplikacja się zawiesiła?
 \n
 \n
-\n Kroki do odtworzenia - Czy możesz podać przewodnik krok po kroku, jak odtworzyć awarię\?
+\n Kroki do odtworzenia - Czy możesz podać przewodnik krok po kroku, jak odtworzyć awarię?
 \n
 \n
 \n Wizualizacje - dołącz zrzuty ekranu lub nagrania ekranu.
 \n
 \n
-\n Ostatnie zmiany - Czy ostatnio aktualizowałeś aplikację lub zmieniałeś ustawienia urządzenia\?
+\n Ostatnie zmiany - Czy ostatnio aktualizowałeś aplikację lub zmieniałeś ustawienia urządzenia?
 \n
 \n
-\n Częstotliwość - Jak często występuje ta awaria\?
+\n Częstotliwość - Jak często występuje ta awaria?
 \n
 \n
 \n Dziękujemy za cierpliwość!</string>
@@ -53,7 +51,7 @@
     <string name="yes">Tak</string>
     <string name="monday">Poniedziałek</string>
     <string name="unknown_day">Nieznany dzień</string>
-    <string name="translate_descr">Chcesz przetłumaczyć aplikację\? Dzięki!</string>
+    <string name="translate_descr">Chcesz przetłumaczyć aplikację? Dzięki!</string>
     <string name="start">Start</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="issue_reports">Include system logs in crash reports</string>
@@ -65,7 +63,7 @@
     <string name="backup">Kopia zapasowa</string>
     <string name="spans_days">Wpis czasu obejmuje wiele dni</string>
     <string name="license">Licencja</string>
-    <string name="issue_reports_descr">Zauważyłeś coś dziwnego\? Zgłoś to!</string>
+    <string name="issue_reports_descr">Zauważyłeś coś dziwnego? Zgłoś to!</string>
     <string name="about">Dzienniki systemowe</string>
     <string name="adjust_end_time">Dostosuj czas zakończenia</string>
     <string name="work_goal_descr">Wyznacz cel dla pracy</string>
@@ -73,7 +71,7 @@
     <string name="open_link_with">Otwórz łącze z</string>
     <string name="import_backup_descr">Aby zaimportować dane do aplikacji, należy użyć arkusza Sharesheet z innych aplikacji. Umożliwi to aplikacji bezpieczny dostęp do udostępnionych danych i zaimportowanie ich do bazy danych.</string>
     <string name="configurations">Konfiguracje</string>
-    <string name="spans_days_descr">Wpis czasu obejmuje wiele dni. Być może zapomniałeś go zatrzymać. Czy chcesz dostosować koniec\?</string>
+    <string name="spans_days_descr">Wpis czasu obejmuje wiele dni. Być może zapomniałeś go zatrzymać. Czy chcesz dostosować koniec?</string>
     <string name="sunday">Niedziela</string>
     <string name="no_items_subtitle">Nie ma zapisanych przedmiotów na ten dzień.</string>
     <string name="adjust">Dostosuj</string>
@@ -100,4 +98,6 @@
     <string name="today">Dzisiaj</string>
     <string name="pause_left">Pauza w lewo</string>
     <string name="import_ol">Import</string>
+    <string name="end">Koniec</string>
+    <string name="manual_entry">Wpis ręczny</string>
 </resources>

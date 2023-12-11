@@ -17,4 +17,5 @@ sealed interface ItemEvent {
     data class SetForgotToStopDialogShown(val isForgotToStopDialogShown: Boolean) : ItemEvent
     data class SetAdjustEndDialogShown(val isAdjustEndDialogShown: Boolean) : ItemEvent
     data class SetSpreadAcrossDaysDialogShown(val isSpreadAcrossDaysDialogShown: Boolean) : ItemEvent
+    data class SetIsFabOpen(val isFabOpen: Boolean) : ItemEvent
 }

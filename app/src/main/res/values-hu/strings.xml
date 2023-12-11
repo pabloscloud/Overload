@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">a kiválasztott nap összes elemének kiválasztása</string>
     <string name="storage">tárolás</string>
     <string name="delete_pause_descr">Ezt a folyamatban lévő szünetet nem lehet törölni. Csak azért van ott, hogy jelezze, hogy a szünet létrejön, amint megnyomja a start gombot. Ha csak holnap nyomja meg a start gombot, akkor eltűnik, és nem számít bele a céljába.</string>
@@ -12,7 +10,7 @@
     <string name="system_logs_descr">Rendszernaplók felvétele az összeomlási jelentésekbe</string>
     <string name="crash_reports_descr">Kérje a baleseti jelentések küldését</string>
     <string name="get_out_of_isDeleting">kihozza Önt a törlési módból</string>
-    <string name="are_you_sure">Biztos vagy benne\?</string>
+    <string name="are_you_sure">Biztos vagy benne?</string>
     <string name="adjust_descr">Állítsa be a befejezés időpontját a tényleges befejezés időpontjára.</string>
     <string name="system_logs">Rendszer naplók</string>
     <string name="backup_descr">Minden adatról rendszeresen készítsen biztonsági másolatot egy mentett helyre!</string>
@@ -25,7 +23,7 @@
     <string name="no">Nem</string>
     <string name="import_backup">Import biztonsági mentés</string>
     <string name="learn_more">Tudjon meg többet…</string>
-    <string name="sourcecode_descr">Szeretné látni a belsejét\? Menj csak!</string>
+    <string name="sourcecode_descr">Szeretné látni a belsejét? Menj csak!</string>
     <string name="pause">Szünet</string>
     <string name="delete_items_forever">elemek törlése örökre</string>
     <string name="edit">Szerkesztés</string>
@@ -33,19 +31,19 @@
     <string name="acra_mailBody">Ütközés észlelve. Kérjük, segítsen nekünk a javításban, küldje el ezt az e-mailt, hogy minél hamarabb kijavíthassuk a hibát.
 \n Elnézést az okozott kellemetlenségekért! Az Ön hozzájárulása elengedhetetlen a probléma javításához.
 \n
-\n Leírás - Mit csináltál, amikor az alkalmazás lezuhant\?
+\n Leírás - Mit csináltál, amikor az alkalmazás lezuhant?
 \n
 \n
-\n Lépések a reprodukáláshoz - Tudna adni egy lépésről-lépésre történő útmutatót az összeomlás reprodukálásához\?
+\n Lépések a reprodukáláshoz - Tudna adni egy lépésről-lépésre történő útmutatót az összeomlás reprodukálásához?
 \n
 \n
 \n Vizuális anyagok - Kérjük, csatoljon képernyőképeket vagy képernyőfelvételeket.
 \n
 \n
-\n Legutóbbi változások - Frissítette nemrégiben az alkalmazást vagy módosította a készülék beállításait\?
+\n Legutóbbi változások - Frissítette nemrégiben az alkalmazást vagy módosította a készülék beállításait?
 \n
 \n
-\n Gyakoriság - Milyen gyakran fordul elő az összeomlás\?
+\n Gyakoriság - Milyen gyakran fordul elő az összeomlás?
 \n
 \n
 \n Köszönjük a türelmet!</string>
@@ -53,7 +51,7 @@
     <string name="yes">Igen</string>
     <string name="monday">Hétfő</string>
     <string name="unknown_day">Ismeretlen nap</string>
-    <string name="translate_descr">Szeretné lefordítani az alkalmazást\? Köszönöm!</string>
+    <string name="translate_descr">Szeretné lefordítani az alkalmazást? Köszönöm!</string>
     <string name="start">Start</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="issue_reports">Hibák jelentése</string>
@@ -65,7 +63,7 @@
     <string name="backup">Biztonsági mentés</string>
     <string name="spans_days">Az időbevitel több napra terjed ki</string>
     <string name="license">Licenc</string>
-    <string name="issue_reports_descr">Észrevettél valami furcsát\? Kérjük, jelezze!</string>
+    <string name="issue_reports_descr">Észrevettél valami furcsát? Kérjük, jelezze!</string>
     <string name="about">a honlapról</string>
     <string name="adjust_end_time">Beállítás végidő</string>
     <string name="work_goal_descr">Tűzzön ki egy célt a munkához</string>
@@ -73,7 +71,7 @@
     <string name="open_link_with">Nyissa meg a linket</string>
     <string name="import_backup_descr">Az adatoknak az alkalmazásba történő importálásához kérjük, használja a más alkalmazásokból származó Sharesheet-et. Ez lehetővé teszi, hogy az alkalmazás biztonságosan hozzáférjen a megosztott adatokhoz, és importálja azokat az Ön adatbázisába.</string>
     <string name="configurations">Konfigurációk</string>
-    <string name="spans_days_descr">Egy időbejegyzés több napra terjed ki. Talán elfelejtette leállítani. Szeretné beállítani a végét\?</string>
+    <string name="spans_days_descr">Egy időbejegyzés több napra terjed ki. Talán elfelejtette leállítani. Szeretné beállítani a végét?</string>
     <string name="sunday">Vasárnap</string>
     <string name="no_items_subtitle">Az adott napra nincsenek elmentett elemek.</string>
     <string name="adjust">Beállítás</string>

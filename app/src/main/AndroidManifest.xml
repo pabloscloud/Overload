@@ -38,7 +38,7 @@
         </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="cloud.pablos.overload.fileprovider"
+            android:authorities="cloud.pablos.overload.fileprovider, cloud.pablos.overload.debug.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">izberite vse elemente izbranega dneva</string>
     <string name="storage">shranjevanje</string>
     <string name="delete_pause_descr">Te tekoče prekinitve ni mogoče izbrisati. Označuje le, da bo pavza ustvarjena, ko pritisnete gumb Start. Če boste start pritisnili šele jutri, bo izginila in ne bo štela v vaš cilj.</string>
@@ -21,7 +19,7 @@
     <string name="translate">Prevesti</string>
     <string name="import_backup">Uvoz varnostne kopije</string>
     <string name="learn_more">Več informacij…</string>
-    <string name="sourcecode_descr">Si želite ogledati notranjost\? Pojdite naprej!</string>
+    <string name="sourcecode_descr">Si želite ogledati notranjost? Pojdite naprej!</string>
     <string name="pause">Pavza</string>
     <string name="delete_items_forever">za vedno izbrišite elemente</string>
     <string name="edit">Uredi</string>
@@ -29,26 +27,26 @@
     <string name="acra_mailBody">Odkrita nesreča. Pomagajte nam izboljšati stanje tako, da nam pošljete to e-poštno sporočilo, da bomo lahko to čim prej odpravili.
 \n Opravičujemo se za povzročene nevšečnosti! Vaš prispevek je bistvenega pomena za odpravo te težave.
 \n
-\n Opis - Kaj ste storili, ko se je aplikacija zrušila\?
+\n Opis - Kaj ste storili, ko se je aplikacija zrušila?
 \n
 \n
-\n Koraki za ponovitev - Ali lahko zagotovite navodila po korakih, kako ponoviti sesutje\?
+\n Koraki za ponovitev - Ali lahko zagotovite navodila po korakih, kako ponoviti sesutje?
 \n
 \n
 \n Slike - vključite vse slike zaslona ali posnetke zaslona.
 \n
 \n
-\n Nedavne spremembe - Ali ste nedavno posodobili aplikacijo ali spremenili nastavitve naprave\?
+\n Nedavne spremembe - Ali ste nedavno posodobili aplikacijo ali spremenili nastavitve naprave?
 \n
 \n
-\n Pogostost - Kako pogosto se pojavlja ta okvara\?
+\n Pogostost - Kako pogosto se pojavlja ta okvara?
 \n
 \n
 \n Hvala za potrpežljivost!</string>
     <string name="wednesday">Sreda</string>
     <string name="monday">Ponedeljek</string>
     <string name="unknown_day">Neznani dan</string>
-    <string name="translate_descr">Želite aplikacijo prevesti\? Hvala!</string>
+    <string name="translate_descr">Želite aplikacijo prevesti? Hvala!</string>
     <string name="start">Začni</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="issue_reports">Poročilo o napakah</string>
@@ -59,7 +57,7 @@
     <string name="work">Delo</string>
     <string name="backup">Varnostna kopija</string>
     <string name="license">Licenca</string>
-    <string name="issue_reports_descr">Ste opazili kaj nenavadnega\? Prosimo, sporočite to!</string>
+    <string name="issue_reports_descr">Ste opazili kaj nenavadnega? Prosimo, sporočite to!</string>
     <string name="about">o</string>
     <string name="work_goal_descr">Postavite cilj za delo</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
@@ -93,9 +91,9 @@
     <string name="import_ol">Uvoz</string>
     <string name="spread_across_days">Razporeditev po dnevih</string>
     <string name="spans_days">Vnos časa zajema več dni</string>
-    <string name="spans_days_descr">Zadnji časovni vnos zajema več dni. Morda ste ga pozabili ustaviti. Ali želite prilagoditi konec\?</string>
+    <string name="spans_days_descr">Zadnji časovni vnos zajema več dni. Morda ste ga pozabili ustaviti. Ali želite prilagoditi konec?</string>
     <string name="adjust">Prilagodite</string>
-    <string name="are_you_sure">Ste prepričani\?</string>
+    <string name="are_you_sure">Ste prepričani?</string>
     <string name="adjust_descr">Čas zaključka prilagodite dejanskemu zaključku.</string>
     <string name="no">Ne</string>
     <string name="yes">Da</string>

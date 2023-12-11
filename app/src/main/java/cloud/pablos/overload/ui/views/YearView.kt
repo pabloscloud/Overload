@@ -30,9 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.tabs.home.getFormattedDate
 import java.time.LocalDate
 import java.time.Month
-import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
 
@@ -178,11 +178,6 @@ fun EmptyDayCell() {
             .clip(CircleShape)
             .border(2.dp, Color.Transparent, CircleShape),
     )
-}
-
-fun getFormattedDate(date: LocalDate, human: Boolean = false): String {
-    val formatter = DateTimeFormatter.ofPattern(if (human) "dd.MM.yyyy" else "yyyy-MM-dd")
-    return date.format(formatter)
 }
 
 @Composable

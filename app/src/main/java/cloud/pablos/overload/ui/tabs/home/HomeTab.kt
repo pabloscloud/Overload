@@ -6,6 +6,8 @@ import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.PrimaryTabRow
@@ -21,14 +24,12 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
-import cloud.pablos.overload.ui.utils.OverloadContentType
 import cloud.pablos.overload.ui.utils.OverloadNavigationType
 import cloud.pablos.overload.ui.views.TextView
 import kotlinx.coroutines.launch
@@ -36,7 +37,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun HomeTab(
@@ -72,9 +73,10 @@ fun HomeTab(
         floatingActionButton = {
             AnimatedVisibility(
                 visible = navigationType == OverloadNavigationType.BOTTOM_NAVIGATION &&
-                    state.selectedDayCalendar == LocalDate.now().toString(),
-                enter = scaleIn(),
-                exit = scaleOut(),
+                    state.selectedDayCalendar == LocalDate.now().toString() &&
+                    state.isDeletingHome.not(),
+                enter = if (state.isFabOpen) slideInHorizontally(initialOffsetX = { w -> w }) else scaleIn(),
+                exit = if (state.isFabOpen) slideOutHorizontally(targetOffsetX = { w -> w }) else scaleOut(),
             ) {
                 HomeTabFab(state = state, onEvent = onEvent)
             }
@@ -117,6 +119,11 @@ fun HomeTab(
             }
         }
     }
+}
+
+fun getFormattedDate(date: LocalDate, human: Boolean = false): String {
+    val formatter = DateTimeFormatter.ofPattern(if (human) "dd.MM.yyyy" else "yyyy-MM-dd")
+    return date.format(formatter)
 }
 
 fun getFormattedDate(daysBefore: Long): String {

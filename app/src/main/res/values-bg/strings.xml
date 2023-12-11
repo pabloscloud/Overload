@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">изберете всички елементи от избрания ден</string>
     <string name="storage">съхранение</string>
     <string name="delete_pause_descr">Не можете да изтриете тази продължаваща пауза. Тя само показва, че ще бъде създадена пауза, след като натиснете старт. Ако не натиснете старт до утре, тя ще изчезне и няма да се брои за вашата цел.</string>
@@ -12,7 +10,7 @@
     <string name="system_logs_descr">Включване на системни дневници в доклади за сривове</string>
     <string name="crash_reports_descr">Поискайте да изпратите доклади за катастрофи</string>
     <string name="get_out_of_isDeleting">ви извежда от режим на изтриване</string>
-    <string name="are_you_sure">Сигурни ли сте\?</string>
+    <string name="are_you_sure">Сигурни ли сте?</string>
     <string name="adjust_descr">Коригирайте времето на приключване до момента, в който то действително е приключило.</string>
     <string name="system_logs">Системни дневници</string>
     <string name="backup_descr">Редовно създавайте резервни копия на всички данни на запазено място!</string>
@@ -25,7 +23,7 @@
     <string name="no">Не</string>
     <string name="import_backup">Импортиране на резервно копие</string>
     <string name="learn_more">Научете повече…</string>
-    <string name="sourcecode_descr">Искате ли да видите вътрешността\? Заповядайте!</string>
+    <string name="sourcecode_descr">Искате ли да видите вътрешността? Заповядайте!</string>
     <string name="pause">Пауза</string>
     <string name="delete_items_forever">изтриване на елементи завинаги</string>
     <string name="edit">Редактиране</string>
@@ -33,19 +31,19 @@
     <string name="acra_mailBody">Открит е срив. Моля, помогнете ни да се подобрим, като изпратите този имейл, за да можем да поправим проблема възможно най-скоро.
 \n Съжаляваме за причинените неудобства! Вашият принос е от съществено значение за отстраняването на този проблем.
 \n
-\n Описание - Какво направихте, когато приложението се срина\?
+\n Описание - Какво направихте, когато приложението се срина?
 \n
 \n
-\n Стъпки за възпроизвеждане - Можете ли да предоставите ръководство стъпка по стъпка как да възпроизведете срива\?
+\n Стъпки за възпроизвеждане - Можете ли да предоставите ръководство стъпка по стъпка как да възпроизведете срива?
 \n
 \n
 \n Визуализация - Моля, включете снимки на екрана или записи на екрана.
 \n
 \n
-\n Скорошни промени - Наскоро ли сте актуализирали приложението или сте променили настройките на устройството\?
+\n Скорошни промени - Наскоро ли сте актуализирали приложението или сте променили настройките на устройството?
 \n
 \n
-\n Честота - Колко често се случва този срив\?
+\n Честота - Колко често се случва този срив?
 \n
 \n
 \n Благодаря за търпението!</string>
@@ -53,7 +51,7 @@
     <string name="yes">Да</string>
     <string name="monday">Понеделник</string>
     <string name="unknown_day">Непознат ден</string>
-    <string name="translate_descr">Искате да преведете приложението\? Благодаря!</string>
+    <string name="translate_descr">Искате да преведете приложението? Благодаря!</string>
     <string name="start">Старт</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="issue_reports">Докладване на грешки</string>
@@ -65,7 +63,7 @@
     <string name="backup">Архивиране</string>
     <string name="spans_days">Въвеждане на време за няколко дни</string>
     <string name="license">Лиценз</string>
-    <string name="issue_reports_descr">Забелязвате ли нещо странно\? Моля, докладвайте за това!</string>
+    <string name="issue_reports_descr">Забелязвате ли нещо странно? Моля, докладвайте за това!</string>
     <string name="about">за</string>
     <string name="adjust_end_time">Настройване на времето за приключване</string>
     <string name="work_goal_descr">Поставяне на цел за работа</string>
@@ -73,7 +71,7 @@
     <string name="open_link_with">Отваряне на връзка с</string>
     <string name="import_backup_descr">За да импортирате данни в приложението, използвайте Sharesheet от други приложения. Това позволява на приложението да получи сигурен достъп до споделените данни и да ги импортира във вашата база данни.</string>
     <string name="configurations">Конфигурации</string>
-    <string name="spans_days_descr">Един запис на време обхваща няколко дни. Може би сте забравили да го спрете. Искате ли да коригирате края\?</string>
+    <string name="spans_days_descr">Един запис на време обхваща няколко дни. Може би сте забравили да го спрете. Искате ли да коригирате края?</string>
     <string name="sunday">Неделя</string>
     <string name="no_items_subtitle">Няма запазени елементи за този ден.</string>
     <string name="adjust">Настройте</string>

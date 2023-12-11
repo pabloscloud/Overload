@@ -18,4 +18,5 @@ data class ItemState(
     val isForgotToStopDialogShown: Boolean = false,
     val isAdjustEndDialogShown: Boolean = false,
     val isSpreadAcrossDaysDialogShown: Boolean = false,
+    val isFabOpen: Boolean = false,
 )

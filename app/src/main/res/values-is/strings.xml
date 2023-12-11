@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">velja öll atriði úr völdum degi</string>
     <string name="storage">geymsla</string>
     <string name="delete_pause_descr">Þú getur ekki eytt þessari bið. Það er aðeins til staðar til að gefa til kynna að hlé verði búið til þegar þú ýtir á start. Ef þú verður ekki högg byrja fyrr en á morgun það verður farið og mun ekki telja gegn markmiði þínu.</string>
@@ -22,7 +20,7 @@
     <string name="translate">Þýðing</string>
     <string name="import_backup">Flytja Inn Öryggisafrit</string>
     <string name="learn_more">Fáðu að vita meira…</string>
-    <string name="sourcecode_descr">Viltu skoða hið innra\? Áfram víðir!</string>
+    <string name="sourcecode_descr">Viltu skoða hið innra? Áfram víðir!</string>
     <string name="pause">Hlé</string>
     <string name="delete_items_forever">eyða hlutum að eilífu</string>
     <string name="edit">Breyta</string>
@@ -30,26 +28,26 @@
     <string name="acra_mailBody">Hrun fannst. Vinsamlegast hjálpaðu okkur að bæta með því að senda þennan tölvupóst, svo við getum fengið þetta fastur eins fljótt og auðið er.
 \n Afsakið óþægindin sem urðu! Inntak þitt er nauðsynlegt til að laga þetta mál.
 \n
-\n Lýsing-Hvað gerðir þú þegar app hrundi\?
+\n Lýsing-Hvað gerðir þú þegar app hrundi?
 \n
 \n
-\n Skref til að endurskapa-Getur Þú veitt skref-fyrir-skref leiðbeiningar um hvernig á að endurskapa hrunið\?
+\n Skref til að endurskapa-Getur Þú veitt skref-fyrir-skref leiðbeiningar um hvernig á að endurskapa hrunið?
 \n
 \n
 \n Myndefni - vinsamlegast látið allar skjámyndir eða skjáupptökur fylgja með.
 \n
 \n
-\n Nýlegar breytingar - uppfærðir þú appið nýlega eða breyttir stillingum tækisins\?
+\n Nýlegar breytingar - uppfærðir þú appið nýlega eða breyttir stillingum tækisins?
 \n
 \n
-\n Tíðni-Hversu oft gerist þetta hrun\?
+\n Tíðni-Hversu oft gerist þetta hrun?
 \n
 \n
 \n Takk fyrir þolinmæðina!</string>
     <string name="wednesday">Miðvikudagur</string>
     <string name="monday">Mánudagur</string>
     <string name="unknown_day">Óþekktur dagur</string>
-    <string name="translate_descr">Viltu þýða appið\? Takk fyrir!</string>
+    <string name="translate_descr">Viltu þýða appið? Takk fyrir!</string>
     <string name="start">Byrja</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="issue_reports">Tilkynna villur</string>
@@ -61,14 +59,14 @@
     <string name="backup">Afritun</string>
     <string name="spans_days">Tími færsla spannar marga daga</string>
     <string name="license">Leyfi</string>
-    <string name="issue_reports_descr">Tekur þú eftir einhverju undarlegu\? Vinsamlegast tilkynna það!</string>
+    <string name="issue_reports_descr">Tekur þú eftir einhverju undarlegu? Vinsamlegast tilkynna það!</string>
     <string name="about">um okkur</string>
     <string name="work_goal_descr">Setja sér markmið í starfi</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
     <string name="open_link_with">Opna tengingu við</string>
     <string name="import_backup_descr">Til að flytja gögn inn í forritið skaltu nota Deilingarblaðið úr öðrum forritum. Þetta gerir forritinu kleift að fá öruggan aðgang að sameiginlegum gögnum og flytja þau inn í gagnagrunninn þinn.</string>
     <string name="configurations">Stillingar</string>
-    <string name="spans_days_descr">Síðasta færsla spannar marga daga. Kannski gleymdirðu að stöðva það. Viltu laga endann\?</string>
+    <string name="spans_days_descr">Síðasta færsla spannar marga daga. Kannski gleymdirðu að stöðva það. Viltu laga endann?</string>
     <string name="sunday">Sunnudagur</string>
     <string name="no_items_subtitle">Engar vörur eru vistaðar þennan dag.</string>
     <string name="adjust">Stilla</string>
@@ -95,7 +93,7 @@
     <string name="today">Í dag</string>
     <string name="pause_left">Hlé til vinstri</string>
     <string name="import_ol">Flytja inn</string>
-    <string name="are_you_sure">Ertu viss\?</string>
+    <string name="are_you_sure">Ertu viss?</string>
     <string name="adjust_descr">Stilltu lokatímann til hvenær sem það endaði í raun.</string>
     <string name="no">Nei</string>
     <string name="yes">Já</string>

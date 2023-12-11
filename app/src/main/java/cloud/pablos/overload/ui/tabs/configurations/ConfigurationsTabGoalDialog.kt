@@ -95,6 +95,10 @@ fun ConfigurationsTabGoalDialog(
                         isPause = isPause,
                     )
                 },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                ),
             ) {
                 TextView(stringResource(id = R.string.save))
             }
@@ -103,8 +107,8 @@ fun ConfigurationsTabGoalDialog(
             Button(
                 onClick = onClose,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.errorContainer,
-                    contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 ),
             ) {
                 Text(text = stringResource(R.string.cancel))

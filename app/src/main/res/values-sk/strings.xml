@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
-    <string name="app_name" translatable="false">Overload</string>
     <string name="select_all_items_of_selected_day">vyberte všetky položky vybraného dňa</string>
     <string name="storage">skladovanie</string>
     <string name="delete_pause_descr">Túto prebiehajúcu pauzu nemôžete vymazať. Je tu len na označenie, že sa pauza vytvorí po stlačení tlačidla Start. Ak stlačíte tlačidlo Štart až zajtra, zmizne a nebude sa započítavať do vášho cieľa.</string>
@@ -12,7 +10,7 @@
     <string name="system_logs_descr">Zahrnúť systémové protokoly do hlásení o havárii</string>
     <string name="crash_reports_descr">Požiadajte o zaslanie hlásení o nehode</string>
     <string name="get_out_of_isDeleting">vás dostane z režimu mazania</string>
-    <string name="are_you_sure">Ste si istý\?</string>
+    <string name="are_you_sure">Ste si istý?</string>
     <string name="adjust_descr">Čas ukončenia upravte podľa toho, kedy sa skutočne skončil.</string>
     <string name="system_logs">Systémové protokoly</string>
     <string name="backup_descr">Pravidelne zálohujte všetky údaje na bezpečné miesto!</string>
@@ -25,7 +23,7 @@
     <string name="no">Nie</string>
     <string name="import_backup">Import zálohovania</string>
     <string name="learn_more">Viac informácií…</string>
-    <string name="sourcecode_descr">Chcete vidieť vnútro\? Choďte!</string>
+    <string name="sourcecode_descr">Chcete vidieť vnútro? Choďte!</string>
     <string name="pause">Pauza</string>
     <string name="delete_items_forever">navždy odstrániť položky</string>
     <string name="edit">Upraviť</string>
@@ -33,19 +31,19 @@
     <string name="acra_mailBody">Zistená havária. Prosím, pomôžte nám to zlepšiť zaslaním tohto e-mailu, aby sme to mohli čo najskôr opraviť.
 \n Ospravedlňujeme sa za spôsobené nepríjemnosti! Vaše príspevky sú nevyhnutné na odstránenie tohto problému.
 \n
-\n Popis - Čo ste urobili, keď aplikácia spadla\?
+\n Popis - Čo ste urobili, keď aplikácia spadla?
 \n
 \n
-\n Kroky na reprodukciu - Môžete poskytnúť návod krok za krokom, ako reprodukovať pád\?
+\n Kroky na reprodukciu - Môžete poskytnúť návod krok za krokom, ako reprodukovať pád?
 \n
 \n
 \n Vizualizácie - Priložte akékoľvek snímky obrazovky alebo záznamy obrazovky.
 \n
 \n
-\n Nedávne zmeny - Aktualizovali ste nedávno aplikáciu alebo zmenili nastavenia zariadenia\?
+\n Nedávne zmeny - Aktualizovali ste nedávno aplikáciu alebo zmenili nastavenia zariadenia?
 \n
 \n
-\n Frekvencia - Ako často dochádza k pádu\?
+\n Frekvencia - Ako často dochádza k pádu?
 \n
 \n
 \n Ďakujeme za trpezlivosť!</string>
@@ -53,7 +51,7 @@
     <string name="yes">Áno</string>
     <string name="monday">Pondelok</string>
     <string name="unknown_day">Neznámy deň</string>
-    <string name="translate_descr">Chcete aplikáciu preložiť\? Vďaka!</string>
+    <string name="translate_descr">Chcete aplikáciu preložiť? Vďaka!</string>
     <string name="start">Start</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="issue_reports">Nahlásenie chýb</string>
@@ -65,7 +63,7 @@
     <string name="backup">Zálohovanie</string>
     <string name="spans_days">Časový údaj zahŕňa viacero dní</string>
     <string name="license">Licencia</string>
-    <string name="issue_reports_descr">Všimli ste si niečo zvláštne\? Nahláste to!</string>
+    <string name="issue_reports_descr">Všimli ste si niečo zvláštne? Nahláste to!</string>
     <string name="about">o</string>
     <string name="adjust_end_time">Nastavenie času ukončenia</string>
     <string name="work_goal_descr">Stanovte si pracovný cieľ</string>
@@ -73,7 +71,7 @@
     <string name="open_link_with">Otvorte prepojenie s</string>
     <string name="import_backup_descr">Ak chcete do aplikácie importovať údaje, použite hárok akcií z iných aplikácií. To umožní aplikácii bezpečný prístup k zdieľaným údajom a ich import do vašej databázy.</string>
     <string name="configurations">Konfigurácie</string>
-    <string name="spans_days_descr">Časový údaj sa vzťahuje na viacero dní. Možno ste ho zabudli zastaviť. Chcete upraviť koniec\?</string>
+    <string name="spans_days_descr">Časový údaj sa vzťahuje na viacero dní. Možno ste ho zabudli zastaviť. Chcete upraviť koniec?</string>
     <string name="sunday">Nedeľa</string>
     <string name="no_items_subtitle">Pre tento deň nie sú uložené žiadne položky.</string>
     <string name="adjust">Nastavenie</string>

@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -27,7 +26,6 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
-import androidx.compose.material3.PermanentDrawerSheet
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -81,32 +79,36 @@ fun OverloadNavigationRail(
                             },
                         )
 
-                        if (state.selectedDayCalendar == LocalDate.now().toString()) {
+                        AnimatedVisibility(
+                            visible = state.selectedDayCalendar == LocalDate.now().toString(),
+                        ) {
                             OverloadNavigationFabSmall(state = state, onEvent = onEvent)
                         }
                     }
-
-                    Column(
-                        modifier = Modifier.layoutId(LayoutType.CONTENT),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(4.dp),
-                    ) {
-                        TOP_LEVEL_DESTINATIONS.forEach { overloadDestination ->
-                            NavigationRailItem(
-                                selected = selectedDestination == overloadDestination.route,
-                                onClick = { navigateToTopLevelDestination(overloadDestination) },
-                                icon = {
-                                    Icon(
-                                        imageVector =
-                                        if (selectedDestination == overloadDestination.route) {
-                                            overloadDestination.selectedIcon
-                                        } else {
-                                            overloadDestination.unselectedIcon
+                    Column(modifier = Modifier.layoutId(LayoutType.CONTENT)) {
+                        AnimatedVisibility(visible = state.isFabOpen.not()) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.spacedBy(4.dp),
+                            ) {
+                                TOP_LEVEL_DESTINATIONS.forEach { overloadDestination ->
+                                    NavigationRailItem(
+                                        selected = selectedDestination == overloadDestination.route,
+                                        onClick = { navigateToTopLevelDestination(overloadDestination) },
+                                        icon = {
+                                            Icon(
+                                                imageVector =
+                                                if (selectedDestination == overloadDestination.route) {
+                                                    overloadDestination.selectedIcon
+                                                } else {
+                                                    overloadDestination.unselectedIcon
+                                                },
+                                                contentDescription = stringResource(id = overloadDestination.iconTextId),
+                                            )
                                         },
-                                        contentDescription = stringResource(id = overloadDestination.iconTextId),
                                     )
-                                },
-                            )
+                                }
+                            }
                         }
                     }
                 },
@@ -164,80 +166,6 @@ fun OverloadBottomNavigationBar(
 }
 
 @Composable
-fun PermanentNavigationDrawerContent(
-    selectedDestination: String,
-    navigationContentPosition: OverloadNavigationContentPosition,
-    navigateToTopLevelDestination: (OverloadTopLevelDestination) -> Unit,
-    state: ItemState,
-    onEvent: (ItemEvent) -> Unit,
-) {
-    if (!state.isDeletingHome) {
-        PermanentDrawerSheet(modifier = Modifier.sizeIn(minWidth = 200.dp, maxWidth = 300.dp)) {
-            Layout(
-                modifier = Modifier
-                    .background(MaterialTheme.colorScheme.inverseOnSurface)
-                    .padding(16.dp),
-                content = {
-                    Column(
-                        modifier = Modifier.layoutId(LayoutType.HEADER),
-                        horizontalAlignment = Alignment.Start,
-                        verticalArrangement = Arrangement.spacedBy(4.dp),
-                    ) {
-                        TextView(
-                            text = stringResource(id = R.string.app_name).uppercase(),
-                            fontSize = MaterialTheme.typography.titleMedium.fontSize,
-                            color = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.padding(16.dp),
-                        )
-
-                        AnimatedVisibility(visible = state.selectedDayCalendar == LocalDate.now().toString()) {
-                            OverloadNavigationFab(state = state, onEvent = onEvent)
-                        }
-                    }
-
-                    Column(
-                        modifier = Modifier
-                            .layoutId(LayoutType.CONTENT)
-                            .verticalScroll(rememberScrollState()),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        TOP_LEVEL_DESTINATIONS.forEach { overloadDestination ->
-                            NavigationDrawerItem(
-                                selected = selectedDestination == overloadDestination.route,
-                                label = {
-                                    TextView(
-                                        text = stringResource(id = overloadDestination.iconTextId),
-                                        modifier = Modifier.padding(horizontal = 16.dp),
-                                    )
-                                },
-                                icon = {
-                                    Icon(
-                                        imageVector =
-                                        if (selectedDestination == overloadDestination.route) {
-                                            overloadDestination.selectedIcon
-                                        } else {
-                                            overloadDestination.unselectedIcon
-                                        },
-                                        contentDescription = stringResource(
-                                            id = overloadDestination.iconTextId,
-                                        ),
-                                    )
-                                },
-                                colors = NavigationDrawerItemDefaults.colors(
-                                    unselectedContainerColor = Color.Transparent,
-                                ),
-                                onClick = { navigateToTopLevelDestination(overloadDestination) },
-                            )
-                        }
-                    }
-                },
-                measurePolicy = navigationMeasurePolicy(navigationContentPosition),
-            )
-        }
-    }
-}
-
-@Composable
 fun ModalNavigationDrawerContent(
     selectedDestination: String,
     navigationContentPosition: OverloadNavigationContentPosition,
@@ -278,40 +206,42 @@ fun ModalNavigationDrawerContent(
                         }
 
                         AnimatedVisibility(visible = state.selectedDayCalendar == LocalDate.now().toString()) {
-                            OverloadNavigationFab(state = state, onEvent = onEvent)
+                            OverloadNavigationFab(state, onEvent, onDrawerClicked)
                         }
                     }
 
-                    Column(
-                        modifier = Modifier
-                            .layoutId(LayoutType.CONTENT)
-                            .verticalScroll(rememberScrollState()),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        TOP_LEVEL_DESTINATIONS.forEach { overloadDestination ->
-                            NavigationDrawerItem(
-                                selected = selectedDestination == overloadDestination.route,
-                                label = {
-                                    TextView(stringResource(id = overloadDestination.iconTextId))
-                                },
-                                icon = {
-                                    Icon(
-                                        imageVector =
-                                        if (selectedDestination == overloadDestination.route) {
-                                            overloadDestination.selectedIcon
-                                        } else {
-                                            overloadDestination.unselectedIcon
+                    Column(modifier = Modifier.layoutId(LayoutType.CONTENT)) {
+                        AnimatedVisibility(visible = state.isFabOpen.not()) {
+                            Column(
+                                modifier = Modifier.verticalScroll(rememberScrollState()),
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                            ) {
+                                TOP_LEVEL_DESTINATIONS.forEach { overloadDestination ->
+                                    NavigationDrawerItem(
+                                        selected = selectedDestination == overloadDestination.route,
+                                        label = {
+                                            TextView(stringResource(id = overloadDestination.iconTextId))
                                         },
-                                        contentDescription = stringResource(
-                                            id = overloadDestination.iconTextId,
+                                        icon = {
+                                            Icon(
+                                                imageVector =
+                                                if (selectedDestination == overloadDestination.route) {
+                                                    overloadDestination.selectedIcon
+                                                } else {
+                                                    overloadDestination.unselectedIcon
+                                                },
+                                                contentDescription = stringResource(
+                                                    id = overloadDestination.iconTextId,
+                                                ),
+                                            )
+                                        },
+                                        colors = NavigationDrawerItemDefaults.colors(
+                                            unselectedContainerColor = Color.Transparent,
                                         ),
+                                        onClick = { navigateToTopLevelDestination(overloadDestination) },
                                     )
-                                },
-                                colors = NavigationDrawerItemDefaults.colors(
-                                    unselectedContainerColor = Color.Transparent,
-                                ),
-                                onClick = { navigateToTopLevelDestination(overloadDestination) },
-                            )
+                                }
+                            }
                         }
                     }
                 },

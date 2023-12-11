@@ -160,6 +160,14 @@ class ItemViewModel(
                     )
                 }
             }
+
+            is ItemEvent.SetIsFabOpen -> {
+                _state.update {
+                    it.copy(
+                        isFabOpen = event.isFabOpen,
+                    )
+                }
+            }
         }
     }
 }
