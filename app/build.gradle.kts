@@ -12,8 +12,8 @@ android {
         applicationId = "cloud.pablos.overload"
         minSdk = 26
         targetSdk = 34
-        versionCode = 123
-        versionName = "0.12.3"
+        versionCode = 124
+        versionName = "0.12.4"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
