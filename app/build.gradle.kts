@@ -36,19 +36,21 @@ android {
     }
 
     buildTypes {
-        getByName("debug") {
+        named("debug") {
             signingConfig = signingConfigs.getByName("debug")
             applicationIdSuffix = ".debug"
             versionNameSuffix = ".debug"
+            resValue("string", "app_name", "Overload Debug")
         }
 
-        getByName("release") {
+        named("release") {
             isMinifyEnabled = true
             signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            resValue("string", "app_name", "Overload")
         }
     }
 
