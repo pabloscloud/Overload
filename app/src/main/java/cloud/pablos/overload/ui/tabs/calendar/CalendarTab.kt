@@ -11,9 +11,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.BottomSheetScaffold
@@ -236,9 +236,8 @@ fun WeekDaysHeader() {
 fun DayOfWeekHeaderCell(text: String) {
     Box(
         modifier = Modifier
-            .padding(4.dp)
-            .width(36.dp)
-            .height(36.dp),
+            .padding()
+            .requiredSize(36.dp),
         contentAlignment = Alignment.Center,
     ) {
         TextView(
@@ -253,8 +252,8 @@ fun DateHeader(date: LocalDate) {
     val text = getFormattedDate(date, true)
     Box(
         modifier = Modifier
-            .padding(4.dp)
-            .height(36.dp)
+            .padding()
+            .requiredHeight(36.dp)
             .fillMaxWidth(),
     ) {
         TextView(

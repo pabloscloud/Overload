@@ -12,8 +12,8 @@ android {
         applicationId = "cloud.pablos.overload"
         minSdk = 26
         targetSdk = 34
-        versionCode = 124
-        versionName = "0.12.4"
+        versionCode = 130
+        versionName = "0.13.0"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -36,19 +36,21 @@ android {
     }
 
     buildTypes {
-        getByName("debug") {
+        named("debug") {
             signingConfig = signingConfigs.getByName("debug")
             applicationIdSuffix = ".debug"
             versionNameSuffix = ".debug"
+            resValue("string", "app_name", "Overload Debug")
         }
 
-        getByName("release") {
+        named("release") {
             isMinifyEnabled = true
             signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            resValue("string", "app_name", "Overload")
         }
     }
 

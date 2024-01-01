@@ -12,9 +12,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ripple.rememberRipple
@@ -95,7 +94,12 @@ fun WeekRow(firstDayOfMonth: LocalDate, weekOfMonth: Int, state: ItemState, onEv
     startOfWeek = if (weekOfMonth == 0) startOfWeek else startOfWeek.minusDays((emptyCells).toLong())
     val endDayOfWeek = if (weekOfMonth == 0) startOfWeek.plusDays((7 - emptyCells).toLong()) else startOfWeek.plusDays((7).toLong())
 
-    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
         if (weekOfMonth == 0) {
             repeat(emptyCells) {
                 EmptyDayCell()
@@ -141,9 +145,8 @@ fun DayCell(
 ) {
     Box(
         modifier = Modifier
-            .padding(4.dp)
-            .width(36.dp)
-            .height(36.dp)
+            .padding()
+            .requiredSize(36.dp)
             .background(backgroundColor, shape = CircleShape)
             .combinedClickable(
                 enabled = clickable,
@@ -171,9 +174,8 @@ fun DayCell(
 fun EmptyDayCell() {
     Box(
         modifier = Modifier
-            .padding(4.dp)
-            .width(36.dp)
-            .height(36.dp)
+            .padding()
+            .requiredSize(36.dp)
             .background(Color.Transparent, shape = CircleShape)
             .clip(CircleShape)
             .border(2.dp, Color.Transparent, CircleShape),
