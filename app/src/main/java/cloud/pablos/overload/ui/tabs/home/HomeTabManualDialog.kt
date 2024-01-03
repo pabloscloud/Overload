@@ -219,7 +219,7 @@ fun HomeTabManualDialog(
                     )
                 }
                 TextView(
-                    stringResource(id = R.string.end),
+                    stringResource(id = R.string.end_label),
                     fontWeight = FontWeight.Bold,
                 )
                 Row(
