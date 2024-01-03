@@ -98,6 +98,6 @@
     <string name="no">Ні</string>
     <string name="yes">Так</string>
     <string name="adjust_end_time">Налаштуйте час завершення</string>
-    <string name="end">Кінець</string>
+    <string name="end_label">Кінець</string>
     <string name="manual_entry">Введення вручну</string>
 </resources>

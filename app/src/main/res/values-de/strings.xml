@@ -98,6 +98,6 @@
     <string name="no">Nein</string>
     <string name="yes">Ja</string>
     <string name="adjust_end_time">Ende anpassen</string>
-    <string name="end">Ende</string>
+    <string name="end_label">Ende</string>
     <string name="manual_entry">Manueller Eintrag</string>
 </resources>

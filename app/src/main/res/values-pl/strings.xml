@@ -98,6 +98,6 @@
     <string name="today">Dzisiaj</string>
     <string name="pause_left">Pauza w lewo</string>
     <string name="import_ol">Import</string>
-    <string name="end">Koniec</string>
+    <string name="end_label">Koniec</string>
     <string name="manual_entry">Wpis ręczny</string>
 </resources>

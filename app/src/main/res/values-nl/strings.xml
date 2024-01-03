@@ -98,6 +98,6 @@
     <string name="today">Vandaag</string>
     <string name="pause_left">Resterende pauzetijd</string>
     <string name="import_ol">Importeren</string>
-    <string name="end">Eindigt</string>
+    <string name="end_label">Eindigt</string>
     <string name="manual_entry">Zelf inplannen</string>
 </resources>

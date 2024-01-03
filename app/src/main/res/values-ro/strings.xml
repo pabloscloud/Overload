@@ -98,6 +98,6 @@
     <string name="today">Astăzi</string>
     <string name="pause_left">Pauză la stânga</string>
     <string name="import_ol">Import</string>
-    <string name="end">Sfârșit</string>
+    <string name="end_label">Sfârșit</string>
     <string name="manual_entry">Introducere manuală</string>
 </resources>

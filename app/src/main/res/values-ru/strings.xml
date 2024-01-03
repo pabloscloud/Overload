@@ -99,6 +99,6 @@
     <string name="today">Сегодня</string>
     <string name="pause_left">Отдыхать осталось</string>
     <string name="import_ol">Импортировать</string>
-    <string name="end">Конец</string>
+    <string name="end_label">Конец</string>
     <string name="manual_entry">Ручное добавление</string>
 </resources>
