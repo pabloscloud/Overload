@@ -26,7 +26,6 @@
     <string name="sourcecode_descr">Wil je een kijkje achter de schermen nemen? Ga je gang!</string>
     <string name="pause">Pauze</string>
     <string name="delete_items_forever">items permanent verwijderen</string>
-    <string name="edit">Bewerken</string>
     <string name="pick_work_goal">Werkdoel instellen</string>
     <string name="acra_mailBody">Er is een crash geweest. Help ons om de app te verbeteren door deze e-mail te versturen.
 \n Onze excuses voor het ongemak! We waarderen het dat je wilt helpen om dit probleem op te lossen.
@@ -98,6 +97,6 @@
     <string name="today">Vandaag</string>
     <string name="pause_left">Resterende pauzetijd</string>
     <string name="import_ol">Importeren</string>
-    <string name="end">Eindigt</string>
+    <string name="end_label">Eindigt</string>
     <string name="manual_entry">Zelf inplannen</string>
 </resources>

@@ -12,8 +12,8 @@ android {
         applicationId = "cloud.pablos.overload"
         minSdk = 26
         targetSdk = 34
-        versionCode = 130
-        versionName = "0.13.0"
+        versionCode = 131
+        versionName = "0.13.1"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -41,6 +41,7 @@ android {
             applicationIdSuffix = ".debug"
             versionNameSuffix = ".debug"
             resValue("string", "app_name", "Overload Debug")
+            resValue("string", "app_fileprovider", "cloud.pablos.overload.debug.fileprovider")
         }
 
         named("release") {
@@ -51,6 +52,7 @@ android {
                 "proguard-rules.pro",
             )
             resValue("string", "app_name", "Overload")
+            resValue("string", "app_fileprovider", "cloud.pablos.overload.fileprovider")
         }
     }
 

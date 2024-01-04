@@ -26,7 +26,6 @@
     <string name="sourcecode_descr">Chcesz zobaczyć wnętrze? Przejdź dalej!</string>
     <string name="pause">Pauza</string>
     <string name="delete_items_forever">usuwanie elementów na zawsze</string>
-    <string name="edit">Edytuj</string>
     <string name="pick_work_goal">Wyznacz cel pracy</string>
     <string name="acra_mailBody">Wykryto awarię. Prosimy o pomoc w poprawieniu sytuacji poprzez wysłanie tej wiadomości e-mail, abyśmy mogli jak najszybciej to naprawić.
 \n Przepraszamy za spowodowane niedogodności! Twój wkład jest niezbędny do naprawienia tego problemu.
@@ -98,6 +97,7 @@
     <string name="today">Dzisiaj</string>
     <string name="pause_left">Pauza w lewo</string>
     <string name="import_ol">Import</string>
-    <string name="end">Koniec</string>
+    <string name="end_label">Koniec</string>
     <string name="manual_entry">Wpis ręczny</string>
+    <string name="start_label">Start</string>
 </resources>

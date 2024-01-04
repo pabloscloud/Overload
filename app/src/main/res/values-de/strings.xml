@@ -20,7 +20,6 @@
     <string name="sourcecode_descr">Möchtest du das Innere sehen? Nur zu!</string>
     <string name="pause">Pause</string>
     <string name="delete_items_forever">Einträge für immer löschen</string>
-    <string name="edit">Bearbeiten</string>
     <string name="pick_work_goal">Arbeitsziel setzen</string>
     <string name="acra_mailBody">Absturz erkannt. Bitte helfe uns, uns zu verbessern, indem du diese E-Mail sendest, damit wir das Problem so schnell wie möglich beheben können.
 \nBitte entschuldige! Das Absenden ist für die Behebung dieses Problems unerlässlich.
@@ -98,6 +97,8 @@
     <string name="no">Nein</string>
     <string name="yes">Ja</string>
     <string name="adjust_end_time">Ende anpassen</string>
-    <string name="end">Ende</string>
+    <string name="end_label">Ende</string>
     <string name="manual_entry">Manueller Eintrag</string>
+    <string name="start_label">Start</string>
+    <string name="acra_mailSubject">Overload Absturz</string>
 </resources>

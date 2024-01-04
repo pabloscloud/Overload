@@ -41,7 +41,8 @@
     <string name="delete_pause">Delete Pause</string>
     <string name="delete_pause_descr">You cannot delete this ongoing pause. It is only there to indicate a pause will be created once you hit start. If you will not hit start until tomorrow it will be gone and will not count against your goal.</string>
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
-    <string name="end">End</string>
+    <string name="start_label">Start</string>
+    <string name="end_label">End</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Calendar</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
@@ -54,6 +55,7 @@
     <string name="storage">storage</string>
     <string name="backup">Backup</string>
     <string name="backup_descr">Backup all data regularly to a save place!</string>
+    <string name="backup_failed">Creating backup failed</string>
     <string name="import_ol">Import</string>
     <string name="import_descr">Import from a backup</string>
     <string name="import_backup">Import Backup</string>
@@ -75,7 +77,7 @@
     <string name="footer">created with ❤️ by pabloscloud</string>
     <string name="acra_toastText">Crash detected. Please help by sending a mail!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailSubject" translatable="false">Overload Crash</string>
+    <string name="acra_mailSubject">Overload Crash</string>
     <string name="acra_mailBody">
         Crash detected. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
         Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
@@ -110,7 +112,6 @@
     <string name="pause_left">Pause left</string>
     <!-- cloud.pablos.overload.ui.views.DayViewItem -->
     <string name="arrow_forward">arrow forward describing the direction of both times from start to end</string>
-    <string name="edit">Edit</string>
     <string name="select_year">Select Year</string>
     <string name="translate">Translate</string>
     <string name="translate_descr">Want to translate the app\? Thanks!</string>

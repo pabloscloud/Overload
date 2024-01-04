@@ -2,7 +2,7 @@
 <resources>
     <string name="select_all_items_of_selected_day">выбрать всё в этом дне</string>
     <string name="storage">хранилище</string>
-    <string name="delete_pause_descr">Вы не можете удалить происходящий сейчас перерыв. Он здесь только для того, чтобы проинформировать о том, что перерыв будет добавлен как только вы нажмёте Начать. Если вы не нажмёте Начать до завтра, он удалится и не будет засчитан против вашей цели.</string>
+    <string name="delete_pause_descr">Вы не можете удалить текущий перерыв. Он здесь только чтобы показать, что он будет добавлен, когда вы нажмёте Начать. Если вы не нажмёте Начать до завтра, он удалится и не будет засчитан против вашей цели.</string>
     <string name="hours">часов</string>
     <string name="close">Закрыть</string>
     <string name="save">Сохранить</string>
@@ -26,7 +26,6 @@
     <string name="sourcecode_descr">Хотите заглянуть внутрь? Пожалуйста!</string>
     <string name="pause">Перерывы</string>
     <string name="delete_items_forever">удалить навсегда</string>
-    <string name="edit">Изменить</string>
     <string name="pick_work_goal">Задать цель работы</string>
     <string name="acra_mailBody">Замечен вылет. Пожалуйста, помогите нам улучшить приложение, отправив это письмо, чтобы мы могли исправить эту ошибку как можно скорее.
 \n Извините за доставленные неудобства! Заполнение данных ниже обязательно для того, чтобы мы могли исправить эту ошибку.
@@ -99,4 +98,7 @@
     <string name="today">Сегодня</string>
     <string name="pause_left">Отдыхать осталось</string>
     <string name="import_ol">Импортировать</string>
+    <string name="end_label">Конец</string>
+    <string name="manual_entry">Ручное добавление</string>
+    <string name="start_label">Начало</string>
 </resources>
