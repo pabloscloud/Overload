@@ -100,4 +100,5 @@
     <string name="end_label">Ende</string>
     <string name="manual_entry">Manueller Eintrag</string>
     <string name="start_label">Start</string>
+    <string name="acra_mailSubject">Overload Absturz</string>
 </resources>
