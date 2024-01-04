@@ -188,7 +188,7 @@ fun HomeTabManualDialog(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 TextView(
-                    stringResource(id = R.string.start),
+                    stringResource(id = R.string.start_label),
                     fontWeight = FontWeight.Bold,
                 )
                 Row(
@@ -219,7 +219,7 @@ fun HomeTabManualDialog(
                     )
                 }
                 TextView(
-                    stringResource(id = R.string.end),
+                    stringResource(id = R.string.end_label),
                     fontWeight = FontWeight.Bold,
                 )
                 Row(

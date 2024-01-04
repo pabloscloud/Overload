@@ -129,7 +129,12 @@ fun OverloadNavigationFabSmall(
                         } else {
                             Icons.Default.PlayArrow
                         },
-                        contentDescription = stringResource(id = R.string.edit),
+                        contentDescription =
+                        if (isOngoing) {
+                            stringResource(id = R.string.stop)
+                        } else {
+                            stringResource(id = R.string.start)
+                        },
                     )
                 }
             }

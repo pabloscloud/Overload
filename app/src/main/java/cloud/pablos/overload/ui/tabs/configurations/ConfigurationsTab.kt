@@ -351,7 +351,7 @@ fun backup(state: ItemState, context: Context) {
 
         val contentUri = FileProvider.getUriForFile(
             context,
-            "cloud.pablos.overload.fileprovider",
+            context.getString(R.string.app_fileprovider),
             cachePath,
         )
 
@@ -364,7 +364,7 @@ fun backup(state: ItemState, context: Context) {
         val shareIntent = Intent.createChooser(sendIntent, null)
         context.startActivity(shareIntent)
     } catch (e: Exception) {
-        Toast.makeText(context, "Backup and share failed", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, context.getString(R.string.backup_failed), Toast.LENGTH_SHORT).show()
         e.printStackTrace()
     }
 }

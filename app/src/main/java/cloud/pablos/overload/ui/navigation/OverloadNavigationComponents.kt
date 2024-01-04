@@ -150,7 +150,6 @@ fun OverloadBottomNavigationBar(
                         }
                         TextView(
                             text = label,
-                            fontSize = MaterialTheme.typography.labelLarge.fontSize,
                             fontWeight =
                             if (selectedDestination == overloadDestination.route) {
                                 FontWeight.Bold
