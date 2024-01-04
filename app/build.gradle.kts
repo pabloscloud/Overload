@@ -41,6 +41,7 @@ android {
             applicationIdSuffix = ".debug"
             versionNameSuffix = ".debug"
             resValue("string", "app_name", "Overload Debug")
+            resValue("string", "app_fileprovider", "cloud.pablos.overload.debug.fileprovider")
         }
 
         named("release") {
@@ -51,6 +52,7 @@ android {
                 "proguard-rules.pro",
             )
             resValue("string", "app_name", "Overload")
+            resValue("string", "app_fileprovider", "cloud.pablos.overload.fileprovider")
         }
     }
 

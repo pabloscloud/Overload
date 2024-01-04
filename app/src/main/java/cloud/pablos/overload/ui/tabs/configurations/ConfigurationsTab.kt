@@ -351,7 +351,7 @@ fun backup(state: ItemState, context: Context) {
 
         val contentUri = FileProvider.getUriForFile(
             context,
-            "cloud.pablos.overload.fileprovider",
+            context.getString(R.string.app_fileprovider),
             cachePath,
         )
 
