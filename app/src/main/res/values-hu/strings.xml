@@ -26,7 +26,6 @@
     <string name="sourcecode_descr">Szeretné látni a belsejét? Menj csak!</string>
     <string name="pause">Szünet</string>
     <string name="delete_items_forever">elemek törlése örökre</string>
-    <string name="edit">Szerkesztés</string>
     <string name="pick_work_goal">Munkacél beállítása</string>
     <string name="acra_mailBody">Ütközés észlelve. Kérjük, segítsen nekünk a javításban, küldje el ezt az e-mailt, hogy minél hamarabb kijavíthassuk a hibát.
 \n Elnézést az okozott kellemetlenségekért! Az Ön hozzájárulása elengedhetetlen a probléma javításához.
