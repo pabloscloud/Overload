@@ -38,18 +38,26 @@ import java.util.Locale
 @OptIn(ExperimentalStdlibApi::class)
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
-fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit, bottomPadding: Dp) {
+fun YearView(
+    year: Int,
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit,
+    bottomPadding: Dp = 0.dp,
+    onNavigate: () -> Unit = {},
+) {
     val currentYear = LocalDate.now().year
-    val months = if (year == currentYear) {
-        Month.entries.toTypedArray().takeWhile { it <= LocalDate.now().month }.reversed()
-    } else {
-        Month.entries.reversed()
-    }
+    val months =
+        if (year == currentYear) {
+            Month.entries.toTypedArray().takeWhile { it <= LocalDate.now().month }.reversed()
+        } else {
+            Month.entries.reversed()
+        }
 
     LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp),
     ) {
         months.forEachIndexed { monthIndex, month ->
             item {
@@ -65,8 +73,15 @@ fun YearView(year: Int, state: ItemState, onEvent: (ItemEvent) -> Unit, bottomPa
                 val isLastWeekInLastMonth = isLastMonth && weeksInMonth - weekIndex == 1
 
                 item {
-                    Box(Modifier.padding(0.dp, 0.dp, 0.dp, if (isLastWeekInLastMonth) bottomPadding else 0.dp)) {
-                        WeekRow(firstDayOfMonth, weekOfMonth, state, onEvent)
+                    Box(
+                        Modifier.padding(
+                            0.dp,
+                            0.dp,
+                            0.dp,
+                            if (isLastWeekInLastMonth) bottomPadding else 0.dp,
+                        ),
+                    ) {
+                        WeekRow(firstDayOfMonth, weekOfMonth, state, onEvent, onNavigate)
                     }
                 }
             }
@@ -79,25 +94,41 @@ fun MonthNameHeader(month: Month) {
     TextView(
         text = month.getDisplayName(TextStyle.FULL_STANDALONE, Locale.getDefault()),
         fontSize = 24.sp,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 16.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp),
     )
 }
 
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
-fun WeekRow(firstDayOfMonth: LocalDate, weekOfMonth: Int, state: ItemState, onEvent: (ItemEvent) -> Unit) {
+fun WeekRow(
+    firstDayOfMonth: LocalDate,
+    weekOfMonth: Int,
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit,
+    onNavigate: () -> Unit,
+) {
     var startOfWeek = firstDayOfMonth.plusWeeks(weekOfMonth.toLong())
     val emptyCells = (startOfWeek.dayOfWeek.value + 6) % 7
 
-    startOfWeek = if (weekOfMonth == 0) startOfWeek else startOfWeek.minusDays((emptyCells).toLong())
-    val endDayOfWeek = if (weekOfMonth == 0) startOfWeek.plusDays((7 - emptyCells).toLong()) else startOfWeek.plusDays((7).toLong())
+    startOfWeek =
+        if (weekOfMonth == 0) startOfWeek else startOfWeek.minusDays((emptyCells).toLong())
+    val endDayOfWeek =
+        if (weekOfMonth == 0) {
+            startOfWeek.plusDays((7 - emptyCells).toLong())
+        } else {
+            startOfWeek.plusDays(
+                (7).toLong(),
+            )
+        }
 
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 4.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         if (weekOfMonth == 0) {
@@ -110,11 +141,11 @@ fun WeekRow(firstDayOfMonth: LocalDate, weekOfMonth: Int, state: ItemState, onEv
         val today = LocalDate.now()
 
         while (iterationDate < endDayOfWeek) {
-            val (backgroundColor, borderColor) = getColorOfDay(
-                date = iterationDate,
-                firstDayOfMonth = firstDayOfMonth,
-                state = state,
-            )
+            val (backgroundColor, borderColor) =
+                getColorOfDay(
+                    date = iterationDate,
+                    firstDayOfMonth = firstDayOfMonth,
+                )
             val number = iterationDate.dayOfMonth.toString()
             val clickable = iterationDate <= today
 
@@ -125,6 +156,7 @@ fun WeekRow(firstDayOfMonth: LocalDate, weekOfMonth: Int, state: ItemState, onEv
                 borderColor = borderColor,
                 number = number,
                 clickable = clickable,
+                onNavigate = onNavigate,
             )
 
             iterationDate = iterationDate.plusDays(1)
@@ -142,25 +174,29 @@ fun DayCell(
     borderColor: Color,
     number: String,
     clickable: Boolean,
+    onNavigate: () -> Unit,
 ) {
     Box(
-        modifier = Modifier
-            .padding()
-            .requiredSize(36.dp)
-            .background(backgroundColor, shape = CircleShape)
-            .combinedClickable(
-                enabled = clickable,
-                onClick = {
-                    onEvent(ItemEvent.SetSelectedDayCalendar(getFormattedDate(date)))
-                    onEvent(ItemEvent.SetIsSelectedHome(isSelected = true))
-                },
-                indication = rememberRipple(
-                    radius = 18.dp,
-                ),
-                interactionSource = remember { MutableInteractionSource() },
-            )
-            .clip(CircleShape)
-            .border(2.dp, borderColor, CircleShape),
+        modifier =
+            Modifier
+                .padding()
+                .requiredSize(36.dp)
+                .background(backgroundColor, shape = CircleShape)
+                .combinedClickable(
+                    enabled = clickable,
+                    onClick = {
+                        onEvent(ItemEvent.SetSelectedDayCalendar(getFormattedDate(date)))
+                        onEvent(ItemEvent.SetIsSelectedHome(isSelected = true))
+                        onNavigate()
+                    },
+                    indication =
+                        rememberRipple(
+                            radius = 18.dp,
+                        ),
+                    interactionSource = remember { MutableInteractionSource() },
+                )
+                .clip(CircleShape)
+                .border(2.dp, borderColor, CircleShape),
         contentAlignment = Alignment.Center,
     ) {
         TextView(
@@ -173,34 +209,41 @@ fun DayCell(
 @Composable
 fun EmptyDayCell() {
     Box(
-        modifier = Modifier
-            .padding()
-            .requiredSize(36.dp)
-            .background(Color.Transparent, shape = CircleShape)
-            .clip(CircleShape)
-            .border(2.dp, Color.Transparent, CircleShape),
+        modifier =
+            Modifier
+                .padding()
+                .requiredSize(36.dp)
+                .background(Color.Transparent, shape = CircleShape)
+                .clip(CircleShape)
+                .border(2.dp, Color.Transparent, CircleShape),
     )
 }
 
 @Composable
-fun getColorOfDay(date: LocalDate, firstDayOfMonth: LocalDate, state: ItemState): Pair<Color, Color> {
+fun getColorOfDay(
+    date: LocalDate,
+    firstDayOfMonth: LocalDate,
+): Pair<Color, Color> {
     val month = firstDayOfMonth.month
     val today = LocalDate.now()
 
-    val backgroundColor = if (date <= today && date.month == month) {
-        MaterialTheme.colorScheme.surfaceVariant
-    } else {
-        Color.Transparent
-    }
+    val backgroundColor =
+        if (date <= today && date.month == month) {
+            MaterialTheme.colorScheme.surfaceVariant
+        } else {
+            Color.Transparent
+        }
 
-    val borderColor = if (
-        date == getLocalDate(state.selectedDayCalendar) &&
-        date.month == month
-    ) {
-        MaterialTheme.colorScheme.primary
-    } else {
-        Color.Transparent
-    }
+    val borderColor =
+        if (
+            // date == getLocalDate(state.selectedDayCalendar) &&
+            // date.month == month
+            date == LocalDate.now()
+        ) {
+            MaterialTheme.colorScheme.primary
+        } else {
+            Color.Transparent
+        }
 
     return Pair(backgroundColor, borderColor)
 }

@@ -23,6 +23,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,7 +36,10 @@ import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
-fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
+fun DayViewItemNotOngoing(
+    item: Item,
+    isSelected: Boolean,
+) {
     var backgroundColor: Color
     var foregroundColor: Color
 
@@ -71,13 +76,26 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
 
     val durationString = getDurationString(parsedStartTime, parsedEndTime)
 
+    val itemLabel: String =
+        stringResource(
+            if (item.pause) R.string.talback_pause else R.string.talback_entry,
+            startTimeString,
+            endTimeString,
+        )
+
     Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(15.dp))
-            .background(backgroundColor),
+        modifier =
+            Modifier
+                .clip(RoundedCornerShape(15.dp))
+                .background(backgroundColor),
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .clearAndSetSemantics {
+                        contentDescription = itemLabel
+                    },
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -97,28 +115,31 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
             }
 
             Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(10.dp)
-                    .offset(x = 5.dp),
+                modifier =
+                    Modifier
+                        .weight(1f)
+                        .padding(10.dp)
+                        .offset(x = 5.dp),
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(2.dp)
-                            .background(foregroundColor),
+                        modifier =
+                            Modifier
+                                .weight(1f)
+                                .height(2.dp)
+                                .background(foregroundColor),
                     )
                     Icon(
                         Icons.AutoMirrored.Filled.ArrowForward,
                         contentDescription = stringResource(id = R.string.arrow_forward),
                         tint = foregroundColor,
-                        modifier = Modifier
-                            .offset(x = (-5).dp)
-                            .size(25.dp),
+                        modifier =
+                            Modifier
+                                .offset(x = (-5).dp)
+                                .size(25.dp),
                     )
                 }
             }
@@ -136,10 +157,11 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
             color = foregroundColor,
             fontWeight = FontWeight.Medium,
             align = TextAlign.Center,
-            modifier = Modifier
-                .align(Alignment.Center)
-                .background(backgroundColor)
-                .padding(8.dp),
+            modifier =
+                Modifier
+                    .align(Alignment.Center)
+                    .background(backgroundColor)
+                    .padding(8.dp),
         )
     }
 }
@@ -148,12 +170,13 @@ fun DayViewItemNotOngoing(item: Item, isSelected: Boolean) {
 @Preview
 @Composable
 fun DayViewItemPreview() {
-    val exampleItem = Item(
-        startTime = LocalDateTime.of(2023, 7, 29, 11, 57).toString(),
-        endTime = LocalDateTime.of(2023, 7, 29, 12, 31).toString(),
-        pause = true,
-        ongoing = false,
-    )
+    val exampleItem =
+        Item(
+            startTime = LocalDateTime.of(2023, 7, 29, 11, 57).toString(),
+            endTime = LocalDateTime.of(2023, 7, 29, 12, 31).toString(),
+            pause = true,
+            ongoing = false,
+        )
 
     DayViewItemNotOngoing(exampleItem, isSelected = false)
 }

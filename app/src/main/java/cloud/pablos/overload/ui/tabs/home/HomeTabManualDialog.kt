@@ -66,31 +66,37 @@ fun HomeTabManualDialog(
     var selectedEndDateText by remember { mutableStateOf("") }
     var selectedEndTimeText by remember { mutableStateOf("") }
 
-    val itemsForToday = state.items.filter { item ->
-        val startTime = parseToLocalDateTime(item.startTime)
-        extractDate(startTime) == date
-    }
+    val itemsForToday =
+        state.items.filter { item ->
+            val startTime = parseToLocalDateTime(item.startTime)
+            extractDate(startTime) == date
+        }
 
-    selectedStart = if (itemsForToday.isNotEmpty() && itemsForToday.last().endTime.isNotBlank()) {
-        parseToLocalDateTime(itemsForToday.last().endTime)
-    } else {
-        dateTime
-    }
+    selectedStart =
+        if (itemsForToday.isNotEmpty() && itemsForToday.last().endTime.isNotBlank()) {
+            parseToLocalDateTime(itemsForToday.last().endTime)
+        } else {
+            dateTime
+        }
     selectedStartDateText = getFormattedDate(selectedStart.toLocalDate(), true)
     selectedStartTimeText = getFormattedTime(selectedStart)
 
     selectedEndDateText = getFormattedDate(selectedEnd.toLocalDate(), true)
     selectedEndTimeText = getFormattedTime(selectedEnd)
 
-    selectedPause = if (itemsForToday.isNotEmpty()) {
-        !itemsForToday.last().pause
-    } else {
-        false
-    }
+    selectedPause =
+        if (itemsForToday.isNotEmpty()) {
+            itemsForToday.last().pause.not()
+        } else {
+            false
+        }
 
     val calendar = Calendar.getInstance()
 
-    fun updateSelectedTime(newDateTime: LocalDateTime, isStart: Boolean) {
+    fun updateSelectedTime(
+        newDateTime: LocalDateTime,
+        isStart: Boolean,
+    ) {
         if (isStart) {
             if (newDateTime.toLocalDate() <= date) {
                 selectedStart = newDateTime
@@ -116,55 +122,60 @@ fun HomeTabManualDialog(
         }
     }
 
-    val startDatePicker = DatePickerDialog(
-        context,
-        { _, year: Int, month: Int, day: Int ->
-            val calcMonth = month + 1
-            val newStartDateTime = selectedStart.withYear(year).withMonth(calcMonth).withDayOfMonth(day)
+    val startDatePicker =
+        DatePickerDialog(
+            context,
+            { _, year: Int, month: Int, day: Int ->
+                val calcMonth = month + 1
+                val newStartDateTime =
+                    selectedStart.withYear(year).withMonth(calcMonth).withDayOfMonth(day)
 
-            updateSelectedTime(newStartDateTime, true)
-        },
-        calendar.get(Calendar.YEAR),
-        calendar.get(Calendar.MONTH),
-        calendar.get(Calendar.DAY_OF_MONTH),
-    )
+                updateSelectedTime(newStartDateTime, true)
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH),
+        )
 
-    val startTimePicker = TimePickerDialog(
-        context,
-        { _, selectedHour: Int, selectedMinute: Int ->
-            val newStartDateTime = selectedStart.withHour(selectedHour).withMinute(selectedMinute)
+    val startTimePicker =
+        TimePickerDialog(
+            context,
+            { _, selectedHour: Int, selectedMinute: Int ->
+                val newStartDateTime = selectedStart.withHour(selectedHour).withMinute(selectedMinute)
 
-            updateSelectedTime(newStartDateTime, true)
-        },
-        selectedStart.hour,
-        selectedStart.minute,
-        false,
-    )
+                updateSelectedTime(newStartDateTime, true)
+            },
+            selectedStart.hour,
+            selectedStart.minute,
+            false,
+        )
 
-    val endDatePicker = DatePickerDialog(
-        context,
-        { _, year: Int, month: Int, day: Int ->
-            val calcMonth = month + 1
-            val newEndDateTime = selectedEnd.withYear(year).withMonth(calcMonth).withDayOfMonth(day)
+    val endDatePicker =
+        DatePickerDialog(
+            context,
+            { _, year: Int, month: Int, day: Int ->
+                val calcMonth = month + 1
+                val newEndDateTime = selectedEnd.withYear(year).withMonth(calcMonth).withDayOfMonth(day)
 
-            updateSelectedTime(newEndDateTime, false)
-        },
-        calendar.get(Calendar.YEAR),
-        calendar.get(Calendar.MONTH),
-        calendar.get(Calendar.DAY_OF_MONTH),
-    )
+                updateSelectedTime(newEndDateTime, false)
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH),
+        )
 
-    val endTimePicker = TimePickerDialog(
-        context,
-        { _, selectedHour: Int, selectedMinute: Int ->
-            val newEndDateTime = selectedEnd.withHour(selectedHour).withMinute(selectedMinute)
+    val endTimePicker =
+        TimePickerDialog(
+            context,
+            { _, selectedHour: Int, selectedMinute: Int ->
+                val newEndDateTime = selectedEnd.withHour(selectedHour).withMinute(selectedMinute)
 
-            updateSelectedTime(newEndDateTime, false)
-        },
-        selectedEnd.hour,
-        selectedEnd.minute,
-        false,
-    )
+                updateSelectedTime(newEndDateTime, false)
+            },
+            selectedEnd.hour,
+            selectedEnd.minute,
+            false,
+        )
 
     AlertDialog(
         onDismissRequest = onClose,
@@ -198,24 +209,26 @@ fun HomeTabManualDialog(
                     TextView(
                         text = selectedStartDateText,
                         color = MaterialTheme.colorScheme.onTertiaryContainer,
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable {
-                                startDatePicker.show()
-                            }
-                            .background(color = MaterialTheme.colorScheme.tertiaryContainer)
-                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                        modifier =
+                            Modifier
+                                .clip(RoundedCornerShape(12.dp))
+                                .clickable {
+                                    startDatePicker.show()
+                                }
+                                .background(color = MaterialTheme.colorScheme.tertiaryContainer)
+                                .padding(horizontal = 10.dp, vertical = 6.dp),
                     )
                     TextView(
                         text = selectedStartTimeText,
                         color = MaterialTheme.colorScheme.onTertiaryContainer,
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable {
-                                startTimePicker.show()
-                            }
-                            .background(color = MaterialTheme.colorScheme.tertiaryContainer)
-                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                        modifier =
+                            Modifier
+                                .clip(RoundedCornerShape(12.dp))
+                                .clickable {
+                                    startTimePicker.show()
+                                }
+                                .background(color = MaterialTheme.colorScheme.tertiaryContainer)
+                                .padding(horizontal = 10.dp, vertical = 6.dp),
                     )
                 }
                 TextView(
@@ -229,24 +242,26 @@ fun HomeTabManualDialog(
                     TextView(
                         text = selectedEndDateText,
                         color = MaterialTheme.colorScheme.onTertiaryContainer,
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable {
-                                endDatePicker.show()
-                            }
-                            .background(color = MaterialTheme.colorScheme.tertiaryContainer)
-                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                        modifier =
+                            Modifier
+                                .clip(RoundedCornerShape(12.dp))
+                                .clickable {
+                                    endDatePicker.show()
+                                }
+                                .background(color = MaterialTheme.colorScheme.tertiaryContainer)
+                                .padding(horizontal = 10.dp, vertical = 6.dp),
                     )
                     TextView(
                         text = selectedEndTimeText,
                         color = MaterialTheme.colorScheme.onTertiaryContainer,
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable {
-                                endTimePicker.show()
-                            }
-                            .background(color = MaterialTheme.colorScheme.tertiaryContainer)
-                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                        modifier =
+                            Modifier
+                                .clip(RoundedCornerShape(12.dp))
+                                .clickable {
+                                    endTimePicker.show()
+                                }
+                                .background(color = MaterialTheme.colorScheme.tertiaryContainer)
+                                .padding(horizontal = 10.dp, vertical = 6.dp),
                     )
                 }
                 TextView(
@@ -310,10 +325,11 @@ fun HomeTabManualDialog(
 
                     onClose()
                 },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                ),
+                colors =
+                    ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    ),
             ) {
                 TextView(stringResource(id = R.string.save))
             }
@@ -321,10 +337,11 @@ fun HomeTabManualDialog(
         dismissButton = {
             Button(
                 onClick = onClose,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                ),
+                colors =
+                    ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                    ),
             ) {
                 TextView(stringResource(id = R.string.cancel))
             }

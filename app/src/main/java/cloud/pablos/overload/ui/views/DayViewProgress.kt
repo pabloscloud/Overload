@@ -32,25 +32,28 @@ fun DayViewProgress(
     var count: Long = 0
 
     // Filter items by type
-    val itemsFiltered = items.filter { item ->
-        when (isPause) {
-            true -> {
-                item.pause
-            }
-            false -> {
-                !item.pause
+    val itemsFiltered =
+        items.filter { item ->
+            when (isPause) {
+                true -> {
+                    item.pause
+                }
+
+                false -> {
+                    item.pause.not()
+                }
             }
         }
-    }
 
     // Count duration
     itemsFiltered.forEach {
         val parsedStartTime = parseToLocalDateTime(it.startTime)
-        val parsedEndTime = if (it.ongoing) {
-            LocalDateTime.now()
-        } else {
-            parseToLocalDateTime(it.endTime)
-        }
+        val parsedEndTime =
+            if (it.ongoing) {
+                LocalDateTime.now()
+            } else {
+                parseToLocalDateTime(it.endTime)
+            }
 
         count += Duration.between(parsedStartTime, parsedEndTime).toMillis()
     }
@@ -58,7 +61,7 @@ fun DayViewProgress(
     // If last item is not a pause, automatically count duration between then and now
     if (
         isPause &&
-        !items.last().pause &&
+        items.last().pause.not() &&
         date == LocalDate.now()
     ) {
         val parsedStartTime = parseToLocalDateTime(items.last().endTime)
@@ -72,42 +75,47 @@ fun DayViewProgress(
     val transition = updateTransition(targetState = duration, label = "progress")
 
     // Progress
-    val progress = transition.animateFloat(
-        transitionSpec = { tween(800) },
-        label = "progress",
-    ) { remTime ->
-        val calculatedProgress = if (remTime < 0) {
-            360f
-        } else {
-            360f - ((360f / goal) * (goal - remTime))
-        }
+    val progress =
+        transition.animateFloat(
+            transitionSpec = { tween(800) },
+            label = "progress",
+        ) { remTime ->
+            val calculatedProgress =
+                if (remTime < 0) {
+                    360f
+                } else {
+                    360f - ((360f / goal) * (goal - remTime))
+                }
 
-        calculatedProgress.coerceAtMost(360f)
-    }
+            calculatedProgress.coerceAtMost(360f)
+        }
 
     // Color
-    val color = transition.animateColor(
-        transitionSpec = {
-            tween(800, easing = LinearEasing)
-        },
-        label = "Color transition",
-    ) {
-        if (progress.value < 360f) {
-            MaterialTheme.colorScheme.error
-        } else {
-            MaterialTheme.colorScheme.primary
+    val color =
+        transition.animateColor(
+            transitionSpec = {
+                tween(800, easing = LinearEasing)
+            },
+            label = "Color transition",
+        ) {
+            if (progress.value < 360f) {
+                MaterialTheme.colorScheme.error
+            } else {
+                MaterialTheme.colorScheme.primary
+            }
         }
-    }
 
     // Text
-    val title = when (isPause) {
-        true -> {
-            stringResource(id = R.string.pause_left)
+    val title =
+        when (isPause) {
+            true -> {
+                stringResource(id = R.string.pause_left)
+            }
+
+            false -> {
+                stringResource(id = R.string.work_left)
+            }
         }
-        false -> {
-            stringResource(id = R.string.work_left)
-        }
-    }
     val subtitle = getDurationString(Duration.ofMillis(goal - duration))
 
     HomeTabProgress(

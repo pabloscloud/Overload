@@ -24,47 +24,57 @@ fun HomeTabDeleteBottomAppBar(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    val date = state.selectedDayCalendar.takeIf { it.isNotBlank() }?.let { getLocalDate(it) } ?: LocalDate.now()
+    val date =
+        state.selectedDayCalendar.takeIf { it.isNotBlank() }?.let { getLocalDate(it) }
+            ?: LocalDate.now()
 
-    val itemsForSelectedDay = state.items.filter { item ->
-        val startTime = parseToLocalDateTime(item.startTime)
-        extractDate(startTime) == date
-    }
+    val itemsForSelectedDay =
+        state.items.filter { item ->
+            val startTime = parseToLocalDateTime(item.startTime)
+            extractDate(startTime) == date
+        }
 
-    if (state.isDeletingHome) {
-        BottomAppBar(
-            actions = {
-                IconButton(onClick = {
-                    onEvent(ItemEvent.SetSelectedItemsHome(state.selectedItemsHome + itemsForSelectedDay.filterNot { state.selectedItemsHome.contains(it) }))
-                }) {
-                    Icon(
-                        Icons.Filled.SelectAll,
-                        contentDescription = stringResource(id = R.string.select_all_items_of_selected_day),
-                    )
-                }
-                IconButton(onClick = {
-                    onEvent(ItemEvent.SetSelectedItemsHome(state.selectedItemsHome - itemsForSelectedDay.toSet()))
-                }) {
-                    Icon(
-                        Icons.Filled.Deselect,
-                        contentDescription = stringResource(id = R.string.deselect_all_items_of_selected_day),
-                    )
-                }
-            },
-            floatingActionButton = {
-                FloatingActionButton(
-                    onClick = {
-                        onEvent(ItemEvent.DeleteItems(state.selectedItemsHome))
-                    },
-                    containerColor = MaterialTheme.colorScheme.errorContainer,
-                    contentColor = MaterialTheme.colorScheme.onErrorContainer,
-                ) {
-                    Icon(
-                        Icons.Filled.DeleteForever,
-                        contentDescription = stringResource(id = R.string.delete_items_forever),
-                    )
-                }
-            },
-        )
-    }
+    BottomAppBar(
+        actions = {
+            IconButton(onClick = {
+                onEvent(
+                    ItemEvent.SetSelectedItemsHome(
+                        state.selectedItemsHome +
+                            itemsForSelectedDay.filterNot {
+                                state.selectedItemsHome.contains(
+                                    it,
+                                )
+                            },
+                    ),
+                )
+            }) {
+                Icon(
+                    Icons.Filled.SelectAll,
+                    contentDescription = stringResource(id = R.string.select_all_items_of_selected_day),
+                )
+            }
+            IconButton(onClick = {
+                onEvent(ItemEvent.SetSelectedItemsHome(state.selectedItemsHome - itemsForSelectedDay.toSet()))
+            }) {
+                Icon(
+                    Icons.Filled.Deselect,
+                    contentDescription = stringResource(id = R.string.deselect_all_items_of_selected_day),
+                )
+            }
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    onEvent(ItemEvent.DeleteItems(state.selectedItemsHome))
+                },
+                containerColor = MaterialTheme.colorScheme.errorContainer,
+                contentColor = MaterialTheme.colorScheme.onErrorContainer,
+            ) {
+                Icon(
+                    Icons.Filled.DeleteForever,
+                    contentDescription = stringResource(id = R.string.delete_items_forever),
+                )
+            }
+        },
+    )
 }

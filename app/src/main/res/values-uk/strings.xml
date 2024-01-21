@@ -38,14 +38,14 @@
     <string name="open_link_with">Відкрийте за допомогою</string>
     <string name="configurations">Конфігурації</string>
     <string name="sunday">Неділя</string>
-    <string name="no_items_subtitle">Для цього дня немає збережених позицій.</string>
+    <string name="no_items_subtitle">Для цього дня не збережено жодного елемента.</string>
     <string name="home">Головна</string>
     <string name="yesterday">Вчора</string>
     <string name="navigation_drawer">Навігаційна панель</string>
-    <string name="arrow_forward">стрілка вперед, що описує напрямок обох часів від початку до кінця</string>
+    <string name="arrow_forward">стрілка вперед, від початку до кінця</string>
     <string name="delete_pause">Видалити паузу</string>
     <string name="deselect_all_items_of_selected_day">зняти позначку з усіх елементів обраного дня</string>
-    <string name="no_items_title">Не зафіксовано жодної статті</string>
+    <string name="no_items_title">Немає даних</string>
     <string name="saturday">Субота</string>
     <string name="work_left">Залишилася робота</string>
     <string name="itemCount_selected">вибрано</string>
@@ -101,4 +101,9 @@
     <string name="manual_entry">Введення вручну</string>
     <string name="start_label">Початок</string>
     <string name="acra_mailSubject">Збій Overload</string>
+    <string name="talback_entry">Введення з %s до %s</string>
+    <string name="backup_failed">Не вдалося створити резервну копію</string>
+    <string name="talback_pause">Пауза з %s до %s</string>
+    <string name="talback_pause_ongoing">Триває пауза з %s</string>
+    <string name="talback_entry_ongoing">Триває введення з %s</string>
 </resources>

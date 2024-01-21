@@ -61,7 +61,7 @@
     <string name="pick_pause_goal">Задать цель отдыха</string>
     <string name="work">Работа</string>
     <string name="backup">Создать резервную копию</string>
-    <string name="spans_days">Временной промежуток растянулся между днями</string>
+    <string name="spans_days">Запись растянулась между днями</string>
     <string name="license">Лицензия</string>
     <string name="issue_reports_descr">Заметили что-то странное? Пожалуйста, сообщите об этом!</string>
     <string name="about">О приложении</string>
@@ -71,7 +71,7 @@
     <string name="open_link_with">Открыть ссылку с помощью</string>
     <string name="import_backup_descr">Чтобы импортировать данные, используйте обмен из других приложений. Это позволит приложению безопасно получить данные и импортировать их.</string>
     <string name="configurations">Параметры</string>
-    <string name="spans_days_descr">Временной промежуток попал в несколько суток. Возможно, вы забыли остановить его. Хотите скорректировать время окончания?</string>
+    <string name="spans_days_descr">Временной промежуток записи попал в несколько суток. Возможно, вы забыли остановить его. Хотите скорректировать время окончания?</string>
     <string name="sunday">Воскресенье</string>
     <string name="no_items_subtitle">Для этого дня нет сохранённых данных.</string>
     <string name="adjust">Скорректировать</string>
@@ -81,7 +81,7 @@
     <string name="yesterday">Вчера</string>
     <string name="navigation_drawer">Панель навигации</string>
     <string name="minutes">минут</string>
-    <string name="arrow_forward">стрелка вперёд описывает направление времени с начала и до конца</string>
+    <string name="arrow_forward">стрелка вперёд от начала и до конца</string>
     <string name="delete_pause">Удаление перерыва</string>
     <string name="deselect_all_items_of_selected_day">снять выделение со всего в этом дне</string>
     <string name="analytics">аналитика</string>
@@ -101,4 +101,10 @@
     <string name="end_label">Конец</string>
     <string name="manual_entry">Ручное добавление</string>
     <string name="start_label">Начало</string>
+    <string name="acra_mailSubject">Вылет Overload</string>
+    <string name="talback_entry">Запись с %s по %s</string>
+    <string name="backup_failed">Не удалось создать резервную копию</string>
+    <string name="talback_pause">Пауза с %s по %s</string>
+    <string name="talback_pause_ongoing">Протекающая пауза с %s</string>
+    <string name="talback_entry_ongoing">Протекающая запись с %s</string>
 </resources>

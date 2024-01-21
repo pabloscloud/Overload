@@ -19,4 +19,6 @@ data class ItemState(
     val isAdjustEndDialogShown: Boolean = false,
     val isSpreadAcrossDaysDialogShown: Boolean = false,
     val isFabOpen: Boolean = false,
+    val navigateToScreenRoute: String = "",
+    val navigateToScreenPopBackStack: Boolean = false,
 )

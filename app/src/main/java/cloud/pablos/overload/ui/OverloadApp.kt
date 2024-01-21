@@ -42,6 +42,7 @@ import cloud.pablos.overload.ui.navigation.OverloadNavigationActions
 import cloud.pablos.overload.ui.navigation.OverloadNavigationRail
 import cloud.pablos.overload.ui.navigation.OverloadRoute
 import cloud.pablos.overload.ui.navigation.OverloadTopLevelDestination
+import cloud.pablos.overload.ui.screens.day.DayScreen
 import cloud.pablos.overload.ui.tabs.calendar.CalendarTab
 import cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab
 import cloud.pablos.overload.ui.tabs.home.HomeTab
@@ -69,56 +70,65 @@ fun OverloadApp(
 
     val foldingFeature = displayFeatures.filterIsInstance<FoldingFeature>().firstOrNull()
 
-    val foldingDevicePosture = when {
-        isBookPosture(foldingFeature) ->
-            DevicePosture.BookPosture(foldingFeature.bounds)
+    val foldingDevicePosture =
+        when {
+            isBookPosture(foldingFeature) ->
+                DevicePosture.BookPosture(foldingFeature.bounds)
 
-        isSeparating(foldingFeature) ->
-            DevicePosture.Separating(foldingFeature.bounds, foldingFeature.orientation)
+            isSeparating(foldingFeature) ->
+                DevicePosture.Separating(foldingFeature.bounds, foldingFeature.orientation)
 
-        else -> DevicePosture.NormalPosture
-    }
+            else -> DevicePosture.NormalPosture
+        }
 
     when (windowSize.widthSizeClass) {
         WindowWidthSizeClass.Compact -> {
             navigationType = OverloadNavigationType.BOTTOM_NAVIGATION
             contentType = OverloadContentType.SINGLE_PANE
         }
+
         WindowWidthSizeClass.Medium -> {
-            navigationType = if (foldingDevicePosture is DevicePosture.NormalPosture) {
-                OverloadNavigationType.BOTTOM_NAVIGATION
-            } else {
-                OverloadNavigationType.NAVIGATION_RAIL
-            }
-            contentType = if (foldingDevicePosture is DevicePosture.NormalPosture) {
-                OverloadContentType.DUAL_PANE
-            } else {
-                OverloadContentType.SINGLE_PANE
-            }
+            navigationType =
+                if (foldingDevicePosture is DevicePosture.NormalPosture) {
+                    OverloadNavigationType.BOTTOM_NAVIGATION
+                } else {
+                    OverloadNavigationType.NAVIGATION_RAIL
+                }
+            contentType =
+                if (foldingDevicePosture is DevicePosture.NormalPosture) {
+                    OverloadContentType.DUAL_PANE
+                } else {
+                    OverloadContentType.SINGLE_PANE
+                }
         }
+
         WindowWidthSizeClass.Expanded -> {
             navigationType = OverloadNavigationType.NAVIGATION_RAIL
             contentType = OverloadContentType.DUAL_PANE
         }
+
         else -> {
             navigationType = OverloadNavigationType.BOTTOM_NAVIGATION
             contentType = OverloadContentType.SINGLE_PANE
         }
     }
 
-    val navigationContentPosition = when (windowSize.heightSizeClass) {
-        WindowHeightSizeClass.Compact -> {
-            OverloadNavigationContentPosition.TOP
+    val navigationContentPosition =
+        when (windowSize.heightSizeClass) {
+            WindowHeightSizeClass.Compact -> {
+                OverloadNavigationContentPosition.TOP
+            }
+
+            WindowHeightSizeClass.Medium,
+            WindowHeightSizeClass.Expanded,
+            -> {
+                OverloadNavigationContentPosition.TOP
+            }
+
+            else -> {
+                OverloadNavigationContentPosition.TOP
+            }
         }
-        WindowHeightSizeClass.Medium,
-        WindowHeightSizeClass.Expanded,
-        -> {
-            OverloadNavigationContentPosition.TOP
-        }
-        else -> {
-            OverloadNavigationContentPosition.TOP
-        }
-    }
 
     OverloadNavigationWrapper(
         navigationType = navigationType,
@@ -142,9 +152,10 @@ private fun OverloadNavigationWrapper(
     val scope = rememberCoroutineScope()
 
     val navController = rememberNavController()
-    val navigationActions = remember(navController) {
-        OverloadNavigationActions(navController)
-    }
+    val navigationActions =
+        remember(navController) {
+            OverloadNavigationActions(navController)
+        }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val selectedDestination =
         navBackStackEntry?.destination?.route ?: OverloadRoute.HOME
@@ -167,6 +178,7 @@ private fun OverloadNavigationWrapper(
                 onEvent = onEvent,
             )
         }
+
         OverloadNavigationType.NAVIGATION_RAIL -> {
             ModalNavigationDrawer(
                 drawerContent = {
@@ -246,9 +258,10 @@ fun OverloadAppContent(
             )
         }
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.surface),
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.surface),
         ) {
             OverloadNavHost(
                 navigationType = navigationType,
@@ -256,25 +269,28 @@ fun OverloadAppContent(
                 navController = navController,
                 state = state,
                 onEvent = onEvent,
-                modifier = Modifier
-                    .weight(1f)
-                    .then(
-                        if (navigationType == OverloadNavigationType.BOTTOM_NAVIGATION && !state.isDeletingHome) {
-                            Modifier.consumeWindowInsets(
-                                WindowInsets.systemBars.only(
-                                    WindowInsetsSides.Bottom,
-                                ),
-                            )
-                        } else {
-                            Modifier
-                        },
-                    ),
+                modifier =
+                    Modifier
+                        .weight(1f)
+                        .then(
+                            if (navigationType == OverloadNavigationType.BOTTOM_NAVIGATION && state.isDeletingHome.not()) {
+                                Modifier.consumeWindowInsets(
+                                    WindowInsets.systemBars.only(
+                                        WindowInsetsSides.Bottom,
+                                    ),
+                                )
+                            } else {
+                                Modifier
+                            },
+                        ),
             )
             AnimatedVisibility(visible = navigationType == OverloadNavigationType.BOTTOM_NAVIGATION) {
                 OverloadBottomNavigationBar(
                     selectedDestination = selectedDestination,
                     navigateToTopLevelDestination = navigateToTopLevelDestination,
                     state = state,
+                    onEvent = onEvent,
+                    onNavigate = { navController.navigate(OverloadRoute.CALENDAR) },
                 )
             }
         }
@@ -330,10 +346,20 @@ private fun OverloadNavHost(
                 contentType = contentType,
                 state = state,
                 onEvent = onEvent,
+                onNavigate = { navController.navigate(OverloadRoute.DAY) },
+            )
+        }
+        composable(OverloadRoute.DAY) {
+            DayScreen(
+                state = state,
+                onEvent = onEvent,
             )
         }
         composable(OverloadRoute.CONFIGURATIONS) {
-            ConfigurationsTab(state = state)
+            ConfigurationsTab(
+                state = state,
+                onEvent = onEvent,
+            )
         }
     }
 }

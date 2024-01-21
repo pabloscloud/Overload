@@ -30,6 +30,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.navigation.OverloadRoute
+import cloud.pablos.overload.ui.navigation.OverloadTopAppBar
 import cloud.pablos.overload.ui.utils.OverloadNavigationType
 import cloud.pablos.overload.ui.views.TextView
 import kotlinx.coroutines.launch
@@ -45,36 +47,40 @@ fun HomeTab(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    val pagerState = rememberPagerState(
-        initialPage = 2,
-        initialPageOffsetFraction = 0f,
-        pageCount = { homeTabItems.size },
-    )
+    val pagerState =
+        rememberPagerState(
+            initialPage = 2,
+            initialPageOffsetFraction = 0f,
+            pageCount = { homeTabItems.size },
+        )
 
     val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(pagerState.currentPage) {
-        val selectedDayString = when (pagerState.currentPage) {
-            0 -> getFormattedDate(daysBefore = 2)
-            1 -> getFormattedDate(daysBefore = 1)
-            2 -> getFormattedDate()
-            else -> getFormattedDate()
-        }
+        val selectedDayString =
+            when (pagerState.currentPage) {
+                0 -> getFormattedDate(daysBefore = 2)
+                1 -> getFormattedDate(daysBefore = 1)
+                2 -> getFormattedDate()
+                else -> getFormattedDate()
+            }
         onEvent(ItemEvent.SetSelectedDayCalendar(selectedDayString))
     }
 
     Scaffold(
         topBar = {
-            HomeTabTopAppBar(state = state, onEvent = onEvent)
-        },
-        bottomBar = {
-            HomeTabDeleteBottomAppBar(state = state, onEvent = onEvent)
+            OverloadTopAppBar(
+                selectedDestination = OverloadRoute.HOME,
+                state = state,
+                onEvent = onEvent,
+            )
         },
         floatingActionButton = {
             AnimatedVisibility(
-                visible = navigationType == OverloadNavigationType.BOTTOM_NAVIGATION &&
-                    state.selectedDayCalendar == LocalDate.now().toString() &&
-                    state.isDeletingHome.not(),
+                visible =
+                    navigationType == OverloadNavigationType.BOTTOM_NAVIGATION &&
+                        state.selectedDayCalendar == LocalDate.now().toString() &&
+                        state.isDeletingHome.not(),
                 enter = if (state.isFabOpen) slideInHorizontally(initialOffsetX = { w -> w }) else scaleIn(),
                 exit = if (state.isFabOpen) slideOutHorizontally(targetOffsetX = { w -> w }) else scaleOut(),
             ) {
@@ -121,7 +127,10 @@ fun HomeTab(
     }
 }
 
-fun getFormattedDate(date: LocalDate, human: Boolean = false): String {
+fun getFormattedDate(
+    date: LocalDate,
+    human: Boolean = false,
+): String {
     val formatter = DateTimeFormatter.ofPattern(if (human) "dd.MM.yyyy" else "yyyy-MM-dd")
     return date.format(formatter)
 }

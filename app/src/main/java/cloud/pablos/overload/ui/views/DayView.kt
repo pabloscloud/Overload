@@ -49,10 +49,11 @@ fun DayView(
     date: LocalDate,
     isEditable: Boolean,
 ) {
-    val items = state.items.filter { item ->
-        val startTime = parseToLocalDateTime(item.startTime)
-        extractDate(startTime) == date
-    }
+    val items =
+        state.items.filter { item ->
+            val startTime = parseToLocalDateTime(item.startTime)
+            extractDate(startTime) == date
+        }
 
     val itemsDesc = items.sortedByDescending { it.startTime }
 
@@ -70,9 +71,10 @@ fun DayView(
         ) {
             item {
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 10.dp, start = 10.dp, end = 10.dp),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 10.dp, start = 10.dp, end = 10.dp),
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     if (goalWork > 0) {
@@ -87,7 +89,12 @@ fun DayView(
                         Box(
                             modifier = Modifier.weight(1f),
                         ) {
-                            DayViewProgress(goal = goalPause, items = items, date = date, isPause = true)
+                            DayViewProgress(
+                                goal = goalPause,
+                                items = items,
+                                date = date,
+                                isPause = true,
+                            )
                         }
                     }
                 }
@@ -95,35 +102,36 @@ fun DayView(
             val itemSize = itemsDesc.size
             if (
                 items.isNotEmpty() &&
-                !items.last().ongoing &&
-                !items.last().pause &&
+                items.last().ongoing.not() &&
+                items.last().pause.not() &&
                 date == LocalDate.now()
             ) {
                 item {
                     Box(
-                        modifier = Modifier
-                            .padding(10.dp, 10.dp, 10.dp)
-                            .combinedClickable(
-                                enabled = isEditable,
-                                onLongClick = {
-                                    deletePauseDialogState.value = true
-                                },
-                                onClick = {
-                                    when (state.isDeletingHome) {
-                                        true -> deletePauseDialogState.value = true
-                                        else -> {}
-                                    }
-                                },
-                            ),
+                        modifier =
+                            Modifier
+                                .padding(10.dp, 10.dp, 10.dp)
+                                .combinedClickable(
+                                    enabled = isEditable,
+                                    onLongClick = {
+                                        deletePauseDialogState.value = true
+                                    },
+                                    onClick = {
+                                        if (state.isDeletingHome) {
+                                            deletePauseDialogState.value = true
+                                        }
+                                    },
+                                ),
                     ) {
                         DayViewItemOngoing(
-                            item = Item(
-                                id = -1,
-                                startTime = items.last().endTime,
-                                endTime = LocalDate.now().toString(),
-                                ongoing = true,
-                                pause = true,
-                            ),
+                            item =
+                                Item(
+                                    id = -1,
+                                    startTime = items.last().endTime,
+                                    endTime = LocalDate.now().toString(),
+                                    ongoing = true,
+                                    pause = true,
+                                ),
                             isSelected = false,
                         )
                     }
@@ -137,26 +145,43 @@ fun DayView(
                 val item = itemsDesc[index]
                 val isSelected = state.selectedItemsHome.contains(item)
                 Box(
-                    modifier = Modifier
-                        .padding(10.dp, if (isFirstItem) 10.dp else 0.dp, 10.dp, if (isLastItem) 80.dp else 10.dp)
-                        .combinedClickable(
-                            enabled = isEditable,
-                            onLongClick = {
-                                onEvent(ItemEvent.SetIsDeletingHome(true))
-                                onEvent(ItemEvent.SetSelectedItemsHome(listOf(item)))
-                            },
-                            onClick = {
-                                when (state.isDeletingHome) {
-                                    true -> when (isSelected) {
-                                        true -> onEvent(ItemEvent.SetSelectedItemsHome(state.selectedItemsHome.filterNot { it == item }))
-                                        else -> onEvent(ItemEvent.SetSelectedItemsHome(state.selectedItemsHome + listOf(item)))
+                    modifier =
+                        Modifier
+                            .padding(
+                                10.dp,
+                                if (isFirstItem) 10.dp else 0.dp,
+                                10.dp,
+                                if (isLastItem) 80.dp else 10.dp,
+                            )
+                            .combinedClickable(
+                                enabled = isEditable,
+                                onLongClick = {
+                                    onEvent(ItemEvent.SetIsDeletingHome(true))
+                                    onEvent(ItemEvent.SetSelectedItemsHome(listOf(item)))
+                                },
+                                onClick = {
+                                    if (state.isDeletingHome) {
+                                        when (isSelected) {
+                                            true ->
+                                                onEvent(
+                                                    ItemEvent.SetSelectedItemsHome(state.selectedItemsHome.filterNot { it == item }),
+                                                )
+
+                                            else ->
+                                                onEvent(
+                                                    ItemEvent.SetSelectedItemsHome(
+                                                        state.selectedItemsHome +
+                                                            listOf(
+                                                                item,
+                                                            ),
+                                                    ),
+                                                )
+                                        }
                                     }
-                                    else -> {}
-                                }
-                            },
-                        ),
+                                },
+                            ),
                 ) {
-                    when (!item.ongoing && item.endTime.isNotBlank()) {
+                    when (item.ongoing.not() && item.endTime.isNotBlank()) {
                         true -> DayViewItemNotOngoing(item, isSelected = isSelected)
                         else -> DayViewItemOngoing(item, isSelected = isSelected)
                     }
@@ -194,12 +219,13 @@ fun DayView(
 }
 
 fun parseToLocalDateTime(dateTimeString: String): LocalDateTime {
-    val formatter = DateTimeFormatterBuilder()
-        .appendPattern("yyyy-MM-dd'T'HH:mm:ss")
-        .optionalStart()
-        .appendFraction(ChronoField.MICRO_OF_SECOND, 0, 6, true)
-        .optionalEnd()
-        .toFormatter()
+    val formatter =
+        DateTimeFormatterBuilder()
+            .appendPattern("yyyy-MM-dd'T'HH:mm:ss")
+            .optionalStart()
+            .appendFraction(ChronoField.MICRO_OF_SECOND, 0, 6, true)
+            .optionalEnd()
+            .toFormatter()
 
     return try {
         LocalDateTime.parse(dateTimeString, formatter)
@@ -209,12 +235,13 @@ fun parseToLocalDateTime(dateTimeString: String): LocalDateTime {
 }
 
 fun getLocalDate(selectedDay: String): LocalDate {
-    val date: LocalDate = if (selectedDay.isNotBlank()) {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-        LocalDate.parse(selectedDay, formatter)
-    } else {
-        LocalDate.now()
-    }
+    val date: LocalDate =
+        if (selectedDay.isNotBlank()) {
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            LocalDate.parse(selectedDay, formatter)
+        } else {
+            LocalDate.now()
+        }
 
     return date
 }

@@ -56,7 +56,14 @@ fun ConfigurationsTabGoalDialog(
         onDismissRequest = onClose,
         title = {
             TextView(
-                text = if (isPause) stringResource(id = R.string.pick_pause_goal) else stringResource(id = R.string.pick_work_goal),
+                text =
+                    if (isPause) {
+                        stringResource(id = R.string.pick_pause_goal)
+                    } else {
+                        stringResource(
+                            id = R.string.pick_work_goal,
+                        )
+                    },
                 fontWeight = FontWeight.Bold,
                 align = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
@@ -71,7 +78,7 @@ fun ConfigurationsTabGoalDialog(
                     label = stringResource(R.string.hours),
                     value = hours,
                     onValueChange = { hours = it },
-                    isError = !hoursValidator,
+                    isError = hoursValidator.not(),
                     focusRequester = hoursFocusRequest,
                 )
 
@@ -79,7 +86,7 @@ fun ConfigurationsTabGoalDialog(
                     label = stringResource(R.string.minutes),
                     value = minutes,
                     onValueChange = { minutes = it },
-                    isError = !minValidator,
+                    isError = minValidator.not(),
                     focusRequester = minFocusRequest,
                 )
             }
@@ -95,10 +102,11 @@ fun ConfigurationsTabGoalDialog(
                         isPause = isPause,
                     )
                 },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                ),
+                colors =
+                    ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    ),
             ) {
                 TextView(stringResource(id = R.string.save))
             }
@@ -106,10 +114,11 @@ fun ConfigurationsTabGoalDialog(
         dismissButton = {
             Button(
                 onClick = onClose,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                ),
+                colors =
+                    ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                    ),
             ) {
                 Text(text = stringResource(R.string.cancel))
             }

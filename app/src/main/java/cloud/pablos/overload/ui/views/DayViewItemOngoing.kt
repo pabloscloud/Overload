@@ -32,6 +32,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -59,7 +61,7 @@ fun DayViewItemOngoing(
     LaunchedEffect(blink) {
         while (true) {
             delay(500) // Blink every 500ms
-            blink = !blink
+            blink = blink.not()
         }
     }
 
@@ -96,17 +98,30 @@ fun DayViewItemOngoing(
     val currentHour = currentTime.format(DateTimeFormatter.ofPattern("HH"))
     val currentMinute = currentTime.format(DateTimeFormatter.ofPattern("mm"))
 
-    val startTimeString: String = parsedStartTime.format(DateTimeFormatter.ofPattern(if (showDate) "MM/dd/yy HH:mm" else "HH:mm"))
+    val startTimeString: String =
+        parsedStartTime.format(DateTimeFormatter.ofPattern(if (showDate) "MM/dd/yy HH:mm" else "HH:mm"))
 
     val durationString = getDurationString(parsedStartTime, parsedEndTime)
 
+    val itemLabel: String =
+        stringResource(
+            if (item.pause) R.string.talback_pause_ongoing else R.string.talback_entry_ongoing,
+            startTimeString,
+        )
+
     Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(15.dp))
-            .background(backgroundColor),
+        modifier =
+            Modifier
+                .clip(RoundedCornerShape(15.dp))
+                .background(backgroundColor),
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .clearAndSetSemantics {
+                        contentDescription = itemLabel
+                    },
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -126,33 +141,36 @@ fun DayViewItemOngoing(
             }
 
             Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(10.dp)
-                    .offset(x = 5.dp),
+                modifier =
+                    Modifier
+                        .weight(1f)
+                        .padding(10.dp)
+                        .offset(x = 5.dp),
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(2.dp)
-                            .background(foregroundColor),
+                        modifier =
+                            Modifier
+                                .weight(1f)
+                                .height(2.dp)
+                                .background(foregroundColor),
                     )
                     Icon(
                         Icons.AutoMirrored.Filled.ArrowForward,
                         contentDescription = stringResource(id = R.string.arrow_forward),
                         tint = foregroundColor,
-                        modifier = Modifier
-                            .offset(x = (-5).dp)
-                            .size(25.dp),
+                        modifier =
+                            Modifier
+                                .offset(x = (-5).dp)
+                                .size(25.dp),
                     )
                 }
             }
 
-            if (!hideEnd) {
+            if (hideEnd.not()) {
                 Row(modifier = Modifier.padding(12.5.dp)) {
                     TextView(
                         text = currentHour,
@@ -179,22 +197,24 @@ fun DayViewItemOngoing(
             }
         }
 
-        if (!hideEnd) {
+        if (hideEnd.not()) {
             AnimatedVisibility(
                 visible = blink,
                 enter = fadeIn(),
                 exit = fadeOut(animationSpec = tween(1000)),
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .background(backgroundColor),
+                modifier =
+                    Modifier
+                        .align(Alignment.Center)
+                        .background(backgroundColor),
             ) {
                 TextView(
                     text = durationString,
                     color = foregroundColor,
                     fontWeight = FontWeight.Medium,
                     align = TextAlign.Center,
-                    modifier = Modifier
-                        .padding(8.dp),
+                    modifier =
+                        Modifier
+                            .padding(8.dp),
                 )
             }
         }
@@ -202,14 +222,18 @@ fun DayViewItemOngoing(
 }
 
 @RequiresApi(Build.VERSION_CODES.S)
-fun getDurationString(parsedStartTime: LocalDateTime, parsedEndTime: LocalDateTime): String {
+fun getDurationString(
+    parsedStartTime: LocalDateTime,
+    parsedEndTime: LocalDateTime,
+): String {
     val duration: Duration = Duration.between(parsedStartTime, parsedEndTime)
     val hours = duration.toHours()
-    val minutes: Long = if (isToMinutesPartAvailable()) {
-        duration.toMinutesPart().toLong()
-    } else {
-        duration.toMinutes() % 60
-    }
+    val minutes: Long =
+        if (isToMinutesPartAvailable()) {
+            duration.toMinutesPart().toLong()
+        } else {
+            duration.toMinutes() % 60
+        }
     return when {
         hours > 0 -> "$hours h $minutes min"
         minutes > 0 -> "$minutes min"
@@ -220,11 +244,12 @@ fun getDurationString(parsedStartTime: LocalDateTime, parsedEndTime: LocalDateTi
 @RequiresApi(Build.VERSION_CODES.S)
 fun getDurationString(duration: Duration): String {
     val hours = duration.toHours()
-    val minutes: Long = if (isToMinutesPartAvailable()) {
-        duration.toMinutesPart().toLong()
-    } else {
-        duration.toMinutes() % 60
-    }
+    val minutes: Long =
+        if (isToMinutesPartAvailable()) {
+            duration.toMinutesPart().toLong()
+        } else {
+            duration.toMinutes() % 60
+        }
     return when {
         hours > 0 -> "$hours h $minutes min"
         minutes > 0 -> "$minutes min"
@@ -245,12 +270,13 @@ fun isToMinutesPartAvailable(): Boolean {
 @Preview
 @Composable
 fun DayViewItemOngoingPreview() {
-    val exampleItem = Item(
-        startTime = LocalDateTime.of(2023, 7, 29, 11, 57).toString(),
-        endTime = "",
-        pause = true,
-        ongoing = true,
-    )
+    val exampleItem =
+        Item(
+            startTime = LocalDateTime.of(2023, 7, 29, 11, 57).toString(),
+            endTime = "",
+            pause = true,
+            ongoing = true,
+        )
 
     DayViewItemOngoing(exampleItem)
 }

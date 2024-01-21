@@ -22,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
@@ -41,15 +43,21 @@ fun ConfigurationsTabItem(
     val openLinkStr = stringResource(id = R.string.open_link_with)
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = if (link != null) {
-            Modifier.clickable {
-                val intent = Intent(Intent.ACTION_VIEW, link)
-                val chooserIntent = Intent.createChooser(intent, openLinkStr)
-                context.startActivity(chooserIntent)
-            }
-        } else {
-            Modifier
-        },
+        modifier =
+            if (link != null) {
+                Modifier.clickable {
+                    val intent = Intent(Intent.ACTION_VIEW, link)
+                    val chooserIntent = Intent.createChooser(intent, openLinkStr)
+                    context.startActivity(chooserIntent)
+                }
+                    .clearAndSetSemantics {
+                        contentDescription = "$title: $description"
+                    }
+            } else {
+                Modifier.clearAndSetSemantics {
+                    contentDescription = "$title: $description"
+                }
+            },
     ) {
         if (icon != null) {
             Icon(

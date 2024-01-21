@@ -3,6 +3,8 @@ package cloud.pablos.overload.ui.navigation
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,6 +29,11 @@ import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,7 +48,14 @@ import androidx.compose.ui.unit.offset
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
+import cloud.pablos.overload.ui.screens.day.DayScreenBottomAppBar
+import cloud.pablos.overload.ui.screens.day.DayScreenTopAppBar
+import cloud.pablos.overload.ui.tabs.calendar.CalendarTabTopAppBar
+import cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabTopAppBar
+import cloud.pablos.overload.ui.tabs.home.HomeTabDeleteBottomAppBar
+import cloud.pablos.overload.ui.tabs.home.HomeTabTopAppBar
 import cloud.pablos.overload.ui.utils.OverloadNavigationContentPosition
+import cloud.pablos.overload.ui.views.DeleteTopAppBar
 import cloud.pablos.overload.ui.views.TextView
 import java.time.LocalDate
 
@@ -55,7 +69,7 @@ fun OverloadNavigationRail(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    if (!state.isDeletingHome) {
+    if (state.isDeletingHome.not()) {
         NavigationRail(
             modifier = Modifier.fillMaxHeight(),
             containerColor = MaterialTheme.colorScheme.inverseOnSurface,
@@ -94,15 +108,19 @@ fun OverloadNavigationRail(
                                 TOP_LEVEL_DESTINATIONS.forEach { overloadDestination ->
                                     NavigationRailItem(
                                         selected = selectedDestination == overloadDestination.route,
-                                        onClick = { navigateToTopLevelDestination(overloadDestination) },
+                                        onClick = {
+                                            navigateToTopLevelDestination(
+                                                overloadDestination,
+                                            )
+                                        },
                                         icon = {
                                             Icon(
                                                 imageVector =
-                                                if (selectedDestination == overloadDestination.route) {
-                                                    overloadDestination.selectedIcon
-                                                } else {
-                                                    overloadDestination.unselectedIcon
-                                                },
+                                                    if (selectedDestination == overloadDestination.route) {
+                                                        overloadDestination.selectedIcon
+                                                    } else {
+                                                        overloadDestination.unselectedIcon
+                                                    },
                                                 contentDescription = stringResource(id = overloadDestination.iconTextId),
                                             )
                                         },
@@ -118,47 +136,217 @@ fun OverloadNavigationRail(
     }
 }
 
+class BottomBarState private constructor() {
+    companion object {
+        val Normal = BottomBarState()
+        val Deleting = BottomBarState()
+        val Day = BottomBarState()
+    }
+}
+
 @Composable
 fun OverloadBottomNavigationBar(
     selectedDestination: String,
     navigateToTopLevelDestination: (OverloadTopLevelDestination) -> Unit,
     state: ItemState,
+    onEvent: (ItemEvent) -> Unit,
+    onNavigate: () -> Unit,
 ) {
-    if (!state.isDeletingHome) {
-        NavigationBar(modifier = Modifier.fillMaxWidth()) {
-            TOP_LEVEL_DESTINATIONS.forEach { overloadDestination ->
-                NavigationBarItem(
-                    selected = selectedDestination == overloadDestination.route,
-                    onClick = { navigateToTopLevelDestination(overloadDestination) },
-                    icon = {
-                        Icon(
-                            imageVector =
-                            if (selectedDestination == overloadDestination.route) {
-                                overloadDestination.selectedIcon
-                            } else {
-                                overloadDestination.unselectedIcon
-                            },
-                            contentDescription = stringResource(id = overloadDestination.iconTextId),
-                        )
-                    },
-                    label = {
-                        val label = when (overloadDestination.route) {
-                            "Home" -> { stringResource(id = R.string.home) }
-                            "Calendar" -> { stringResource(id = R.string.calendar) }
-                            "Configurations" -> { stringResource(id = R.string.configurations) }
-                            else -> { stringResource(id = R.string.unknown_day) }
+    var currentBottomBarState by remember { mutableStateOf(BottomBarState.Normal) }
+
+    DisposableEffect(state.isDeletingHome, selectedDestination) {
+        currentBottomBarState =
+            when (selectedDestination) {
+                OverloadRoute.HOME -> {
+                    when (state.isDeletingHome) {
+                        true -> BottomBarState.Deleting
+                        false -> BottomBarState.Normal
+                    }
+                }
+
+                OverloadRoute.DAY -> {
+                    when (state.isDeletingHome) {
+                        true -> BottomBarState.Deleting
+                        false -> BottomBarState.Day
+                    }
+                }
+
+                else -> BottomBarState.Normal
+            }
+        onDispose {
+            currentBottomBarState = BottomBarState.Normal
+        }
+    }
+
+    for (bottomBarState in listOf(
+        BottomBarState.Normal,
+        BottomBarState.Deleting,
+        BottomBarState.Day,
+    )) {
+        AnimatedVisibility(
+            visible = bottomBarState == currentBottomBarState,
+            enter = slideInVertically(initialOffsetY = { it }),
+            exit = slideOutVertically(targetOffsetY = { it }),
+        ) {
+            when (bottomBarState) {
+                BottomBarState.Normal -> {
+                    NavigationBar(modifier = Modifier.fillMaxWidth()) {
+                        TOP_LEVEL_DESTINATIONS.forEach { overloadDestination ->
+                            NavigationBarItem(
+                                selected = selectedDestination == overloadDestination.route,
+                                onClick = {
+                                    navigateToTopLevelDestination(
+                                        overloadDestination,
+                                    )
+                                },
+                                icon = {
+                                    Icon(
+                                        imageVector =
+                                            if (selectedDestination == overloadDestination.route) {
+                                                overloadDestination.selectedIcon
+                                            } else {
+                                                overloadDestination.unselectedIcon
+                                            },
+                                        contentDescription = stringResource(id = overloadDestination.iconTextId),
+                                    )
+                                },
+                                label = {
+                                    val label =
+                                        when (overloadDestination.route) {
+                                            "Home" -> {
+                                                stringResource(id = R.string.home)
+                                            }
+
+                                            "Calendar" -> {
+                                                stringResource(id = R.string.calendar)
+                                            }
+
+                                            "Configurations" -> {
+                                                stringResource(id = R.string.configurations)
+                                            }
+
+                                            else -> {
+                                                stringResource(id = R.string.unknown_day)
+                                            }
+                                        }
+                                    TextView(
+                                        text = label,
+                                        fontWeight =
+                                            if (selectedDestination == overloadDestination.route) {
+                                                FontWeight.Bold
+                                            } else {
+                                                FontWeight.Normal
+                                            },
+                                    )
+                                },
+                            )
                         }
-                        TextView(
-                            text = label,
-                            fontWeight =
-                            if (selectedDestination == overloadDestination.route) {
-                                FontWeight.Bold
-                            } else {
-                                FontWeight.Normal
-                            },
-                        )
-                    },
-                )
+                    }
+                }
+
+                BottomBarState.Deleting -> {
+                    HomeTabDeleteBottomAppBar(state, onEvent)
+                }
+
+                BottomBarState.Day -> {
+                    DayScreenBottomAppBar(onNavigate)
+                }
+            }
+        }
+    }
+}
+
+class TopBarState private constructor() {
+    companion object {
+        val Home = TopBarState()
+        val Calendar = TopBarState()
+        val Configurations = TopBarState()
+
+        val Day = TopBarState()
+
+        val Deleting = TopBarState()
+    }
+}
+
+@Composable
+fun OverloadTopAppBar(
+    selectedDestination: String,
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit,
+) {
+    var currentTopBarState by remember { mutableStateOf(TopBarState.Home) }
+
+    DisposableEffect(state.isDeletingHome, selectedDestination) {
+        currentTopBarState =
+            when (selectedDestination) {
+                OverloadRoute.HOME -> {
+                    when (state.isDeletingHome) {
+                        true -> TopBarState.Deleting
+                        false -> TopBarState.Home
+                    }
+                }
+
+                OverloadRoute.CALENDAR -> {
+                    TopBarState.Calendar
+                }
+
+                OverloadRoute.CONFIGURATIONS -> {
+                    TopBarState.Configurations
+                }
+
+                OverloadRoute.DAY -> {
+                    when (state.isDeletingHome) {
+                        true -> TopBarState.Deleting
+                        false -> TopBarState.Day
+                    }
+                }
+
+                else -> TopBarState.Home
+            }
+        onDispose {
+            currentTopBarState = TopBarState.Home
+        }
+    }
+
+    for (topBarState in listOf(
+        TopBarState.Home,
+        TopBarState.Calendar,
+        TopBarState.Configurations,
+    )) {
+        if (topBarState == currentTopBarState) {
+            when (topBarState) {
+                TopBarState.Home -> {
+                    HomeTabTopAppBar()
+                }
+
+                TopBarState.Calendar -> {
+                    CalendarTabTopAppBar(state, onEvent)
+                }
+
+                TopBarState.Configurations -> {
+                    ConfigurationsTabTopAppBar()
+                }
+            }
+        }
+    }
+
+    for (topBarState in listOf(
+        TopBarState.Day,
+        TopBarState.Deleting,
+    )) {
+        AnimatedVisibility(
+            visible = topBarState == currentTopBarState,
+            enter = slideInVertically(initialOffsetY = { -it }),
+            exit = slideOutVertically(targetOffsetY = { -it }),
+        ) {
+            when (topBarState) {
+                TopBarState.Day -> {
+                    DayScreenTopAppBar(state)
+                }
+
+                TopBarState.Deleting -> {
+                    DeleteTopAppBar(state, onEvent)
+                }
             }
         }
     }
@@ -173,12 +361,13 @@ fun ModalNavigationDrawerContent(
     state: ItemState,
     onEvent: (ItemEvent) -> Unit,
 ) {
-    if (!state.isDeletingHome) {
+    if (state.isDeletingHome.not()) {
         ModalDrawerSheet {
             Layout(
-                modifier = Modifier
-                    .background(MaterialTheme.colorScheme.inverseOnSurface)
-                    .padding(16.dp),
+                modifier =
+                    Modifier
+                        .background(MaterialTheme.colorScheme.inverseOnSurface)
+                        .padding(16.dp),
                 content = {
                     Column(
                         modifier = Modifier.layoutId(LayoutType.HEADER),
@@ -186,9 +375,10 @@ fun ModalNavigationDrawerContent(
                         verticalArrangement = Arrangement.spacedBy(4.dp),
                     ) {
                         Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
+                            modifier =
+                                Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
@@ -204,7 +394,9 @@ fun ModalNavigationDrawerContent(
                             }
                         }
 
-                        AnimatedVisibility(visible = state.selectedDayCalendar == LocalDate.now().toString()) {
+                        AnimatedVisibility(
+                            visible = state.selectedDayCalendar == LocalDate.now().toString(),
+                        ) {
                             OverloadNavigationFab(state, onEvent, onDrawerClicked)
                         }
                     }
@@ -224,20 +416,26 @@ fun ModalNavigationDrawerContent(
                                         icon = {
                                             Icon(
                                                 imageVector =
-                                                if (selectedDestination == overloadDestination.route) {
-                                                    overloadDestination.selectedIcon
-                                                } else {
-                                                    overloadDestination.unselectedIcon
-                                                },
-                                                contentDescription = stringResource(
-                                                    id = overloadDestination.iconTextId,
-                                                ),
+                                                    if (selectedDestination == overloadDestination.route) {
+                                                        overloadDestination.selectedIcon
+                                                    } else {
+                                                        overloadDestination.unselectedIcon
+                                                    },
+                                                contentDescription =
+                                                    stringResource(
+                                                        id = overloadDestination.iconTextId,
+                                                    ),
                                             )
                                         },
-                                        colors = NavigationDrawerItemDefaults.colors(
-                                            unselectedContainerColor = Color.Transparent,
-                                        ),
-                                        onClick = { navigateToTopLevelDestination(overloadDestination) },
+                                        colors =
+                                            NavigationDrawerItemDefaults.colors(
+                                                unselectedContainerColor = Color.Transparent,
+                                            ),
+                                        onClick = {
+                                            navigateToTopLevelDestination(
+                                                overloadDestination,
+                                            )
+                                        },
                                     )
                                 }
                             }
@@ -250,9 +448,7 @@ fun ModalNavigationDrawerContent(
     }
 }
 
-fun navigationMeasurePolicy(
-    navigationContentPosition: OverloadNavigationContentPosition,
-): MeasurePolicy {
+fun navigationMeasurePolicy(navigationContentPosition: OverloadNavigationContentPosition): MeasurePolicy {
     return MeasurePolicy { measurables, constraints ->
         lateinit var headerMeasurable: Measurable
         lateinit var contentMeasurable: Measurable
@@ -265,9 +461,10 @@ fun navigationMeasurePolicy(
         }
 
         val headerPlaceable = headerMeasurable.measure(constraints)
-        val contentPlaceable = contentMeasurable.measure(
-            constraints.offset(vertical = -headerPlaceable.height),
-        )
+        val contentPlaceable =
+            contentMeasurable.measure(
+                constraints.offset(vertical = -headerPlaceable.height),
+            )
         layout(constraints.maxWidth, constraints.maxHeight) {
             // Place the header, this goes at the top
             headerPlaceable.placeRelative(0, 0)
@@ -275,14 +472,15 @@ fun navigationMeasurePolicy(
             // Determine how much space is not taken up by the content
             val nonContentVerticalSpace = constraints.maxHeight - contentPlaceable.height
 
-            val contentPlaceableY = when (navigationContentPosition) {
-                // Figure out the place we want to place the content, with respect to the
-                // parent (ignoring the header for now)
-                OverloadNavigationContentPosition.TOP -> 0
-                OverloadNavigationContentPosition.CENTER -> nonContentVerticalSpace / 2
-            }
-                // And finally, make sure we don't overlap with the header.
-                .coerceAtLeast(headerPlaceable.height)
+            val contentPlaceableY =
+                when (navigationContentPosition) {
+                    // Figure out the place we want to place the content, with respect to the
+                    // parent (ignoring the header for now)
+                    OverloadNavigationContentPosition.TOP -> 0
+                    OverloadNavigationContentPosition.CENTER -> nonContentVerticalSpace / 2
+                }
+                    // And finally, make sure we don't overlap with the header.
+                    .coerceAtLeast(headerPlaceable.height)
 
             contentPlaceable.placeRelative(0, contentPlaceableY)
         }
@@ -290,5 +488,6 @@ fun navigationMeasurePolicy(
 }
 
 enum class LayoutType {
-    HEADER, CONTENT
+    HEADER,
+    CONTENT,
 }

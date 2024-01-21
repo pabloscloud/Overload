@@ -14,8 +14,9 @@ import cloud.pablos.overload.R
 
 object OverloadRoute {
     const val HOME = "Home"
-    const val CONFIGURATIONS = "Configurations"
     const val CALENDAR = "Calendar"
+    const val DAY = "Day"
+    const val CONFIGURATIONS = "Configurations"
 }
 
 data class OverloadTopLevelDestination(
@@ -26,7 +27,6 @@ data class OverloadTopLevelDestination(
 )
 
 class OverloadNavigationActions(private val navController: NavHostController) {
-
     fun navigateTo(destination: OverloadTopLevelDestination) {
         navController.navigate(destination.route) {
             // Pop up to the start destination of the graph to
@@ -44,23 +44,24 @@ class OverloadNavigationActions(private val navController: NavHostController) {
     }
 }
 
-val TOP_LEVEL_DESTINATIONS = listOf(
-    OverloadTopLevelDestination(
-        route = OverloadRoute.HOME,
-        selectedIcon = Icons.Filled.CalendarToday,
-        unselectedIcon = Icons.Outlined.CalendarToday,
-        iconTextId = R.string.home,
-    ),
-    OverloadTopLevelDestination(
-        route = OverloadRoute.CALENDAR,
-        selectedIcon = Icons.Filled.CalendarMonth,
-        unselectedIcon = Icons.Outlined.CalendarMonth,
-        iconTextId = R.string.calendar,
-    ),
-    OverloadTopLevelDestination(
-        route = OverloadRoute.CONFIGURATIONS,
-        selectedIcon = Icons.Filled.Settings,
-        unselectedIcon = Icons.Outlined.Settings,
-        iconTextId = R.string.configurations,
-    ),
-)
+val TOP_LEVEL_DESTINATIONS =
+    listOf(
+        OverloadTopLevelDestination(
+            route = OverloadRoute.HOME,
+            selectedIcon = Icons.Filled.CalendarToday,
+            unselectedIcon = Icons.Outlined.CalendarToday,
+            iconTextId = R.string.home,
+        ),
+        OverloadTopLevelDestination(
+            route = OverloadRoute.CALENDAR,
+            selectedIcon = Icons.Filled.CalendarMonth,
+            unselectedIcon = Icons.Outlined.CalendarMonth,
+            iconTextId = R.string.calendar,
+        ),
+        OverloadTopLevelDestination(
+            route = OverloadRoute.CONFIGURATIONS,
+            selectedIcon = Icons.Filled.Settings,
+            unselectedIcon = Icons.Outlined.Settings,
+            iconTextId = R.string.configurations,
+        ),
+    )

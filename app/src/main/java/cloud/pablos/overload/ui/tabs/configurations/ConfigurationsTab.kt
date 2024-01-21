@@ -40,6 +40,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.core.content.edit
@@ -49,8 +51,11 @@ import androidx.room.withTransaction
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.Item
 import cloud.pablos.overload.data.item.ItemDatabase
+import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.data.item.backupItemsToCsv
+import cloud.pablos.overload.ui.navigation.OverloadRoute
+import cloud.pablos.overload.ui.navigation.OverloadTopAppBar
 import cloud.pablos.overload.ui.views.TextView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -58,7 +63,10 @@ import kotlinx.coroutines.withContext
 import java.io.File
 
 @Composable
-fun ConfigurationsTab(state: ItemState) {
+fun ConfigurationsTab(
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit,
+) {
     val context = LocalContext.current
     val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
@@ -68,13 +76,15 @@ fun ConfigurationsTab(state: ItemState) {
     val acraEnabled = sharedPreferences.getBoolean(acraEnabledKey, true)
     val acraSysLogsEnabled = sharedPreferences.getBoolean(acraSysLogsEnabledKey, true)
 
-    val acraEnabledState = remember(acraEnabled) {
-        mutableStateOf(sharedPreferences.getBoolean(acraEnabledKey, true))
-    }
+    val acraEnabledState =
+        remember(acraEnabled) {
+            mutableStateOf(sharedPreferences.getBoolean(acraEnabledKey, true))
+        }
 
-    val acraSysLogsEnabledState = remember(acraSysLogsEnabled) {
-        mutableStateOf(sharedPreferences.getBoolean(acraSysLogsEnabledKey, true))
-    }
+    val acraSysLogsEnabledState =
+        remember(acraSysLogsEnabled) {
+            mutableStateOf(sharedPreferences.getBoolean(acraSysLogsEnabledKey, true))
+        }
 
     val importDialogState = remember { mutableStateOf(false) }
     val workGoalDialogState = remember { mutableStateOf(false) }
@@ -82,14 +92,19 @@ fun ConfigurationsTab(state: ItemState) {
 
     Scaffold(
         topBar = {
-            ConfigurationsTabTopAppBar()
+            OverloadTopAppBar(
+                selectedDestination = OverloadRoute.CONFIGURATIONS,
+                state = state,
+                onEvent = onEvent,
+            )
         },
     ) { paddingValues ->
         LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-                .padding(horizontal = 16.dp),
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             // Goals Title
@@ -99,11 +114,18 @@ fun ConfigurationsTab(state: ItemState) {
 
             // Work Goal
             item {
+                val itemLabel =
+                    stringResource(id = R.string.work) + ": " + stringResource(id = R.string.work_goal_descr)
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.clickable {
-                        workGoalDialogState.value = true
-                    },
+                    modifier =
+                        Modifier
+                            .clickable {
+                                workGoalDialogState.value = true
+                            }
+                            .clearAndSetSemantics {
+                                contentDescription = itemLabel
+                            },
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.Work,
@@ -126,11 +148,19 @@ fun ConfigurationsTab(state: ItemState) {
 
             // Pause Goal
             item {
+                val itemLabel =
+                    stringResource(id = R.string.pause) + ": " + stringResource(id = R.string.pause_goal_descr)
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.clickable {
-                        pauseGoalDialogState.value = true
-                    },
+                    modifier =
+                        Modifier
+                            .clickable {
+                                pauseGoalDialogState.value = true
+                            }
+                            .clearAndSetSemantics {
+                                contentDescription = itemLabel
+                            },
                 ) {
                     Icon(
                         imageVector = Icons.Filled.DarkMode,
@@ -205,11 +235,19 @@ fun ConfigurationsTab(state: ItemState) {
 
             // Storage Backup
             item {
+                val itemLabel =
+                    stringResource(id = R.string.backup) + ": " + stringResource(id = R.string.backup_descr)
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.clickable {
-                        backup(state, context)
-                    },
+                    modifier =
+                        Modifier
+                            .clickable {
+                                backup(state, context)
+                            }
+                            .clearAndSetSemantics {
+                                contentDescription = itemLabel
+                            },
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.Archive,
@@ -232,11 +270,19 @@ fun ConfigurationsTab(state: ItemState) {
 
             // Storage Import
             item {
+                val itemLabel =
+                    stringResource(id = R.string.import_ol) + ": " + stringResource(id = R.string.import_descr)
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.clickable {
-                        importDialogState.value = true
-                    },
+                    modifier =
+                        Modifier
+                            .clickable {
+                                importDialogState.value = true
+                            }
+                            .clearAndSetSemantics {
+                                contentDescription = itemLabel
+                            },
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.Unarchive,
@@ -320,9 +366,10 @@ fun ConfigurationsTab(state: ItemState) {
             item {
                 Row(
                     horizontalArrangement = Arrangement.Center,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp),
                 ) {
                     ConfigurationDescription(stringResource(id = R.string.footer))
                 }
@@ -333,43 +380,61 @@ fun ConfigurationsTab(state: ItemState) {
         }
 
         if (workGoalDialogState.value) {
-            ConfigurationsTabGoalDialog(onClose = { workGoalDialogState.value = false }, isPause = false)
+            ConfigurationsTabGoalDialog(
+                onClose = { workGoalDialogState.value = false },
+                isPause = false,
+            )
         }
 
         if (pauseGoalDialogState.value) {
-            ConfigurationsTabGoalDialog(onClose = { pauseGoalDialogState.value = false }, isPause = true)
+            ConfigurationsTabGoalDialog(
+                onClose = { pauseGoalDialogState.value = false },
+                isPause = true,
+            )
         }
     }
 }
 
-fun backup(state: ItemState, context: Context) {
+fun backup(
+    state: ItemState,
+    context: Context,
+) {
     try {
         val exportedData = backupItemsToCsv(state)
         val cachePath = File(context.cacheDir, "backup.csv")
 
         cachePath.writeText(exportedData)
 
-        val contentUri = FileProvider.getUriForFile(
-            context,
-            context.getString(R.string.app_fileprovider),
-            cachePath,
-        )
+        val contentUri =
+            FileProvider.getUriForFile(
+                context,
+                context.getString(R.string.app_fileprovider),
+                cachePath,
+            )
 
-        val sendIntent: Intent = Intent().apply {
-            action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_STREAM, contentUri)
-            type = "text/comma-separated-values"
-        }
+        val sendIntent: Intent =
+            Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_STREAM, contentUri)
+                type = "text/comma-separated-values"
+            }
 
         val shareIntent = Intent.createChooser(sendIntent, null)
         context.startActivity(shareIntent)
     } catch (e: Exception) {
-        Toast.makeText(context, context.getString(R.string.backup_failed), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, context.getString(R.string.backup_failed), Toast.LENGTH_SHORT)
+            .show()
         e.printStackTrace()
     }
 }
 
-fun handleIntent(intent: Intent?, lifecycleScope: LifecycleCoroutineScope, db: ItemDatabase, context: Context, contentResolver: ContentResolver) {
+fun handleIntent(
+    intent: Intent?,
+    lifecycleScope: LifecycleCoroutineScope,
+    db: ItemDatabase,
+    context: Context,
+    contentResolver: ContentResolver,
+) {
     if (intent != null && intent.action == Intent.ACTION_SEND && intent.type == "text/comma-separated-values") {
         if (intent.getStringExtra(Intent.EXTRA_TEXT)?.isBlank() == false) {
             val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
@@ -399,7 +464,12 @@ fun handleIntent(intent: Intent?, lifecycleScope: LifecycleCoroutineScope, db: I
     }
 }
 
-private fun importCsvData(csvData: String, lifecycleScope: LifecycleCoroutineScope, db: ItemDatabase, context: Context) {
+private fun importCsvData(
+    csvData: String,
+    lifecycleScope: LifecycleCoroutineScope,
+    db: ItemDatabase,
+    context: Context,
+) {
     val parsedData = parseCsvData(csvData)
 
     lifecycleScope.launch(Dispatchers.IO) {
@@ -415,12 +485,13 @@ private fun importCsvData(csvData: String, lifecycleScope: LifecycleCoroutineSco
                     val ongoing = row[3].trim()
                     val pause = row[4].trim()
 
-                    val item = Item(
-                        startTime = startTime,
-                        endTime = endTime,
-                        ongoing = ongoing.toBoolean(),
-                        pause = pause.toBoolean(),
-                    )
+                    val item =
+                        Item(
+                            startTime = startTime,
+                            endTime = endTime,
+                            ongoing = ongoing.toBoolean(),
+                            pause = pause.toBoolean(),
+                        )
 
                     val importResult = itemDao.upsertItem(item)
                     if (importResult != Unit) {
@@ -443,11 +514,12 @@ private fun importCsvData(csvData: String, lifecycleScope: LifecycleCoroutineSco
 fun parseCsvData(csvData: String): List<List<String>> {
     val rows = csvData.split("\n")
     return rows.map { row ->
-        val separator = when {
-            row.contains(',') -> ","
-            row.contains(';') -> ";"
-            else -> ","
-        }
+        val separator =
+            when {
+                row.contains(',') -> ","
+                row.contains(';') -> ";"
+                else -> ","
+            }
 
         row.split(separator)
     }
@@ -461,7 +533,13 @@ fun showImportFailedToast(context: Context) {
     Toast.makeText(context, context.getString(R.string.import_failure), Toast.LENGTH_SHORT).show()
 }
 
-private fun importFile(uri: Uri, contentResolver: ContentResolver, context: Context, db: ItemDatabase, lifecycleScope: LifecycleCoroutineScope) {
+private fun importFile(
+    uri: Uri,
+    contentResolver: ContentResolver,
+    context: Context,
+    db: ItemDatabase,
+    lifecycleScope: LifecycleCoroutineScope,
+) {
     uri.let {
         contentResolver.openInputStream(uri)?.use { inputStream ->
             val sharedData = inputStream.bufferedReader().readText()
@@ -472,9 +550,7 @@ private fun importFile(uri: Uri, contentResolver: ContentResolver, context: Cont
 }
 
 @Composable
-fun ConfigurationLabel(
-    text: String,
-) {
+fun ConfigurationLabel(text: String) {
     TextView(
         text = text,
         fontSize = MaterialTheme.typography.titleLarge.fontSize,
@@ -483,9 +559,7 @@ fun ConfigurationLabel(
 }
 
 @Composable
-fun ConfigurationTitle(
-    text: String,
-) {
+fun ConfigurationTitle(text: String) {
     TextView(
         text = text,
         fontSize = MaterialTheme.typography.titleMedium.fontSize,
@@ -494,9 +568,7 @@ fun ConfigurationTitle(
 }
 
 @Composable
-fun ConfigurationDescription(
-    text: String,
-) {
+fun ConfigurationDescription(text: String) {
     Text(
         text = text,
         fontSize = MaterialTheme.typography.bodyMedium.fontSize,
