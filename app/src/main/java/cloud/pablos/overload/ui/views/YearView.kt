@@ -35,7 +35,6 @@ import java.time.Month
 import java.time.format.TextStyle
 import java.util.Locale
 
-@OptIn(ExperimentalStdlibApi::class)
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun YearView(
@@ -81,7 +80,7 @@ fun YearView(
                             if (isLastWeekInLastMonth) bottomPadding else 0.dp,
                         ),
                     ) {
-                        WeekRow(firstDayOfMonth, weekOfMonth, state, onEvent, onNavigate)
+                        WeekRow(firstDayOfMonth, weekOfMonth, onEvent, onNavigate)
                     }
                 }
             }
@@ -106,7 +105,6 @@ fun MonthNameHeader(month: Month) {
 fun WeekRow(
     firstDayOfMonth: LocalDate,
     weekOfMonth: Int,
-    state: ItemState,
     onEvent: (ItemEvent) -> Unit,
     onNavigate: () -> Unit,
 ) {
