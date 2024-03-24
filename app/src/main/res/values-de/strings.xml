@@ -60,7 +60,7 @@
     <string name="import_ol">Wiederherstellen</string>
     <string name="import_descr">Stelle Daten aus einer Sicherung her</string>
     <string name="import_backup">Sicherung wiederherstellen</string>
-    <string name="import_backup_descr">Um Daten in die App zu importieren, benutze bitte das Sharesheet von anderen Apps. Damit kann die App sicher auf die freigegebenen Daten zugreifen und diese in Ihre Datenbank importieren.</string>
+    <string name="import_backup_descr">Um Daten in die App zu importieren, benutze bitte das Sharesheet von anderen Apps. Damit kann die App sicher auf die freigegebenen Daten zugreifen und diese in die Datenbank importieren.</string>
     <string name="import_success">Sicherung erfolgreich wiederhergestellt</string>
     <string name="import_failure">Sicherung konnte nicht wiederhergestellt werden</string>
     <string name="analytics">Analysen</string>
@@ -71,15 +71,32 @@
     <string name="about">Über</string>
     <string name="sourcecode">Quellcode</string>
     <string name="sourcecode_descr">Möchtest du das Innere sehen? Nur zu!</string>
-    <string name="issue_reports">Fehler melden</string>
+    <string name="issue_reports">Melde Fehler</string>
     <string name="issue_reports_descr">Ist etwas komisch? Melde es!</string>
     <string name="license">Lizenz</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="footer">mit ❤️ von pabloscloud erstellt</string>
     <string name="acra_toastText">Absturz erkannt. Bitte helfe mit dem Senden einer E-Mail!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Absturz erkannt. Bitte helfe uns, uns zu verbessern, indem du diese E-Mail sendest, damit wir das Problem so schnell wie möglich beheben können. \nBitte entschuldige!
-    </string>
+    <string name="acra_mailBody">        Absturz erkannt. Absturz erkannt. Bitte helfe uns, uns zu verbessern, indem du diese E-Mail sendest, damit wir das Problem so schnell wie möglich beheben können.\n
+Bitte entschuldige! Das Absenden ist für die Behebung dieses Problems unerlässlich.\n
+\n
+Beschreibung – Was hast du getan, bevor die App abstürzte?\n
+\n
+\n
+Schritte zur Reproduktion – Kannst du beschreiben, wie wir den Fehler reproduzieren können?\n
+\n
+\n
+Bildmaterial – Bitte füge Screenshots oder Bildschirmaufzeichnungen bei.\n
+\n
+\n
+Kürzliche Änderungen – Hast du kürzlich die App aktualisiert oder Geräteeinstellungen geändert?\n
+\n
+\n
+Häufigkeit – Wie oft kommt dieser Absturz vor?\n
+\n
+\n
+Danke für deine Geduld! </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Speichern</string>
     <string name="pick_work_goal">Arbeitsziel setzen</string>
@@ -100,7 +117,7 @@
     <string name="adjust_end_time">Ende anpassen</string>
     <string name="adjust_descr">Passe die Endzeit an den tatsächlichen Endzeitpunkt an.</string>
     <string name="spread_across_days">Über Tage verteilen</string>
-    <string name="spans_days">Ein Zeiteintrag erstreckt sich über mehrere Tage</string>
+    <string name="spans_days">Zeiteintrag erstreckt sich über mehrere Tage</string>
     <string name="spans_days_descr">Ein Zeiteintrag erstreckt sich über mehrere Tage. Vielleicht hast du vergessen, ihn zu stoppen. Möchtest du das Ende anpassen?</string>
     <string name="are_you_sure">Bist du sicher?</string>
     <string name="yes">Ja</string>
