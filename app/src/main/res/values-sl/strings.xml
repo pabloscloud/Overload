@@ -78,25 +78,25 @@
     <string name="footer">ustvarjeno s ❤️, ki ga je ustvaril pabloscloud</string>
     <string name="acra_toastText">Odkrita nesreča. Prosimo, pomagajte in pošljite sporočilo!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Odkrita nesreča. Pomagajte nam izboljšati stanje tako, da nam pošljete to e-poštno sporočilo, da bomo lahko to čim prej odpravili. Pomagajte nam izboljšati stanje tako, da nam pošljete to e-poštno sporočilo, da bomo lahko to čim prej odpravili.\n
-Opravičujemo se za povzročene nevšečnosti! Vaš prispevek je bistvenega pomena za odpravo te težave.\n
+    <string name="acra_mailBody">        Odkrita nesreča. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
 \n
-Opis - Kaj ste storili, ko se je aplikacija zrušila?\n
-\n
-\n
-Koraki za ponovitev - Ali lahko zagotovite navodila po korakih, kako ponoviti sesutje?\n
+Description - What did you do when the app crashed?\n
 \n
 \n
-Slike - vključite vse slike zaslona ali posnetke zaslona.\n
+Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
 \n
 \n
-Nedavne spremembe - Ali ste nedavno posodobili aplikacijo ali spremenili nastavitve naprave?\n
+Visuals - Please include any screenshots or screen-recordings.\n
 \n
 \n
-Pogostost - Kako pogosto se pojavlja ta okvara?\n
+Recent changes - Did you recently update the app or change device settings?\n
 \n
 \n
-Hvala za potrpežljivost! </string>
+Frequency - How often does this crash occur?\n
+\n
+\n
+Thanks for patience! </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Shrani</string>
     <string name="pick_work_goal">Določite delovni cilj</string>
