@@ -78,25 +78,25 @@
     <string name="footer">създаден с ❤️ от pabloscloud</string>
     <string name="acra_toastText">Открит е срив. Моля, помогнете, като изпратите имейл!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Открит е срив. Моля, помогнете ни да се подобрим, като изпратите този имейл, за да можем да поправим проблема възможно най-скоро. Моля, помогнете ни да се подобрим, като изпратите този имейл, за да можем да поправим проблема възможно най-скоро.\n
-Съжаляваме за причинените неудобства! Вашият принос е от съществено значение за отстраняването на този проблем.\n
+    <string name="acra_mailBody">        Открит е срив. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
 \n
-Описание - Какво направихте, когато приложението се срина?\n
-\n
-\n
-Стъпки за възпроизвеждане - Можете ли да предоставите ръководство стъпка по стъпка как да възпроизведете срива?\n
+Description - What did you do when the app crashed?\n
 \n
 \n
-Визуализация - Моля, включете снимки на екрана или записи на екрана.\n
+Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
 \n
 \n
-Скорошни промени - Наскоро ли сте актуализирали приложението или сте променили настройките на устройството?\n
+Visuals - Please include any screenshots or screen-recordings.\n
 \n
 \n
-Честота - Колко често се случва този срив?\n
+Recent changes - Did you recently update the app or change device settings?\n
 \n
 \n
-Благодаря за търпението! </string>
+Frequency - How often does this crash occur?\n
+\n
+\n
+Thanks for patience! </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Запазете</string>
     <string name="pick_work_goal">Задайте работна цел</string>
