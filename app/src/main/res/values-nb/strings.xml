@@ -60,7 +60,7 @@
     <string name="import_ol">Import</string>
     <string name="import_descr">Import from a backup</string>
     <string name="import_backup">Import Backup</string>
-    <string name="import_backup_descr">To import data into the app, please use the Sharesheet from other apps. This allows the app to securely access the shared data and import it into your database.</string>
+    <string name="import_backup_descr">To import data into the app, please use the Sharesheet from other apps. This allows the app to securely access the shared data and import it into the database.</string>
     <string name="import_success">Backup successfully imported</string>
     <string name="import_failure">Importing the backup failed</string>
     <string name="analytics">analytics</string>
@@ -76,28 +76,27 @@
     <string name="license">License</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="footer">created with ❤️ by pabloscloud</string>
-    <string name="acra_toastText">Crash detected. Please help by sending a mail!</string>
+    <string name="acra_toastText">Crash detected. Please help by sending an email!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Crash detected. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
-        Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
-        \n
-        Description - What did you do when the app crashed?\n
-        \n
-        \n
-        Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
-        \n
-        \n
-        Visuals - Please include any screenshots or screen-recordings.\n
-        \n
-        \n
-        Recent changes - Did you recently update the app or change device settings?\n
-        \n
-        \n
-        Frequency - How often does this crash occur?\n
-        \n
-        \n
-        Thanks for patience!
-    </string>
+    <string name="acra_mailBody">        Crash detected. Crash detected. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+\n
+Description - What did you do when the app crashed?\n
+\n
+\n
+Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+\n
+\n
+Visuals - Please include any screenshots or screen-recordings.\n
+\n
+\n
+Recent changes - Did you recently update the app or change device settings?\n
+\n
+\n
+Frequency - How often does this crash occur?\n
+\n
+\n
+Thanks for patience! </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Save</string>
     <string name="pick_work_goal">Set Work Goal</string>
@@ -113,10 +112,10 @@
     <string name="arrow_forward">arrow forward from start to end</string>
     <string name="select_year">Select Year</string>
     <string name="translate">Translate</string>
-    <string name="translate_descr">Want to translate the app\? Thanks!</string>
+    <string name="translate_descr">Want to translate the app? Thanks!</string>
     <string name="adjust">Adjust</string>
     <string name="adjust_end_time">Adjust end time</string>
-    <string name="adjust_descr">Adjust the end time to whenever it actually ended. </string>
+    <string name="adjust_descr">Adjust the end time to whenever it actually ended.</string>
     <string name="spread_across_days">Spread across days</string>
     <string name="spans_days">Time entry spans multiple days</string>
     <string name="spans_days_descr">A time entry spans across multiple days. Perhaps you forgot to stop it. Do you want to adjust the end?</string>
