@@ -78,25 +78,25 @@
     <string name="footer">létrehozta a ❤️ által pabloscloud</string>
     <string name="acra_toastText">Összeomlás észlelve. Kérjük, segítsen egy levél elküldésével!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Ütközés észlelve. Kérjük, segítsen nekünk a javításban, küldje el ezt az e-mailt, hogy minél hamarabb kijavíthassuk a hibát. Kérjük, segítsen nekünk a javításban, küldje el ezt az e-mailt, hogy minél hamarabb kijavíthassuk a hibát.\n
-Elnézést az okozott kellemetlenségekért! Az Ön hozzájárulása elengedhetetlen a probléma javításához.\n
+    <string name="acra_mailBody">        Ütközés észlelve. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
 \n
-Leírás - Mit csináltál, amikor az alkalmazás lezuhant?\n
-\n
-\n
-Lépések a reprodukáláshoz - Tudna adni egy lépésről-lépésre történő útmutatót az összeomlás reprodukálásához?\n
+Description - What did you do when the app crashed?\n
 \n
 \n
-Vizuális anyagok - Kérjük, csatoljon képernyőképeket vagy képernyőfelvételeket.\n
+Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
 \n
 \n
-Legutóbbi változások - Frissítette nemrégiben az alkalmazást vagy módosította a készülék beállításait?\n
+Visuals - Please include any screenshots or screen-recordings.\n
 \n
 \n
-Gyakoriság - Milyen gyakran fordul elő az összeomlás?\n
+Recent changes - Did you recently update the app or change device settings?\n
 \n
 \n
-Köszönjük a türelmet! </string>
+Frequency - How often does this crash occur?\n
+\n
+\n
+Thanks for patience! </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Mentés</string>
     <string name="pick_work_goal">Munkacél beállítása</string>
