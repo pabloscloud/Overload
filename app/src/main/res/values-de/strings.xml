@@ -80,25 +80,7 @@
     <string name="footer">mit ❤️ von pabloscloud erstellt</string>
     <string name="acra_toastText">Absturz erkannt. Bitte helfe mit dem Senden einer E-Mail!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Absturz erkannt. Bitte helfe uns, uns zu verbessern, indem du diese E-Mail sendest, damit wir das Problem so schnell wie möglich beheben können.\n
-Bitte entschuldige! Das Absenden ist für die Behebung dieses Problems unerlässlich.\n
-\n
-Beschreibung – Was hast du getan, bevor die App abstürzte?\n
-\n
-\n
-Schritte zur Reproduktion – Kannst du beschreiben, wie wir den Fehler reproduzieren können?\n
-\n
-\n
-Bildmaterial – Bitte füge Screenshots oder Bildschirmaufzeichnungen bei.\n
-\n
-\n
-Kürzliche Änderungen – Hast du kürzlich die App aktualisiert oder Geräteeinstellungen geändert?\n
-\n
-\n
-Häufigkeit – Wie oft kommt dieser Absturz vor?\n
-\n
-\n
-Danke für deine Geduld!
+    <string name="acra_mailBody">        Absturz erkannt. Bitte helfe uns, uns zu verbessern, indem du diese E-Mail sendest, damit wir das Problem so schnell wie möglich beheben können. \nBitte entschuldige!
     </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Speichern</string>
