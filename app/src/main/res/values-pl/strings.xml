@@ -78,25 +78,25 @@
     <string name="footer">Utworzone za pomocą ❤️ przez pabloscloud</string>
     <string name="acra_toastText">Wykryto awarię. Prosimy o pomoc poprzez wysłanie wiadomości!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Wykryto awarię. Prosimy o pomoc w poprawieniu sytuacji poprzez wysłanie tej wiadomości e-mail, abyśmy mogli jak najszybciej to naprawić. Prosimy o pomoc w poprawieniu sytuacji poprzez wysłanie tej wiadomości e-mail, abyśmy mogli jak najszybciej to naprawić.\n
-Przepraszamy za spowodowane niedogodności! Twój wkład jest niezbędny do naprawienia tego problemu.\n
+    <string name="acra_mailBody">        Wykryto awarię. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
 \n
-Opis - Co zrobiłeś, gdy aplikacja się zawiesiła?\n
-\n
-\n
-Kroki do odtworzenia - Czy możesz podać przewodnik krok po kroku, jak odtworzyć awarię\n
+Description - What did you do when the app crashed?\n
 \n
 \n
-Wizualizacje - dołącz zrzuty ekranu lub nagrania ekranu.\n
+Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
 \n
 \n
-Ostatnie zmiany - Czy ostatnio aktualizowałeś aplikację lub zmieniałeś ustawienia urządzenia?\n
+Visuals - Please include any screenshots or screen-recordings.\n
 \n
 \n
-Częstotliwość - Jak często występuje ta awaria?\n
+Recent changes - Did you recently update the app or change device settings?\n
 \n
 \n
-Dziękujemy za cierpliwość! </string>
+Frequency - How often does this crash occur?\n
+\n
+\n
+Thanks for patience! </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Zapisz</string>
     <string name="pick_work_goal">Wyznacz cel pracy</string>
