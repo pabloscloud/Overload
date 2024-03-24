@@ -1,102 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="select_all_items_of_selected_day">wybierz wszystkie elementy wybranego dnia</string>
-    <string name="storage">przechowywanie</string>
-    <string name="delete_pause_descr">Nie można usunąć trwającej pauzy. Służy ona jedynie do wskazania, że pauza zostanie utworzona po naciśnięciu przycisku Start. Jeśli rozpoczniesz grę dopiero jutro, pauza zniknie i nie będzie wliczana do celu.</string>
-    <string name="hours">godziny</string>
-    <string name="close">Zamknij</string>
-    <string name="save">Zapisz</string>
-    <string name="goals">Cele</string>
-    <string name="system_logs_descr">Dołączanie dzienników systemowych do raportów o awariach</string>
-    <string name="crash_reports_descr">Prośba o przesyłanie raportów o awariach</string>
-    <string name="get_out_of_isDeleting">pozwala wyjść z trybu usuwania</string>
-    <string name="are_you_sure">Czy na pewno?</string>
-    <string name="adjust_descr">Dostosuj czas zakończenia do rzeczywistego czasu zakończenia.</string>
-    <string name="system_logs">Rejestry systemowe</string>
-    <string name="backup_descr">Regularnie twórz kopie zapasowe wszystkich danych w bezpiecznym miejscu!</string>
-    <string name="friday">Piątek</string>
-    <string name="tuesday">Wtorek</string>
-    <string name="acra_toastText">Wykryto awarię. Prosimy o pomoc poprzez wysłanie wiadomości!</string>
-    <string name="import_descr">Import z kopii zapasowej</string>
-    <string name="spread_across_days">Rozłożone na dni</string>
-    <string name="translate">Przetłumacz</string>
-    <string name="no">Nie</string>
-    <string name="import_backup">Importuj kopię zapasową</string>
-    <string name="learn_more">Dowiedz się więcej…</string>
-    <string name="sourcecode_descr">Chcesz zobaczyć wnętrze? Przejdź dalej!</string>
-    <string name="pause">Pauza</string>
-    <string name="delete_items_forever">usuwanie elementów na zawsze</string>
-    <string name="pick_work_goal">Wyznacz cel pracy</string>
-    <string name="acra_mailBody">Wykryto awarię. Prosimy o pomoc w poprawieniu sytuacji poprzez wysłanie tej wiadomości e-mail, abyśmy mogli jak najszybciej to naprawić.
-\n Przepraszamy za spowodowane niedogodności! Twój wkład jest niezbędny do naprawienia tego problemu.
-\n
-\n Opis - Co zrobiłeś, gdy aplikacja się zawiesiła?
-\n
-\n
-\n Kroki do odtworzenia - Czy możesz podać przewodnik krok po kroku, jak odtworzyć awarię?
-\n
-\n
-\n Wizualizacje - dołącz zrzuty ekranu lub nagrania ekranu.
-\n
-\n
-\n Ostatnie zmiany - Czy ostatnio aktualizowałeś aplikację lub zmieniałeś ustawienia urządzenia?
-\n
-\n
-\n Częstotliwość - Jak często występuje ta awaria?
-\n
-\n
-\n Dziękujemy za cierpliwość!</string>
-    <string name="wednesday">Środa</string>
-    <string name="yes">Tak</string>
-    <string name="monday">Poniedziałek</string>
-    <string name="unknown_day">Nieznany dzień</string>
-    <string name="translate_descr">Chcesz przetłumaczyć aplikację? Dzięki!</string>
-    <string name="start">Start</string>
-    <string name="license_descr">GNU GPL v3</string>
-    <string name="issue_reports">Include system logs in crash reports</string>
-    <string name="stop">Stop</string>
-    <string name="import_failure">Importowanie kopii zapasowej nie powiodło się</string>
-    <string name="select_year">Wybierz rok</string>
-    <string name="pick_pause_goal">Ustaw cel pauzy</string>
-    <string name="work">Praca</string>
-    <string name="backup">Kopia zapasowa</string>
-    <string name="spans_days">Wpis czasu obejmuje wiele dni</string>
-    <string name="license">Licencja</string>
-    <string name="issue_reports_descr">Zauważyłeś coś dziwnego? Zgłoś to!</string>
-    <string name="about">Dzienniki systemowe</string>
-    <string name="adjust_end_time">Dostosuj czas zakończenia</string>
-    <string name="work_goal_descr">Wyznacz cel dla pracy</string>
-    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="open_link_with">Otwórz łącze z</string>
-    <string name="import_backup_descr">Aby zaimportować dane do aplikacji, należy użyć arkusza Sharesheet z innych aplikacji. Umożliwi to aplikacji bezpieczny dostęp do udostępnionych danych i zaimportowanie ich do bazy danych.</string>
-    <string name="configurations">Konfiguracje</string>
-    <string name="spans_days_descr">Wpis czasu obejmuje wiele dni. Być może zapomniałeś go zatrzymać. Czy chcesz dostosować koniec?</string>
-    <string name="sunday">Niedziela</string>
-    <string name="no_items_subtitle">Nie ma zapisanych przedmiotów na ten dzień.</string>
-    <string name="adjust">Dostosuj</string>
-    <string name="crash_reports">Raporty z wypadków</string>
-    <string name="home">Strona główna</string>
-    <string name="cancel">Anuluj</string>
-    <string name="yesterday">Wczoraj</string>
+<!--
+  Copyright 2022 The Android Open Source Project
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="navigation_drawer">Szuflada nawigacji</string>
-    <string name="minutes">minuty</string>
-    <string name="arrow_forward">strzałka do przodu opisująca kierunek obu czasów od początku do końca</string>
-    <string name="delete_pause">Usuń pauzę</string>
-    <string name="deselect_all_items_of_selected_day">odznaczenie wszystkich elementów wybranego dnia</string>
-    <string name="analytics">analityka</string>
-    <string name="no_items_title">Brak zarejestrowanych pozycji</string>
-    <string name="saturday">Sobota</string>
-    <string name="work_left">Praca w lewo</string>
-    <string name="sourcecode">Kod źródłowy</string>
-    <string name="itemCount_selected">wybrany</string>
-    <string name="import_success">Pomyślnie zaimportowano kopię zapasową</string>
-    <string name="pause_goal_descr">Wyznacz cel dla pauzy</string>
-    <string name="thursday">Czwartek</string>
-    <string name="footer">Utworzone za pomocą ❤️ przez pabloscloud</string>
-    <string name="calendar">Kalendarz</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTab -->
+    <string name="home">Strona główna</string>
     <string name="today">Dzisiaj</string>
-    <string name="pause_left">Pauza w lewo</string>
-    <string name="import_ol">Import</string>
+    <string name="yesterday">Wczoraj</string>
+    <string name="monday">Poniedziałek</string>
+    <string name="tuesday">Wtorek</string>
+    <string name="wednesday">Środa</string>
+    <string name="thursday">Czwartek</string>
+    <string name="friday">Piątek</string>
+    <string name="saturday">Sobota</string>
+    <string name="sunday">Niedziela</string>
+    <string name="unknown_day">Nieznany dzień</string>
+    <string name="no_items_title">Brak zarejestrowanych pozycji</string>
+    <string name="no_items_subtitle">Nie ma zapisanych przedmiotów na ten dzień.</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteBottomAppBar -->
+    <string name="select_all_items_of_selected_day">wybierz wszystkie elementy wybranego dnia</string>
+    <string name="deselect_all_items_of_selected_day">odznaczenie wszystkich elementów wybranego dnia</string>
+    <string name="delete_items_forever">usuwanie elementów na zawsze</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteTopAppBar -->
+    <string name="itemCount_selected">wybrany</string>
+    <string name="get_out_of_isDeleting">pozwala wyjść z trybu usuwania</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabFab -->
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabDeletePauseDialog -->
+    <string name="close">Zamknij</string>
+    <string name="learn_more">Dowiedz się więcej…</string>
+    <string name="open_link_with">Otwórz łącze z</string>
+    <string name="delete_pause">Usuń pauzę</string>
+    <string name="delete_pause_descr">Nie można usunąć trwającej pauzy. Służy ona jedynie do wskazania, że pauza zostanie utworzona po naciśnięciu przycisku Start. Jeśli rozpoczniesz grę dopiero jutro, pauza zniknie i nie będzie wliczana do celu.</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
+    <string name="start_label">Start</string>
     <string name="end_label">Koniec</string>
+    <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
+    <string name="calendar">Kalendarz</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
+    <string name="configurations">Konfiguracje</string>
+    <string name="goals">Cele</string>
+    <string name="work">Praca</string>
+    <string name="work_goal_descr">Wyznacz cel dla pracy</string>
+    <string name="pause">Pauza</string>
+    <string name="pause_goal_descr">Wyznacz cel dla pauzy</string>
+    <string name="storage">przechowywanie</string>
+    <string name="backup">Kopia zapasowa</string>
+    <string name="backup_descr">Regularnie twórz kopie zapasowe wszystkich danych w bezpiecznym miejscu!</string>
+    <string name="backup_failed">Generating the backup failed</string>
+    <string name="import_ol">Import</string>
+    <string name="import_descr">Import z kopii zapasowej</string>
+    <string name="import_backup">Importuj kopię zapasową</string>
+    <string name="import_backup_descr">Aby zaimportować dane do aplikacji, należy użyć arkusza Sharesheet z innych aplikacji. Umożliwi to aplikacji bezpieczny dostęp do udostępnionych danych i zaimportowanie ich do bazy danych.</string>
+    <string name="import_success">Pomyślnie zaimportowano kopię zapasową</string>
+    <string name="import_failure">Importowanie kopii zapasowej nie powiodło się</string>
+    <string name="analytics">analityka</string>
+    <string name="crash_reports">Raporty z wypadków</string>
+    <string name="crash_reports_descr">Prośba o przesyłanie raportów o awariach</string>
+    <string name="system_logs">Rejestry systemowe</string>
+    <string name="system_logs_descr">Dołączanie dzienników systemowych do raportów o awariach</string>
+    <string name="about">Dzienniki systemowe</string>
+    <string name="sourcecode">Kod źródłowy</string>
+    <string name="sourcecode_descr">Chcesz zobaczyć wnętrze? Przejdź dalej!</string>
+    <string name="issue_reports">Include system logs in crash reports</string>
+    <string name="issue_reports_descr">Zauważyłeś coś dziwnego? Zgłoś to!</string>
+    <string name="license">Licencja</string>
+    <string name="license_descr">GNU GPL v3</string>
+    <string name="footer">Utworzone za pomocą ❤️ przez pabloscloud</string>
+    <string name="acra_toastText">Wykryto awarię. Prosimy o pomoc poprzez wysłanie wiadomości!</string>
+    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
+    <string name="acra_mailBody">        Wykryto awarię. Prosimy o pomoc w poprawieniu sytuacji poprzez wysłanie tej wiadomości e-mail, abyśmy mogli jak najszybciej to naprawić. Prosimy o pomoc w poprawieniu sytuacji poprzez wysłanie tej wiadomości e-mail, abyśmy mogli jak najszybciej to naprawić.\n
+Przepraszamy za spowodowane niedogodności! Twój wkład jest niezbędny do naprawienia tego problemu.\n
+\n
+Opis - Co zrobiłeś, gdy aplikacja się zawiesiła?\n
+\n
+\n
+Kroki do odtworzenia - Czy możesz podać przewodnik krok po kroku, jak odtworzyć awarię\n
+\n
+\n
+Wizualizacje - dołącz zrzuty ekranu lub nagrania ekranu.\n
+\n
+\n
+Ostatnie zmiany - Czy ostatnio aktualizowałeś aplikację lub zmieniałeś ustawienia urządzenia?\n
+\n
+\n
+Częstotliwość - Jak często występuje ta awaria?\n
+\n
+\n
+Dziękujemy za cierpliwość! </string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
+    <string name="save">Zapisz</string>
+    <string name="pick_work_goal">Wyznacz cel pracy</string>
+    <string name="hours">godziny</string>
+    <string name="minutes">minuty</string>
+    <string name="cancel">Anuluj</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabPauseGoalDialog -->
+    <string name="pick_pause_goal">Ustaw cel pauzy</string>
+    <!-- cloud.pablos.overload.ui.views.DayView -->
+    <string name="work_left">Praca w lewo</string>
+    <string name="pause_left">Pauza w lewo</string>
+    <!-- cloud.pablos.overload.ui.views.DayViewItem -->
+    <string name="arrow_forward">strzałka do przodu opisująca kierunek obu czasów od początku do końca</string>
+    <string name="select_year">Wybierz rok</string>
+    <string name="translate">Przetłumacz</string>
+    <string name="translate_descr">Chcesz przetłumaczyć aplikację? Dzięki!</string>
+    <string name="adjust">Dostosuj</string>
+    <string name="adjust_end_time">Dostosuj czas zakończenia</string>
+    <string name="adjust_descr">Dostosuj czas zakończenia do rzeczywistego czasu zakończenia.</string>
+    <string name="spread_across_days">Rozłożone na dni</string>
+    <string name="spans_days">Wpis czasu obejmuje wiele dni</string>
+    <string name="spans_days_descr">Wpis czasu obejmuje wiele dni. Być może zapomniałeś go zatrzymać. Czy chcesz dostosować koniec?</string>
+    <string name="are_you_sure">Czy na pewno?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
     <string name="manual_entry">Wpis ręczny</string>
+    <string name="acra_mailSubject">Overload Crash</string>
+    <!-- accessibility strings -->
+    <string name="talback_entry">Entry from %s to %s</string>
+    <string name="talback_pause">Pause from %s to %s</string>
+    <string name="talback_entry_ongoing">Ongoing entry since %s</string>
+    <string name="talback_pause_ongoing">Ongoing pause since %s</string>
 </resources>
