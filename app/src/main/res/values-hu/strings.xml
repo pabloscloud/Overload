@@ -44,6 +44,8 @@
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
     <string name="start_label">Start</string>
     <string name="end_label">End</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog -->
+    <string name="edit_entry">Edit Entry</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Naptár</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
@@ -78,25 +80,26 @@
     <string name="footer">létrehozta a ❤️ által pabloscloud</string>
     <string name="acra_toastText">Összeomlás észlelve. Kérjük, segítsen egy levél elküldésével!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Ütközés észlelve. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
-Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+    <string name="acra_mailBody">        Ütközés észlelve. Kérjük, segítsen nekünk a javításban, küldje el ezt az e-mailt, hogy minél hamarabb kijavíthassuk a hibát.\n
+Elnézést az okozott kellemetlenségekért! Az Ön hozzájárulása elengedhetetlen a probléma javításához.\n
 \n
-Description - What did you do when the app crashed?\n
-\n
-\n
-Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+Leírás - Mit csináltál, amikor az alkalmazás lezuhant?\n
 \n
 \n
-Visuals - Please include any screenshots or screen-recordings.\n
+Lépések a reprodukáláshoz - Tudna adni egy lépésről-lépésre történő útmutatót az összeomlás reprodukálásához?\n
 \n
 \n
-Recent changes - Did you recently update the app or change device settings?\n
+Vizuális anyagok - Kérjük, csatoljon képernyőképeket vagy képernyőfelvételeket.\n
 \n
 \n
-Frequency - How often does this crash occur?\n
+Legutóbbi változások - Frissítette nemrégiben az alkalmazást vagy módosította a készülék beállításait?\n
 \n
 \n
-Thanks for patience! </string>
+Gyakoriság - Milyen gyakran fordul elő az összeomlás?\n
+\n
+\n
+Köszönjük a türelmet!
+    </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Mentés</string>
     <string name="pick_work_goal">Munkacél beállítása</string>
