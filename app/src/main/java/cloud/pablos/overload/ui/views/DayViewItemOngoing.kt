@@ -36,10 +36,10 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.Item
+import cloud.pablos.overload.data.item.ItemState
 import kotlinx.coroutines.delay
 import java.time.Duration
 import java.time.LocalDateTime
@@ -53,6 +53,7 @@ fun DayViewItemOngoing(
     isSelected: Boolean = false,
     showDate: Boolean = false,
     hideEnd: Boolean = false,
+    state: ItemState,
 ) {
     var backgroundColor: Color
     var foregroundColor: Color
@@ -74,8 +75,17 @@ fun DayViewItemOngoing(
 
         when (isSelected) {
             true -> {
-                backgroundColor = MaterialTheme.colorScheme.errorContainer
-                foregroundColor = MaterialTheme.colorScheme.onErrorContainer
+                when (state.isDeletingHome) {
+                    true -> {
+                        backgroundColor = MaterialTheme.colorScheme.errorContainer
+                        foregroundColor = MaterialTheme.colorScheme.onErrorContainer
+                    }
+
+                    false -> {
+                        backgroundColor = MaterialTheme.colorScheme.primaryContainer
+                        foregroundColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    }
+                }
             }
 
             false -> {
@@ -264,19 +274,4 @@ fun isToMinutesPartAvailable(): Boolean {
     } catch (e: NoSuchMethodException) {
         false
     }
-}
-
-@RequiresApi(Build.VERSION_CODES.S)
-@Preview
-@Composable
-fun DayViewItemOngoingPreview() {
-    val exampleItem =
-        Item(
-            startTime = LocalDateTime.of(2023, 7, 29, 11, 57).toString(),
-            endTime = "",
-            pause = true,
-            ongoing = true,
-        )
-
-    DayViewItemOngoing(exampleItem)
 }

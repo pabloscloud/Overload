@@ -43,6 +43,8 @@
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
     <string name="start_label">Start</string>
     <string name="end_label">End</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog -->
+    <string name="edit_entry">Edit Entry</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Calendar</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
