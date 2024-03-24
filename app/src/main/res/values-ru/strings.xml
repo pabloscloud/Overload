@@ -78,26 +78,25 @@
     <string name="footer">создано pabloscloud с ❤️</string>
     <string name="acra_toastText">Замечен вылет. Пожалуйста, отправьте письмо, чтобы помочь исправить приложение!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Замечен вылет. Пожалуйста, помогите нам улучшить приложение, отправив это письмо, чтобы мы могли исправить эту ошибку как можно скорее. Пожалуйста, помогите нам улучшить приложение, отправив это письмо, чтобы мы могли исправить эту ошибку как можно скорее.\n
-Извините за доставленные неудобства! Заполнение данных ниже обязательно для того, чтобы мы могли исправить эту ошибку.\n
-Если знаете английский или немецкий, пишите об ошибке на одном из них, чтобы автор приложения мог лучше вас понять. Язык этого шаблона зависит от выбранного языка приложения или системы.\n
+    <string name="acra_mailBody">        Замечен вылет. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
 \n
-Описание - Что вы делали, когда приложение вылетело?\n
-\n
-\n
-Шаги для воспроизведения - Пожалуйста, опишите действия, приводящие к повторению этого вылета.\n
+Description - What did you do when the app crashed?\n
 \n
 \n
-Визуальное представление - Пожалуйста, прикрепите снимки экрана или запись видео, описывающие проблему.\n
+Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
 \n
 \n
-Недавние изменения - Появилась ли проблема после обновления приложения или недавнего изменения настроек?\n
+Visuals - Please include any screenshots or screen-recordings.\n
 \n
 \n
-Частота - Как часто возникает эта проблема?\n
+Recent changes - Did you recently update the app or change device settings?\n
 \n
 \n
-Спасибо за неравнодушие и терпение! </string>
+Frequency - How often does this crash occur?\n
+\n
+\n
+Thanks for patience! </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Сохранить</string>
     <string name="pick_work_goal">Задать цель работы</string>
