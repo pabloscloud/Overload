@@ -1,32 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="select_all_items_of_selected_day">välj alla artiklar för vald dag</string>
-    <string name="storage">förvaring</string>
-    <string name="delete_pause_descr">Du kan inte ta bort den pågående pausen. Den finns bara där för att indikera att en paus kommer att skapas när du trycker på start. Om du inte trycker på start förrän i morgon kommer den att vara borta och inte räknas mot ditt mål.</string>
-    <string name="hours">timmar</string>
-    <string name="close">Nära</string>
-    <string name="save">Spara</string>
-    <string name="goals">Mål</string>
-    <string name="system_logs_descr">Inkludera systemloggar i haverirapporter</string>
-    <string name="crash_reports_descr">Be att få skicka kraschrapporter</string>
-    <string name="get_out_of_isDeleting">får dig ur raderingsläget</string>
-    <string name="are_you_sure">Är du säker?</string>
-    <string name="adjust_descr">Justera sluttiden till när den faktiskt slutade.</string>
-    <string name="system_logs">System loggar</string>
-    <string name="backup_descr">Säkerhetskopiera regelbundet alla data till en säker plats!</string>
-    <string name="friday">Fredag</string>
+<!--
+  Copyright 2022 The Android Open Source Project
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="navigation_drawer">Navigationslådor</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTab -->
+    <string name="home">Hem</string>
+    <string name="today">Idag</string>
+    <string name="yesterday">Igår</string>
+    <string name="monday">Måndag</string>
     <string name="tuesday">Tisdag</string>
-    <string name="acra_toastText">Krasch upptäckt. Vänligen hjälp till genom att skicka ett mail!</string>
-    <string name="import_descr">Import från en backup</string>
-    <string name="spread_across_days">Spridning över dagar</string>
-    <string name="translate">Översätt</string>
-    <string name="no">Nej</string>
-    <string name="import_backup">Import Backup</string>
-    <string name="learn_more">Läs mer.…</string>
-    <string name="sourcecode_descr">Vill du se insidan? Varsågod!</string>
-    <string name="pause">Paus</string>
+    <string name="wednesday">Onsdag</string>
+    <string name="thursday">Torsdag</string>
+    <string name="friday">Fredag</string>
+    <string name="saturday">Lördag</string>
+    <string name="sunday">Söndag</string>
+    <string name="unknown_day">Okänd dag</string>
+    <string name="no_items_title">Inga poster registrerade</string>
+    <string name="no_items_subtitle">Det finns inga sparade objekt för den dagen.</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteBottomAppBar -->
+    <string name="select_all_items_of_selected_day">välj alla artiklar för vald dag</string>
+    <string name="deselect_all_items_of_selected_day">avmarkera alla artiklar för vald dag</string>
     <string name="delete_items_forever">radera objekt för alltid</string>
-    <string name="pick_work_goal">Ange mål för arbetet</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteTopAppBar -->
+    <string name="itemCount_selected">utvald</string>
+    <string name="get_out_of_isDeleting">får dig ur raderingsläget</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabFab -->
+    <string name="start">Start</string>
+    <string name="stop">Stopp</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabDeletePauseDialog -->
+    <string name="close">Nära</string>
+    <string name="learn_more">Läs mer.…</string>
+    <string name="open_link_with">Öppna länk med</string>
+    <string name="delete_pause">Radera Paus</string>
+    <string name="delete_pause_descr">Du kan inte ta bort den pågående pausen. Den finns bara där för att indikera att en paus kommer att skapas när du trycker på start. Om du inte trycker på start förrän i morgon kommer den att vara borta och inte räknas mot ditt mål.</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
+    <string name="start_label">Start</string>
+    <string name="end_label">End</string>
+    <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
+    <string name="calendar">Kalender</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
+    <string name="configurations">Konfigurationer</string>
+    <string name="goals">Mål</string>
+    <string name="work">Arbete</string>
+    <string name="work_goal_descr">Sätt upp ett mål för arbetet</string>
+    <string name="pause">Paus</string>
+    <string name="pause_goal_descr">Sätt upp ett mål för pausen</string>
+    <string name="storage">förvaring</string>
+    <string name="backup">Backup</string>
+    <string name="backup_descr">Säkerhetskopiera regelbundet alla data till en säker plats!</string>
+    <string name="backup_failed">Generating the backup failed</string>
+    <string name="import_ol">Import</string>
+    <string name="import_descr">Import från en backup</string>
+    <string name="import_backup">Import Backup</string>
+    <string name="import_backup_descr">För att importera data till appen använder du Sharesheet från andra appar. På så sätt kan appen på ett säkert sätt komma åt de delade uppgifterna och importera dem till din databas.</string>
+    <string name="import_success">Säkerhetskopian har importerats</string>
+    <string name="import_failure">Import av säkerhetskopian misslyckades</string>
+    <string name="analytics">analys</string>
+    <string name="crash_reports">Rapporter om krascher</string>
+    <string name="crash_reports_descr">Be att få skicka kraschrapporter</string>
+    <string name="system_logs">System loggar</string>
+    <string name="system_logs_descr">Inkludera systemloggar i haverirapporter</string>
+    <string name="about">om</string>
+    <string name="sourcecode">Källa Kod</string>
+    <string name="sourcecode_descr">Vill du se insidan? Varsågod!</string>
+    <string name="issue_reports">Rapportera buggar</string>
+    <string name="issue_reports_descr">Har du märkt något konstigt? Vänligen rapportera det!</string>
+    <string name="license">Licens</string>
+    <string name="license_descr">GNU GPL v3</string>
+    <string name="footer">skapad med ❤️ av pabloscloud</string>
+    <string name="acra_toastText">Krasch upptäckt. Vänligen hjälp till genom att skicka ett mail!</string>
+    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
     <string name="acra_mailBody">Krasch upptäckt. Hjälp oss att förbättra genom att skicka det här e-postmeddelandet, så att vi kan åtgärda problemet så snart som möjligt.
 \n Vi beklagar de olägenheter som uppstått! Din input är avgörande för att lösa detta problem.
 \n
@@ -46,55 +97,36 @@
 \n
 \n
 \n Tack för ditt tålamod!</string>
-    <string name="wednesday">Onsdag</string>
-    <string name="yes">Ja</string>
-    <string name="monday">Måndag</string>
-    <string name="unknown_day">Okänd dag</string>
-    <string name="translate_descr">Vill du översätta appen? Tack för hjälpen!</string>
-    <string name="start">Start</string>
-    <string name="license_descr">GNU GPL v3</string>
-    <string name="issue_reports">Rapportera buggar</string>
-    <string name="stop">Stopp</string>
-    <string name="import_failure">Import av säkerhetskopian misslyckades</string>
-    <string name="select_year">Välj år</string>
-    <string name="pick_pause_goal">Ange mål för paus</string>
-    <string name="work">Arbete</string>
-    <string name="backup">Backup</string>
-    <string name="spans_days">Tidsinmatningen sträcker sig över flera dagar</string>
-    <string name="license">Licens</string>
-    <string name="issue_reports_descr">Har du märkt något konstigt? Vänligen rapportera det!</string>
-    <string name="about">om</string>
-    <string name="adjust_end_time">Justera sluttid</string>
-    <string name="work_goal_descr">Sätt upp ett mål för arbetet</string>
-    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="open_link_with">Öppna länk med</string>
-    <string name="import_backup_descr">För att importera data till appen använder du Sharesheet från andra appar. På så sätt kan appen på ett säkert sätt komma åt de delade uppgifterna och importera dem till din databas.</string>
-    <string name="configurations">Konfigurationer</string>
-    <string name="spans_days_descr">En tidspost sträcker sig över flera dagar. Du kanske glömde att stoppa den. Vill du justera slutet?</string>
-    <string name="sunday">Söndag</string>
-    <string name="no_items_subtitle">Det finns inga sparade objekt för den dagen.</string>
-    <string name="adjust">Justera</string>
-    <string name="crash_reports">Rapporter om krascher</string>
-    <string name="home">Hem</string>
-    <string name="cancel">Annullera</string>
-    <string name="yesterday">Igår</string>
-    <string name="navigation_drawer">Navigationslådor</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
+    <string name="save">Spara</string>
+    <string name="pick_work_goal">Ange mål för arbetet</string>
+    <string name="hours">timmar</string>
     <string name="minutes">minuter</string>
-    <string name="arrow_forward">pil framåt som beskriver riktningen för båda tiderna från början till slut</string>
-    <string name="delete_pause">Radera Paus</string>
-    <string name="deselect_all_items_of_selected_day">avmarkera alla artiklar för vald dag</string>
-    <string name="analytics">analys</string>
-    <string name="no_items_title">Inga poster registrerade</string>
-    <string name="saturday">Lördag</string>
+    <string name="cancel">Annullera</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabPauseGoalDialog -->
+    <string name="pick_pause_goal">Ange mål för paus</string>
+    <!-- cloud.pablos.overload.ui.views.DayView -->
     <string name="work_left">Arbeta vänster</string>
-    <string name="sourcecode">Källa Kod</string>
-    <string name="itemCount_selected">utvald</string>
-    <string name="import_success">Säkerhetskopian har importerats</string>
-    <string name="pause_goal_descr">Sätt upp ett mål för pausen</string>
-    <string name="thursday">Torsdag</string>
-    <string name="footer">skapad med ❤️ av pabloscloud</string>
-    <string name="calendar">Kalender</string>
-    <string name="today">Idag</string>
     <string name="pause_left">Paus vänster</string>
-    <string name="import_ol">Import</string>
+    <!-- cloud.pablos.overload.ui.views.DayViewItem -->
+    <string name="arrow_forward">pil framåt som beskriver riktningen för båda tiderna från början till slut</string>
+    <string name="select_year">Välj år</string>
+    <string name="translate">Översätt</string>
+    <string name="translate_descr">Vill du översätta appen? Tack för hjälpen!</string>
+    <string name="adjust">Justera</string>
+    <string name="adjust_end_time">Justera sluttid</string>
+    <string name="adjust_descr">Justera sluttiden till när den faktiskt slutade.</string>
+    <string name="spread_across_days">Spridning över dagar</string>
+    <string name="spans_days">Tidsinmatningen sträcker sig över flera dagar</string>
+    <string name="spans_days_descr">En tidspost sträcker sig över flera dagar. Du kanske glömde att stoppa den. Vill du justera slutet?</string>
+    <string name="are_you_sure">Är du säker?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nej</string>
+    <string name="manual_entry">Manual Entry</string>
+    <string name="acra_mailSubject">Overload Crash</string>
+    <!-- accessibility strings -->
+    <string name="talback_entry">Entry from %s to %s</string>
+    <string name="talback_pause">Pause from %s to %s</string>
+    <string name="talback_entry_ongoing">Ongoing entry since %s</string>
+    <string name="talback_pause_ongoing">Ongoing pause since %s</string>
 </resources>
