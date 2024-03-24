@@ -78,8 +78,25 @@
     <string name="footer">Utworzone za pomocą ❤️ przez pabloscloud</string>
     <string name="acra_toastText">Wykryto awarię. Prosimy o pomoc poprzez wysłanie wiadomości!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Wykryto awarię. Prosimy o pomoc w poprawieniu sytuacji poprzez wysłanie tej wiadomości e-mail, abyśmy mogli jak najszybciej to naprawić. \n Przepraszamy za spowodowane niedogodności!
-    </string>
+    <string name="acra_mailBody">        Wykryto awarię. Prosimy o pomoc w poprawieniu sytuacji poprzez wysłanie tej wiadomości e-mail, abyśmy mogli jak najszybciej to naprawić. Prosimy o pomoc w poprawieniu sytuacji poprzez wysłanie tej wiadomości e-mail, abyśmy mogli jak najszybciej to naprawić.\n
+Przepraszamy za spowodowane niedogodności! Twój wkład jest niezbędny do naprawienia tego problemu.\n
+\n
+Opis - Co zrobiłeś, gdy aplikacja się zawiesiła?\n
+\n
+\n
+Kroki do odtworzenia - Czy możesz podać przewodnik krok po kroku, jak odtworzyć awarię\n
+\n
+\n
+Wizualizacje - dołącz zrzuty ekranu lub nagrania ekranu.\n
+\n
+\n
+Ostatnie zmiany - Czy ostatnio aktualizowałeś aplikację lub zmieniałeś ustawienia urządzenia?\n
+\n
+\n
+Częstotliwość - Jak często występuje ta awaria?\n
+\n
+\n
+Dziękujemy za cierpliwość! </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Zapisz</string>
     <string name="pick_work_goal">Wyznacz cel pracy</string>
