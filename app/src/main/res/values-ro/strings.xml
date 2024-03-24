@@ -44,6 +44,8 @@
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
     <string name="start_label">Început</string>
     <string name="end_label">Sfârșit</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog -->
+    <string name="edit_entry">Edit Entry</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Calendarul</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
@@ -78,25 +80,26 @@
     <string name="footer">creat cu ❤️ de pabloscloud</string>
     <string name="acra_toastText">S-a detectat un accident. Vă rugăm să ne ajutați trimițând un e-mail!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        S-a detectat un accident. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
-Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+    <string name="acra_mailBody">        S-a detectat un accident. Vă rugăm să ne ajutați să ne îmbunătățim trimițând acest e-mail, astfel încât să putem rezolva problema cât mai curând posibil.\n
+Ne cerem scuze pentru neplăcerile cauzate! Contribuția dvs. este esențială pentru remedierea acestei probleme.\n
 \n
-Description - What did you do when the app crashed?\n
-\n
-\n
-Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+Descriere - Ce ați făcut atunci când aplicația s-a blocat?\n
 \n
 \n
-Visuals - Please include any screenshots or screen-recordings.\n
+Pași de reproducere - Puteți furniza un ghid pas cu pas pentru a reproduce defecțiunea?\n
 \n
 \n
-Recent changes - Did you recently update the app or change device settings?\n
+Elemente vizuale - Vă rugăm să includeți orice capturi de ecran sau înregistrări de ecran.\n
 \n
 \n
-Frequency - How often does this crash occur?\n
+Modificări recente - Ați actualizat recent aplicația sau ați modificat setările dispozitivului?\n
 \n
 \n
-Thanks for patience! </string>
+Frecvență - Cât de des apare această eroare?\n
+\n
+\n
+Vă mulțumim pentru răbdare!
+    </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Salvați</string>
     <string name="pick_work_goal">Setați obiectivul de lucru</string>
