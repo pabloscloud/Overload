@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   Copyright 2022 The Android Open Source Project
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
   in compliance with the License. You may obtain a copy of the License at
@@ -9,19 +10,19 @@
   the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="navigation_drawer">Navigation Drawer</string>
+    <string name="navigation_drawer">Navigasjonsskuff</string>
     <!-- cloud.pablos.overload.ui.tabs.home.HomeTab -->
-    <string name="home">Home</string>
-    <string name="today">Today</string>
-    <string name="yesterday">Yesterday</string>
-    <string name="monday">Monday</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="thursday">Thursday</string>
-    <string name="friday">Friday</string>
-    <string name="saturday">Saturday</string>
-    <string name="sunday">Sunday</string>
-    <string name="unknown_day">Unknown day</string>
+    <string name="home">Hjem</string>
+    <string name="today">I dag</string>
+    <string name="yesterday">I går</string>
+    <string name="monday">Mandag</string>
+    <string name="tuesday">Tirsdag</string>
+    <string name="wednesday">Onsdag</string>
+    <string name="thursday">Torsdag</string>
+    <string name="friday">Fredag</string>
+    <string name="saturday">Lørdag</string>
+    <string name="sunday">Søndag</string>
+    <string name="unknown_day">Ukjent dag</string>
     <string name="no_items_title">No items recorded</string>
     <string name="no_items_subtitle">There are no saved items for that day.</string>
     <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteBottomAppBar -->
@@ -77,28 +78,27 @@
     <string name="license">License</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="footer">created with ❤️ by pabloscloud</string>
-    <string name="acra_toastText">Crash detected. Please help by sending a mail!</string>
+    <string name="acra_toastText">Crash detected. Please help by sending an email!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">
-        Crash detected. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
-        Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
-        \n
-        Description - What did you do when the app crashed?\n
-        \n
-        \n
-        Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
-        \n
-        \n
-        Visuals - Please include any screenshots or screen-recordings.\n
-        \n
-        \n
-        Recent changes - Did you recently update the app or change device settings?\n
-        \n
-        \n
-        Frequency - How often does this crash occur?\n
-        \n
-        \n
-        Thanks for patience!
+    <string name="acra_mailBody">        Crash detected. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+\n
+Description - What did you do when the app crashed?\n
+\n
+\n
+Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+\n
+\n
+Visuals - Please include any screenshots or screen-recordings.\n
+\n
+\n
+Recent changes - Did you recently update the app or change device settings?\n
+\n
+\n
+Frequency - How often does this crash occur?\n
+\n
+\n
+Thanks for your patience!
     </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Save</string>
@@ -115,10 +115,10 @@
     <string name="arrow_forward">arrow forward from start to end</string>
     <string name="select_year">Select Year</string>
     <string name="translate">Translate</string>
-    <string name="translate_descr">Want to translate the app\? Thanks!</string>
+    <string name="translate_descr">Want to translate the app? Thanks!</string>
     <string name="adjust">Adjust</string>
     <string name="adjust_end_time">Adjust end time</string>
-    <string name="adjust_descr">Adjust the end time to whenever it actually ended. </string>
+    <string name="adjust_descr">Adjust the end time to whenever it actually ended.</string>
     <string name="spread_across_days">Spread across days</string>
     <string name="spans_days">Time entry spans multiple days</string>
     <string name="spans_days_descr">A time entry spans across multiple days. Perhaps you forgot to stop it. Do you want to adjust the end?</string>

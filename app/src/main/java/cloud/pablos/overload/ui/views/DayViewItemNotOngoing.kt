@@ -27,10 +27,10 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cloud.pablos.overload.R
 import cloud.pablos.overload.data.item.Item
+import cloud.pablos.overload.data.item.ItemState
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -39,6 +39,7 @@ import java.time.format.DateTimeFormatter
 fun DayViewItemNotOngoing(
     item: Item,
     isSelected: Boolean,
+    state: ItemState,
 ) {
     var backgroundColor: Color
     var foregroundColor: Color
@@ -51,8 +52,17 @@ fun DayViewItemNotOngoing(
         parsedEndTime = parseToLocalDateTime(it.endTime)
         when (isSelected) {
             true -> {
-                backgroundColor = MaterialTheme.colorScheme.errorContainer
-                foregroundColor = MaterialTheme.colorScheme.onErrorContainer
+                when (state.isDeletingHome) {
+                    true -> {
+                        backgroundColor = MaterialTheme.colorScheme.errorContainer
+                        foregroundColor = MaterialTheme.colorScheme.onErrorContainer
+                    }
+
+                    false -> {
+                        backgroundColor = MaterialTheme.colorScheme.primaryContainer
+                        foregroundColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    }
+                }
             }
 
             false -> {
@@ -164,19 +174,4 @@ fun DayViewItemNotOngoing(
                     .padding(8.dp),
         )
     }
-}
-
-@RequiresApi(Build.VERSION_CODES.S)
-@Preview
-@Composable
-fun DayViewItemPreview() {
-    val exampleItem =
-        Item(
-            startTime = LocalDateTime.of(2023, 7, 29, 11, 57).toString(),
-            endTime = LocalDateTime.of(2023, 7, 29, 12, 31).toString(),
-            pause = true,
-            ongoing = false,
-        )
-
-    DayViewItemNotOngoing(exampleItem, isSelected = false)
 }

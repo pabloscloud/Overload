@@ -15,11 +15,11 @@ interface ItemDao {
     @Upsert
     suspend fun upsertItem(item: Item)
 
-    @Upsert
-    suspend fun upsertItems(items: List<Item>)
+    /*@Upsert
+    suspend fun upsertItems(items: List<Item>)*/
 
-    @Delete
-    suspend fun deleteItem(item: Item)
+    /*@Delete
+    suspend fun deleteItem(item: Item)*/
 
     @Delete
     suspend fun deleteItems(items: List<Item>)
@@ -41,27 +41,33 @@ fun backupItemsToCsv(state: ItemState): String {
     }*/
 
     val csvHeader = "id,startTime,endTime,ongoing,pause\n"
-    val csvData = items.joinToString("\n") { item ->
-        "${item.id},${item.startTime},${item.endTime},${item.ongoing},${item.pause}"
-    }
+    val csvData =
+        items.joinToString("\n") { item ->
+            "${item.id},${item.startTime},${item.endTime},${item.ongoing},${item.pause}"
+        }
 
     return csvHeader + csvData
 }
 
-fun startOrStopPause(state: ItemState, onEvent: (ItemEvent) -> Unit) {
+fun startOrStopPause(
+    state: ItemState,
+    onEvent: (ItemEvent) -> Unit,
+) {
     val date = LocalDate.now()
 
-    val itemsForToday = state.items.filter { item ->
-        val startTime = parseToLocalDateTime(item.startTime)
-        extractDate(startTime) == date
-    }
+    val itemsForToday =
+        state.items.filter { item ->
+            val startTime = parseToLocalDateTime(item.startTime)
+            extractDate(startTime) == date
+        }
     val isFirstToday = itemsForToday.isEmpty()
     val isOngoingToday = itemsForToday.isNotEmpty() && itemsForToday.last().ongoing
 
-    val itemsNotToday = state.items.filter { item ->
-        val startTime = parseToLocalDateTime(item.startTime)
-        extractDate(startTime) != date
-    }
+    val itemsNotToday =
+        state.items.filter { item ->
+            val startTime = parseToLocalDateTime(item.startTime)
+            extractDate(startTime) != date
+        }
     val isOngoingNotToday = itemsNotToday.isNotEmpty() && itemsNotToday.any { it.ongoing }
 
     if (isOngoingNotToday) {

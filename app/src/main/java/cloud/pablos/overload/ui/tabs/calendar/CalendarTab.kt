@@ -119,7 +119,6 @@ fun CalendarTab(
                                 }
 
                                 YearView(
-                                    state = state,
                                     onEvent = onEvent,
                                     year = state.selectedYearCalendar,
                                     bottomPadding = 0.dp,
@@ -176,7 +175,6 @@ fun CalendarTab(
                         }
 
                         YearView(
-                            state = state,
                             onEvent = onEvent,
                             year = state.selectedYearCalendar,
                             onNavigate = onNavigate,

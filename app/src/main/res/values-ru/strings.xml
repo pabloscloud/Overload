@@ -1,110 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="select_all_items_of_selected_day">выбрать всё в этом дне</string>
-    <string name="storage">хранилище</string>
-    <string name="delete_pause_descr">Вы не можете удалить текущий перерыв. Он здесь только чтобы показать, что он будет добавлен, когда вы нажмёте Начать. Если вы не нажмёте Начать до завтра, он удалится и не будет засчитан против вашей цели.</string>
-    <string name="hours">часов</string>
-    <string name="close">Закрыть</string>
-    <string name="save">Сохранить</string>
-    <string name="goals">Цели</string>
-    <string name="system_logs_descr">Прикреплять к отчётам записи из журнала системы</string>
-    <string name="crash_reports_descr">Предлагать отправить отчёты о вылетах</string>
-    <string name="get_out_of_isDeleting">выйти из режима удаления</string>
-    <string name="are_you_sure">Вы уверены?</string>
-    <string name="adjust_descr">Скорректируйте время окончания до фактического.</string>
-    <string name="system_logs">Системный журнал</string>
-    <string name="backup_descr">Делайте резервные копии постоянно и храните их в надёжном месте!</string>
-    <string name="friday">Пятница</string>
-    <string name="tuesday">Вторник</string>
-    <string name="acra_toastText">Замечен вылет. Пожалуйста, отправьте письмо, чтобы помочь исправить приложение!</string>
-    <string name="import_descr">Импортировать данные из резервной копии</string>
-    <string name="spread_across_days">Распределить между днями</string>
-    <string name="translate">Перевод</string>
-    <string name="no">Нет</string>
-    <string name="import_backup">Импорт резервной копии</string>
-    <string name="learn_more">Узнать больше…</string>
-    <string name="sourcecode_descr">Хотите заглянуть внутрь? Пожалуйста!</string>
-    <string name="pause">Перерывы</string>
-    <string name="delete_items_forever">удалить навсегда</string>
-    <string name="pick_work_goal">Задать цель работы</string>
-    <string name="acra_mailBody">Замечен вылет. Пожалуйста, помогите нам улучшить приложение, отправив это письмо, чтобы мы могли исправить эту ошибку как можно скорее.
-\n Извините за доставленные неудобства! Заполнение данных ниже обязательно для того, чтобы мы могли исправить эту ошибку.
-\n Если знаете английский или немецкий, пишите об ошибке на одном из них, чтобы автор приложения мог лучше вас понять. Язык этого шаблона зависит от выбранного языка приложения или системы.
-\n
-\n Описание - Что вы делали, когда приложение вылетело?
-\n
-\n
-\n Шаги для воспроизведения - Пожалуйста, опишите действия, приводящие к повторению этого вылета.
-\n
-\n
-\n Визуальное представление - Пожалуйста, прикрепите снимки экрана или запись видео, описывающие проблему.
-\n
-\n
-\n Недавние изменения - Появилась ли проблема после обновления приложения или недавнего изменения настроек?
-\n
-\n
-\n Частота - Как часто возникает эта проблема?
-\n
-\n
-\n Спасибо за неравнодушие и терпение!</string>
-    <string name="wednesday">Среда</string>
-    <string name="yes">Да</string>
-    <string name="monday">Понедельник</string>
-    <string name="unknown_day">Неизвестный день</string>
-    <string name="translate_descr">Хотите помочь с переводом приложения? Спасибо!</string>
-    <string name="start">Начать</string>
-    <string name="license_descr">GNU GPL v3</string>
-    <string name="issue_reports">Сообщить об ошибке</string>
-    <string name="stop">Остановить</string>
-    <string name="import_failure">Импорт резервной копии не удался</string>
-    <string name="select_year">Выберите год</string>
-    <string name="pick_pause_goal">Задать цель отдыха</string>
-    <string name="work">Работа</string>
-    <string name="backup">Создать резервную копию</string>
-    <string name="spans_days">Запись растянулась между днями</string>
-    <string name="license">Лицензия</string>
-    <string name="issue_reports_descr">Заметили что-то странное? Пожалуйста, сообщите об этом!</string>
-    <string name="about">О приложении</string>
-    <string name="adjust_end_time">Корректировка времени окончания</string>
-    <string name="work_goal_descr">Задать цель для работы</string>
-    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="open_link_with">Открыть ссылку с помощью</string>
-    <string name="import_backup_descr">Чтобы импортировать данные, используйте обмен из других приложений. Это позволит приложению безопасно получить данные и импортировать их.</string>
-    <string name="configurations">Параметры</string>
-    <string name="spans_days_descr">Временной промежуток записи попал в несколько суток. Возможно, вы забыли остановить его. Хотите скорректировать время окончания?</string>
-    <string name="sunday">Воскресенье</string>
-    <string name="no_items_subtitle">Для этого дня нет сохранённых данных.</string>
-    <string name="adjust">Скорректировать</string>
-    <string name="crash_reports">Отчёты о вылетах</string>
-    <string name="home">Главная</string>
-    <string name="cancel">Отмена</string>
-    <string name="yesterday">Вчера</string>
+<!--
+  Copyright 2022 The Android Open Source Project
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="navigation_drawer">Панель навигации</string>
-    <string name="minutes">минут</string>
-    <string name="arrow_forward">стрелка вперёд от начала и до конца</string>
-    <string name="delete_pause">Удаление перерыва</string>
-    <string name="deselect_all_items_of_selected_day">снять выделение со всего в этом дне</string>
-    <string name="analytics">аналитика</string>
-    <string name="no_items_title">Нет сохранённых данных</string>
-    <string name="saturday">Суббота</string>
-    <string name="work_left">Работать осталось</string>
-    <string name="sourcecode">Исходный код</string>
-    <string name="itemCount_selected">выбрано</string>
-    <string name="import_success">Резервная копия успешно импортирована</string>
-    <string name="pause_goal_descr">Задать цель для отдыха</string>
-    <string name="thursday">Четверг</string>
-    <string name="footer">создано pabloscloud с ❤️</string>
-    <string name="calendar">Календарь</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTab -->
+    <string name="home">Главная</string>
     <string name="today">Сегодня</string>
-    <string name="pause_left">Отдыхать осталось</string>
-    <string name="import_ol">Импортировать</string>
-    <string name="end_label">Конец</string>
-    <string name="manual_entry">Ручное добавление</string>
+    <string name="yesterday">Вчера</string>
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+    <string name="saturday">Суббота</string>
+    <string name="sunday">Воскресенье</string>
+    <string name="unknown_day">Неизвестный день</string>
+    <string name="no_items_title">Нет сохранённых данных</string>
+    <string name="no_items_subtitle">Для этого дня нет сохранённых данных.</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteBottomAppBar -->
+    <string name="select_all_items_of_selected_day">выбрать всё в этом дне</string>
+    <string name="deselect_all_items_of_selected_day">снять выделение со всего в этом дне</string>
+    <string name="delete_items_forever">удалить навсегда</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteTopAppBar -->
+    <string name="itemCount_selected">выбрано</string>
+    <string name="get_out_of_isDeleting">выйти из режима удаления</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabFab -->
+    <string name="start">Начать</string>
+    <string name="stop">Остановить</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabDeletePauseDialog -->
+    <string name="close">Закрыть</string>
+    <string name="learn_more">Узнать больше…</string>
+    <string name="open_link_with">Открыть ссылку с помощью</string>
+    <string name="delete_pause">Удаление перерыва</string>
+    <string name="delete_pause_descr">Вы не можете удалить текущий перерыв. Он здесь только чтобы показать, что он будет добавлен, когда вы нажмёте Начать. Если вы не нажмёте Начать до завтра, он удалится и не будет засчитан против вашей цели.</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
     <string name="start_label">Начало</string>
-    <string name="acra_mailSubject">Вылет Overload</string>
-    <string name="talback_entry">Запись с %s по %s</string>
+    <string name="end_label">Конец</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog -->
+    <string name="edit_entry">Edit Entry</string>
+    <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
+    <string name="calendar">Календарь</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
+    <string name="configurations">Параметры</string>
+    <string name="goals">Цели</string>
+    <string name="work">Работа</string>
+    <string name="work_goal_descr">Задать цель для работы</string>
+    <string name="pause">Перерывы</string>
+    <string name="pause_goal_descr">Задать цель для отдыха</string>
+    <string name="storage">хранилище</string>
+    <string name="backup">Создать резервную копию</string>
+    <string name="backup_descr">Делайте резервные копии постоянно и храните их в надёжном месте!</string>
     <string name="backup_failed">Не удалось создать резервную копию</string>
+    <string name="import_ol">Импортировать</string>
+    <string name="import_descr">Импортировать данные из резервной копии</string>
+    <string name="import_backup">Импорт резервной копии</string>
+    <string name="import_backup_descr">Чтобы импортировать данные, используйте обмен из других приложений. Это позволит приложению безопасно получить данные и импортировать их.</string>
+    <string name="import_success">Резервная копия успешно импортирована</string>
+    <string name="import_failure">Импорт резервной копии не удался</string>
+    <string name="analytics">аналитика</string>
+    <string name="crash_reports">Отчёты о вылетах</string>
+    <string name="crash_reports_descr">Предлагать отправить отчёты о вылетах</string>
+    <string name="system_logs">Системный журнал</string>
+    <string name="system_logs_descr">Прикреплять к отчётам записи из журнала системы</string>
+    <string name="about">О приложении</string>
+    <string name="sourcecode">Исходный код</string>
+    <string name="sourcecode_descr">Хотите заглянуть внутрь? Пожалуйста!</string>
+    <string name="issue_reports">Сообщить об ошибке</string>
+    <string name="issue_reports_descr">Заметили что-то странное? Пожалуйста, сообщите об этом!</string>
+    <string name="license">Лицензия</string>
+    <string name="license_descr">GNU GPL v3</string>
+    <string name="footer">создано pabloscloud с ❤️</string>
+    <string name="acra_toastText">Замечен вылет. Пожалуйста, отправьте письмо, чтобы помочь исправить приложение!</string>
+    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
+    <string name="acra_mailBody">        Замечен вылет. Пожалуйста, помогите нам улучшить приложение, отправив это письмо, чтобы мы могли исправить эту ошибку как можно скорее.\n
+Извините за доставленные неудобства! Заполнение данных ниже обязательно для того, чтобы мы могли исправить эту ошибку.\n
+Если знаете английский или немецкий, пишите об ошибке на одном из них, чтобы автор приложения мог лучше вас понять. Язык этого шаблона зависит от выбранного языка приложения или системы.\n
+\n
+Описание - Что вы делали, когда приложение вылетело?\n
+\n
+\n
+Шаги для воспроизведения - Пожалуйста, опишите действия, приводящие к повторению этого вылета.\n
+\n
+\n
+Визуальное представление - Пожалуйста, прикрепите снимки экрана или запись видео, описывающие проблему.\n
+\n
+\n
+Недавние изменения - Появилась ли проблема после обновления приложения или недавнего изменения настроек?\n
+\n
+\n
+Частота - Как часто возникает эта проблема?\n
+\n
+\n
+Спасибо за неравнодушие и терпение!
+    </string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
+    <string name="save">Сохранить</string>
+    <string name="pick_work_goal">Задать цель работы</string>
+    <string name="hours">часов</string>
+    <string name="minutes">минут</string>
+    <string name="cancel">Отмена</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabPauseGoalDialog -->
+    <string name="pick_pause_goal">Задать цель отдыха</string>
+    <!-- cloud.pablos.overload.ui.views.DayView -->
+    <string name="work_left">Работать осталось</string>
+    <string name="pause_left">Отдыхать осталось</string>
+    <!-- cloud.pablos.overload.ui.views.DayViewItem -->
+    <string name="arrow_forward">стрелка вперёд от начала и до конца</string>
+    <string name="select_year">Выберите год</string>
+    <string name="translate">Перевод</string>
+    <string name="translate_descr">Хотите помочь с переводом приложения? Спасибо!</string>
+    <string name="adjust">Скорректировать</string>
+    <string name="adjust_end_time">Корректировка времени окончания</string>
+    <string name="adjust_descr">Скорректируйте время окончания до фактического.</string>
+    <string name="spread_across_days">Распределить между днями</string>
+    <string name="spans_days">Запись растянулась между днями</string>
+    <string name="spans_days_descr">Временной промежуток записи попал в несколько суток. Возможно, вы забыли остановить его. Хотите скорректировать время окончания?</string>
+    <string name="are_you_sure">Вы уверены?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="manual_entry">Ручное добавление</string>
+    <string name="acra_mailSubject">Вылет Overload</string>
+    <!-- accessibility strings -->
+    <string name="talback_entry">Запись с %s по %s</string>
     <string name="talback_pause">Пауза с %s по %s</string>
-    <string name="talback_pause_ongoing">Протекающая пауза с %s</string>
     <string name="talback_entry_ongoing">Протекающая запись с %s</string>
+    <string name="talback_pause_ongoing">Протекающая пауза с %s</string>
 </resources>
