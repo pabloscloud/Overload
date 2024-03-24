@@ -44,6 +44,8 @@
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
     <string name="start_label">Start</string>
     <string name="end_label">End</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog -->
+    <string name="edit_entry">Edit Entry</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Calendar</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
@@ -60,7 +62,7 @@
     <string name="import_ol">Import</string>
     <string name="import_descr">Import from a backup</string>
     <string name="import_backup">Import Backup</string>
-    <string name="import_backup_descr">To import data into the app, please use the Sharesheet from other apps. This allows the app to securely access the shared data and import it into the database.</string>
+    <string name="import_backup_descr">To import data into the app, please use the Sharesheet from other apps. This allows the app to securely access the shared data and import it into your database.</string>
     <string name="import_success">Backup successfully imported</string>
     <string name="import_failure">Importing the backup failed</string>
     <string name="analytics">analytics</string>
@@ -96,7 +98,8 @@ Recent changes - Did you recently update the app or change device settings?\n
 Frequency - How often does this crash occur?\n
 \n
 \n
-Thanks for patience! </string>
+Thanks for your patience!
+    </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Save</string>
     <string name="pick_work_goal">Set Work Goal</string>
