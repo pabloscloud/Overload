@@ -44,6 +44,8 @@
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
     <string name="start_label">Start</string>
     <string name="end_label">End</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog -->
+    <string name="edit_entry">Edit Entry</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Dagatal</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
@@ -78,25 +80,26 @@
     <string name="footer">búið til ❤️ með pabloscloud</string>
     <string name="acra_toastText">Hrun fannst. Hjálpið okkur með því að senda póst!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Hrun fannst. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
-Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+    <string name="acra_mailBody">        Hrun fannst. Vinsamlegast hjálpaðu okkur að bæta með því að senda þennan tölvupóst, svo við getum fengið þetta fastur eins fljótt og auðið er.\n
+Afsakið óþægindin sem urðu! Inntak þitt er nauðsynlegt til að laga þetta mál.\n
 \n
-Description - What did you do when the app crashed?\n
-\n
-\n
-Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+Lýsing-Hvað gerðir þú þegar app hrundi?\n
 \n
 \n
-Visuals - Please include any screenshots or screen-recordings.\n
+Skref til að endurskapa-Getur Þú veitt skref-fyrir-skref leiðbeiningar um hvernig á að endurskapa hrunið?\n
 \n
 \n
-Recent changes - Did you recently update the app or change device settings?\n
+Myndefni - vinsamlegast látið allar skjámyndir eða skjáupptökur fylgja með.\n
 \n
 \n
-Frequency - How often does this crash occur?\n
+Nýlegar breytingar - uppfærðir þú appið nýlega eða breyttir stillingum tækisins?\n
 \n
 \n
-Thanks for patience! </string>
+Tíðni-Hversu oft gerist þetta hrun?\n
+\n
+\n
+Takk fyrir þolinmæðina!
+    </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Vista</string>
     <string name="pick_work_goal">Settu Þér Markmið Í Vinnunni</string>
