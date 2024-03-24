@@ -44,6 +44,8 @@
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
     <string name="start_label">Start</string>
     <string name="end_label">End</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog -->
+    <string name="edit_entry">Edit Entry</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Kalender</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
@@ -78,25 +80,26 @@
     <string name="footer">dibuat dengan ❤️ oleh pabloscloud</string>
     <string name="acra_toastText">Kecelakaan terdeteksi. Mohon bantuannya dengan mengirimkan email!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Kerusakan terdeteksi. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
-Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+    <string name="acra_mailBody">        Kerusakan terdeteksi. Tolong bantu kami memperbaiki dengan mengirimkan email ini, agar kami dapat memperbaikinya sesegera mungkin.\n
+Mohon maaf atas ketidaknyamanan yang terjadi! Masukan Anda sangat penting untuk memperbaiki masalah ini.\n
 \n
-Description - What did you do when the app crashed?\n
-\n
-\n
-Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+Deskripsi - Apa yang Anda lakukan saat aplikasi macet?\n
 \n
 \n
-Visuals - Please include any screenshots or screen-recordings.\n
+Langkah-langkah untuk mereproduksi - Dapatkah Anda memberikan panduan langkah demi langkah tentang cara mereproduksi kerusakan?\n
+\n
+\n 
+Visual - Harap sertakan tangkapan layar atau rekaman layar.\n
 \n
 \n
-Recent changes - Did you recently update the app or change device settings?\n
+Perubahan terbaru - Apakah Anda baru saja memperbarui aplikasi atau mengubah pengaturan perangkat?\n
 \n
 \n
-Frequency - How often does this crash occur?\n
+Frekuensi - Seberapa sering kerusakan ini terjadi?\n
 \n
 \n
-Thanks for patience! </string>
+Terima kasih atas kesabaran Anda!
+    </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Simpan</string>
     <string name="pick_work_goal">Tetapkan Tujuan Kerja</string>
