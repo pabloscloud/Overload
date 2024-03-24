@@ -78,27 +78,27 @@
     <string name="license">Lisensi</string>
     <string name="license_descr">GNU GPL v3</string>
     <string name="footer">dibuat dengan ❤️ oleh pabloscloud</string>
-    <string name="acra_toastText">Kecelakaan terdeteksi. Mohon bantuannya dengan mengirimkan email!</string>
+    <string name="acra_toastText">Kecelakaan terdeteksi. Please help by sending a mail!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Kerusakan terdeteksi. Tolong bantu kami memperbaiki dengan mengirimkan email ini, agar kami dapat memperbaikinya sesegera mungkin.\n
-Mohon maaf atas ketidaknyamanan yang terjadi! Masukan Anda sangat penting untuk memperbaiki masalah ini.\n
-\n
-Deskripsi - Apa yang Anda lakukan saat aplikasi macet?\n
-\n
-\n
-Langkah-langkah untuk mereproduksi - Dapatkah Anda memberikan panduan langkah demi langkah tentang cara mereproduksi kerusakan?\n
-\n
-\n 
-Visual - Harap sertakan tangkapan layar atau rekaman layar.\n
-\n
-\n
-Perubahan terbaru - Apakah Anda baru saja memperbarui aplikasi atau mengubah pengaturan perangkat?\n
-\n
-\n
-Frekuensi - Seberapa sering kerusakan ini terjadi?\n
-\n
-\n
-Terima kasih atas kesabaran Anda!
+    <string name="acra_mailBody">        Kerusakan terdeteksi. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+        Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+        \n
+        Description - What did you do when the app crashed?\n
+        \n
+        \n
+        Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+        \n
+        \n
+        Visuals - Please include any screenshots or screen-recordings.\n
+        \n
+        \n
+        Recent changes - Did you recently update the app or change device settings?\n
+        \n
+        \n
+        Frequency - How often does this crash occur?\n
+        \n
+        \n
+        Thanks for patience!
     </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Simpan</string>
@@ -115,10 +115,10 @@ Terima kasih atas kesabaran Anda!
     <string name="arrow_forward">panah ke depan menggambarkan arah kedua waktu dari awal hingga akhir</string>
     <string name="select_year">Pilih Tahun</string>
     <string name="translate">Menerjemahkan</string>
-    <string name="translate_descr">Ingin menerjemahkan aplikasi? Terima kasih!</string>
+    <string name="translate_descr">Want to translate the app\? Terima kasih!</string>
     <string name="adjust">Sesuaikan</string>
     <string name="adjust_end_time">Sesuaikan waktu akhir</string>
-    <string name="adjust_descr">Sesuaikan waktu akhir dengan kapan pun waktu tersebut berakhir.</string>
+    <string name="adjust_descr">Adjust the end time to whenever it actually ended. </string>
     <string name="spread_across_days">Tersebar di seluruh hari</string>
     <string name="spans_days">Entri waktu mencakup beberapa hari</string>
     <string name="spans_days_descr">Waktu terakhir kali masuk mencakup beberapa hari. Mungkin Anda lupa untuk menghentikannya. Apakah Anda ingin menyesuaikan akhirnya?</string>
