@@ -78,25 +78,25 @@
     <string name="footer">búið til ❤️ með pabloscloud</string>
     <string name="acra_toastText">Hrun fannst. Hjálpið okkur með því að senda póst!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Hrun fannst. Vinsamlegast hjálpaðu okkur að bæta með því að senda þennan tölvupóst, svo við getum fengið þetta fastur eins fljótt og auðið er. Vinsamlegast hjálpaðu okkur að bæta með því að senda þennan tölvupóst, svo við getum fengið þetta fastur eins fljótt og auðið er.\n
-Afsakið óþægindin sem urðu! Inntak þitt er nauðsynlegt til að laga þetta mál.\n
+    <string name="acra_mailBody">        Hrun fannst. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
 \n
-Lýsing-Hvað gerðir þú þegar app hrundi?\n
-\n
-\n
-Skref til að endurskapa-Getur Þú veitt skref-fyrir-skref leiðbeiningar um hvernig á að endurskapa hrunið?\n
+Description - What did you do when the app crashed?\n
 \n
 \n
-Myndefni - vinsamlegast látið allar skjámyndir eða skjáupptökur fylgja með.\n
+Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
 \n
 \n
-Nýlegar breytingar - uppfærðir þú appið nýlega eða breyttir stillingum tækisins?\n
+Visuals - Please include any screenshots or screen-recordings.\n
 \n
 \n
-Tíðni-Hversu oft gerist þetta hrun?\n
+Recent changes - Did you recently update the app or change device settings?\n
 \n
 \n
-Takk fyrir þolinmæðina! </string>
+Frequency - How often does this crash occur?\n
+\n
+\n
+Thanks for patience! </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Vista</string>
     <string name="pick_work_goal">Settu Þér Markmið Í Vinnunni</string>
