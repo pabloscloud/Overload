@@ -30,16 +30,12 @@ Feedback and suggestions are more than welcome! Please reach out by creating an 
 
 ## Installation
 
-<a href="https://f-droid.org/app/cloud.pablos.overload">
-  <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="60" />
-</a>
-<a href="https://codeberg.org/pabloscloud/Overload/releases">
-  <img alt="Get it on Codeberg" src="https://i.imgur.com/y2BF7l0.png" height="60" />
-</a>
-<a href="https://play.google.com/store/apps/details?id=cloud.pablos.overload">
-  <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="60" />
-</a>
-
+[<img src="https://i.imgur.com/PMktVrZ.png"
+      alt='Get it on GitHub'
+      height="60">](https://github.com/pabloscloud/Overload/releases/latest)
+[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+      alt='Get it on Google Play'
+      height="60">](https://play.google.com/store/apps/details?id=cloud.pablos.overload)
 
 ## Authors
 
