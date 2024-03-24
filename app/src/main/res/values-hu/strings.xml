@@ -1,100 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="select_all_items_of_selected_day">a kiválasztott nap összes elemének kiválasztása</string>
-    <string name="storage">tárolás</string>
-    <string name="delete_pause_descr">Ezt a folyamatban lévő szünetet nem lehet törölni. Csak azért van ott, hogy jelezze, hogy a szünet létrejön, amint megnyomja a start gombot. Ha csak holnap nyomja meg a start gombot, akkor eltűnik, és nem számít bele a céljába.</string>
-    <string name="hours">órák</string>
-    <string name="close">Bezárás</string>
-    <string name="save">Mentés</string>
-    <string name="goals">Célok</string>
-    <string name="system_logs_descr">Rendszernaplók felvétele az összeomlási jelentésekbe</string>
-    <string name="crash_reports_descr">Kérje a baleseti jelentések küldését</string>
-    <string name="get_out_of_isDeleting">kihozza Önt a törlési módból</string>
-    <string name="are_you_sure">Biztos vagy benne?</string>
-    <string name="adjust_descr">Állítsa be a befejezés időpontját a tényleges befejezés időpontjára.</string>
-    <string name="system_logs">Rendszer naplók</string>
-    <string name="backup_descr">Minden adatról rendszeresen készítsen biztonsági másolatot egy mentett helyre!</string>
-    <string name="friday">Péntek</string>
-    <string name="tuesday">Kedd</string>
-    <string name="acra_toastText">Összeomlás észlelve. Kérjük, segítsen egy levél elküldésével!</string>
-    <string name="import_descr">Importálás biztonsági mentésből</string>
-    <string name="spread_across_days">Napok között elosztva</string>
-    <string name="translate">Lefordítani</string>
-    <string name="no">Nem</string>
-    <string name="import_backup">Import biztonsági mentés</string>
-    <string name="learn_more">Tudjon meg többet…</string>
-    <string name="sourcecode_descr">Szeretné látni a belsejét? Menj csak!</string>
-    <string name="pause">Szünet</string>
-    <string name="delete_items_forever">elemek törlése örökre</string>
-    <string name="pick_work_goal">Munkacél beállítása</string>
-    <string name="acra_mailBody">Ütközés észlelve. Kérjük, segítsen nekünk a javításban, küldje el ezt az e-mailt, hogy minél hamarabb kijavíthassuk a hibát.
-\n Elnézést az okozott kellemetlenségekért! Az Ön hozzájárulása elengedhetetlen a probléma javításához.
-\n
-\n Leírás - Mit csináltál, amikor az alkalmazás lezuhant?
-\n
-\n
-\n Lépések a reprodukáláshoz - Tudna adni egy lépésről-lépésre történő útmutatót az összeomlás reprodukálásához?
-\n
-\n
-\n Vizuális anyagok - Kérjük, csatoljon képernyőképeket vagy képernyőfelvételeket.
-\n
-\n
-\n Legutóbbi változások - Frissítette nemrégiben az alkalmazást vagy módosította a készülék beállításait?
-\n
-\n
-\n Gyakoriság - Milyen gyakran fordul elő az összeomlás?
-\n
-\n
-\n Köszönjük a türelmet!</string>
-    <string name="wednesday">Szerda</string>
-    <string name="yes">Igen</string>
-    <string name="monday">Hétfő</string>
-    <string name="unknown_day">Ismeretlen nap</string>
-    <string name="translate_descr">Szeretné lefordítani az alkalmazást? Köszönöm!</string>
-    <string name="start">Start</string>
-    <string name="license_descr">GNU GPL v3</string>
-    <string name="issue_reports">Hibák jelentése</string>
-    <string name="stop">Stop</string>
-    <string name="import_failure">A biztonsági mentés importálása sikertelen</string>
-    <string name="select_year">Év kiválasztása</string>
-    <string name="pick_pause_goal">Szünet cél beállítása</string>
-    <string name="work">Munka</string>
-    <string name="backup">Biztonsági mentés</string>
-    <string name="spans_days">Az időbevitel több napra terjed ki</string>
-    <string name="license">Licenc</string>
-    <string name="issue_reports_descr">Észrevettél valami furcsát? Kérjük, jelezze!</string>
-    <string name="about">a honlapról</string>
-    <string name="adjust_end_time">Beállítás végidő</string>
-    <string name="work_goal_descr">Tűzzön ki egy célt a munkához</string>
-    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="open_link_with">Nyissa meg a linket</string>
-    <string name="import_backup_descr">Az adatoknak az alkalmazásba történő importálásához kérjük, használja a más alkalmazásokból származó Sharesheet-et. Ez lehetővé teszi, hogy az alkalmazás biztonságosan hozzáférjen a megosztott adatokhoz, és importálja azokat az Ön adatbázisába.</string>
-    <string name="configurations">Konfigurációk</string>
-    <string name="spans_days_descr">Egy időbejegyzés több napra terjed ki. Talán elfelejtette leállítani. Szeretné beállítani a végét?</string>
-    <string name="sunday">Vasárnap</string>
-    <string name="no_items_subtitle">Az adott napra nincsenek elmentett elemek.</string>
-    <string name="adjust">Beállítás</string>
-    <string name="crash_reports">Baleseti jelentések</string>
+<!--
+  Copyright 2022 The Android Open Source Project
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="navigation_drawer">Navigation Drawer</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTab -->
     <string name="home">Home</string>
-    <string name="cancel">Törölje</string>
-    <string name="yesterday">Tegnap</string>
-    <string name="navigation_drawer">Navigációs fiók</string>
-    <string name="minutes">percek</string>
-    <string name="arrow_forward">nyíl előre, amely a két idő irányát írja le a kezdettől a végéig</string>
-    <string name="delete_pause">Szünet törlése</string>
-    <string name="deselect_all_items_of_selected_day">a kiválasztott nap összes elemének kijelölésének megszüntetése</string>
-    <string name="analytics">analitika</string>
-    <string name="no_items_title">Nem rögzített tételek</string>
-    <string name="saturday">Szombat</string>
-    <string name="work_left">Munka balra</string>
-    <string name="sourcecode">Forráskód</string>
-    <string name="itemCount_selected">kiválasztott</string>
-    <string name="import_success">Sikeresen importált biztonsági másolat</string>
-    <string name="pause_goal_descr">Állítson be egy célt a szünetre</string>
-    <string name="thursday">Csütörtök</string>
-    <string name="footer">létrehozta a ❤️ által pabloscloud</string>
-    <string name="calendar">Naptár</string>
-    <string name="today">Ma</string>
-    <string name="pause_left">Szünet balra</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="unknown_day">Unknown day</string>
+    <string name="no_items_title">No items recorded</string>
+    <string name="no_items_subtitle">There are no saved items for that day.</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteBottomAppBar -->
+    <string name="select_all_items_of_selected_day">select all items of selected day</string>
+    <string name="deselect_all_items_of_selected_day">deselect all items of selected day</string>
+    <string name="delete_items_forever">delete items forever</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteTopAppBar -->
+    <string name="itemCount_selected">selected</string>
+    <string name="get_out_of_isDeleting">gets you out of deletion mode</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabFab -->
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabDeletePauseDialog -->
+    <string name="close">Close</string>
+    <string name="learn_more">Learn more…</string>
+    <string name="open_link_with">Open link with</string>
+    <string name="delete_pause">Delete Pause</string>
+    <string name="delete_pause_descr">You cannot delete this ongoing pause. It is only there to indicate a pause will be created once you hit start. If you will not hit start until tomorrow it will be gone and will not count against your goal.</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
+    <string name="start_label">Start</string>
+    <string name="end_label">End</string>
+    <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
+    <string name="calendar">Calendar</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
+    <string name="configurations">Configurations</string>
+    <string name="goals">Goals</string>
+    <string name="work">Work</string>
+    <string name="work_goal_descr">Set a goal for work</string>
+    <string name="pause">Pause</string>
+    <string name="pause_goal_descr">Set a goal for pause</string>
+    <string name="storage">storage</string>
+    <string name="backup">Backup</string>
+    <string name="backup_descr">Backup all data regularly to a save place!</string>
+    <string name="backup_failed">Generating the backup failed</string>
     <string name="import_ol">Import</string>
+    <string name="import_descr">Import from a backup</string>
+    <string name="import_backup">Import Backup</string>
+    <string name="import_backup_descr">To import data into the app, please use the Sharesheet from other apps. This allows the app to securely access the shared data and import it into your database.</string>
+    <string name="import_success">Backup successfully imported</string>
+    <string name="import_failure">Importing the backup failed</string>
+    <string name="analytics">analytics</string>
+    <string name="crash_reports">Crash reports</string>
+    <string name="crash_reports_descr">Ask to send crash reports</string>
+    <string name="system_logs">System logs</string>
+    <string name="system_logs_descr">Include system logs in crash reports</string>
+    <string name="about">about</string>
+    <string name="sourcecode">Source Code</string>
+    <string name="sourcecode_descr">Want to see the inside? Go on!</string>
+    <string name="issue_reports">Report bugs</string>
+    <string name="issue_reports_descr">Notice something strange? Please report it!</string>
+    <string name="license">License</string>
+    <string name="license_descr">GNU GPL v3</string>
+    <string name="footer">created with ❤️ by pabloscloud</string>
+    <string name="acra_toastText">Crash detected. Please help by sending a mail!</string>
+    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
+    <string name="acra_mailBody">        Crash detected. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+        Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+        \n
+        Description - What did you do when the app crashed?\n
+        \n
+        \n
+        Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+        \n
+        \n
+        Visuals - Please include any screenshots or screen-recordings.\n
+        \n
+        \n
+        Recent changes - Did you recently update the app or change device settings?\n
+        \n
+        \n
+        Frequency - How often does this crash occur?\n
+        \n
+        \n
+        Thanks for patience!
+    </string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
+    <string name="save">Save</string>
+    <string name="pick_work_goal">Set Work Goal</string>
+    <string name="hours">hours</string>
+    <string name="minutes">minutes</string>
+    <string name="cancel">Cancel</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabPauseGoalDialog -->
+    <string name="pick_pause_goal">Set Pause Goal</string>
+    <!-- cloud.pablos.overload.ui.views.DayView -->
+    <string name="work_left">Work left</string>
+    <string name="pause_left">Pause left</string>
+    <!-- cloud.pablos.overload.ui.views.DayViewItem -->
+    <string name="arrow_forward">arrow forward from start to end</string>
+    <string name="select_year">Select Year</string>
+    <string name="translate">Translate</string>
+    <string name="translate_descr">Want to translate the app\? Thanks!</string>
+    <string name="adjust">Adjust</string>
+    <string name="adjust_end_time">Adjust end time</string>
+    <string name="adjust_descr">Adjust the end time to whenever it actually ended. </string>
+    <string name="spread_across_days">Spread across days</string>
+    <string name="spans_days">Time entry spans multiple days</string>
+    <string name="spans_days_descr">A time entry spans across multiple days. Perhaps you forgot to stop it. Do you want to adjust the end?</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="manual_entry">Manual Entry</string>
+    <string name="acra_mailSubject">Overload Crash</string>
+    <!-- accessibility strings -->
+    <string name="talback_entry">Entry from %s to %s</string>
+    <string name="talback_pause">Pause from %s to %s</string>
+    <string name="talback_entry_ongoing">Ongoing entry since %s</string>
+    <string name="talback_pause_ongoing">Ongoing pause since %s</string>
 </resources>
