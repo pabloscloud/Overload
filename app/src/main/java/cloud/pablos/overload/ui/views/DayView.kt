@@ -32,6 +32,7 @@ import cloud.pablos.overload.data.item.ItemEvent
 import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.ui.tabs.configurations.OlSharedPreferences
 import cloud.pablos.overload.ui.tabs.home.HomeTabDeletePauseDialog
+import cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -58,6 +59,7 @@ fun DayView(
     val itemsDesc = items.sortedByDescending { it.startTime }
 
     val deletePauseDialogState = remember { mutableStateOf(false) }
+    val editItemDialogState = remember { mutableStateOf(false) }
 
     val context = LocalContext.current
     val sharedPreferences = remember { OlSharedPreferences(context) }
@@ -119,6 +121,9 @@ fun DayView(
                                     onClick = {
                                         if (state.isDeletingHome) {
                                             deletePauseDialogState.value = true
+                                        } else {
+                                            onEvent(ItemEvent.SetSelectedItemsHome(emptyList()))
+                                            editItemDialogState.value = true
                                         }
                                     },
                                 ),
@@ -133,6 +138,7 @@ fun DayView(
                                     pause = true,
                                 ),
                             isSelected = false,
+                            state = state,
                         )
                     }
                 }
@@ -177,13 +183,16 @@ fun DayView(
                                                     ),
                                                 )
                                         }
+                                    } else {
+                                        onEvent(ItemEvent.SetSelectedItemsHome(listOf(item)))
+                                        editItemDialogState.value = true
                                     }
                                 },
                             ),
                 ) {
                     when (item.ongoing.not() && item.endTime.isNotBlank()) {
-                        true -> DayViewItemNotOngoing(item, isSelected = isSelected)
-                        else -> DayViewItemOngoing(item, isSelected = isSelected)
+                        true -> DayViewItemNotOngoing(item, isSelected = isSelected, state)
+                        else -> DayViewItemOngoing(item, isSelected = isSelected, state = state)
                     }
                 }
             }
@@ -215,6 +224,17 @@ fun DayView(
 
     if (deletePauseDialogState.value) {
         HomeTabDeletePauseDialog(onClose = { deletePauseDialogState.value = false })
+    }
+
+    if (editItemDialogState.value) {
+        HomeTabEditItemDialog(
+            onClose = {
+                onEvent(ItemEvent.SetSelectedItemsHome(emptyList()))
+                editItemDialogState.value = false
+            },
+            state,
+            onEvent,
+        )
     }
 }
 
