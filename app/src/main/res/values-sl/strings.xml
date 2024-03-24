@@ -1,100 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="select_all_items_of_selected_day">izberite vse elemente izbranega dneva</string>
-    <string name="storage">shranjevanje</string>
-    <string name="delete_pause_descr">Te tekoče prekinitve ni mogoče izbrisati. Označuje le, da bo pavza ustvarjena, ko pritisnete gumb Start. Če boste start pritisnili šele jutri, bo izginila in ne bo štela v vaš cilj.</string>
-    <string name="hours">ure</string>
-    <string name="close">Zapri</string>
-    <string name="save">Shrani</string>
-    <string name="goals">Cilji</string>
-    <string name="system_logs_descr">Vključitev sistemskih dnevnikov v poročila o trkih</string>
-    <string name="crash_reports_descr">Prosite za pošiljanje poročil o nesreči</string>
-    <string name="get_out_of_isDeleting">vas spravi iz načina brisanja</string>
-    <string name="system_logs">Sistemska poročila</string>
-    <string name="backup_descr">Redno varnostno kopiranje vseh podatkov na varno mesto!</string>
-    <string name="friday">Petek</string>
-    <string name="tuesday">Torek</string>
-    <string name="acra_toastText">Odkrita nesreča. Prosimo, pomagajte in pošljite sporočilo!</string>
-    <string name="import_descr">Uvoz iz varnostne kopije</string>
-    <string name="translate">Prevesti</string>
-    <string name="import_backup">Uvoz varnostne kopije</string>
-    <string name="learn_more">Več informacij…</string>
-    <string name="sourcecode_descr">Si želite ogledati notranjost? Pojdite naprej!</string>
-    <string name="pause">Pavza</string>
-    <string name="delete_items_forever">za vedno izbrišite elemente</string>
-    <string name="pick_work_goal">Določite delovni cilj</string>
-    <string name="acra_mailBody">Odkrita nesreča. Pomagajte nam izboljšati stanje tako, da nam pošljete to e-poštno sporočilo, da bomo lahko to čim prej odpravili.
-\n Opravičujemo se za povzročene nevšečnosti! Vaš prispevek je bistvenega pomena za odpravo te težave.
-\n
-\n Opis - Kaj ste storili, ko se je aplikacija zrušila?
-\n
-\n
-\n Koraki za ponovitev - Ali lahko zagotovite navodila po korakih, kako ponoviti sesutje?
-\n
-\n
-\n Slike - vključite vse slike zaslona ali posnetke zaslona.
-\n
-\n
-\n Nedavne spremembe - Ali ste nedavno posodobili aplikacijo ali spremenili nastavitve naprave?
-\n
-\n
-\n Pogostost - Kako pogosto se pojavlja ta okvara?
-\n
-\n
-\n Hvala za potrpežljivost!</string>
-    <string name="wednesday">Sreda</string>
-    <string name="monday">Ponedeljek</string>
-    <string name="unknown_day">Neznani dan</string>
-    <string name="translate_descr">Želite aplikacijo prevesti? Hvala!</string>
-    <string name="start">Začni</string>
-    <string name="license_descr">GNU GPL v3</string>
-    <string name="issue_reports">Poročilo o napakah</string>
-    <string name="stop">Stop</string>
-    <string name="import_failure">Uvoz varnostne kopije ni uspel</string>
-    <string name="select_year">Izberite leto</string>
-    <string name="pick_pause_goal">Nastavite cilj pavze</string>
-    <string name="work">Delo</string>
-    <string name="backup">Varnostna kopija</string>
-    <string name="license">Licenca</string>
-    <string name="issue_reports_descr">Ste opazili kaj nenavadnega? Prosimo, sporočite to!</string>
-    <string name="about">o</string>
-    <string name="work_goal_descr">Postavite cilj za delo</string>
-    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="open_link_with">Odprite povezavo z</string>
-    <string name="import_backup_descr">Če želite podatke uvoziti v aplikacijo, uporabite zbirko Sharesheet iz drugih aplikacij. Tako lahko aplikacija varno dostopa do podatkov v skupni rabi in jih uvozi v vašo zbirko podatkov.</string>
-    <string name="configurations">Konfiguracije</string>
-    <string name="sunday">Nedelja</string>
-    <string name="no_items_subtitle">Za ta dan ni shranjenih elementov.</string>
-    <string name="crash_reports">Poročila o trkih</string>
-    <string name="home">Domov</string>
-    <string name="cancel">preklic</string>
-    <string name="yesterday">Včeraj</string>
+<!--
+  Copyright 2022 The Android Open Source Project
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="navigation_drawer">Navigacijski predal</string>
-    <string name="minutes">minute</string>
-    <string name="arrow_forward">puščica naprej, ki opisuje smer obeh časov od začetka do konca</string>
-    <string name="delete_pause">Brisanje pavze</string>
-    <string name="deselect_all_items_of_selected_day">izbriši vse elemente izbranega dneva</string>
-    <string name="analytics">analitika</string>
-    <string name="no_items_title">Ni zabeleženih postavk</string>
-    <string name="saturday">Sobota</string>
-    <string name="work_left">Delo ostane</string>
-    <string name="sourcecode">Izvorna koda</string>
-    <string name="itemCount_selected">izbrani</string>
-    <string name="import_success">Varnostna kopija uspešno uvožena</string>
-    <string name="pause_goal_descr">Postavite cilj za pavzo</string>
-    <string name="thursday">Četrtek</string>
-    <string name="footer">ustvarjeno s ❤️, ki ga je ustvaril pabloscloud</string>
-    <string name="calendar">Koledar</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTab -->
+    <string name="home">Domov</string>
     <string name="today">Danes</string>
-    <string name="pause_left">Prekinitev levo</string>
+    <string name="yesterday">Včeraj</string>
+    <string name="monday">Ponedeljek</string>
+    <string name="tuesday">Torek</string>
+    <string name="wednesday">Sreda</string>
+    <string name="thursday">Četrtek</string>
+    <string name="friday">Petek</string>
+    <string name="saturday">Sobota</string>
+    <string name="sunday">Nedelja</string>
+    <string name="unknown_day">Neznani dan</string>
+    <string name="no_items_title">Ni zabeleženih postavk</string>
+    <string name="no_items_subtitle">Za ta dan ni shranjenih elementov.</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteBottomAppBar -->
+    <string name="select_all_items_of_selected_day">izberite vse elemente izbranega dneva</string>
+    <string name="deselect_all_items_of_selected_day">izbriši vse elemente izbranega dneva</string>
+    <string name="delete_items_forever">za vedno izbrišite elemente</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteTopAppBar -->
+    <string name="itemCount_selected">izbrani</string>
+    <string name="get_out_of_isDeleting">vas spravi iz načina brisanja</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabFab -->
+    <string name="start">Začni</string>
+    <string name="stop">Stop</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabDeletePauseDialog -->
+    <string name="close">Zapri</string>
+    <string name="learn_more">Več informacij…</string>
+    <string name="open_link_with">Odprite povezavo z</string>
+    <string name="delete_pause">Brisanje pavze</string>
+    <string name="delete_pause_descr">Te tekoče prekinitve ni mogoče izbrisati. Označuje le, da bo pavza ustvarjena, ko pritisnete gumb Start. Če boste start pritisnili šele jutri, bo izginila in ne bo štela v vaš cilj.</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
+    <string name="start_label">Start</string>
+    <string name="end_label">End</string>
+    <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
+    <string name="calendar">Koledar</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
+    <string name="configurations">Konfiguracije</string>
+    <string name="goals">Cilji</string>
+    <string name="work">Delo</string>
+    <string name="work_goal_descr">Postavite cilj za delo</string>
+    <string name="pause">Pavza</string>
+    <string name="pause_goal_descr">Postavite cilj za pavzo</string>
+    <string name="storage">shranjevanje</string>
+    <string name="backup">Varnostna kopija</string>
+    <string name="backup_descr">Redno varnostno kopiranje vseh podatkov na varno mesto!</string>
+    <string name="backup_failed">Generating the backup failed</string>
     <string name="import_ol">Uvoz</string>
+    <string name="import_descr">Uvoz iz varnostne kopije</string>
+    <string name="import_backup">Uvoz varnostne kopije</string>
+    <string name="import_backup_descr">Če želite podatke uvoziti v aplikacijo, uporabite zbirko Sharesheet iz drugih aplikacij. Tako lahko aplikacija varno dostopa do podatkov v skupni rabi in jih uvozi v vašo zbirko podatkov.</string>
+    <string name="import_success">Varnostna kopija uspešno uvožena</string>
+    <string name="import_failure">Uvoz varnostne kopije ni uspel</string>
+    <string name="analytics">analitika</string>
+    <string name="crash_reports">Poročila o trkih</string>
+    <string name="crash_reports_descr">Prosite za pošiljanje poročil o nesreči</string>
+    <string name="system_logs">Sistemska poročila</string>
+    <string name="system_logs_descr">Vključitev sistemskih dnevnikov v poročila o trkih</string>
+    <string name="about">o</string>
+    <string name="sourcecode">Izvorna koda</string>
+    <string name="sourcecode_descr">Si želite ogledati notranjost? Pojdite naprej!</string>
+    <string name="issue_reports">Poročilo o napakah</string>
+    <string name="issue_reports_descr">Ste opazili kaj nenavadnega? Prosimo, sporočite to!</string>
+    <string name="license">Licenca</string>
+    <string name="license_descr">GNU GPL v3</string>
+    <string name="footer">ustvarjeno s ❤️, ki ga je ustvaril pabloscloud</string>
+    <string name="acra_toastText">Odkrita nesreča. Prosimo, pomagajte in pošljite sporočilo!</string>
+    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
+    <string name="acra_mailBody">        Odkrita nesreča. Pomagajte nam izboljšati stanje tako, da nam pošljete to e-poštno sporočilo, da bomo lahko to čim prej odpravili. Pomagajte nam izboljšati stanje tako, da nam pošljete to e-poštno sporočilo, da bomo lahko to čim prej odpravili.\n
+Opravičujemo se za povzročene nevšečnosti! Vaš prispevek je bistvenega pomena za odpravo te težave.\n
+\n
+Opis - Kaj ste storili, ko se je aplikacija zrušila?\n
+\n
+\n
+Koraki za ponovitev - Ali lahko zagotovite navodila po korakih, kako ponoviti sesutje?\n
+\n
+\n
+Slike - vključite vse slike zaslona ali posnetke zaslona.\n
+\n
+\n
+Nedavne spremembe - Ali ste nedavno posodobili aplikacijo ali spremenili nastavitve naprave?\n
+\n
+\n
+Pogostost - Kako pogosto se pojavlja ta okvara?\n
+\n
+\n
+Hvala za potrpežljivost! </string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
+    <string name="save">Shrani</string>
+    <string name="pick_work_goal">Določite delovni cilj</string>
+    <string name="hours">ure</string>
+    <string name="minutes">minute</string>
+    <string name="cancel">preklic</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabPauseGoalDialog -->
+    <string name="pick_pause_goal">Nastavite cilj pavze</string>
+    <!-- cloud.pablos.overload.ui.views.DayView -->
+    <string name="work_left">Delo ostane</string>
+    <string name="pause_left">Prekinitev levo</string>
+    <!-- cloud.pablos.overload.ui.views.DayViewItem -->
+    <string name="arrow_forward">puščica naprej, ki opisuje smer obeh časov od začetka do konca</string>
+    <string name="select_year">Izberite leto</string>
+    <string name="translate">Prevesti</string>
+    <string name="translate_descr">Želite aplikacijo prevesti? Hvala!</string>
+    <string name="adjust">Prilagodite</string>
+    <string name="adjust_end_time">Prilagodite končni čas</string>
+    <string name="adjust_descr">Čas zaključka prilagodite dejanskemu zaključku.</string>
     <string name="spread_across_days">Razporeditev po dnevih</string>
     <string name="spans_days">Vnos časa zajema več dni</string>
     <string name="spans_days_descr">Zadnji časovni vnos zajema več dni. Morda ste ga pozabili ustaviti. Ali želite prilagoditi konec?</string>
-    <string name="adjust">Prilagodite</string>
     <string name="are_you_sure">Ste prepričani?</string>
-    <string name="adjust_descr">Čas zaključka prilagodite dejanskemu zaključku.</string>
-    <string name="no">Ne</string>
     <string name="yes">Da</string>
-    <string name="adjust_end_time">Prilagodite končni čas</string>
+    <string name="no">Ne</string>
+    <string name="manual_entry">Manual Entry</string>
+    <string name="acra_mailSubject">Overload Crash</string>
+    <!-- accessibility strings -->
+    <string name="talback_entry">Entry from %s to %s</string>
+    <string name="talback_pause">Pause from %s to %s</string>
+    <string name="talback_entry_ongoing">Ongoing entry since %s</string>
+    <string name="talback_pause_ongoing">Ongoing pause since %s</string>
 </resources>
