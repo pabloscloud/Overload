@@ -1,100 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="select_all_items_of_selected_day">vyberte všetky položky vybraného dňa</string>
-    <string name="storage">skladovanie</string>
-    <string name="delete_pause_descr">Túto prebiehajúcu pauzu nemôžete vymazať. Je tu len na označenie, že sa pauza vytvorí po stlačení tlačidla Start. Ak stlačíte tlačidlo Štart až zajtra, zmizne a nebude sa započítavať do vášho cieľa.</string>
-    <string name="hours">hodiny</string>
-    <string name="close">Zatvoriť</string>
-    <string name="save">Uložiť</string>
-    <string name="goals">Ciele</string>
-    <string name="system_logs_descr">Zahrnúť systémové protokoly do hlásení o havárii</string>
-    <string name="crash_reports_descr">Požiadajte o zaslanie hlásení o nehode</string>
-    <string name="get_out_of_isDeleting">vás dostane z režimu mazania</string>
-    <string name="are_you_sure">Ste si istý?</string>
-    <string name="adjust_descr">Čas ukončenia upravte podľa toho, kedy sa skutočne skončil.</string>
-    <string name="system_logs">Systémové protokoly</string>
-    <string name="backup_descr">Pravidelne zálohujte všetky údaje na bezpečné miesto!</string>
-    <string name="friday">Piatok</string>
-    <string name="tuesday">Utorok</string>
-    <string name="acra_toastText">Zistená havária. Prosím, pomôžte mi zaslaním e-mailu!</string>
-    <string name="import_descr">Import zo zálohy</string>
-    <string name="spread_across_days">Rozloženie na dni</string>
-    <string name="translate">Preložiť</string>
-    <string name="no">Nie</string>
-    <string name="import_backup">Import zálohovania</string>
-    <string name="learn_more">Viac informácií…</string>
-    <string name="sourcecode_descr">Chcete vidieť vnútro? Choďte!</string>
-    <string name="pause">Pauza</string>
-    <string name="delete_items_forever">navždy odstrániť položky</string>
-    <string name="pick_work_goal">Nastavenie pracovného cieľa</string>
-    <string name="acra_mailBody">Zistená havária. Prosím, pomôžte nám to zlepšiť zaslaním tohto e-mailu, aby sme to mohli čo najskôr opraviť.
-\n Ospravedlňujeme sa za spôsobené nepríjemnosti! Vaše príspevky sú nevyhnutné na odstránenie tohto problému.
-\n
-\n Popis - Čo ste urobili, keď aplikácia spadla?
-\n
-\n
-\n Kroky na reprodukciu - Môžete poskytnúť návod krok za krokom, ako reprodukovať pád?
-\n
-\n
-\n Vizualizácie - Priložte akékoľvek snímky obrazovky alebo záznamy obrazovky.
-\n
-\n
-\n Nedávne zmeny - Aktualizovali ste nedávno aplikáciu alebo zmenili nastavenia zariadenia?
-\n
-\n
-\n Frekvencia - Ako často dochádza k pádu?
-\n
-\n
-\n Ďakujeme za trpezlivosť!</string>
-    <string name="wednesday">Streda</string>
-    <string name="yes">Áno</string>
-    <string name="monday">Pondelok</string>
-    <string name="unknown_day">Neznámy deň</string>
-    <string name="translate_descr">Chcete aplikáciu preložiť? Vďaka!</string>
-    <string name="start">Start</string>
-    <string name="license_descr">GNU GPL v3</string>
-    <string name="issue_reports">Nahlásenie chýb</string>
-    <string name="stop">Stop</string>
-    <string name="import_failure">Import zálohy zlyhal</string>
-    <string name="select_year">Vyberte rok</string>
-    <string name="pick_pause_goal">Nastavenie cieľa pauzy</string>
-    <string name="work">Práca</string>
-    <string name="backup">Zálohovanie</string>
-    <string name="spans_days">Časový údaj zahŕňa viacero dní</string>
-    <string name="license">Licencia</string>
-    <string name="issue_reports_descr">Všimli ste si niečo zvláštne? Nahláste to!</string>
-    <string name="about">o</string>
-    <string name="adjust_end_time">Nastavenie času ukončenia</string>
-    <string name="work_goal_descr">Stanovte si pracovný cieľ</string>
-    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="open_link_with">Otvorte prepojenie s</string>
-    <string name="import_backup_descr">Ak chcete do aplikácie importovať údaje, použite hárok akcií z iných aplikácií. To umožní aplikácii bezpečný prístup k zdieľaným údajom a ich import do vašej databázy.</string>
-    <string name="configurations">Konfigurácie</string>
-    <string name="spans_days_descr">Časový údaj sa vzťahuje na viacero dní. Možno ste ho zabudli zastaviť. Chcete upraviť koniec?</string>
-    <string name="sunday">Nedeľa</string>
-    <string name="no_items_subtitle">Pre tento deň nie sú uložené žiadne položky.</string>
-    <string name="adjust">Nastavenie</string>
-    <string name="crash_reports">Hlásenia o nehodách</string>
-    <string name="home">Domov</string>
-    <string name="cancel">Zrušiť</string>
-    <string name="yesterday">Včera</string>
+<!--
+  Copyright 2022 The Android Open Source Project
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="navigation_drawer">Navigačná zásuvka</string>
-    <string name="minutes">minúty</string>
-    <string name="arrow_forward">šípka vpred popisujúca smer oboch časov od začiatku do konca</string>
-    <string name="delete_pause">Odstrániť pauzu</string>
-    <string name="deselect_all_items_of_selected_day">zrušiť výber všetkých položiek vybraného dňa</string>
-    <string name="analytics">analytika</string>
-    <string name="no_items_title">Žiadne zaznamenané položky</string>
-    <string name="saturday">Sobota</string>
-    <string name="work_left">Práca vľavo</string>
-    <string name="sourcecode">Zdrojový kód</string>
-    <string name="itemCount_selected">vybrané</string>
-    <string name="import_success">Zálohovanie úspešne importované</string>
-    <string name="pause_goal_descr">Nastavenie cieľa pre pauzu</string>
-    <string name="thursday">Štvrtok</string>
-    <string name="footer">vytvorené pomocou ❤️ by pabloscloud</string>
-    <string name="calendar">Kalendár</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTab -->
+    <string name="home">Domov</string>
     <string name="today">Dnes</string>
-    <string name="pause_left">Pauza vľavo</string>
+    <string name="yesterday">Včera</string>
+    <string name="monday">Pondelok</string>
+    <string name="tuesday">Utorok</string>
+    <string name="wednesday">Streda</string>
+    <string name="thursday">Štvrtok</string>
+    <string name="friday">Piatok</string>
+    <string name="saturday">Sobota</string>
+    <string name="sunday">Nedeľa</string>
+    <string name="unknown_day">Neznámy deň</string>
+    <string name="no_items_title">Žiadne zaznamenané položky</string>
+    <string name="no_items_subtitle">Pre tento deň nie sú uložené žiadne položky.</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteBottomAppBar -->
+    <string name="select_all_items_of_selected_day">vyberte všetky položky vybraného dňa</string>
+    <string name="deselect_all_items_of_selected_day">zrušiť výber všetkých položiek vybraného dňa</string>
+    <string name="delete_items_forever">navždy odstrániť položky</string>
+    <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteTopAppBar -->
+    <string name="itemCount_selected">vybrané</string>
+    <string name="get_out_of_isDeleting">vás dostane z režimu mazania</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabFab -->
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabDeletePauseDialog -->
+    <string name="close">Zatvoriť</string>
+    <string name="learn_more">Viac informácií…</string>
+    <string name="open_link_with">Otvorte prepojenie s</string>
+    <string name="delete_pause">Odstrániť pauzu</string>
+    <string name="delete_pause_descr">Túto prebiehajúcu pauzu nemôžete vymazať. Je tu len na označenie, že sa pauza vytvorí po stlačení tlačidla Start. Ak stlačíte tlačidlo Štart až zajtra, zmizne a nebude sa započítavať do vášho cieľa.</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
+    <string name="start_label">Start</string>
+    <string name="end_label">End</string>
+    <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
+    <string name="calendar">Kalendár</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
+    <string name="configurations">Konfigurácie</string>
+    <string name="goals">Ciele</string>
+    <string name="work">Práca</string>
+    <string name="work_goal_descr">Stanovte si pracovný cieľ</string>
+    <string name="pause">Pauza</string>
+    <string name="pause_goal_descr">Nastavenie cieľa pre pauzu</string>
+    <string name="storage">skladovanie</string>
+    <string name="backup">Zálohovanie</string>
+    <string name="backup_descr">Pravidelne zálohujte všetky údaje na bezpečné miesto!</string>
+    <string name="backup_failed">Generating the backup failed</string>
     <string name="import_ol">Import</string>
+    <string name="import_descr">Import zo zálohy</string>
+    <string name="import_backup">Import zálohovania</string>
+    <string name="import_backup_descr">Ak chcete do aplikácie importovať údaje, použite hárok akcií z iných aplikácií. To umožní aplikácii bezpečný prístup k zdieľaným údajom a ich import do vašej databázy.</string>
+    <string name="import_success">Zálohovanie úspešne importované</string>
+    <string name="import_failure">Import zálohy zlyhal</string>
+    <string name="analytics">analytika</string>
+    <string name="crash_reports">Hlásenia o nehodách</string>
+    <string name="crash_reports_descr">Požiadajte o zaslanie hlásení o nehode</string>
+    <string name="system_logs">Systémové protokoly</string>
+    <string name="system_logs_descr">Zahrnúť systémové protokoly do hlásení o havárii</string>
+    <string name="about">o</string>
+    <string name="sourcecode">Zdrojový kód</string>
+    <string name="sourcecode_descr">Chcete vidieť vnútro? Choďte!</string>
+    <string name="issue_reports">Nahlásenie chýb</string>
+    <string name="issue_reports_descr">Všimli ste si niečo zvláštne? Nahláste to!</string>
+    <string name="license">Licencia</string>
+    <string name="license_descr">GNU GPL v3</string>
+    <string name="footer">vytvorené pomocou ❤️ by pabloscloud</string>
+    <string name="acra_toastText">Zistená havária. Prosím, pomôžte mi zaslaním e-mailu!</string>
+    <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
+    <string name="acra_mailBody">        Zistená havária. Prosím, pomôžte nám to zlepšiť zaslaním tohto e-mailu, aby sme to mohli čo najskôr opraviť. Prosím, pomôžte nám to zlepšiť zaslaním tohto e-mailu, aby sme to mohli čo najskôr opraviť.\n
+Ospravedlňujeme sa za spôsobené nepríjemnosti! Vaše príspevky sú nevyhnutné na odstránenie tohto problému.\n
+\n
+Popis - Čo ste urobili, keď aplikácia spadla?\n
+\n
+\n
+Kroky na reprodukciu - Môžete poskytnúť návod krok za krokom, ako reprodukovať pád?\n
+\n
+\n
+Vizualizácie - Priložte akékoľvek snímky obrazovky alebo záznamy obrazovky.\n
+\n
+\n
+Nedávne zmeny - Aktualizovali ste nedávno aplikáciu alebo zmenili nastavenia zariadenia?\n
+\n
+\n
+Frekvencia - Ako často dochádza k pádu?\n
+\n
+\n
+Ďakujeme za trpezlivosť! </string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
+    <string name="save">Uložiť</string>
+    <string name="pick_work_goal">Nastavenie pracovného cieľa</string>
+    <string name="hours">hodiny</string>
+    <string name="minutes">minúty</string>
+    <string name="cancel">Zrušiť</string>
+    <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabPauseGoalDialog -->
+    <string name="pick_pause_goal">Nastavenie cieľa pauzy</string>
+    <!-- cloud.pablos.overload.ui.views.DayView -->
+    <string name="work_left">Práca vľavo</string>
+    <string name="pause_left">Pauza vľavo</string>
+    <!-- cloud.pablos.overload.ui.views.DayViewItem -->
+    <string name="arrow_forward">šípka vpred popisujúca smer oboch časov od začiatku do konca</string>
+    <string name="select_year">Vyberte rok</string>
+    <string name="translate">Preložiť</string>
+    <string name="translate_descr">Chcete aplikáciu preložiť? Vďaka!</string>
+    <string name="adjust">Nastavenie</string>
+    <string name="adjust_end_time">Nastavenie času ukončenia</string>
+    <string name="adjust_descr">Čas ukončenia upravte podľa toho, kedy sa skutočne skončil.</string>
+    <string name="spread_across_days">Rozloženie na dni</string>
+    <string name="spans_days">Časový údaj zahŕňa viacero dní</string>
+    <string name="spans_days_descr">Časový údaj sa vzťahuje na viacero dní. Možno ste ho zabudli zastaviť. Chcete upraviť koniec?</string>
+    <string name="are_you_sure">Ste si istý?</string>
+    <string name="yes">Áno</string>
+    <string name="no">Nie</string>
+    <string name="manual_entry">Manual Entry</string>
+    <string name="acra_mailSubject">Overload Crash</string>
+    <!-- accessibility strings -->
+    <string name="talback_entry">Entry from %s to %s</string>
+    <string name="talback_pause">Pause from %s to %s</string>
+    <string name="talback_entry_ongoing">Ongoing entry since %s</string>
+    <string name="talback_pause_ongoing">Ongoing pause since %s</string>
 </resources>
