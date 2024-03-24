@@ -78,25 +78,25 @@
     <string name="footer">vytvorené pomocou ❤️ by pabloscloud</string>
     <string name="acra_toastText">Zistená havária. Prosím, pomôžte mi zaslaním e-mailu!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Zistená havária. Prosím, pomôžte nám to zlepšiť zaslaním tohto e-mailu, aby sme to mohli čo najskôr opraviť. Prosím, pomôžte nám to zlepšiť zaslaním tohto e-mailu, aby sme to mohli čo najskôr opraviť.\n
-Ospravedlňujeme sa za spôsobené nepríjemnosti! Vaše príspevky sú nevyhnutné na odstránenie tohto problému.\n
+    <string name="acra_mailBody">        Zistená havária. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
+Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
 \n
-Popis - Čo ste urobili, keď aplikácia spadla?\n
-\n
-\n
-Kroky na reprodukciu - Môžete poskytnúť návod krok za krokom, ako reprodukovať pád?\n
+Description - What did you do when the app crashed?\n
 \n
 \n
-Vizualizácie - Priložte akékoľvek snímky obrazovky alebo záznamy obrazovky.\n
+Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
 \n
 \n
-Nedávne zmeny - Aktualizovali ste nedávno aplikáciu alebo zmenili nastavenia zariadenia?\n
+Visuals - Please include any screenshots or screen-recordings.\n
 \n
 \n
-Frekvencia - Ako často dochádza k pádu?\n
+Recent changes - Did you recently update the app or change device settings?\n
 \n
 \n
-Ďakujeme za trpezlivosť! </string>
+Frequency - How often does this crash occur?\n
+\n
+\n
+Thanks for patience! </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Uložiť</string>
     <string name="pick_work_goal">Nastavenie pracovného cieľa</string>
