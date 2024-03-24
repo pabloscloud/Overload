@@ -26,7 +26,7 @@
     <string name="no_items_title">Žiadne zaznamenané položky</string>
     <string name="no_items_subtitle">Pre tento deň nie sú uložené žiadne položky.</string>
     <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteBottomAppBar -->
-    <string name="select_all_items_of_selected_day">select all items of selected day</string>
+    <string name="select_all_items_of_selected_day">vyberte všetky položky vybraného dňa</string>
     <string name="deselect_all_items_of_selected_day">zrušiť výber všetkých položiek vybraného dňa</string>
     <string name="delete_items_forever">navždy odstrániť položky</string>
     <!-- cloud.pablos.overload.ui.tabs.home.HomeTabDeleteTopAppBar -->
