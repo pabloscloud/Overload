@@ -44,6 +44,8 @@
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
     <string name="start_label">Start</string>
     <string name="end_label">Eindigt</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog -->
+    <string name="edit_entry">Edit Entry</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Kalender</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
@@ -78,25 +80,26 @@
     <string name="footer">Met ❤️ gemaakt door pabloscloud</string>
     <string name="acra_toastText">Er is een crash geweest. Help ons door een e-mail te versturen!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Er is een crash geweest. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
-Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+    <string name="acra_mailBody">        Er is een crash geweest. Help ons om de app te verbeteren door deze e-mail te versturen.\n
+Onze excuses voor het ongemak! We waarderen het dat je wilt helpen om dit probleem op te lossen.\n
 \n
-Description - What did you do when the app crashed?\n
-\n
-\n
-Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+Beschrijving - Wat was je aan het doen toen de app crashte?\n
 \n
 \n
-Visuals - Please include any screenshots or screen-recordings.\n
+Navolging - Kun je in stappen uitleggen hoe we de crash kunnen veroorzaken?\n
 \n
 \n
-Recent changes - Did you recently update the app or change device settings?\n
+Foto\'s - Voeg desgewenst schermfoto\'s of -opnamen bij.\n
 \n
 \n
-Frequency - How often does this crash occur?\n
+Onlangs gewijzigd - Heb je de app onlangs geüpdatet of de systeeminstellingen aangepast?\n
 \n
 \n
-Thanks for patience! </string>
+Frequentie - Hoe vaak komt deze crash voor?\n
+\n
+\n
+Bedankt voor je geduld!
+    </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Opslaan</string>
     <string name="pick_work_goal">Werkdoel instellen</string>
