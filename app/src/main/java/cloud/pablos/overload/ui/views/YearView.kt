@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cloud.pablos.overload.data.item.ItemEvent
-import cloud.pablos.overload.data.item.ItemState
 import cloud.pablos.overload.ui.tabs.home.getFormattedDate
 import java.time.LocalDate
 import java.time.Month
@@ -39,7 +38,7 @@ import java.util.Locale
 @Composable
 fun YearView(
     year: Int,
-    state: ItemState,
+    // state: ItemState,
     onEvent: (ItemEvent) -> Unit,
     bottomPadding: Dp = 0.dp,
     onNavigate: () -> Unit = {},
