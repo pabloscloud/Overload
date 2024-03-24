@@ -291,7 +291,6 @@ fun HomeTabEditItemDialog(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     FilterChip(
-                        enabled = {}
                         onClick = { selectedPause = true },
                         label = {
                             TextView(
