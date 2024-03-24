@@ -49,10 +49,11 @@ fun SpreadAcrossDaysDialog(
 
     val date = LocalDate.now()
 
-    val itemsNotToday = state.items.filter { item ->
-        val startTime = parseToLocalDateTime(item.startTime)
-        extractDate(startTime) != date
-    }
+    val itemsNotToday =
+        state.items.filter { item ->
+            val startTime = parseToLocalDateTime(item.startTime)
+            extractDate(startTime) != date
+        }
     val isOngoingNotToday = itemsNotToday.isNotEmpty() && itemsNotToday.any { it.ongoing }
     val firstOngoingItem = itemsNotToday.find { it.ongoing }
 
@@ -89,7 +90,11 @@ fun SpreadAcrossDaysDialog(
                     val openLinkStr = stringResource(id = R.string.open_link_with)
                     ClickableText(
                         text = AnnotatedString(stringResource(id = R.string.learn_more)),
-                        style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primary, textAlign = TextAlign.Center),
+                        style =
+                            MaterialTheme.typography.bodyMedium.copy(
+                                color = MaterialTheme.colorScheme.primary,
+                                textAlign = TextAlign.Center,
+                            ),
                         onClick = {
                             val intent = Intent(Intent.ACTION_VIEW, learnMoreLink)
                             val chooserIntent = Intent.createChooser(intent, openLinkStr)
@@ -100,7 +105,7 @@ fun SpreadAcrossDaysDialog(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    DayViewItemOngoing(item = firstOngoingItem, showDate = true, hideEnd = true)
+                    DayViewItemOngoing(item = firstOngoingItem, showDate = true, hideEnd = true, state = state)
                 }
             },
             confirmButton = {
@@ -108,10 +113,11 @@ fun SpreadAcrossDaysDialog(
                     onClick = {
                         onClose()
                     },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                    ),
+                    colors =
+                        ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                        ),
                 ) {
                     TextView(stringResource(R.string.no))
                 }
@@ -121,10 +127,11 @@ fun SpreadAcrossDaysDialog(
                     onClick = {
                         onClose.save(onEvent, firstOngoingItem)
                     },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    ),
+                    colors =
+                        ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.primaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                        ),
                 ) {
                     TextView(stringResource(R.string.yes))
                 }
@@ -149,7 +156,14 @@ private fun (() -> Unit).save(
     while (dateIterator.isBefore(currentDate) || dateIterator == currentDate) {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS")
         val newStartTime = if (dateIterator == startDate) startTime else LocalDateTime.of(dateIterator, LocalTime.MIDNIGHT)
-        val newEndTime = if (dateIterator == currentDate) parseToLocalDateTime(LocalDateTime.now().toString()) else LocalDateTime.of(dateIterator, LocalTime.MAX)
+        val newEndTime =
+            if (dateIterator == currentDate) {
+                parseToLocalDateTime(
+                    LocalDateTime.now().toString(),
+                )
+            } else {
+                LocalDateTime.of(dateIterator, LocalTime.MAX)
+            }
 
         if (dateIterator == startDate) {
             onEvent(ItemEvent.SetId(id = item.id))

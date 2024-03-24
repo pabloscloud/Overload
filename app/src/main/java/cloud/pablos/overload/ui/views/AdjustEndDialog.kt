@@ -57,10 +57,11 @@ fun AdjustEndDialog(
 
     val date = LocalDate.now()
 
-    val itemsNotToday = state.items.filter { item ->
-        val startTime = parseToLocalDateTime(item.startTime)
-        extractDate(startTime) != date
-    }
+    val itemsNotToday =
+        state.items.filter { item ->
+            val startTime = parseToLocalDateTime(item.startTime)
+            extractDate(startTime) != date
+        }
     val isOngoingNotToday = itemsNotToday.isNotEmpty() && itemsNotToday.any { it.ongoing }
     val firstOngoingItem = itemsNotToday.find { it.ongoing }
 
@@ -70,21 +71,22 @@ fun AdjustEndDialog(
         val startTime = parseToLocalDateTime(firstOngoingItem.startTime)
         var endTime by remember { mutableStateOf(startTime) }
 
-        val timePicker = TimePickerDialog(
-            context,
-            { _, selectedHour: Int, selectedMinute: Int ->
-                val newEndTime = endTime.withHour(selectedHour).withMinute(selectedMinute)
-                if (newEndTime.isAfter(startTime)) {
-                    endTime = newEndTime
-                    selectedTimeText = "$selectedHour:$selectedMinute"
-                } else {
-                    endTime = startTime.plusMinutes(1)
-                }
-            },
-            endTime.hour,
-            endTime.minute,
-            false,
-        )
+        val timePicker =
+            TimePickerDialog(
+                context,
+                { _, selectedHour: Int, selectedMinute: Int ->
+                    val newEndTime = endTime.withHour(selectedHour).withMinute(selectedMinute)
+                    if (newEndTime.isAfter(startTime)) {
+                        endTime = newEndTime
+                        selectedTimeText = "$selectedHour:$selectedMinute"
+                    } else {
+                        endTime = startTime.plusMinutes(1)
+                    }
+                },
+                endTime.hour,
+                endTime.minute,
+                false,
+            )
 
         AlertDialog(
             onDismissRequest = onClose,
@@ -117,7 +119,11 @@ fun AdjustEndDialog(
                     val openLinkStr = stringResource(id = R.string.open_link_with)
                     ClickableText(
                         text = AnnotatedString(stringResource(id = R.string.learn_more)),
-                        style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primary, textAlign = TextAlign.Center),
+                        style =
+                            MaterialTheme.typography.bodyMedium.copy(
+                                color = MaterialTheme.colorScheme.primary,
+                                textAlign = TextAlign.Center,
+                            ),
                         onClick = {
                             val intent = Intent(Intent.ACTION_VIEW, learnMoreLink)
                             val chooserIntent = Intent.createChooser(intent, openLinkStr)
@@ -128,7 +134,7 @@ fun AdjustEndDialog(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    DayViewItemOngoing(item = firstOngoingItem, showDate = true, hideEnd = true)
+                    DayViewItemOngoing(item = firstOngoingItem, showDate = true, hideEnd = true, state = state)
 
                     Spacer(modifier = Modifier.height(16.dp))
 
@@ -142,12 +148,13 @@ fun AdjustEndDialog(
                             onClick = {
                                 timePicker.show()
                             },
-                            colors = ButtonColors(
-                                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                                disabledContainerColor = MaterialTheme.colorScheme.surface,
-                                disabledContentColor = MaterialTheme.colorScheme.onSurface,
-                            ),
+                            colors =
+                                ButtonColors(
+                                    containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                    contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                    disabledContainerColor = MaterialTheme.colorScheme.surface,
+                                    disabledContentColor = MaterialTheme.colorScheme.onSurface,
+                                ),
                         ) { TextView(stringResource(R.string.adjust)) }
                     }
                 }
@@ -157,10 +164,11 @@ fun AdjustEndDialog(
                     onClick = {
                         onClose.save(onEvent, firstOngoingItem, endTime)
                     },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    ),
+                    colors =
+                        ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.primaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                        ),
                 ) {
                     TextView(stringResource(R.string.save))
                 }
@@ -170,10 +178,11 @@ fun AdjustEndDialog(
                     onClick = {
                         onClose()
                     },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                    ),
+                    colors =
+                        ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                        ),
                 ) {
                     TextView(stringResource(id = R.string.close))
                 }
