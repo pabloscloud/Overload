@@ -44,6 +44,8 @@
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
     <string name="start_label">Start</string>
     <string name="end_label">Ende</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog -->
+    <string name="edit_entry">Eintrag bearbeiten</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Kalender</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
@@ -60,7 +62,7 @@
     <string name="import_ol">Wiederherstellen</string>
     <string name="import_descr">Stelle Daten aus einer Sicherung her</string>
     <string name="import_backup">Sicherung wiederherstellen</string>
-    <string name="import_backup_descr">Um Daten in die App zu importieren, benutze bitte das Sharesheet von anderen Apps. Damit kann die App sicher auf die freigegebenen Daten zugreifen und diese in die Datenbank importieren.</string>
+    <string name="import_backup_descr">Um Daten in die App zu importieren, benutze bitte das Sharesheet von anderen Apps. Damit kann die App sicher auf die freigegebenen Daten zugreifen und diese in Ihre Datenbank importieren.</string>
     <string name="import_success">Sicherung erfolgreich wiederhergestellt</string>
     <string name="import_failure">Sicherung konnte nicht wiederhergestellt werden</string>
     <string name="analytics">Analysen</string>
@@ -78,25 +80,26 @@
     <string name="footer">mit ❤️ von pabloscloud erstellt</string>
     <string name="acra_toastText">Absturz erkannt. Bitte helfe mit dem Senden einer E-Mail!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Absturz erkannt. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
-Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+    <string name="acra_mailBody">        Absturz erkannt. Bitte helfe uns, uns zu verbessern, indem du diese E-Mail sendest, damit wir das Problem so schnell wie möglich beheben können.\n
+Bitte entschuldige! Das Absenden ist für die Behebung dieses Problems unerlässlich.\n
 \n
-Description - What did you do when the app crashed?\n
-\n
-\n
-Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+Beschreibung – Was hast du getan, bevor die App abstürzte?\n
 \n
 \n
-Visuals - Please include any screenshots or screen-recordings.\n
+Schritte zur Reproduktion – Kannst du beschreiben, wie wir den Fehler reproduzieren können?\n
 \n
 \n
-Recent changes - Did you recently update the app or change device settings?\n
+Bildmaterial – Bitte füge Screenshots oder Bildschirmaufzeichnungen bei.\n
 \n
 \n
-Frequency - How often does this crash occur?\n
+Kürzliche Änderungen – Hast du kürzlich die App aktualisiert oder Geräteeinstellungen geändert\n
 \n
 \n
-Thanks for patience! </string>
+Häufigkeit – Wie oft kommt dieser Absturz vor?\n
+\n
+\n
+Danke für deine Geduld!
+    </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Speichern</string>
     <string name="pick_work_goal">Arbeitsziel setzen</string>
