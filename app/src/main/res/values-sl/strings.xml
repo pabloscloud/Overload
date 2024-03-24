@@ -80,25 +80,7 @@
     <string name="footer">ustvarjeno s ❤️, ki ga je ustvaril pabloscloud</string>
     <string name="acra_toastText">Odkrita nesreča. Prosimo, pomagajte in pošljite sporočilo!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Odkrita nesreča. Pomagajte nam izboljšati stanje tako, da nam pošljete to e-poštno sporočilo, da bomo lahko to čim prej odpravili.\n
-Opravičujemo se za povzročene nevšečnosti! Vaš prispevek je bistvenega pomena za odpravo te težave.\n
-\n
-Opis - Kaj ste storili, ko se je aplikacija zrušila?\n
-\n
-\n
-Koraki za ponovitev - Ali lahko zagotovite navodila po korakih, kako ponoviti sesutje?\n
-\n
-\n
-Slike - vključite vse slike zaslona ali posnetke zaslona.\n
-\n
-\n
-Nedavne spremembe - Ali ste nedavno posodobili aplikacijo ali spremenili nastavitve naprave?\n
-\n
-\n
-Pogostost - Kako pogosto se pojavlja ta okvara?\n
-\n
-\n
-Hvala za potrpežljivost!
+    <string name="acra_mailBody">        Odkrita nesreča. Pomagajte nam izboljšati stanje tako, da nam pošljete to e-poštno sporočilo, da bomo lahko to čim prej odpravili. \n Opravičujemo se za povzročene nevšečnosti!
     </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Shrani</string>
