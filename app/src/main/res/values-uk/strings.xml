@@ -44,6 +44,8 @@
     <!--  cloud.pablos.overload.ui.tabs.home.HomeTabManualDialog -->
     <string name="start_label">Початок</string>
     <string name="end_label">Кінець</string>
+    <!--  cloud.pablos.overload.ui.tabs.home.HomeTabEditItemDialog -->
+    <string name="edit_entry">Edit Entry</string>
     <!--  cloud.pablos.overload.ui.tabs.calendar.CalendarTab -->
     <string name="calendar">Календар</string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTab -->
@@ -78,25 +80,26 @@
     <string name="footer">з ❤️ створив pabloscloud</string>
     <string name="acra_toastText">Виявлено збій. Будь ласка, допоможіть, надіславши листа!</string>
     <string name="acra_mailTo">overloadcrash@pablos.cloud</string>
-    <string name="acra_mailBody">        Виявлено збій. Please help us improve by sending this email, so we can get this fixed as soon as possible.\n
-Sorry for the inconveniences caused! Your input is essential for fixing this issue.\n
+    <string name="acra_mailBody">        Виявлено збій. Будь ласка, допоможіть нам покращити програму, надіславши цей лист, щоб ми могли виправити це якнайшвидше.\n
+Вибачте за незручності! Ваш внесок дуже важливий для вирішення цієї проблеми.\n
 \n
-Description - What did you do when the app crashed?\n
-\n
-\n
-Steps to reproduce - Can you provide a step-by-step guide on how to reproduce the crash?\n
+Опис – Що Ви робили, коли програма завершила роботу?\n
 \n
 \n
-Visuals - Please include any screenshots or screen-recordings.\n
+Кроки для відтворення – Чи можете Ви надати покрокову інструкцію, як відтворити збій?\n
 \n
 \n
-Recent changes - Did you recently update the app or change device settings?\n
+Візуальні матеріали – Додайте будь-які скріншоти або записи з екрану.\n
 \n
 \n
-Frequency - How often does this crash occur?\n
+Нещодавні зміни – Чи оновлювали Ви нещодавно додаток, чи змінювали налаштування пристрою?\n
 \n
 \n
-Thanks for patience! </string>
+Частота – Як часто відбувається цей збій?\n
+\n
+\n
+Дякуємо за терпіння!
+    </string>
     <!--  cloud.pablos.overload.ui.tabs.configurations.ConfigurationsTabWorkGoalDialog -->
     <string name="save">Зберегти</string>
     <string name="pick_work_goal">Встановіть робочу мету</string>
